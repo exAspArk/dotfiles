@@ -131,7 +131,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+" open nerdtree
 map <leader><leader> :NERDTreeToggle<CR>
+" open current file's path
+map <leader>c :NERDTreeFind<CR>
 
 " move line up / down
 nnoremap ∆ :m .+1<CR>==
