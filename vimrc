@@ -45,6 +45,9 @@ Plugin 'tpope/vim-endwise'
 " slim
 Plugin 'slim-template/vim-slim'
 
+" coffee
+Plugin 'kchmck/vim-coffee-script'
+
 call vundle#end()
 
 syntax on
