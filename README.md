@@ -1,6 +1,42 @@
 # dotfiles
 
-## Other dev tools:
+## Other tools:
+
+### Apps
+
+* Google Chrome
+* iTerm
+* Skype
+* Dropbox
+* SourceTree
+* Sublime Text
+* Evernote
+* Tunnelblick
+* Sequel Pro
+* MongoHub
+* PSequel
+* Twitter
+* Jumpcut
+* Flux
+* The Unarchiver
+* MPlayerX
+* uTorrent
+* Pocket
+* Degrees
+* LibreOffice
+* CyberDuck
+* Slack
+* CCMenu
+* Airmail
+* Android File Transfer
+* RescueTime
+* Pixlr
+* Xcode
+* Karabiner
+
+### Widgets
+
+* iStatNano
 
 ### Homebrew
 
@@ -22,6 +58,18 @@
 * sphinx
 * vim
 * wget 
+
+### Google Chrome extensions
+
+* AdBlock
+* Disconnect
+* FlashBlock
+* Google Dictionary (by Google)
+* HTTPS Everywhere
+* JSON Formatter
+* Postman
+* Save to Pocket
+* Speed Dial 2
 
 ### Sublime Text
 
