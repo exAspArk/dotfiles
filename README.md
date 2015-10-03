@@ -6,6 +6,7 @@
 
 * Google Chrome
 * iTerm
+* Oh My Zsh
 * Skype
 * Dropbox
 * SourceTree
