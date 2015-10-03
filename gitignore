@@ -1,0 +1,16 @@
+*~
+.DS_Store
+
+*.diff
+.gitignore
+
+*.sublime-project
+*.sublime-workspace
+
+*.rdb
+
+.tags
+.tags_sorted_by_file
+
+log/
+db/*.sqlite3

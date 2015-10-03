@@ -1,0 +1,27 @@
+[user]
+  name = exAspArk
+  email = exaspark@gmail.com
+[color]
+  ui = true
+  diff = auto
+  status = auto
+  branch = auto
+[color "diff"]
+   meta = yellow
+[core]
+  excludesfile = ~/.gitignore
+  editor = vim --noplugin
+[merge]
+  ff = only
+  strategy = recursive
+  strategy-option = patience
+[help]
+  autocorrect = 1
+[push]
+  default = current
+[credential]
+  helper = osxkeychain
+[rerere]
+  enabled = 1
+[github]
+  user = exAspArk
