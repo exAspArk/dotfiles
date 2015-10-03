@@ -48,6 +48,9 @@ Plugin 'slim-template/vim-slim'
 " coffee
 Plugin 'kchmck/vim-coffee-script'
 
+" markdown
+Plugin 'suan/vim-instant-markdown'
+
 call vundle#end()
 
 syntax on
