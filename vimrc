@@ -188,3 +188,5 @@ let g:airline#extensions#tabline#enabled = 1
 
 let g:multi_cursor_start_key='<C-n>'
 let g:multi_cursor_start_word_key='g<C-n>'
+
+let g:instant_markdown_slow = 1
