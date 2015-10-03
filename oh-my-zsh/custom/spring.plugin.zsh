@@ -1,0 +1,6 @@
+alias rg='spring rails g'
+alias rs='spring rails s'
+alias rc='spring rails c'
+alias sr='spring rspec'
+alias rk='spring rake'
+alias ss='spring stop'
