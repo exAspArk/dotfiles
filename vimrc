@@ -86,7 +86,7 @@ set clipboard=unnamed
 set autowrite
 
 " remove trailing whitespaces
-autocmd BufWritePre *.rb :%s/\s\+$//e
+autocmd BufWritePre *.rb,*.coffee :%s/\s\+$//e
 
 " Make it obvious where 100 characters is
 set textwidth=100
