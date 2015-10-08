@@ -34,6 +34,7 @@
 * Pixlr
 * Xcode
 * Karabiner
+* Spectacle
 
 ### Widgets
 
