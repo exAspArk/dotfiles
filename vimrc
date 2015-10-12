@@ -107,7 +107,7 @@ set t_Co=256
 color hybrid
 
 " russian keyboard
-set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;!@#$%&*`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
+set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячсмитьбю.ЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;!@#$%&*`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,./~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 
 set list listchars=tab:»·,trail:·,nbsp:·
 
