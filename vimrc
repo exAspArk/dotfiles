@@ -15,10 +15,6 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Valloric/YouCompleteMe'       " autocomplete
 Plugin 'jiangmiao/auto-pairs'         " closing brackets
 
-" sessions
-Plugin 'xolox/vim-session'
-Plugin 'vim-misc'
-
 " navigation
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
