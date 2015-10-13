@@ -154,7 +154,7 @@ nnoremap cP :let @+ = expand("%:p")<CR>
 " navigating between buffers
 nnoremap ‘ :bn<CR>
 nnoremap “ :bp<CR>
-nnoremap ∑ :bd<CR>
+nnoremap ∑ :w<CR> :bd<CR>
 
 " search
 nnoremap <C-f> "_:Ack 
