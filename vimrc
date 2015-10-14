@@ -37,6 +37,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-endwise'
+Plugin 'thoughtbot/vim-rspec'
 
 " slim
 Plugin 'slim-template/vim-slim'
@@ -164,6 +165,12 @@ nnoremap fx :%!xmllint --format --encode UTF-8 -<CR>
 " format json
 nnoremap fj :%!python -m json.tool<CR>
 
+" vim-rspec
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
@@ -186,3 +193,5 @@ let g:multi_cursor_start_key='<C-n>'
 let g:multi_cursor_start_word_key='g<C-n>'
 
 let g:instant_markdown_slow = 1
+
+let g:rspec_command = "!sr {spec}"
