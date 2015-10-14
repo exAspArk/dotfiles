@@ -81,9 +81,6 @@ set clipboard=unnamed
 " save file before switching a buffer
 set autowrite
 
-" remove trailing whitespaces
-autocmd BufWritePre *.rb,*.coffee,*.yml :%s/\s\+$//e
-
 " Make it obvious where 100 characters is
 set textwidth=100
 set colorcolumn=+1
@@ -106,6 +103,9 @@ color hybrid
 set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;!@#$%&*`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 
 set list listchars=tab:»·,trail:·,nbsp:·
+
+" remove trailing whitespaces
+autocmd BufWritePre *.rb,*.coffee,*.yml :%s/\s\+$//e
 
 " create dir for new file
 function s:MKDir(...)

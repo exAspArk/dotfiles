@@ -58,6 +58,7 @@
 * redis
 * ruby-build
 * sphinx
+* the_silver_searcher
 * vim
 * wget 
 
