@@ -44,6 +44,7 @@
 
 * ack
 * ansible
+* ctags
 * elasticsearch
 * git
 * go
