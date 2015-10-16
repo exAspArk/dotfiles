@@ -67,6 +67,9 @@ set ignorecase        " ingore case
 set nopaste           " enable formatting while pasting
 set clipboard=unnamed " yank to and paste the selection without prepending "*
 set autowrite         " save file before switching a buffer
+set autoindent        " indent
+set showmatch         " show match
+set autoread          " when file was changed
 
 " line numbers
 set number            " show
@@ -86,7 +89,12 @@ set expandtab
 set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;!@#$%&*`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 
 " show whitespaces
-set list listchars=tab:»·,trail:·,nbsp:·
+set list listchars=tab:»·,trail:·
+
+" removes the delay when hitting esc in insert mode
+set noesckeys
+set ttimeout
+set ttimeoutlen=1
 
 autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 " autoindent with two spaces, always expand tabs
 autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?  " make ?s part of words
