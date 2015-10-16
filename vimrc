@@ -92,13 +92,28 @@ set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячс�
 set list listchars=tab:»·,trail:·
 
 " removes the delay when hitting esc in insert mode
-set noesckeys
 set ttimeout
 set ttimeoutlen=1
 
-autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 " autoindent with two spaces, always expand tabs
-autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?  " make ?s part of words
-autocmd BufWritePre *.rb,*.coffee,*.yml :%s/\s\+$//e    " remove trailing whitespaces
+augroup vimrcEx
+  autocmd!
+  
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it for commit messages, when the position is invalid, or when
+  " inside an event handler (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+  
+  autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 " autoindent with two spaces, always expand tabs
+  autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?  " make ?s part of words
+  autocmd FileType markdown setlocal textwidth=80         " automatically wrap at 80 characters for Markdown
+  autocmd FileType gitcommit setlocal textwidth=72        " automatically wrap at 72 characters
+  autocmd FileType markdown,gitcommit setlocal spell      " enable spellchecking for Markdown and git commit messages
+  autocmd FileType css,scss,sass setlocal iskeyword+=-    " allow stylesheets to autocomplete hyphenated words
+  autocmd BufWritePre *.rb,*.coffee,*.yml :%s/\s\+$//e    " remove trailing whitespaces
+augroup END
 
 let mapleader = " "
 
