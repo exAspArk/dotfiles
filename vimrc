@@ -1,128 +1,100 @@
-set nocompatible
-filetype off
+set nocompatible                  " required by Vundle
+filetype off                      " required by Vundle
+set rtp+=~/.vim/bundle/Vundle.vim " set the runtime path to include Vundle and initialize
 
-set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin() " required by Vundle
 
-call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'         " let Vundle manage Vundle, required
 
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/syntastic'
+" text editing
+Plugin 'tpope/vim-surround'           " better brackets
+Plugin 'scrooloose/syntastic'         " check syntax
 Plugin 'tpope/vim-commentary'         " comments
-Plugin 'tpope/vim-repeat'
-Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-repeat'             " repeat more commands with '.'
+Plugin 'terryma/vim-multiple-cursors' " multiple cursors like in ST
 Plugin 'Valloric/YouCompleteMe'       " autocomplete
 Plugin 'jiangmiao/auto-pairs'         " closing brackets
 
 " navigation
-Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
-
-" search
-Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/nerdtree'          " file tree
+Plugin 'ctrlpvim/ctrlp.vim'           " fuzzy search
+Plugin 'mileszs/ack.vim'              " faster text search
 
 " theme
-Plugin 'w0ng/vim-hybrid'
-Plugin 'bling/vim-airline'
+Plugin 'w0ng/vim-hybrid'              " theme
+Plugin 'bling/vim-airline'            " status line
 
 " files
-Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-eunuch'             " helpers for UNIX shell commands (mkdir, rename, etc.)
 
 " git
-Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'           " git commands
 
 " ruby / rails
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-endwise'
-Plugin 'thoughtbot/vim-rspec'
+Plugin 'vim-ruby/vim-ruby'            " ruby 
+Plugin 'tpope/vim-rails'              " helpers for Rails
+Plugin 'tpope/vim-bundler'            " bundle commands and tags
+Plugin 'tpope/vim-endwise'            " auto end keyword
+Plugin 'thoughtbot/vim-rspec'         " run rspec
 
-" slim
-Plugin 'slim-template/vim-slim'
+" syntaxes and languages
+Plugin 'slim-template/vim-slim'       " slim
+Plugin 'kchmck/vim-coffee-script'     " coffe script
+Plugin 'suan/vim-instant-markdown'    " real time markdown editing
 
-" coffee
-Plugin 'kchmck/vim-coffee-script'
+call vundle#end() " required by Vundle
 
-" markdown
-Plugin 'suan/vim-instant-markdown'
-
-call vundle#end()
-
-syntax on
-filetype on
-filetype plugin indent on
-filetype plugin on
-
-set backspace=2
-set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set ruler         " show the cursor position all the time
-set showcmd       " display incomplete commands
-set incsearch     " do incremental searching
-set laststatus=2  " Always display the status line
-set history=500   " Sets how many lines of history VIM has to remember
-
-" status line
-set statusline=%f\ %=col:%2c\ line:%2l
-
-" don't wrap long lines
-set nowrap
-
-" enhanced command completion
-set wildmenu
-
-set ignorecase
-set smartcase
-
-set nopaste
-
-set clipboard=unnamed
-
-" save file before switching a buffer
-set autowrite
-
-" Make it obvious where 100 characters is
-set textwidth=100
-set colorcolumn=+1
-
-" Numbers
-set number
-set numberwidth=5
-
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
+filetype plugin indent on " required to detect filetype
+syntax on                 " enable syntax highlighting
 
 " theme
 set t_Co=256
 color hybrid
 
-" russian keyboard
+" status line
+set statusline=%f\ %=col:%2c\ line:%2l
+
+set backspace=2       " make backspace work like most other apps
+set noswapfile        " don't swap buffer to file
+set ruler             " show the cursor position all the time
+set showcmd           " display incomplete commands
+set incsearch         " do incremental searching
+set laststatus=2      " always display the status line
+set history=500       " sets how many lines of history VIM has to remember
+set nowrap            " don't wrap long lines
+set wildmenu          " enhanced command completion
+set ignorecase        " ingore case
+set nopaste           " enable formatting while pasting
+set clipboard=unnamed " yank to and paste the selection without prepending "*
+set autowrite         " save file before switching a buffer
+
+" line numbers
+set number            " show
+set numberwidth=5     " line numbers width
+
+" make it obvious where 100 characters is
+set textwidth=100
+set colorcolumn=+1
+
+" softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+
+" map russian keyboard
 set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;!@#$%&*`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 
+" show whitespaces
 set list listchars=tab:»·,trail:·,nbsp:·
 
-" remove trailing whitespaces
-autocmd BufWritePre *.rb,*.coffee,*.yml :%s/\s\+$//e
-
-" create dir for new file
-function s:MKDir(...)
-    if         !a:0 
-           \|| isdirectory(a:1)
-           \|| filereadable(a:1)
-           \|| isdirectory(fnamemodify(a:1, ':p:h'))
-        return
-    endif
-    return mkdir(fnamemodify(a:1, ':p:h'), 'p')
-endfunction
-command -bang -bar -nargs=? -complete=file E :call s:MKDir(<f-args>) | e<bang> <args>
+autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 " autoindent with two spaces, always expand tabs
+autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?  " make ?s part of words
+autocmd BufWritePre *.rb,*.coffee,*.yml :%s/\s\+$//e    " remove trailing whitespaces
 
 let mapleader = " "
 
-" Get off my lawn
+" get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
@@ -171,27 +143,44 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+" create dir for new file
+function s:MKDir(...)
+  if         !a:0 
+        \|| isdirectory(a:1)
+        \|| filereadable(a:1)
+        \|| isdirectory(fnamemodify(a:1, ':p:h'))
+    return
+  endif
+  return mkdir(fnamemodify(a:1, ':p:h'), 'p')
+endfunction
+command -bang -bar -nargs=? -complete=file E :call s:MKDir(<f-args>) | e<bang> <args>
+
+" use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
-  " Use Ag over Grep
+  " use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  " use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
   " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+  let g:ctrlp_use_caching = 1
 
   let g:ackprg = 'ag --vimgrep'
 endif
 
+" autocomplete
 let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments = 1
 
+" status line
 let g:airline#extensions#tabline#enabled = 1
 
+" multiple cursors
 let g:multi_cursor_start_key='<C-n>'
 let g:multi_cursor_start_word_key='g<C-n>'
 
+" markdown preview
 let g:instant_markdown_slow = 1
 
+" rspec command
 let g:rspec_command = "!sr {spec}"
