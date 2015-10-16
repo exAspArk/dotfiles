@@ -24,6 +24,10 @@ chpwd() {
   ls -lrthG
 }
 
+# Disable flow control commands (keeps C-s from freezing everything)
+stty start undef
+stty stop undef
+
 source ~/.zsh-autosuggestions/autosuggestions.zsh
 zle-line-init() {
     zle autosuggest-start
