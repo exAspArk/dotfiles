@@ -17,7 +17,8 @@ alias git='nocorrect git'
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='vim'
+export VISUAL=vim
+export EDITOR=$VISUAL
 
 # Show contents of directory after cd-ing into it
 chpwd() {
@@ -51,7 +52,11 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-eval "$(rbenv init -)"
+# load rbenv if available
+if command -v rbenv &>/dev/null ; then
+  eval "$(rbenv init - --no-rehash)"
+fi
+
 export CC=/usr/bin/gcc
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:./bin:$GOPATH/bin
