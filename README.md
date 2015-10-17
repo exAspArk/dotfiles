@@ -35,6 +35,7 @@
 * Xcode
 * Karabiner
 * Spectacle
+* Paragon Driver for Mac OS (NTFS)
 
 ### Widgets
 
