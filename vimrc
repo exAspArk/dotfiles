@@ -95,6 +95,9 @@ set list listchars=tab:»·,trail:·
 set ttimeout
 set ttimeoutlen=1
 
+" ingore files
+set wildignore+=*/tmp/*,*/node_modules/*,*/public/assets*,*/vendor/*,*/coverage/*,*/.bundle/*,*/log/*,*/.git/*
+
 augroup vimrcEx
   autocmd!
   
@@ -116,6 +119,9 @@ augroup vimrcEx
 augroup END
 
 let mapleader = " "
+
+" faster command typing
+nnoremap ; :
 
 " get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
