@@ -6,7 +6,7 @@
 
 * Google Chrome
 * iTerm
-* Oh My Zsh
+* Oh My Zsh + zsh-autosuggestions
 * Skype
 * Dropbox
 * SourceTree
@@ -68,7 +68,7 @@
 
 * AdBlock
 * Disconnect
-* FlashBlock
+* Flashcontrol
 * Google Dictionary (by Google)
 * HTTPS Everywhere
 * JSON Formatter
