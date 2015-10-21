@@ -167,8 +167,8 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 " note that remapping C-s requires flow control to be disabled, e.g. in .bashrc or .zshrc
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
+map ß <esc>:w<CR>
+imap ß <esc>:w<CR>
 
 " create dir for new file
 function s:MKDir(...)
