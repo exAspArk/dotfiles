@@ -98,7 +98,8 @@ set ttimeout
 set ttimeoutlen=1
 
 augroup vimrcEx
-  autocmd! " clears all the autocmd's for the current group
+  " clears all the autocmd's for the current group
+  autocmd! 
   
   " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
@@ -130,14 +131,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
-
-" move to beginning/end of line
-nnoremap B ^
-nnoremap E $
-
-" $/^ doesn't do anything
-nnoremap $ <nop>
-nnoremap ^ <nop>
 
 " highlight last inserted text
 nnoremap gV `[v`]
