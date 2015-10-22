@@ -62,14 +62,16 @@ set incsearch         " do incremental searching
 set laststatus=2      " always display the status line
 set history=500       " sets how many lines of history VIM has to remember
 set nowrap            " don't wrap long lines
-set wildmenu          " enhanced command completion
+set wildmenu          " visual autocomplete for command menu
 set ignorecase        " ingore case
 set nopaste           " enable formatting while pasting
 set clipboard=unnamed " yank to and paste the selection without prepending "*
 set autowrite         " save file before switching a buffer
 set autoindent        " indent
-set showmatch         " show match
+set showmatch         " highlight matching [{()}]
 set autoread          " when file was changed
+set lazyredraw        " redraw only when we need to"
+
 
 " line numbers
 set number            " show
@@ -96,7 +98,7 @@ set ttimeout
 set ttimeoutlen=1
 
 augroup vimrcEx
-  autocmd!
+  autocmd! " clears all the autocmd's for the current group
   
   " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
@@ -128,6 +130,17 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" $/^ doesn't do anything
+nnoremap $ <nop>
+nnoremap ^ <nop>
+
+" highlight last inserted text
+nnoremap gV `[v`]
 
 " open nerdtree
 map <leader><leader> :NERDTreeToggle<CR>
@@ -188,7 +201,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
   " use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-  " ag is fast enough that CtrlP doesn't need to cache
+  " ag is fast enough that CtrlP doesn't need to cache or not :)
   let g:ctrlp_use_caching = 1
 
   let g:ackprg = 'ag --vimgrep'
@@ -198,6 +211,11 @@ endif
 let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments = 1
+
+" CtrlP settings
+let g:ctrlp_match_window = 'bottom,order:ttb' " order matching files top to bottom
+let g:ctrlp_switch_buffer = 0                 " always open files in new buffers
+let g:ctrlp_working_path_mode = 0             " lets us change the working directory during a Vim session and make CtrlP respect that change
 
 " status line
 let g:airline#extensions#tabline#enabled = 1
