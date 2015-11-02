@@ -36,10 +36,8 @@
 * Karabiner
 * Spectacle
 * Paragon Driver for Mac OS (NTFS)
-
-### Widgets
-
-* iStatNano
+* Homebrew
+* Vundle
 
 ### Homebrew
 
@@ -64,6 +62,7 @@
 * the_silver_searcher
 * vim
 * wget 
+* node
 
 ### Google Chrome extensions
 
@@ -96,3 +95,6 @@
 * All Autocomplete
 * lispindent
 * BracketHighlighter
+
+### Widgets
+* iStatNano
