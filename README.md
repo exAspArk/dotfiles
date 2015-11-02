@@ -38,6 +38,7 @@
 * Paragon Driver for Mac OS (NTFS)
 * Homebrew
 * Vundle
+* vim-instant-markdown
 
 ### Homebrew
 
