@@ -141,7 +141,8 @@ map <leader><leader> :NERDTreeToggle<CR>
 " open current file's path
 map <leader>c :NERDTreeFind<CR>
 
-map ∫ :ToggleBufExplorer<CR>
+" toggle buffer explorer with alt + R
+map ® :ToggleBufExplorer<CR>
 
 " move line up / down
 nnoremap ∆ :m .+1<CR>==
