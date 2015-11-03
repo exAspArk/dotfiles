@@ -19,6 +19,7 @@ Plugin 'jiangmiao/auto-pairs'         " closing brackets
 Plugin 'scrooloose/nerdtree'          " file tree
 Plugin 'ctrlpvim/ctrlp.vim'           " fuzzy search
 Plugin 'mileszs/ack.vim'              " faster text search
+Plugin 'jlanzarotta/bufexplorer'      " buffer explorer
 
 " theme
 Plugin 'w0ng/vim-hybrid'              " theme
@@ -139,6 +140,8 @@ nnoremap gV `[v`]
 map <leader><leader> :NERDTreeToggle<CR>
 " open current file's path
 map <leader>c :NERDTreeFind<CR>
+
+map ∫ :ToggleBufExplorer<CR>
 
 " move line up / down
 nnoremap ∆ :m .+1<CR>==
