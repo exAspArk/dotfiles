@@ -22,7 +22,7 @@ export EDITOR=$VISUAL
 
 # Show contents of directory after cd-ing into it
 chpwd() {
-  ls -lrthG
+  ll  
 }
 
 # Load zsh-autosuggestions.
