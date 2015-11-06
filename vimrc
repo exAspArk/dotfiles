@@ -116,7 +116,7 @@ augroup vimrcEx
   autocmd FileType gitcommit setlocal textwidth=72        " automatically wrap at 72 characters
   autocmd FileType markdown,gitcommit setlocal spell      " enable spellchecking for Markdown and git commit messages
   autocmd FileType css,scss,sass setlocal iskeyword+=-    " allow stylesheets to autocomplete hyphenated words
-  autocmd BufWritePre *.rb,*.coffee,*.yml :%s/\s\+$//e    " remove trailing whitespaces
+  autocmd BufWritePre *.rb,*.coffee,*.yml,*.md :%s/\s\+$//e    " remove trailing whitespaces
 augroup END
 
 let mapleader = " "
