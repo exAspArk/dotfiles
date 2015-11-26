@@ -79,7 +79,7 @@ set number            " show
 set numberwidth=5     " line numbers width
 
 " make it obvious where 100 characters is
-set textwidth=100
+set textwidth=120
 set colorcolumn=+1
 
 " softtabs, 2 spaces
@@ -110,13 +110,14 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
   
-  autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?  " make ?s part of words
-  autocmd FileType markdown setlocal textwidth=80         " automatically wrap at 80 characters for Markdown
-  autocmd FileType gitcommit setlocal textwidth=72        " automatically wrap at 72 characters
-  autocmd FileType markdown,gitcommit setlocal spell      " enable spellchecking for Markdown and git commit messages
-  autocmd FileType css,scss,sass setlocal iskeyword+=-    " allow stylesheets to autocomplete hyphenated words
-  autocmd BufWritePre *.rb,*.coffee,*.yml,*.md :%s/\s\+$//e    " remove trailing whitespaces
+  autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2          " autoindent with two spaces, always expand tabs
+  autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?           " make ?s part of words
+  autocmd FileType markdown setlocal wrap                          " automatically wrap for Markdown
+  autocmd FileType gitcommit setlocal textwidth=72                 " automatically wrap at 72 characters
+  autocmd FileType markdown setlocal spell spelllang=ru_ru,en_us   " enable spellchecking for Markdown messages
+  autocmd FileType gitcommit setlocal spell                        " enable spellchecking for git commit messages
+  autocmd FileType css,scss,sass setlocal iskeyword+=-             " allow stylesheets to autocomplete hyphenated words
+  autocmd BufWritePre *.rb,*.coffee,*.yml,*.md,*.rake :%s/\s\+$//e " remove trailing whitespaces
 augroup END
 
 let mapleader = " "
@@ -225,4 +226,4 @@ let g:multi_cursor_start_word_key='g<C-n>'
 let g:instant_markdown_slow = 1
 
 " rspec command
-let g:rspec_command = "!sr {spec}"
+let g:rspec_command = "!bundle exec rspec {spec}"
