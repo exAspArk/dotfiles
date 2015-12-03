@@ -32,7 +32,7 @@ zle-line-init() {
 }
 zle -N zle-line-init
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/go/bin:/usr/texbin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/go/bin:/usr/texbin:/opt/local/bin"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
