@@ -73,7 +73,6 @@ set showmatch         " highlight matching [{()}]
 set autoread          " when file was changed
 set lazyredraw        " redraw only when we need to"
 
-
 " line numbers
 set number            " show
 set numberwidth=5     " line numbers width
@@ -89,7 +88,9 @@ set shiftround
 set expandtab
 
 " map russian keyboard
-set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;!@#$%&*`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
 
 " show whitespaces
 set list listchars=tab:»·,trail:·
@@ -121,6 +122,9 @@ augroup vimrcEx
 augroup END
 
 let mapleader = " "
+
+" switch to Russian keyboard
+inoremap <C-c> <C-^>
 
 " get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
