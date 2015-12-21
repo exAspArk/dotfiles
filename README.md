@@ -34,7 +34,6 @@
 * Pixlr
 * Xcode
 * Karabiner
-* Spectacle
 * Paragon Driver for Mac OS (NTFS)
 * Homebrew
 * Vundle
@@ -62,7 +61,7 @@
 * sphinx
 * the_silver_searcher
 * vim
-* wget 
+* wget
 * node
 
 ### Google Chrome extensions
