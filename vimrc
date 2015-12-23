@@ -124,6 +124,9 @@ augroup END
 
 let mapleader = " "
 
+" Clear current search highlight by double tapping //
+nnoremap // :noh<CR>
+
 " switch to Russian keyboard
 inoremap <C-c> <C-^>
 
