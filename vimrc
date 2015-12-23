@@ -72,6 +72,7 @@ set autoindent        " indent
 set showmatch         " highlight matching [{()}]
 set autoread          " when file was changed
 set lazyredraw        " redraw only when we need to"
+set hlsearch          " highlight same words while searching with Shift + *
 
 " line numbers
 set number            " show
