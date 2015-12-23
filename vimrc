@@ -228,6 +228,7 @@ let g:ctrlp_working_path_mode = 0             " lets us change the working direc
 
 " status line
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_section_b = '%{getcwd()}'
 
 " multiple cursors
 let g:multi_cursor_start_key='<C-n>'
