@@ -12,4 +12,3 @@
     - command: vim +PluginInstall +qall
 
     - command: ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
-      tags: ycm

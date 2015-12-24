@@ -10,7 +10,9 @@
 ```
 git clone git@github.com:exAspArk/dotfiles.git
 
-make install_ansible // if you don't have ansible yet
+make install_homebrew
+
+make install_homebrew_apps
 
 make configure_vim
 
@@ -55,31 +57,6 @@ make install_dotfiles
 * Homebrew
 * Vundle
 * vim-instant-markdown
-
-### Homebrew
-
-* ack
-* ansible
-* cmake
-* ctags
-* elasticsearch
-* git
-* go
-* imagemagick
-* leiningen
-* mongodb
-* mysql
-* phantomjs
-* postgresql
-* rabbitmq
-* rbenv
-* redis
-* ruby-build
-* sphinx
-* the_silver_searcher
-* vim
-* wget
-* node
 
 ### Google Chrome extensions
 

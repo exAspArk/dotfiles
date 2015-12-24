@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+    - command: curl -o homebrew_install.rb -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install
+    - command: ruby homebrew_install.rb
+      ignore_errors: yes
+    - command: rm homebrew_install.rb

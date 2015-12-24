@@ -1,0 +1,25 @@
+---
+- hosts: all
+  tasks:
+    - command: brew install ack
+    - command: brew install ansible
+    - command: brew install cmake
+    - command: brew install ctags
+    - command: brew install elasticsearch
+    - command: brew install git
+    - command: brew install go
+    - command: brew install imagemagick
+    - command: brew install leiningen
+    - command: brew install mongodb
+    - command: brew install mysql
+    - command: brew install phantomjs
+    - command: brew install postgresql
+    - command: brew install rabbitmq
+    - command: brew install rbenv
+    - command: brew install redis
+    - command: brew install ruby-build
+    - command: brew install sphinx
+    - command: brew install the_silver_searcher
+    - command: brew install vim
+    - command: brew install wget
+    - command: brew install node
