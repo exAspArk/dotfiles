@@ -1,0 +1,15 @@
+---
+- hosts: all
+  tasks:
+    - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link
+      with_items:
+        - vimrc
+
+    - git:
+        repo: 'https://github.com/VundleVim/Vundle.vim.git'
+        dest: ~/.vim/bundle/Vundle.vim
+
+    - command: vim +PluginInstall +qall
+
+    - command: ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
+      tags: ycm

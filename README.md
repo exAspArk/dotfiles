@@ -1,5 +1,22 @@
 # dotfiles
 
+## Requrements
+
+* Git
+* Vim
+
+## Install
+
+```
+git clone git@github.com:exAspArk/dotfiles.git
+
+make install_ansible // if you don't have ansible yet
+
+make configure_vim
+
+make install_dotfiles
+```
+
 ## Other tools:
 
 ### Apps

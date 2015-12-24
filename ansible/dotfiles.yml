@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+    - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link
+      with_items:
+        - ackrc
+        - gemrc
+        - gitconfig
+        - gitignore
+        - pryrc
+        - spring.rb
+        - zshrc
