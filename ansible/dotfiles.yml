@@ -10,3 +10,8 @@
         - pryrc
         - spring.rb
         - zshrc
+        - oh-my-zsh/custom/bundler.plugin.zsh
+        - oh-my-zsh/custom/git.plugin.zsh
+        - oh-my-zsh/custom/spring.plugin.zsh
+        - oh-my-zsh/custom/unix.plugin.zsh
+        - oh-my-zsh/custom/vim.plugin.zsh
