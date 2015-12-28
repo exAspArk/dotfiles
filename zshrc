@@ -20,10 +20,20 @@ source $ZSH/oh-my-zsh.sh
 export VISUAL=vim
 export EDITOR=$VISUAL
 
-# Show contents of directory after cd-ing into it
-chpwd() {
-  l
+# Custom title for iTerm 2 tab
+export DISABLE_AUTO_TITLE="true"
+function title {
+  echo -ne "\033]0;${PWD##*/}\007"
 }
+
+chpwd() {
+  # Show contents of directory after cd-ing into it
+  l
+  # Show current directory for iTerm tab title
+  title
+}
+
+chpwd
 
 # Load zsh-autosuggestions.
 source ~/.zsh/zsh-autosuggestions/autosuggestions.zsh
