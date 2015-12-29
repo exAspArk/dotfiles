@@ -17,7 +17,6 @@ alias gcd='git checkout develop'
 alias gcp='git cherry-pick'
 
 alias gd='git diff'
-gdv() { git diff -w "$@" | view - }
 
 alias gf='git fetch'
 
