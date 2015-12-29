@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+    - get_url: url=https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh dest=/tmp/oh_my_zsh_install.sh mode=0744
+    - command: sh -c /tmp/oh_my_zsh_install.sh
+      ignore_errors: yes
+    - command: rm /tmp/oh_my_zsh_install.sh

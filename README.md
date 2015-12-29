@@ -11,12 +11,13 @@
 git clone git@github.com:exAspArk/dotfiles.git
 
 make install_homebrew
+make install_oh_my_zsh
 
 make install_homebrew_apps
 
 make configure_vim
 
-make install_dotfiles
+make configure_dotfiles
 ```
 
 ## Other tools:

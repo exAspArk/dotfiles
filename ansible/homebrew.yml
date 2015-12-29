@@ -1,7 +1,7 @@
 ---
 - hosts: all
   tasks:
-    - command: curl -o homebrew_install.rb -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install
-    - command: ruby homebrew_install.rb
+    - get_url: url=https://raw.githubusercontent.com/Homebrew/install/master/install dest=/tmp/homebrew_install.rb
+    - command: ruby /tmp/homebrew_install.rb
       ignore_errors: yes
-    - command: rm homebrew_install.rb
+    - command: rm /tmp/homebrew_install.rb
