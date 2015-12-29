@@ -1,0 +1,17 @@
+if [[ -f /etc/profile    ]]; then source /etc/profile ; fi
+if [[ -f ~/.bashrc       ]]; then source ~/.bashrc ; fi
+if [[ -f ~/.bash_profile ]]; then source ~/.bash_profile ; fi
+if [[ -f ~/.bash_login   ]]; then source ~/.bash_login ; fi
+if [[ -f ~/.profile      ]]; then source ~/.profile ; fi
+if [[ -f ~/.bash_logout  ]]; then source ~/.bash_logout ; fi
+
+source ${SSHHOME}/.sshrc.d/bundler.plugin.zsh
+source ${SSHHOME}/.sshrc.d/git.plugin.zsh
+source ${SSHHOME}/.sshrc.d/spring.plugin.zsh
+source ${SSHHOME}/.sshrc.d/unix.plugin.zsh
+source ${SSHHOME}/.sshrc.d/vim.plugin.zsh
+
+export VIMINIT="let \$MYVIMRC='$SSHHOME/.sshrc.d/vimrc' | source \$MYVIMRC"
+
+export VISUAL=vim
+export EDITOR=$VISUAL

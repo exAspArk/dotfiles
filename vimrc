@@ -1,56 +1,12 @@
-set nocompatible                  " required by Vundle
-filetype off                      " required by Vundle
-set rtp+=~/.vim/bundle/Vundle.vim " set the runtime path to include Vundle and initialize
-
-call vundle#begin() " required by Vundle
-
-Plugin 'VundleVim/Vundle.vim'         " let Vundle manage Vundle, required
-
-" text editing
-Plugin 'tpope/vim-surround'           " better brackets
-Plugin 'scrooloose/syntastic'         " check syntax
-Plugin 'tpope/vim-commentary'         " comments
-Plugin 'tpope/vim-repeat'             " repeat more commands with '.'
-Plugin 'terryma/vim-multiple-cursors' " multiple cursors like in ST
-Plugin 'Valloric/YouCompleteMe'       " autocomplete
-Plugin 'jiangmiao/auto-pairs'         " closing brackets
-
-" navigation
-Plugin 'scrooloose/nerdtree'          " file tree
-Plugin 'ctrlpvim/ctrlp.vim'           " fuzzy search
-Plugin 'mileszs/ack.vim'              " faster text search
-Plugin 'jlanzarotta/bufexplorer'      " buffer explorer
-
-" theme
-Plugin 'w0ng/vim-hybrid'              " theme
-Plugin 'bling/vim-airline'            " status line
-
-" files
-Plugin 'tpope/vim-eunuch'             " helpers for UNIX shell commands (mkdir, rename, etc.)
-
-" git
-Plugin 'tpope/vim-fugitive'           " git commands
-
-" ruby / rails
-Plugin 'vim-ruby/vim-ruby'            " ruby 
-Plugin 'tpope/vim-rails'              " helpers for Rails
-Plugin 'tpope/vim-bundler'            " bundle commands and tags
-Plugin 'tpope/vim-endwise'            " auto end keyword
-Plugin 'thoughtbot/vim-rspec'         " run rspec
-
-" syntaxes and languages
-Plugin 'slim-template/vim-slim'       " slim
-Plugin 'kchmck/vim-coffee-script'     " coffe script
-Plugin 'suan/vim-instant-markdown'    " real time markdown editing
-
-call vundle#end() " required by Vundle
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
 
 filetype plugin indent on " required to detect filetype
 syntax on                 " enable syntax highlighting
 
 " theme
 set t_Co=256
-color hybrid
 
 " status line
 set statusline=%f\ %=col:%2c\ line:%2l
@@ -69,7 +25,7 @@ set nopaste           " enable formatting while pasting
 set clipboard=unnamed " yank to and paste the selection without prepending "*
 set autowrite         " save file before switching a buffer
 set autoindent        " indent
-set showmatch         " highlight matching [{()}]
+set showmatch         " highlight matching brackets
 set autoread          " when file was changed
 set lazyredraw        " redraw only when we need to"
 set hlsearch          " highlight same words while searching with Shift + *
@@ -208,34 +164,4 @@ command -bang -bar -nargs=? -complete=file E :call s:MKDir(<f-args>) | e<bang> <
 if executable('ag')
   " use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-  " use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-  " ag is fast enough that CtrlP doesn't need to cache or not :)
-  let g:ctrlp_use_caching = 1
-
-  let g:ackprg = 'ag --vimgrep'
 endif
-
-" autocomplete
-let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_complete_in_comments = 1
-
-" CtrlP settings
-let g:ctrlp_match_window = 'bottom,order:ttb' " order matching files top to bottom
-let g:ctrlp_switch_buffer = 0                 " always open files in new buffers
-let g:ctrlp_working_path_mode = 0             " lets us change the working directory during a Vim session and make CtrlP respect that change
-
-" status line
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_section_b = '%{getcwd()}'
-
-" multiple cursors
-let g:multi_cursor_start_key='<C-n>'
-let g:multi_cursor_start_word_key='g<C-n>'
-
-" markdown preview
-let g:instant_markdown_slow = 1
-
-" rspec command
-let g:rspec_command = "!bundle exec rspec {spec}"

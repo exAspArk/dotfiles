@@ -15,3 +15,17 @@
         - oh-my-zsh/custom/spring.plugin.zsh
         - oh-my-zsh/custom/unix.plugin.zsh
         - oh-my-zsh/custom/vim.plugin.zsh
+        - oh-my-zsh/custom/sshrc.plugin.zsh
+        - sshrc
+
+    - file: path=~/.sshrc.d state=directory
+    - file: src={{ curdir }}/oh-my-zsh/custom/{{ item }} dest=~/.sshrc.d/{{ item }} state=link
+      with_items:
+        - bundler.plugin.zsh
+        - git.plugin.zsh
+        - spring.plugin.zsh
+        - unix.plugin.zsh
+        - vim.plugin.zsh
+    - file: src={{ curdir }}/{{ item }} dest=~/.sshrc.d/{{ item }} state=link
+      with_items:
+        - vimrc

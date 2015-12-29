@@ -13,8 +13,6 @@ ZSH_THEME="arrow"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(cap brew bundle gem git lein osx rails rbenv redis-cli ruby)
 
-alias git='nocorrect git'
-
 source $ZSH/oh-my-zsh.sh
 
 export VISUAL=vim
