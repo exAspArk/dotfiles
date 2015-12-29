@@ -11,7 +11,7 @@ ZSH_THEME="arrow"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(cap brew bundle gem git lein osx rails rbenv redis-cli ruby)
+plugins=(cap brew bundle gem lein osx rails rbenv redis-cli ruby)
 
 source $ZSH/oh-my-zsh.sh
 
