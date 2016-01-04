@@ -80,4 +80,4 @@ let g:multi_cursor_start_word_key='g<C-n>'
 let g:instant_markdown_slow = 1
 
 " rspec command
-let g:rspec_command = "!bundle exec rspec {spec}"
+let g:rspec_command = "!bundle exec rspec_runner {spec}"
