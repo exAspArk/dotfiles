@@ -20,6 +20,7 @@ Plugin 'scrooloose/nerdtree'          " file tree
 Plugin 'ctrlpvim/ctrlp.vim'           " fuzzy search
 Plugin 'mileszs/ack.vim'              " faster text search
 Plugin 'jlanzarotta/bufexplorer'      " buffer explorer
+Plugin 'bogado/file-line'             " open file with line number
 
 " theme
 Plugin 'w0ng/vim-hybrid'              " theme
