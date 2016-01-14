@@ -2,9 +2,9 @@
 - hosts: all
   tasks:
     - command: brew install ack
-    - command: brew install ansible
     - command: brew install cmake
     - command: brew install ctags
+    - command: brew install Caskroom/cask/java # For Elasticsearch
     - command: brew install elasticsearch
     - command: brew install git
     - command: brew install go
@@ -12,7 +12,7 @@
     - command: brew install leiningen
     - command: brew install mongodb
     - command: brew install mysql
-    - command: brew install phantomjs
+    # - command: brew install phantomjs # Currently does not work with OS X El Capitan
     - command: brew install postgresql
     - command: brew install rabbitmq
     - command: brew install rbenv

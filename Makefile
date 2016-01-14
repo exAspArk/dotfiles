@@ -11,6 +11,9 @@ install_homebrew_apps:
 install_oh_my_zsh:
 	ansible-playbook ansible/install_oh_my_zsh.yml -i ansible/local -vv -e curdir=$(CURDIR)
 
+install_homebrew_cask_apps:
+	ansible-playbook ansible/install_homebrew_cask_apps.yml -i ansible/local -vv -e curdir=$(CURDIR)
+
 configure_vim:
 	ansible-playbook ansible/configure_vim.yml -i ansible/local -vv -e curdir=$(CURDIR)
 

@@ -14,6 +14,8 @@ make install_homebrew
 make install_homebrew_apps
 make install_oh_my_zsh
 
+make install_homebrew_cask_apps
+
 make configure_vim
 make configure_dotfiles
 ```
@@ -22,40 +24,15 @@ make configure_dotfiles
 
 ### Apps
 
-* Google Chrome
-* iTerm
-* Oh My Zsh + zsh-autosuggestions
-* Skype
-* Dropbox
-* SourceTree
-* Sublime Text
-* Evernote
-* Tunnelblick
-* Sequel Pro
-* MongoHub
-* PSequel
+* zsh-autosuggestions
 * Twitter
-* Jumpcut
-* Flux
-* The Unarchiver
-* MPlayerX
-* uTorrent
 * Pocket
 * Degrees
-* LibreOffice
-* CyberDuck
-* Slack
 * CCMenu
-* Airmail
-* Android File Transfer
-* RescueTime
-* Pixlr
 * Xcode
-* Karabiner
-* Paragon Driver for Mac OS (NTFS)
-* Homebrew
-* Vundle
 * vim-instant-markdown
+* Airmail (deprecated)
+* Sublime Text (deprecated)
 
 ### Google Chrome extensions
 
@@ -91,3 +68,6 @@ make configure_dotfiles
 
 ### Widgets
 * iStatNano
+
+### Android applications
+* TODO

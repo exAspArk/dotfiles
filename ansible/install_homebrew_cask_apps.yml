@@ -1,0 +1,26 @@
+---
+- hosts: all
+  tasks:
+    - command: brew cask install google-chrome
+    - command: brew cask install iterm2
+    - command: brew cask install skype
+    - command: brew cask install dropbox
+    - command: brew cask install sourcetree
+    - command: brew cask install evernote
+    - command: brew cask install tunnelblick
+    - command: brew cask install sequel-pro
+    - command: brew cask install mongohub
+    - command: brew cask install psequel
+    - command: brew cask install jumpcut
+    - command: brew cask install flux
+    - command: brew cask install the-unarchiver
+    - command: brew cask install mplayerx
+    - command: brew cask install utorrent
+    - command: brew cask install libreoffice
+    - command: brew cask install cyberduck
+    - command: brew cask install slack
+    - command: brew cask install android-file-transfer
+    - command: brew cask install rescuetime
+    - command: brew cask install pixlr
+    - command: brew cask install karabiner
+    - command: brew cask install paragon-ntfs
