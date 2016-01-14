@@ -10,9 +10,10 @@
 ```
 git clone git@github.com:exAspArk/dotfiles.git
 
-make install_oh_my_zsh
+make install_ansible
 make install_homebrew
 make install_homebrew_apps
+make install_oh_my_zsh
 
 make configure_vim
 make configure_dotfiles
