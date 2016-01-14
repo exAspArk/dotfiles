@@ -3,16 +3,16 @@ install_ansible:
 	sudo pip install ansible
 
 install_homebrew:
-	ansible-playbook ansible/homebrew.yml -i ansible/local -vv -e curdir=$(CURDIR)
+	ansible-playbook ansible/install_homebrew.yml -i ansible/local -vv -e curdir=$(CURDIR)
 
 install_homebrew_apps:
-	ansible-playbook ansible/homebrew_apps.yml -i ansible/local -vv -e curdir=$(CURDIR)
+	ansible-playbook ansible/install_homebrew_apps.yml -i ansible/local -vv -e curdir=$(CURDIR)
 
 install_oh_my_zsh:
-	ansible-playbook ansible/oh_my_zsh.yml -i ansible/local -vv -e curdir=$(CURDIR)
+	ansible-playbook ansible/install_oh_my_zsh.yml -i ansible/local -vv -e curdir=$(CURDIR)
 
 configure_vim:
-	ansible-playbook ansible/vim.yml -i ansible/local -vv -e curdir=$(CURDIR)
+	ansible-playbook ansible/configure_vim.yml -i ansible/local -vv -e curdir=$(CURDIR)
 
 configure_dotfiles:
-	ansible-playbook ansible/dotfiles.yml -i ansible/local -vv -e curdir=$(CURDIR)
+	ansible-playbook ansible/configure_dotfiles.yml -i ansible/local -vv -e curdir=$(CURDIR)
