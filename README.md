@@ -3,7 +3,6 @@
 ## Requrements
 
 * Git
-* Vim
 
 ## Install
 
