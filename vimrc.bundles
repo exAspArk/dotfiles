@@ -21,6 +21,7 @@ Plugin 'ctrlpvim/ctrlp.vim'           " fuzzy search
 Plugin 'mileszs/ack.vim'              " faster text search
 Plugin 'jlanzarotta/bufexplorer'      " buffer explorer
 Plugin 'bogado/file-line'             " open file with line number
+Plugin 'yegappan/mru'                 " most recently used files
 
 " theme
 Plugin 'w0ng/vim-hybrid'              " theme
@@ -48,6 +49,26 @@ call vundle#end() " required by Vundle
 
 " theme
 color hybrid
+
+" call MRU plugin with Alt + t
+nnoremap † :MRU<CR>
+
+" open nerdtree
+map <leader><leader> :NERDTreeToggle<CR>
+" open current file's path
+map <leader>c :NERDTreeFind<CR>
+
+" toggle buffer explorer with Alt + R
+map ® :ToggleBufExplorer<CR>
+
+" search
+nnoremap <C-f> "_:Ack 
+
+" vim-rspec
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 " use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')

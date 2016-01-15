@@ -1,3 +1,5 @@
+let mapleader = " "
+
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
@@ -78,8 +80,6 @@ augroup vimrcEx
   autocmd BufWritePre *.rb,*.coffee,*.yml,*.md,*.rake :%s/\s\+$//e " remove trailing whitespaces
 augroup END
 
-let mapleader = " "
-
 " Build ctags by using 'ripper-tags' gem
 nnoremap tt :!ripper-tags -R<CR>
 
@@ -104,15 +104,7 @@ nnoremap <C-l> <C-w>l
 " highlight last inserted text
 nnoremap gV `[v`]
 
-" open nerdtree
-map <leader><leader> :NERDTreeToggle<CR>
-" open current file's path
-map <leader>c :NERDTreeFind<CR>
-
-" toggle buffer explorer with alt + R
-map ® :ToggleBufExplorer<CR>
-
-" move line up / down
+" move line up / down with Alt + j / k
 nnoremap ∆ :m .+1<CR>==
 nnoremap ˚ :m .-2<CR>==
 inoremap ∆ <Esc>:m .+1<CR>==gi
@@ -125,25 +117,17 @@ nnoremap cp :let @+ = expand("%")<CR>
 " copy full filepath
 nnoremap cP :let @+ = expand("%:p")<CR>
 
-" navigating between buffers
+" navigating between buffers with Alt + ] / [ / w
 nnoremap ‘ :bn<CR>
 nnoremap “ :bp<CR>
 nnoremap ∑ :bd<CR>
-
-" search
-nnoremap <C-f> "_:Ack 
 
 " format xml
 nnoremap fx :%!xmllint --format --encode UTF-8 -<CR>
 " format json
 nnoremap fj :%!python -m json.tool<CR>
 
-" vim-rspec
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-
+" save file with Alt + s
 " note that remapping C-s requires flow control to be disabled, e.g. in .bashrc or .zshrc
 map ß <esc>:w<CR>
 imap ß <esc>:w<CR>
