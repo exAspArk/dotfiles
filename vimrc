@@ -83,6 +83,9 @@ augroup END
 " Build ctags by using 'ripper-tags' gem
 nnoremap tt :!ripper-tags -R<CR>
 
+" redraw vim
+nnoremap rr :redraw!<CR>
+
 " Clear current search highlight by double tapping //
 nnoremap // :noh<CR>
 
