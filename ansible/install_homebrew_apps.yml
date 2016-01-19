@@ -12,7 +12,11 @@
     - command: brew install leiningen
     - command: brew install mongodb
     - command: brew install mysql
-    # - command: brew install phantomjs # Currently does not work with OS X El Capitan
+
+    # - command: brew install phantomjs # v2 currently does not work with OS X El Capitan, use lines below:
+    - command: brew install npm
+    - command: npm install phantom phantomjs -g
+
     - command: brew install postgresql
     - command: brew install rabbitmq
     - command: brew install rbenv
