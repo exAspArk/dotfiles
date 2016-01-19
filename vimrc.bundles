@@ -61,8 +61,8 @@ map <leader>c :NERDTreeFind<CR>
 " toggle buffer explorer with Alt + R
 map ® :ToggleBufExplorer<CR>
 
-" search
-nnoremap <C-f> "_:Ack 
+" search with Alt + f
+nnoremap ƒ "_:Ack 
 
 " vim-rspec
 map <Leader>t :call RunCurrentSpecFile()<CR>
