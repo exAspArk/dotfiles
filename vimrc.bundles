@@ -61,8 +61,8 @@ map <leader>c :NERDTreeFind<CR>
 " toggle buffer explorer with Alt + R
 map ® :ToggleBufExplorer<CR>
 
-" search with Alt + f
-nnoremap ƒ "_:Ack 
+" search
+nnoremap <C-f> "_:Ack 
 
 " vim-rspec
 map <Leader>t :call RunCurrentSpecFile()<CR>
@@ -89,6 +89,7 @@ let g:ycm_complete_in_comments = 1
 let g:ctrlp_match_window = 'bottom,order:ttb' " order matching files top to bottom
 let g:ctrlp_switch_buffer = 0                 " always open files in new buffers
 let g:ctrlp_working_path_mode = 0             " lets us change the working directory during a Vim session and make CtrlP respect that change
+let g:ctrlp_map = 'π'                         " Alt + p
 
 " status line
 let g:airline#extensions#tabline#enabled = 1
