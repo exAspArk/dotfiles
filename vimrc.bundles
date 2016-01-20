@@ -62,7 +62,7 @@ map <leader>c :NERDTreeFind<CR>
 map ® :ToggleBufExplorer<CR>
 
 " search
-nnoremap <C-f> "_:Ack 
+nnoremap <C-f> "_:Ack -Q 
 
 " vim-rspec
 map <Leader>t :call RunCurrentSpecFile()<CR>
