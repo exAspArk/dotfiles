@@ -3,6 +3,7 @@
   tasks:
     - command: brew cask install google-chrome
     - command: brew cask install iterm2
+    - command: "{{ curdir }}/iterm2/install-settings.sh" # run in Terminal
     - command: brew cask install skype
     - command: brew cask install dropbox
     - command: brew cask install sourcetree
