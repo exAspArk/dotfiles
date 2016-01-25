@@ -30,7 +30,6 @@ make configure_dotfiles
 * Degrees
 * CCMenu
 * Xcode
-* vim-instant-markdown
 * Airmail (deprecated)
 * Sublime Text (deprecated)
 

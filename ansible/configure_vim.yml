@@ -10,3 +10,4 @@
         dest: ~/.vim/bundle/Vundle.vim
     - command: vim +PluginInstall +qall
     - command: ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
+    - command: npm -g install instant-markdown-d
