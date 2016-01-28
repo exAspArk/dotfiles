@@ -4,46 +4,47 @@ set rtp+=~/.vim/bundle/Vundle.vim " set the runtime path to include Vundle and i
 
 call vundle#begin() " required by Vundle
 
-Plugin 'VundleVim/Vundle.vim'         " let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'            " let Vundle manage Vundle, required
 
 " text editing
-Plugin 'tpope/vim-surround'           " better brackets
-Plugin 'scrooloose/syntastic'         " check syntax
-Plugin 'tpope/vim-commentary'         " comments
-Plugin 'tpope/vim-repeat'             " repeat more commands with '.'
-Plugin 'terryma/vim-multiple-cursors' " multiple cursors like in ST
-Plugin 'Valloric/YouCompleteMe'       " autocomplete
-Plugin 'jiangmiao/auto-pairs'         " closing brackets
+Plugin 'tpope/vim-surround'              " better brackets
+Plugin 'scrooloose/syntastic'            " check syntax
+Plugin 'tpope/vim-commentary'            " comments
+Plugin 'tpope/vim-repeat'                " repeat more commands with '.'
+Plugin 'terryma/vim-multiple-cursors'    " multiple cursors like in ST
+Plugin 'Valloric/YouCompleteMe'          " autocomplete
+Plugin 'jiangmiao/auto-pairs'            " closing brackets
 
 " navigation
-Plugin 'scrooloose/nerdtree'          " file tree
-Plugin 'ctrlpvim/ctrlp.vim'           " fuzzy search
-Plugin 'mileszs/ack.vim'              " faster text search
-Plugin 'jlanzarotta/bufexplorer'      " buffer explorer
-Plugin 'bogado/file-line'             " open file with line number
-Plugin 'yegappan/mru'                 " most recently used files
+Plugin 'scrooloose/nerdtree'             " file tree
+Plugin 'ctrlpvim/ctrlp.vim'              " fuzzy search
+Plugin 'mileszs/ack.vim'                 " faster text search
+Plugin 'jlanzarotta/bufexplorer'         " buffer explorer
+Plugin 'bogado/file-line'                " open file with line number
+Plugin 'yegappan/mru'                    " most recently used files
 
 " theme
-Plugin 'w0ng/vim-hybrid'              " theme
-Plugin 'bling/vim-airline'            " status line
+Plugin 'w0ng/vim-hybrid'                 " theme
+Plugin 'bling/vim-airline'               " status line
+Plugin 'nathanaelkane/vim-indent-guides' " show indent level
 
 " files
-Plugin 'tpope/vim-eunuch'             " helpers for UNIX shell commands (mkdir, rename, etc.)
+Plugin 'tpope/vim-eunuch'                " helpers for UNIX shell commands (mkdir, rename, etc.)
 
 " git
-Plugin 'tpope/vim-fugitive'           " git commands
+Plugin 'tpope/vim-fugitive'              " git commands
 
 " ruby / rails
-Plugin 'vim-ruby/vim-ruby'            " ruby 
-Plugin 'tpope/vim-rails'              " helpers for Rails
-Plugin 'tpope/vim-bundler'            " bundle commands and tags
-Plugin 'tpope/vim-endwise'            " auto end keyword
-Plugin 'thoughtbot/vim-rspec'         " run rspec
+Plugin 'vim-ruby/vim-ruby'               " ruby 
+Plugin 'tpope/vim-rails'                 " helpers for Rails
+Plugin 'tpope/vim-bundler'               " bundle commands and tags
+Plugin 'tpope/vim-endwise'               " auto end keyword
+Plugin 'thoughtbot/vim-rspec'            " run rspec
 
 " syntaxes and languages
-Plugin 'slim-template/vim-slim'       " slim
-Plugin 'kchmck/vim-coffee-script'     " coffe script
-Plugin 'suan/vim-instant-markdown'    " real time markdown editing
+Plugin 'slim-template/vim-slim'          " slim
+Plugin 'kchmck/vim-coffee-script'        " coffe script
+Plugin 'suan/vim-instant-markdown'       " real time markdown editing
 
 call vundle#end() " required by Vundle
 
@@ -79,6 +80,12 @@ if executable('ag')
 
   let g:ackprg = 'ag --vimgrep'
 endif
+
+" indent level
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
+autocmd VimEnter * :IndentGuidesEnable
 
 " autocomplete
 let g:ycm_min_num_of_chars_for_completion = 1
