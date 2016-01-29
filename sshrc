@@ -15,3 +15,27 @@ export VIMINIT="let \$MYVIMRC='$SSHHOME/.sshrc.d/vimrc' | source \$MYVIMRC"
 
 export VISUAL=vim
 export EDITOR=$VISUAL
+
+screenrc() {
+    local SCREENDIR=/tmp/sshrc_screen
+    if ! [ -d $SCREENDIR ]; then
+        rm -rf $SCREENDIR
+        mkdir -p $SCREENDIR
+    fi
+    cp -r $SSHHOME/bashsshrc $SSHHOME/sshrc $SSHHOME/.sshrc $SSHHOME/.sshrc.d $SCREENDIR
+
+    if [ -z "$1" ] ; then
+      # generate random screen name
+      local SCREENNAME="$(whoami)_$(LC_CTYPE=C tr -dc A-Za-z < /dev/urandom | head -c 8 | xargs)"
+    else
+      # screen name as a function argument
+      local SCREENNAME=$1
+    fi
+
+    # create new screen
+    SSHHOME=$SCREENDIR /usr/bin/screen -dmS $SCREENNAME
+    # load .sshrc and clear screen
+    SSHHOME=$SCREENDIR /usr/bin/screen -r $SCREENNAME -p 0 -X stuff "source $SCREENDIR/.sshrc"`echo -ne '\015' '\ec'`
+    # attach
+    SSHHOME=$SCREENDIR /usr/bin/screen -r $SCREENNAME
+}
