@@ -135,6 +135,9 @@ nnoremap fj :%!python -m json.tool<CR>
 map ß <esc>:w<CR>
 imap ß <esc>:w<CR>
 
+" add binding.pry line
+nnoremap <Leader>p orequire 'pry'; binding.pry<Esc>
+
 " create dir for new file
 function s:MKDir(...)
   if         !a:0 
