@@ -4,6 +4,7 @@
     - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link
       with_items:
         - ackrc
+        - irbrc
         - gemrc
         - gitconfig
         - gitignore
@@ -29,3 +30,4 @@
     - file: src={{ curdir }}/{{ item }} dest=~/.sshrc.d/{{ item }} state=link
       with_items:
         - vimrc
+        - irbrc
