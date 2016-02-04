@@ -136,7 +136,7 @@ map ß <esc>:w<CR>
 imap ß <esc>:w<CR>
 
 " add binding.pry line
-nnoremap <Leader>p orequire 'pry'; binding.pry<Esc>
+nnoremap <Leader>p Orequire 'pry'; binding.pry<Esc>
 
 " create dir for new file
 function s:MKDir(...)
