@@ -40,6 +40,8 @@ Plugin 'tpope/vim-rails'                 " helpers for Rails
 Plugin 'tpope/vim-bundler'               " bundle commands and tags
 Plugin 'tpope/vim-endwise'               " auto end keyword
 Plugin 'thoughtbot/vim-rspec'            " run rspec
+Plugin 'ecomba/vim-ruby-refactoring'     " commands for refactoring
+Plugin 'tmhedberg/matchit'               " vim-ruby-refactoring dependency
 
 " syntaxes and languages
 Plugin 'slim-template/vim-slim'          " slim
