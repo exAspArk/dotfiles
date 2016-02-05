@@ -134,6 +134,13 @@ nnoremap fj :%!python -m json.tool<CR>
 " note that remapping C-s requires flow control to be disabled, e.g. in .bashrc or .zshrc
 map ß <esc>:w<CR>
 imap ß <esc>:w<CR>
+"
+" change without yanking
+nnoremap c "_c
+vnoremap c "_c
+
+" replace currently selected text with default register without yanking it
+vnoremap p "_dP
 
 " add binding.pry line
 nnoremap <Leader>p Orequire 'pry'; binding.pry<Esc>
