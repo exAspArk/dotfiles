@@ -43,6 +43,9 @@ Plugin 'thoughtbot/vim-rspec'            " run rspec
 Plugin 'ecomba/vim-ruby-refactoring'     " commands for refactoring
 Plugin 'tmhedberg/matchit'               " vim-ruby-refactoring dependency
 
+" clojure
+Plugin 'tpope/vim-fireplace'             " repl
+
 " syntaxes and languages
 Plugin 'slim-template/vim-slim'          " slim
 Plugin 'kchmck/vim-coffee-script'        " coffe script
@@ -66,6 +69,9 @@ map ® :ToggleBufExplorer<CR>
 
 " search
 nnoremap <C-f> "_:Ack -Q 
+
+" jump to defenition with fireplace
+nnoremap <C-[><C-[> [<C-d>
 
 " vim-rspec
 map <Leader>t :call RunCurrentSpecFile()<CR>
@@ -99,7 +105,8 @@ let g:ctrlp_match_window = 'bottom,order:ttb' " order matching files top to bott
 let g:ctrlp_switch_buffer = 0                 " always open files in new buffers
 let g:ctrlp_working_path_mode = 0             " lets us change the working directory during a Vim session and make CtrlP respect that change
 let g:ctrlp_map = 'π'                         " Alt + p
-let g:ctrlp_user_command = 'find %s -type f ! -path "*/.git/*"' " ignore .git directory
+" ignore .git, node_modules directories
+let g:ctrlp_user_command = 'find %s -type f ! -path "*/.git/*" ! -path "*/node_modules/*"' 
 
 " status line
 let g:airline#extensions#tabline#enabled = 1
