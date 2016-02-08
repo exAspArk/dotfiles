@@ -1,57 +1,50 @@
-set nocompatible                  " required by Vundle
-filetype off                      " required by Vundle
-set rtp+=~/.vim/bundle/Vundle.vim " set the runtime path to include Vundle and initialize
-
-call vundle#begin() " required by Vundle
-
-Plugin 'VundleVim/Vundle.vim'            " let Vundle manage Vundle, required
+call plug#begin('~/.vim/plugged')
 
 " text editing
-Plugin 'tpope/vim-surround'              " better brackets
-Plugin 'scrooloose/syntastic'            " check syntax
-Plugin 'tpope/vim-commentary'            " comments
-Plugin 'tpope/vim-repeat'                " repeat more commands with '.'
-Plugin 'terryma/vim-multiple-cursors'    " multiple cursors like in ST
-Plugin 'Valloric/YouCompleteMe'          " autocomplete
-Plugin 'jiangmiao/auto-pairs'            " closing brackets
+Plug 'tpope/vim-surround'                   " better brackets
+Plug 'scrooloose/syntastic'                 " check syntax
+Plug 'tpope/vim-commentary'                 " comments
+Plug 'tpope/vim-repeat'                     " repeat more commands with '.'
+Plug 'terryma/vim-multiple-cursors'         " multiple cursors like in ST
+Plug 'Valloric/YouCompleteMe', { 'on': [] } " autocomplete
+Plug 'jiangmiao/auto-pairs'                 " closing brackets
 
 " navigation
-Plugin 'scrooloose/nerdtree'             " file tree
-Plugin 'ctrlpvim/ctrlp.vim'              " fuzzy search
-Plugin 'mileszs/ack.vim'                 " faster text search
-Plugin 'jlanzarotta/bufexplorer'         " buffer explorer
-Plugin 'bogado/file-line'                " open file with line number
-Plugin 'yegappan/mru'                    " most recently used files
+Plug 'scrooloose/nerdtree'                   " file tree
+Plug 'ctrlpvim/ctrlp.vim'                    " fuzzy search
+Plug 'mileszs/ack.vim'                       " faster text search
+Plug 'jlanzarotta/bufexplorer'               " buffer explorer
+Plug 'bogado/file-line'                      " open file with line number
+Plug 'yegappan/mru'                          " most recently used files
 
 " theme
-Plugin 'w0ng/vim-hybrid'                 " theme
-Plugin 'bling/vim-airline'               " status line
-Plugin 'nathanaelkane/vim-indent-guides' " show indent level
+Plug 'w0ng/vim-hybrid'                       " theme
+Plug 'bling/vim-airline'                     " status line
 
 " files
-Plugin 'tpope/vim-eunuch'                " helpers for UNIX shell commands (mkdir, rename, etc.)
+Plug 'tpope/vim-eunuch'                      " helpers for UNIX shell commands (mkdir, rename, etc.)
 
 " git
-Plugin 'tpope/vim-fugitive'              " git commands
+Plug 'tpope/vim-fugitive'                    " git commands
 
 " ruby / rails
-Plugin 'vim-ruby/vim-ruby'               " ruby 
-Plugin 'tpope/vim-rails'                 " helpers for Rails
-Plugin 'tpope/vim-bundler'               " bundle commands and tags
-Plugin 'tpope/vim-endwise'               " auto end keyword
-Plugin 'thoughtbot/vim-rspec'            " run rspec
-Plugin 'ecomba/vim-ruby-refactoring'     " commands for refactoring
-Plugin 'tmhedberg/matchit'               " vim-ruby-refactoring dependency
+Plug 'vim-ruby/vim-ruby'                     " ruby 
+Plug 'tpope/vim-rails'                       " helpers for Rails
+Plug 'tpope/vim-bundler'                     " bundle commands and tags
+Plug 'tpope/vim-endwise'                     " auto end keyword
+Plug 'thoughtbot/vim-rspec'                  " run rspec
+Plug 'ecomba/vim-ruby-refactoring'           " commands for refactoring
+Plug 'tmhedberg/matchit'                     " vim-ruby-refactoring dependency
 
 " clojure
-Plugin 'tpope/vim-fireplace'             " repl
+Plug 'tpope/vim-fireplace'                   " repl
 
 " syntaxes and languages
-Plugin 'slim-template/vim-slim'          " slim
-Plugin 'kchmck/vim-coffee-script'        " coffe script
-Plugin 'suan/vim-instant-markdown'       " real time markdown editing
+Plug 'slim-template/vim-slim'                " slim
+Plug 'kchmck/vim-coffee-script'              " coffe script
+Plug 'suan/vim-instant-markdown'             " real time markdown editing
 
-call vundle#end() " required by Vundle
+call plug#end()
 
 " theme
 color hybrid
@@ -89,11 +82,8 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-" indent level
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
-autocmd VimEnter * if exists(":IndentGuidesEnable") | :IndentGuidesEnable | endif
+" load YouCompleteMe only after entering into insert mode, not while starting vim
+autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 
 " autocomplete
 let g:ycm_min_num_of_chars_for_completion = 1
