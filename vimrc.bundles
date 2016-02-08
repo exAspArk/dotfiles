@@ -1,48 +1,47 @@
 call plug#begin('~/.vim/plugged')
 
 " text editing
-Plug 'tpope/vim-surround'                   " better brackets
-Plug 'scrooloose/syntastic'                 " check syntax
-Plug 'tpope/vim-commentary'                 " comments
-Plug 'tpope/vim-repeat'                     " repeat more commands with '.'
-Plug 'terryma/vim-multiple-cursors'         " multiple cursors like in ST
-Plug 'Valloric/YouCompleteMe', { 'on': [] } " autocomplete
-Plug 'jiangmiao/auto-pairs'                 " closing brackets
+Plug 'tpope/vim-surround'                               " better brackets
+Plug 'scrooloose/syntastic'                             " check syntax
+Plug 'tpope/vim-commentary'                             " comments
+Plug 'tpope/vim-repeat'                                 " repeat more commands with '.'
+Plug 'terryma/vim-multiple-cursors'                     " multiple cursors like in ST
+Plug 'Valloric/YouCompleteMe', { 'on': [] }             " autocomplete
+Plug 'jiangmiao/auto-pairs'                             " closing brackets
 
 " navigation
-Plug 'scrooloose/nerdtree'                   " file tree
-Plug 'ctrlpvim/ctrlp.vim'                    " fuzzy search
-Plug 'mileszs/ack.vim'                       " faster text search
-Plug 'jlanzarotta/bufexplorer'               " buffer explorer
-Plug 'bogado/file-line'                      " open file with line number
-Plug 'yegappan/mru'                          " most recently used files
+Plug 'scrooloose/nerdtree'                              " file tree
+Plug 'ctrlpvim/ctrlp.vim'                               " fuzzy search
+Plug 'mileszs/ack.vim'                                  " faster text search
+Plug 'jlanzarotta/bufexplorer'                          " buffer explorer
+Plug 'kopischke/vim-fetch'                              " open file with line and column number
+Plug 'yegappan/mru'                                     " most recently used files
 
 " theme
-Plug 'w0ng/vim-hybrid'                       " theme
-Plug 'bling/vim-airline'                     " status line
+Plug 'w0ng/vim-hybrid'                                  " theme
+Plug 'bling/vim-airline'                                " status line
 
 " files
-Plug 'tpope/vim-eunuch'                      " helpers for UNIX shell commands (mkdir, rename, etc.)
+Plug 'tpope/vim-eunuch'                                 " helpers for UNIX shell commands (mkdir, rename, etc.)
 
 " git
-Plug 'tpope/vim-fugitive'                    " git commands
+Plug 'tpope/vim-fugitive'                               " git commands
 
 " ruby / rails
-Plug 'vim-ruby/vim-ruby'                     " ruby 
-Plug 'tpope/vim-rails'                       " helpers for Rails
-Plug 'tpope/vim-bundler'                     " bundle commands and tags
-Plug 'tpope/vim-endwise'                     " auto end keyword
-Plug 'thoughtbot/vim-rspec'                  " run rspec
-Plug 'ecomba/vim-ruby-refactoring'           " commands for refactoring
-Plug 'tmhedberg/matchit'                     " vim-ruby-refactoring dependency
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }             " ruby
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }             " bundle commands and tags
+Plug 'tpope/vim-endwise', { 'for': 'ruby' }             " auto end keyword
+Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }          " run rspec
+Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }   " commands for refactoring
+Plug 'tmhedberg/matchit' , { 'for': 'ruby' }            " vim-ruby-refactoring dependency
 
 " clojure
-Plug 'tpope/vim-fireplace'                   " repl
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }        " repl
 
 " syntaxes and languages
-Plug 'slim-template/vim-slim'                " slim
-Plug 'kchmck/vim-coffee-script'              " coffe script
-Plug 'suan/vim-instant-markdown'             " real time markdown editing
+Plug 'slim-template/vim-slim', { 'for': 'slim' }        " slim
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }    " coffee script
+Plug 'suan/vim-instant-markdown', { 'for': 'markdown' } " real time markdown editing
 
 call plug#end()
 
@@ -82,13 +81,20 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-" load YouCompleteMe only after entering into insert mode, not while starting vim
-autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
-
 " autocomplete
 let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments = 1
+
+" load YouCompleteMe only after entering into insert mode, not while starting vim
+augroup load_ycm
+  autocmd!
+  autocmd! InsertEnter * call plug#load('YouCompleteMe')
+                      \| if exists('g:loaded_youcompleteme')
+                      \|   call youcompleteme#Enable()
+                      \| endif
+                      \| autocmd! load_ycm
+augroup END
 
 " CtrlP settings
 let g:ctrlp_match_window = 'bottom,order:ttb' " order matching files top to bottom
