@@ -7,7 +7,7 @@ Plug 'tpope/vim-commentary'                             " comments
 Plug 'tpope/vim-repeat'                                 " repeat more commands with '.'
 Plug 'terryma/vim-multiple-cursors'                     " multiple cursors like in ST
 Plug 'Valloric/YouCompleteMe', { 'on': [] }             " autocomplete
-Plug 'jiangmiao/auto-pairs'                             " closing brackets
+Plug 'jiangmiao/auto-pairs', { 'on': [] }               " closing brackets
 
 " navigation
 Plug 'scrooloose/nerdtree'                              " file tree
@@ -33,7 +33,7 @@ Plug 'tpope/vim-bundler', { 'for': 'ruby' }             " bundle commands and ta
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }             " auto end keyword
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }          " run rspec
 Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }   " commands for refactoring
-Plug 'tmhedberg/matchit' , { 'for': 'ruby' }            " vim-ruby-refactoring dependency
+Plug 'tmhedberg/matchit', { 'for': 'ruby' }             " vim-ruby-refactoring dependency
 
 " clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }        " repl
@@ -86,14 +86,15 @@ let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments = 1
 
-" load YouCompleteMe only after entering into insert mode, not while starting vim
-augroup load_ycm
+" load YouCompleteMe and auto-pairs only after entering into insert mode, not while starting vim
+augroup lazy_load
   autocmd!
-  autocmd! InsertEnter * call plug#load('YouCompleteMe')
+  autocmd! InsertEnter * call plug#load('YouCompleteMe', 'auto-pairs')
                       \| if exists('g:loaded_youcompleteme')
                       \|   call youcompleteme#Enable()
                       \| endif
-                      \| autocmd! load_ycm
+                      \| call AutoPairsTryInit()
+                      \| autocmd! lazy_load
 augroup END
 
 " CtrlP settings
