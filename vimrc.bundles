@@ -107,7 +107,6 @@ let g:ctrlp_user_command = 'find %s -type f ! -path "*/.git/*" ! -path "*/node_m
 
 " status line
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_section_b = '%{getcwd()}'
 
 " multiple cursors
 let g:multi_cursor_start_key='<C-n>'
