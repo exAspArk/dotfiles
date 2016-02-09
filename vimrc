@@ -70,14 +70,15 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
   
-  autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2        " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?                 " make ?s part of words
-  autocmd FileType markdown setlocal wrap                                " automatically wrap for Markdown
-  autocmd FileType gitcommit setlocal textwidth=72                       " automatically wrap at 72 characters
-  autocmd FileType markdown setlocal spell spelllang=ru_ru,en_us         " enable spellchecking for Markdown messages
-  autocmd FileType gitcommit setlocal spell                              " enable spellchecking for git commit messages
-  autocmd FileType css,scss,sass setlocal iskeyword+=-                   " allow stylesheets to autocomplete hyphenated words
-  autocmd BufWritePre *.rb,*.coffee,*.yml,*.md,*.rake,*.clj :%s/\s\+$//e " remove trailing whitespaces
+  autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
+  autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?                            " make ?s part of words
+  autocmd FileType markdown setlocal wrap                                           " automatically wrap for Markdown
+  autocmd FileType gitcommit setlocal textwidth=72                                  " automatically wrap at 72 characters
+  autocmd FileType markdown setlocal spell spelllang=ru_ru,en_us                    " enable spellchecking for Markdown messages
+  autocmd FileType gitcommit setlocal spell                                         " enable spellchecking for git commit messages
+  autocmd FileType css,scss,sass setlocal iskeyword+=-                              " allow stylesheets to autocomplete hyphenated words
+  autocmd FileType clojure setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,=,<,>,:,$ " customize keywords
+  autocmd BufWritePre *.rb,*.coffee,*.yml,*.md,*.rake,*.clj :%s/\s\+$//e            " remove trailing whitespaces
 augroup END
 
 " Build ctags by using 'gem-ctags' gem
