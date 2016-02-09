@@ -80,8 +80,8 @@ augroup vimrcEx
   autocmd BufWritePre *.rb,*.coffee,*.yml,*.md,*.rake,*.clj :%s/\s\+$//e " remove trailing whitespaces
 augroup END
 
-" Build ctags by using 'ripper-tags' gem
-nnoremap tt :!ripper-tags -R<CR>
+" Build ctags by using 'gem-ctags' gem
+nnoremap tt :!ctags -R<CR>
 
 " redraw vim
 nnoremap rr :redraw!<CR>

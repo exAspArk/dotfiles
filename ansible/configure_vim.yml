@@ -10,3 +10,5 @@
     - command: vim +PlugInstall +qall
     - command: ~/.vim/plugged/YouCompleteMe/install.py --clang-completer
     - command: npm -g install instant-markdown-d
+    - command: gem install gem-ctags
+    - command: gem ctags
