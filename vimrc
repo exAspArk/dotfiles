@@ -22,7 +22,8 @@ set laststatus=2      " always display the status line
 set history=500       " sets how many lines of history VIM has to remember
 set nowrap            " don't wrap long lines
 set wildmenu          " visual autocomplete for command menu
-set ignorecase        " ingore case
+set ignorecase        " /the would find 'the' or 'The', add \C if you want 'the' only
+set smartcase         " while /The would find only 'The' etc. 
 set nopaste           " enable formatting while pasting
 set clipboard=unnamed " yank to and paste the selection without prepending "*
 set autowrite         " save file before switching a buffer
