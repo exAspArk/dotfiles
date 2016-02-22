@@ -32,10 +32,10 @@ screenrc() {
       local SCREENNAME=$1
     fi
 
-    # create new screen
+    # create a new screen
     SSHHOME=$SCREENDIR /usr/bin/screen -dmS $SCREENNAME
     # load .sshrc and clear screen
-    SSHHOME=$SCREENDIR /usr/bin/screen -r $SCREENNAME -p 0 -X stuff "source $SCREENDIR/.sshrc"`echo -ne '\015' '\ec'`
+    SSHHOME=$SCREENDIR /usr/bin/screen -r $SCREENNAME -p 0 -X stuff "source $SCREENDIR/.sshrc"`printf '\015'`
     # attach
     SSHHOME=$SCREENDIR /usr/bin/screen -r $SCREENNAME
 }
