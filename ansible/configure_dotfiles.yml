@@ -16,7 +16,6 @@
         - oh-my-zsh/custom/spring.plugin.zsh
         - oh-my-zsh/custom/unix.plugin.zsh
         - oh-my-zsh/custom/vim.plugin.zsh
-        - oh-my-zsh/custom/sshrc.plugin.zsh
         - sshrc
 
     - file: path=~/.sshrc.d state=directory
