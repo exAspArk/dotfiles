@@ -1,6 +1,7 @@
 ---
 - hosts: all
   tasks:
+    - command: brew services list # e.g. allow 'brew services start mysql command'
     - command: brew install ack
     - command: brew install cmake
     - command: brew install ctags
