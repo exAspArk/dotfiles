@@ -10,6 +10,7 @@
         - gitignore
         - pryrc
         - spring.rb
+        - zshenv
         - zshrc
         - oh-my-zsh/custom/bundler.plugin.zsh
         - oh-my-zsh/custom/git.plugin.zsh
@@ -18,7 +19,6 @@
         - oh-my-zsh/custom/vim.plugin.zsh
         - oh-my-zsh/custom/rspec.plugin.zsh
         - sshrc
-    - file: src={{ curdir }}/zshrc dest=~/.zshenv state=link
 
     - file: path=~/.sshrc.d state=directory
     - file: src={{ curdir }}/oh-my-zsh/custom/{{ item }} dest=~/.sshrc.d/{{ item }} state=link
