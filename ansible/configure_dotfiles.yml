@@ -17,6 +17,7 @@
         - oh-my-zsh/custom/unix.plugin.zsh
         - oh-my-zsh/custom/vim.plugin.zsh
         - sshrc
+    - file: src={{ curdir }}/zshrc dest=~/.zshenv state=link
 
     - file: path=~/.sshrc.d state=directory
     - file: src={{ curdir }}/oh-my-zsh/custom/{{ item }} dest=~/.sshrc.d/{{ item }} state=link
