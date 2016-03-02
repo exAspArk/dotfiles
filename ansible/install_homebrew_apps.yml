@@ -18,9 +18,12 @@
     - command: brew install npm
     - command: npm install phantom phantomjs -g
 
+    - command: brew install rbenv
+    - file: path=~/.rbenv state=absent
+    - file: src=/usr/local/opt/rbenv dest=~/.rbenv state=link
+
     - command: brew install postgresql
     - command: brew install rabbitmq
-    - command: brew install rbenv
     - command: brew install redis
     - command: brew install ruby-build
     - command: brew install sphinx

@@ -6,17 +6,21 @@ export EDITOR=$VISUAL
 export LANG=en_US.UTF-8 # You may need to manually set your language environment
 export CC=/usr/bin/gcc
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/local/bin"
+export PATH="./bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/local/bin"
 export PATH=$PATH:"/usr/local/git/bin"
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
 export PATH=$PATH:/usr/local/heroku/bin # Added by the Heroku Toolbelt
-export PATH=$PATH:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:./bin # Rbenv
 
 # Load all of your custom configurations from custom/
 for config_file (~/.zsh/custom/*.zsh(N)); do
   source $config_file
 done
 unset config_file
+
+# load rbenv if available
+if command -v rbenv &>/dev/null ; then
+  eval "$(rbenv init - --no-rehash)"
+fi

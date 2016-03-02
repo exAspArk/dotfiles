@@ -35,8 +35,3 @@ zle -N zle-line-init
 
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
-
-# load rbenv if available
-if command -v rbenv &>/dev/null ; then
-  eval "$(rbenv init - --no-rehash)"
-fi
