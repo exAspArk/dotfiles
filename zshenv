@@ -14,3 +14,9 @@ export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
 export PATH=$PATH:/usr/local/heroku/bin # Added by the Heroku Toolbelt
 export PATH=$PATH:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:./bin # Rbenv
+
+# Load all of your custom configurations from custom/
+for config_file (~/.zsh/custom/*.zsh(N)); do
+  source $config_file
+done
+unset config_file

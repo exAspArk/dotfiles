@@ -1,6 +1,7 @@
 ---
 - hosts: all
-  tasks:
+  takks:
+    - file: path=~/.zsh/custom state=directory
     - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link
       with_items:
         - ackrc
@@ -12,16 +13,16 @@
         - spring.rb
         - zshenv
         - zshrc
-        - oh-my-zsh/custom/bundler.plugin.zsh
-        - oh-my-zsh/custom/git.plugin.zsh
-        - oh-my-zsh/custom/spring.plugin.zsh
-        - oh-my-zsh/custom/unix.plugin.zsh
-        - oh-my-zsh/custom/vim.plugin.zsh
-        - oh-my-zsh/custom/rspec.plugin.zsh
+        - zsh/custom/bundler.plugin.zsh
+        - zsh/custom/git.plugin.zsh
+        - zsh/custom/spring.plugin.zsh
+        - zsh/custom/unix.plugin.zsh
+        - zsh/custom/vim.plugin.zsh
+        - zsh/custom/rspec.plugin.zsh
         - sshrc
 
     - file: path=~/.sshrc.d state=directory
-    - file: src={{ curdir }}/oh-my-zsh/custom/{{ item }} dest=~/.sshrc.d/{{ item }} state=link
+    - file: src={{ curdir }}/zsh/custom/{{ item }} dest=~/.sshrc.d/{{ item }} state=link
       with_items:
         - bundler.plugin.zsh
         - git.plugin.zsh
