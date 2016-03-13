@@ -1,6 +1,13 @@
 ---
 - hosts: all
   tasks:
+    - file: path=/etc/zprofile state=absent
+      become: yes
+      become_user: root
+    - file: path=/etc/zprofile state=touch owner=root group=wheel mode=0444
+      become: yes
+      become_user: root
+
     - file: path=~/.zsh/custom state=directory
     - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link
       with_items:

@@ -18,4 +18,4 @@ configure_vim:
 	ansible-playbook ansible/configure_vim.yml -i ansible/local -vv -e curdir=$(CURDIR)
 
 configure_dotfiles:
-	ansible-playbook ansible/configure_dotfiles.yml -i ansible/local -vv -e curdir=$(CURDIR)
+	ansible-playbook ansible/configure_dotfiles.yml -i ansible/local -vv -e curdir=$(CURDIR) # --ask-become-pass
