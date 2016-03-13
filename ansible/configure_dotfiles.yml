@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  takks:
+  tasks:
     - file: path=~/.zsh/custom state=directory
     - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link
       with_items:
