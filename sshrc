@@ -16,6 +16,13 @@ export VIMINIT="let \$MYVIMRC='$SSHHOME/.sshrc.d/vimrc' | source \$MYVIMRC"
 export VISUAL=vim
 export EDITOR=$VISUAL
 
+# Allow autocd
+if [ -n "$ZSH_VERSION" ]; then
+  setopt autocd
+elif [ -n "$BASH_VERSION" ]; then
+  shopt -s autocd
+fi
+
 screenrc() {
     local SCREENDIR=/tmp/sshrc_screen
     if ! [ -d $SCREENDIR ]; then
