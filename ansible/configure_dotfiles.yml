@@ -26,6 +26,7 @@
         - zsh/custom/unix.plugin.zsh
         - zsh/custom/vim.plugin.zsh
         - zsh/custom/rspec.plugin.zsh
+        - zsh/custom/sshrc.plugin.zsh
         - sshrc
 
     - file: path=~/.sshrc.d state=directory
