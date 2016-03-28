@@ -120,7 +120,7 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 " copy relative filepath
 nnoremap cP :let @+ = expand("%")<CR>
 " copy full filepath
-nnoremap cPP :let @+ = expand("%:p")<CR>
+nnoremap cFP :let @+ = expand("%:p")<CR>
 
 " navigating between buffers with Alt + ] / [ / w
 nnoremap ‘ :bn<CR>
