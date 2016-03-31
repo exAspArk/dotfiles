@@ -8,6 +8,7 @@ Plug 'tpope/vim-repeat'                                 " repeat more commands w
 Plug 'terryma/vim-multiple-cursors'                     " multiple cursors like in ST
 Plug 'Valloric/YouCompleteMe', { 'on': [] }             " autocomplete
 Plug 'jiangmiao/auto-pairs', { 'on': [] }               " closing brackets
+Plug 'terryma/vim-expand-region'                        " change visual selection by using '+' / '-'
 
 " navigation
 Plug 'scrooloose/nerdtree'                              " file tree
@@ -32,8 +33,8 @@ Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }             " ruby
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }             " bundle commands and tags
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }             " auto end keyword
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }          " run rspec
-Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }   " commands for refactoring
-Plug 'tmhedberg/matchit', { 'for': 'ruby' }             " vim-ruby-refactoring dependency
+Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }   " commands for refactoring # TODO: check
+Plug 'tmhedberg/matchit', { 'for': 'ruby' }             " vim-ruby-refactoring dependency # TODO: check
 
 " clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }        " repl
