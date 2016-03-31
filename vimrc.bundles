@@ -25,6 +25,7 @@ Plug 'tpope/vim-eunuch'                                 " helpers for UNIX shell
 
 " git
 Plug 'tpope/vim-fugitive'                               " git commands
+Plug 'airblade/vim-gitgutter'                           " git gutter
 
 " ruby / rails
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }             " ruby
