@@ -34,3 +34,4 @@
     - command: brew install sshrc
     - command: brew install openssl
     - command: brew link --force openssl # To avoid using flag --with-openssl-dir=/usr/local/opt/openssl
+    - command: brew install fzf

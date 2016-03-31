@@ -12,10 +12,10 @@ Plug 'terryma/vim-expand-region'                        " change visual selectio
 
 " navigation
 Plug 'scrooloose/nerdtree'                              " file tree
-Plug 'ctrlpvim/ctrlp.vim'                               " fuzzy search
 Plug 'mileszs/ack.vim'                                  " faster text search
 Plug 'kopischke/vim-fetch'                              " open file with line and column number
 Plug 'yegappan/mru'                                     " most recently used files
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " theme
 Plug 'w0ng/vim-hybrid'                                  " theme
@@ -69,13 +69,11 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
+" run FZF by using Alt + P
+nnoremap π "_:FZF<CR>
+
 " use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
-  " use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-  " ag is fast enough that CtrlP doesn't need to cache or not :)
-  let g:ctrlp_use_caching = 1
-
   let g:ackprg = 'ag --vimgrep'
 endif
 
@@ -94,14 +92,6 @@ augroup lazy_load
                       \| call AutoPairsTryInit()
                       \| autocmd! lazy_load
 augroup END
-
-" CtrlP settings
-let g:ctrlp_match_window = 'bottom,order:ttb' " order matching files top to bottom
-let g:ctrlp_switch_buffer = 0                 " always open files in new buffers
-let g:ctrlp_working_path_mode = 0             " lets us change the working directory during a Vim session and make CtrlP respect that change
-let g:ctrlp_map = 'π'                         " Alt + p
-" ignore .git, node_modules directories
-let g:ctrlp_user_command = 'find %s -type f ! -path "*/.git/*" ! -path "*/node_modules/*"' 
 
 " status line
 let g:airline#extensions#tabline#enabled = 1

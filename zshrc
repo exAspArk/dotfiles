@@ -27,11 +27,13 @@ chpwd() {
 chpwd
 
 # Load zsh-autosuggestions.
-source ~/.zsh/zsh-autosuggestions/autosuggestions.zsh
-zle-line-init() {
-    zle autosuggest-start
-}
-zle -N zle-line-init
+# source ~/.zsh/zsh-autosuggestions/autosuggestions.zsh
+# zle-line-init() {
+#     zle autosuggest-start
+# }
+# zle -N zle-line-init
 
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
