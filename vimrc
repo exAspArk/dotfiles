@@ -147,6 +147,21 @@ vnoremap p "_dP
 " add binding.pry line
 nnoremap <Leader>p Orequire 'pry'; binding.pry<Esc>
 
+" open large files > 10 MB
+let g:LargeFile = 10 * 1024 * 1024
+augroup LargeFile 
+  " files with filesize too large are recognized too (getfsize = -2)
+  autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
+augroup END
+function LargeFile()
+  set eventignore+=FileType " no syntax highlighting etc
+  setlocal bufhidden=unload " save memory when other file is viewed
+  setlocal buftype=nowrite " is read-only (write with :w new_filename)
+  setlocal undolevels=-1 " no undo possible
+  setlocal foldmethod=manual
+  setlocal noswapfile
+endfunction
+
 " create dir for new file
 function s:MKDir(...)
   if         !a:0 
