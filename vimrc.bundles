@@ -13,7 +13,6 @@ Plug 'jiangmiao/auto-pairs', { 'on': [] }               " closing brackets
 Plug 'scrooloose/nerdtree'                              " file tree
 Plug 'ctrlpvim/ctrlp.vim'                               " fuzzy search
 Plug 'mileszs/ack.vim'                                  " faster text search
-Plug 'jlanzarotta/bufexplorer'                          " buffer explorer
 Plug 'kopischke/vim-fetch'                              " open file with line and column number
 Plug 'yegappan/mru'                                     " most recently used files
 
@@ -48,16 +47,13 @@ call plug#end()
 " theme
 color hybrid
 
-" call MRU plugin with Alt + t
-nnoremap † :MRU<CR>
+" call MRU plugin with Alt + r
+nnoremap ® :MRU<CR>
 
 " open nerdtree
 map <leader><leader> :NERDTreeToggle<CR>
 " open current file's path
 map <leader>c :NERDTreeFind<CR>
-
-" toggle buffer explorer with Alt + R
-map ® :ToggleBufExplorer<CR>
 
 " search
 nnoremap <C-f> "_:Ack -Q 
