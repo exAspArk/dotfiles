@@ -39,6 +39,8 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 _fzf_compgen_path() { ag -g "" "$1" }
 
-# cd to selected directory, by default from NY_PROJECT_PATH
 export MY_PROJECT_PATH="$HOME/Documents/projects"
+# cd to selected directory, by default from NY_PROJECT_PATH
 fd() { cd "$(find ${1:-$MY_PROJECT_PATH} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m)" }
+# edit file
+fe() { v $(fzf) }

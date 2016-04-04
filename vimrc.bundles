@@ -30,7 +30,6 @@ Plug 'airblade/vim-gitgutter'                           " git gutter
 
 " ruby / rails
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }             " ruby
-Plug 'tpope/vim-bundler', { 'for': 'ruby' }             " bundle commands and tags
 Plug 'tpope/vim-endwise', { 'for': 'ruby' }             " auto end keyword
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }          " run rspec
 Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }   " commands for refactoring # TODO: check
