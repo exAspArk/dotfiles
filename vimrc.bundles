@@ -12,7 +12,7 @@ Plug 'terryma/vim-expand-region'                        " change visual selectio
 
 " navigation
 Plug 'scrooloose/nerdtree'                              " file tree
-Plug 'mileszs/ack.vim'                                  " faster text search
+Plug 'dyng/ctrlsf.vim'                                  " better text search
 Plug 'kopischke/vim-fetch'                              " open file with line and column number
 Plug 'yegappan/mru'                                     " most recently used files
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -56,8 +56,8 @@ map <leader><leader> :NERDTreeToggle<CR>
 " open current file's path
 map <leader>c :NERDTreeFind<CR>
 
-" search
-nnoremap <C-f> "_:Ack -Q 
+" search with CtrlSF
+nnoremap <C-f> "_:CtrlSF 
 
 " jump to defenition with fireplace
 nnoremap <C-[><C-[> [<C-d>
@@ -71,9 +71,11 @@ map <Leader>a :call RunAllSpecs()<CR>
 " run FZF by using Alt + P
 nnoremap π "_:FZF<CR>
 
-" use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+" CtrlSF
+let g:ctrlsf_case_sensitive = 'no'
+let g:ctrlsf_position = 'bottom'
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ctrlsf_ackprg = 'ag' " use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 endif
 
 " autocomplete
