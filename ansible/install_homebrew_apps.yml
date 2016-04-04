@@ -2,7 +2,6 @@
 - hosts: all
   tasks:
     - command: brew tap homebrew/services # e.g. allow 'brew services start mysql' command
-    - command: brew install ack
     - command: brew install cmake
     - command: brew install ctags
     - command: brew install Caskroom/cask/java # For Elasticsearch
@@ -34,3 +33,4 @@
     - command: brew install sshrc
     - command: brew install openssl
     - command: brew link --force openssl # To avoid using flag --with-openssl-dir=/usr/local/opt/openssl
+    - command: brew install fzf

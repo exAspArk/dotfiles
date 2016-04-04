@@ -27,11 +27,18 @@ chpwd() {
 chpwd
 
 # Load zsh-autosuggestions.
-source ~/.zsh/zsh-autosuggestions/autosuggestions.zsh
-zle-line-init() {
-    zle autosuggest-start
-}
-zle -N zle-line-init
-
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# use ag
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+_fzf_compgen_path() { ag -g "" "$1" }
+
+# cd to selected directory, by default from NY_PROJECT_PATH
+export MY_PROJECT_PATH="$HOME/Documents/projects"
+fd() { cd "$(find ${1:-$MY_PROJECT_PATH} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m)" }
