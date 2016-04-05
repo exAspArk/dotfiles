@@ -1,10 +1,11 @@
 ---
 - hosts: all
   tasks:
+    - shell: brew update
     - shell: brew tap homebrew/services # e.g. allow 'brew services start mysql' command
     - shell: brew install cmake
     - shell: brew install ctags
-    - shell: brew install Caskroom/cask/java # For Elasticsearch
+    - shell: brew cask install java # for Elasticsearch
 
     - shell: brew install {{ item }} && ln -sfv /usr/local/opt/{{ item }}/*.plist ~/Library/LaunchAgents
       with_items:
@@ -17,6 +18,8 @@
         - redis
         - rabbitmq
         - selenium-server-standalone
+
+    - shell: kibana plugin --install elastic/sense
 
     - shell: brew install git
     - shell: brew install go
