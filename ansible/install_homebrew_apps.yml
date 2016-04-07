@@ -3,10 +3,19 @@
   tasks:
     - shell: brew update
     - shell: brew tap homebrew/services # e.g. allow 'brew services start mysql' command
-    - shell: brew install cmake
-    - shell: brew install ctags
+
+    - shell: brew install git
+    - shell: brew install openssl
+    - shell: brew link --force openssl # To avoid using flag --with-openssl-dir=/usr/local/opt/openssl
     - shell: brew cask install java # for Elasticsearch
 
+    # ruby
+    - shell: brew install rbenv
+    - file: path=~/.rbenv state=absent
+    - file: src=/usr/local/opt/rbenv dest=~/.rbenv state=link
+    - shell: brew install ruby-build
+
+    # services
     - shell: brew install {{ item }} && ln -sfv /usr/local/opt/{{ item }}/*.plist ~/Library/LaunchAgents
       with_items:
         - elasticsearch
@@ -19,29 +28,27 @@
         - rabbitmq
         - selenium-server-standalone
 
-    - shell: kibana plugin --install elastic/sense
-
-    - shell: brew install git
+    - shell: brew install cmake
+    - shell: brew install ctags
     - shell: brew install go
     - shell: brew install imagemagick
     - shell: brew install leiningen
-
+    - shell: brew install sphinx
+    - shell: brew install the_silver_searcher
+    - shell: brew install vim
+    - shell: brew install wget
+    - shell: brew install sshrc
+    - shell: brew install fzf
+    - shell: brew install node
     - shell: brew install npm
 
     # - shell: brew install phantomjs # v2 currently does not work with OS X El Capitan, use lines below:
     - shell: npm install phantom phantomjs -g
 
-    - shell: brew install rbenv
-    - file: path=~/.rbenv state=absent
-    - file: src=/usr/local/opt/rbenv dest=~/.rbenv state=link
-    - shell: brew link --force openssl # To avoid using flag --with-openssl-dir=/usr/local/opt/openssl
-
-    - shell: brew install ruby-build
-    - shell: brew install sphinx
-    - shell: brew install the_silver_searcher
-    - shell: brew install vim
-    - shell: brew install wget
-    - shell: brew install node
-    - shell: brew install sshrc
-    - shell: brew install openssl
-    - shell: brew install fzf
+    # elasticsearch plugins
+    - shell: /usr/local/Cellar/elasticsearch/*/libexec/bin/plugin install license
+    - shell: /usr/local/Cellar/elasticsearch/*/libexec/bin/plugin install marvel-agent
+    - shell: kibana plugin --install elastic/sense
+    - shell: kibana plugin --install elasticsearch/marvel/latest
+    - shell: brew services restart elasticsearch
+    - shell: brew services restart kibana
