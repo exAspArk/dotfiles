@@ -16,7 +16,7 @@ Plug 'dyng/ctrlsf.vim'                                  " better text search
 Plug 'kopischke/vim-fetch'                              " open file with line and column number
 Plug 'yegappan/mru'                                     " most recently used files
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
-Plug 'exaspark/vim-open-alternate', { 'branch': 'fix_ruby' }      " open RSpec files
+Plug 'exaspark/vim-open-alternate', { 'branch': 'ruby_lib' }      " open RSpec files
 
 " theme
 Plug 'w0ng/vim-hybrid'                                  " theme
