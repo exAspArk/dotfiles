@@ -15,7 +15,8 @@ Plug 'scrooloose/nerdtree'                              " file tree
 Plug 'dyng/ctrlsf.vim'                                  " better text search
 Plug 'kopischke/vim-fetch'                              " open file with line and column number
 Plug 'yegappan/mru'                                     " most recently used files
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
+Plug 'exaspark/vim-open-alternate', { 'branch': 'ruby_lib' }      " open RSpec files
 
 " theme
 Plug 'w0ng/vim-hybrid'                                  " theme
@@ -65,6 +66,8 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+nnoremap <Leader>o :OpenAlternate<CR>
 
 " run FZF by using Alt + P
 nnoremap π "_:FZF<CR>
