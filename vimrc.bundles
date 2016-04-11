@@ -7,7 +7,7 @@ Plug 'tpope/vim-commentary'                             " comments
 Plug 'tpope/vim-repeat'                                 " repeat more commands with '.'
 Plug 'terryma/vim-multiple-cursors'                     " multiple cursors like in ST
 Plug 'Valloric/YouCompleteMe', { 'on': [] }             " autocomplete
-Plug 'jiangmiao/auto-pairs', { 'on': [] }               " closing brackets
+Plug 'Raimondi/delimitMate', { 'on': [] },              " closing brackets
 Plug 'terryma/vim-expand-region'                        " change visual selection by using '+' / '-'
 
 " navigation
@@ -16,7 +16,6 @@ Plug 'dyng/ctrlsf.vim'                                  " better text search
 Plug 'kopischke/vim-fetch'                              " open file with line and column number
 Plug 'yegappan/mru'                                     " most recently used files
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
-Plug 'exaspark/vim-open-alternate', { 'branch': 'ruby_lib' }      " open RSpec files
 
 " theme
 Plug 'w0ng/vim-hybrid'                                  " theme
@@ -31,8 +30,9 @@ Plug 'airblade/vim-gitgutter'                           " git gutter
 
 " ruby / rails
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }             " ruby
-Plug 'tpope/vim-endwise', { 'for': 'ruby' }             " auto end keyword
+Plug 'tpope/vim-endwise', { 'for': 'ruby', 'on': [] }   " auto end
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }          " run rspec
+Plug 'exaspark/vim-open-alternate', { 'branch': 'ruby_lib', 'for': 'ruby' } " open RSpec files
 
 " clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }        " repl
@@ -84,14 +84,13 @@ let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments = 1
 
-" load YouCompleteMe and auto-pairs only after entering into insert mode, not while starting vim
+" load some plugins after entering into insert mode, not while starting vim
 augroup lazy_load
   autocmd!
-  autocmd! InsertEnter * call plug#load('YouCompleteMe', 'auto-pairs')
+  autocmd! InsertEnter * call plug#load('YouCompleteMe', 'delimitMate', 'vim-endwise')
                       \| if exists('g:loaded_youcompleteme')
                       \|   call youcompleteme#Enable()
                       \| endif
-                      \| call AutoPairsTryInit()
                       \| autocmd! lazy_load
 augroup END
 
