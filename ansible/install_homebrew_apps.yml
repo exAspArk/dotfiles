@@ -41,6 +41,7 @@
     - shell: brew install fzf
     - shell: brew install node
     - shell: brew install npm
+    - shell: brew install unar
 
     # - shell: brew install phantomjs # v2 currently does not work with OS X El Capitan, use lines below:
     - shell: npm install phantom phantomjs -g
