@@ -16,7 +16,7 @@ alias gcd='git checkout develop'
 
 alias gcp='git cherry-pick'
 
-alias gd='git diff'
+alias gd='git diff HEAD'
 
 alias gf='git fetch'
 
@@ -52,3 +52,7 @@ alias grss='git reset --soft HEAD~'
 
 alias gsh='git stash'
 alias gshp='git stash pop'
+
+alias gcln='git clean -fd'
+
+alias gs='git show'
