@@ -4,19 +4,42 @@
     - shell: brew update
     - shell: brew tap homebrew/services # e.g. allow 'brew services start mysql' command
 
-    - shell: brew install git
-    - shell: brew install openssl
-    - shell: brew link --force openssl # To avoid using flag --with-openssl-dir=/usr/local/opt/openssl
-    - shell: brew cask install java # for Elasticsearch
+    # apps
+    - shell: |
+        if ! [[ "$(brew ls --versions {{ item }})" ]] ; then
+          brew install {{ item }}
+        fi
+      with_items:
+        - git
+        - openssl
+        - rbenv
+        - ruby-build
+        - cmake
+        - ctags
+        - go
+        - imagemagick
+        - leiningen
+        - sphinx
+        - the_silver_searcher
+        - vim
+        - wget
+        - sshrc
+        - fzf
+        - node
+        - unar
 
-    # ruby
-    - shell: brew install rbenv
-    - file: path=~/.rbenv state=absent
-    - file: src=/usr/local/opt/rbenv dest=~/.rbenv state=link
-    - shell: brew install ruby-build
+    # java for Elasticsearch
+    - shell: |
+        if ! [[ "$(eval "brew cask list | grep '^java$'")" ]] ; then
+          brew install java
+        fi
 
     # services
-    - shell: brew install {{ item }} && ln -sfv /usr/local/opt/{{ item }}/*.plist ~/Library/LaunchAgents
+    - shell: |
+        if ! [[ "$(brew ls --versions {{ item }})" ]] ; then
+          brew install {{ item }}
+          ln -sfv /usr/local/opt/{{ item }}/*.plist ~/Library/LaunchAgents
+        fi
       with_items:
         - elasticsearch
         - kibana
@@ -28,20 +51,12 @@
         - rabbitmq
         - selenium-server-standalone
 
-    - shell: brew install cmake
-    - shell: brew install ctags
-    - shell: brew install go
-    - shell: brew install imagemagick
-    - shell: brew install leiningen
-    - shell: brew install sphinx
-    - shell: brew install the_silver_searcher
-    - shell: brew install vim
-    - shell: brew install wget
-    - shell: brew install sshrc
-    - shell: brew install fzf
-    - shell: brew install node
-    - shell: brew install npm
-    - shell: brew install unar
+    # to avoid using flag --with-openssl-dir=/usr/local/opt/openssl
+    - shell: brew link --force openssl
+
+    # ruby
+    - file: path=~/.rbenv state=absent
+    - file: src=/usr/local/opt/rbenv dest=~/.rbenv state=link
 
     # - shell: brew install phantomjs # v2 currently does not work with OS X El Capitan, use lines below:
     - shell: npm install phantom phantomjs -g
