@@ -13,6 +13,7 @@ alias gco='git checkout'
 alias gcb='git checkout -b'
 alias gcm='git checkout master'
 alias gcd='git checkout develop'
+alias gcs='git checkout staging'
 
 alias gcp='git cherry-pick'
 
