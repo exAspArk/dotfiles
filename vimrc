@@ -59,10 +59,13 @@ set list listchars=tab:»·,trail:·
 set ttimeout
 set ttimeoutlen=1
 
+" disable sound
+set visualbell t_vb=
+
 augroup vimrcEx
   " clears all the autocmd's for the current group
   autocmd! 
-  
+
   " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
   " inside an event handler (happens when dropping a file on gvim).
@@ -70,7 +73,7 @@ augroup vimrcEx
     \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
-  
+
   autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?                            " make ?s part of words
   autocmd FileType markdown setlocal wrap                                           " automatically wrap for Markdown
