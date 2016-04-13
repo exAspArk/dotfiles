@@ -78,6 +78,10 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
 
+  " highlight trailing whitespaces
+  autocmd InsertLeave * highlight ExtraWhitespace ctermbg=172 guifg=#d78700
+  autocmd InsertEnter * highlight ExtraWhitespace NONE
+
   autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?                            " make ?s part of words
   autocmd FileType markdown setlocal wrap                                           " automatically wrap for Markdown
