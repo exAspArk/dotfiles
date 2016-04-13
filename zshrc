@@ -35,9 +35,8 @@ bindkey '\e[B' history-beginning-search-forward
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # use ag
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore-dir .git -l -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-_fzf_compgen_path() { ag -g "" "$1" }
 
 export MY_PROJECT_PATH="$HOME/Documents/projects"
 # cd to selected directory, by default from NY_PROJECT_PATH

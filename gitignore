@@ -2,7 +2,6 @@
 .DS_Store
 
 *.diff
-.gitignore
 
 *.sublime-project
 *.sublime-workspace
