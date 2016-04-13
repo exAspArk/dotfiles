@@ -23,7 +23,7 @@ set history=500       " sets how many lines of history VIM has to remember
 set nowrap            " don't wrap long lines
 set wildmenu          " visual autocomplete for command menu
 set ignorecase        " /the would find 'the' or 'The', add \C if you want 'the' only
-set smartcase         " while /The would find only 'The' etc. 
+set smartcase         " while /The would find only 'The' etc.
 set nopaste           " enable formatting while pasting
 set clipboard=unnamed " yank to and paste the selection without prepending "*
 set autowrite         " save file before switching a buffer
@@ -62,9 +62,13 @@ set ttimeoutlen=1
 " disable sound
 set visualbell t_vb=
 
+" highlight trailing whitespaces
+highlight ExtraWhitespace ctermbg=172 guifg=#d78700
+match ExtraWhitespace /\s\+$/
+
 augroup vimrcEx
   " clears all the autocmd's for the current group
-  autocmd! 
+  autocmd!
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
@@ -152,7 +156,7 @@ nnoremap <Leader>p Orequire 'pry'; binding.pry<Esc>
 
 " open large files > 10 MB
 let g:LargeFile = 10 * 1024 * 1024
-augroup LargeFile 
+augroup LargeFile
   " files with filesize too large are recognized too (getfsize = -2)
   autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
 augroup END
@@ -167,7 +171,7 @@ endfunction
 
 " create dir for new file
 function s:MKDir(...)
-  if         !a:0 
+  if         !a:0
         \|| isdirectory(a:1)
         \|| filereadable(a:1)
         \|| isdirectory(fnamemodify(a:1, ':p:h'))
