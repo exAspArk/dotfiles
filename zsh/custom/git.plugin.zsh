@@ -54,6 +54,6 @@ alias grss='git reset --soft HEAD~'
 alias gsh='git stash'
 alias gshp='git stash pop'
 
-alias gcln='git clean -fd'
+alias gcl='git reset --hard HEAD'
 
 alias gs='git show'
