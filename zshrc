@@ -26,7 +26,7 @@ chpwd() {
 }
 chpwd
 
-# Load zsh-autosuggestions.
+# load zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward

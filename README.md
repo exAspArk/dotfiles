@@ -24,7 +24,6 @@ make configure_dotfiles
 
 ### Apps
 
-* zsh-autosuggestions
 * Twitter
 * Pocket
 * Degrees
