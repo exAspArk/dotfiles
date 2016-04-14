@@ -27,6 +27,7 @@
         - fzf
         - node
         - unar
+        - python3
 
     # java for Elasticsearch
     - shell: |
@@ -68,3 +69,5 @@
     - shell: kibana plugin --install elasticsearch/marvel/latest
     - shell: brew services restart elasticsearch
     - shell: brew services restart kibana
+
+    - shell: pip3 install howdoi
