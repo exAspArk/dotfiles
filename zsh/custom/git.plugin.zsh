@@ -30,7 +30,7 @@ alias gpt='git push --tags'
 alias gt='git tag'
 
 alias gm='git merge --no-ff'
-alias gmu='git merge upstream/$(git_current_branch)'
+alias gmu='git merge --no-ff upstream/$(git_current_branch)'
 
 alias gr='git remote'
 alias gra='git remote add'
