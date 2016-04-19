@@ -33,7 +33,6 @@ Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }             " ruby
 Plug 'tpope/vim-endwise', { 'for': 'ruby', 'on': [] }   " auto end
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }          " run rspec
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }             " bundle commands and smart ctags
-Plug 'exaspark/vim-open-alternate', { 'branch': 'ruby_lib', 'for': 'ruby' } " open RSpec files
 
 " clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }        " repl
@@ -68,7 +67,16 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
-nnoremap <Leader>o :OpenAlternate<CR>
+" alternate files
+function! AltCommand(path, vim_command)
+  let l:alternate = system("~/.vim/alt/alt " . a:path)
+  if empty(l:alternate)
+    echo "No alternate file for " . a:path . " exists!"
+  else
+    exec a:vim_command . " " . l:alternate
+  endif
+endfunction
+nnoremap <Leader>o :call AltCommand(expand('%'), ':e')<CR>
 
 " run FZF by using Alt + P
 nnoremap π "_:FZF<CR>

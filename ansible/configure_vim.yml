@@ -7,8 +7,9 @@
         - vimrc.bundles
     - file: path=~/.vim/autoload state=directory
     - get_url: url=https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim dest=~/.vim/autoload/plug.vim
-    - command: vim +PlugInstall +qall
-    - command: ~/.vim/plugged/YouCompleteMe/install.py --clang-completer
-    - command: npm -g install instant-markdown-d
-    - command: gem install gem-ctags
-    - command: gem ctags
+    - shell: vim +PlugInstall +qall
+    - shell: ~/.vim/plugged/YouCompleteMe/install.py --clang-completer
+    - shell: git clone git@github.com:cyphactor/alt.git ~/.vim/alt
+    - shell: npm -g install instant-markdown-d
+    - shell: gem install gem-ctags
+    - shell: gem ctags
