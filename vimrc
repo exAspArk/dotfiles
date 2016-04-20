@@ -37,9 +37,10 @@ set hlsearch          " highlight same words while searching with Shift + *
 set number            " show
 set numberwidth=5     " line numbers width
 
-" make it obvious where 100 characters is
+" make it obvious where 120 characters is
 set textwidth=120
 set colorcolumn=+1
+set formatoptions+=w " for wraping long lines without broken words
 
 " softtabs, 2 spaces
 set tabstop=2
@@ -92,6 +93,9 @@ augroup vimrcEx
   autocmd FileType clojure setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,=,<,>,:,$ " customize keywords
   autocmd BufWritePre *.rb,*.coffee,*.yml,*.md,*.rake,*.clj :%s/\s\+$//e            " remove trailing whitespaces
 augroup END
+
+" wrap long lines
+:nnoremap wl gggqG
 
 " Build ctags by using 'gem-ctags' gem
 nnoremap tt :!ctags -R<CR>
