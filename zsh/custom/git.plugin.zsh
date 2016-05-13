@@ -1,4 +1,4 @@
-alias git='nocorrect git'
+if [ -n "$ZSH_VERSION" ]; then alias git='nocorrect git'; fi
 alias g='git'
 
 alias ga='git add'
