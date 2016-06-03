@@ -25,6 +25,7 @@ set wildmenu          " visual autocomplete for command menu
 set ignorecase        " /the would find 'the' or 'The', add \C if you want 'the' only
 set smartcase         " while /The would find only 'The' etc.
 set nopaste           " enable formatting while pasting
+set pastetoggle=<F2>  " switch paste mode
 set clipboard=unnamed " yank to and paste the selection without prepending "*
 set autowrite         " save file before switching a buffer
 set autoindent        " indent
@@ -95,7 +96,7 @@ augroup vimrcEx
 augroup END
 
 " wrap long lines
-:nnoremap wl gggqG
+nnoremap wl gggqG
 
 " Build ctags by using 'gem-ctags' gem
 nnoremap tt :!ctags -R<CR>
