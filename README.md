@@ -31,6 +31,7 @@ make configure_dotfiles
 * Xcode
 * Airmail (deprecated)
 * Sublime Text (deprecated)
+* Franz
 
 ### Google Chrome extensions
 
