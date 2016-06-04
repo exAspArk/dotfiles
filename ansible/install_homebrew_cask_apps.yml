@@ -29,4 +29,7 @@
         - karabiner
         - paragon-ntfs
         - iterm2
+        - keeweb
+        - franz
+        - ccmenu
     - shell: "{{ curdir }}/iterm2/install-settings.sh" # run in Terminal

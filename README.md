@@ -20,23 +20,22 @@ make configure_vim
 make configure_dotfiles
 ```
 
-## Other tools:
+## Other tools and apps:
 
 ### Apps
 
-* Twitter
-* Pocket
-* Degrees
-* CCMenu
-* Xcode
 * Airmail (deprecated)
+* Pocket
 * Sublime Text (deprecated)
-* Franz
+* Twitter
+* Xcode
 
 ### Google Chrome extensions
 
 * AdBlock
+* AngularJS Batarang
 * Disconnect
+* EditThisCookie
 * Flashcontrol
 * Google Dictionary (by Google)
 * HTTPS Everywhere
@@ -44,6 +43,58 @@ make configure_dotfiles
 * Postman
 * Save to Pocket
 * Speed Dial 2
+
+### Android
+
+* 2GIS
+* Authenticator
+* Barcode Scanner
+* Booking.com
+* Bookmate
+* CamScanner
+* Chrome
+* Citymapper
+* Couple
+* Dropbox
+* ES File Explorer
+* Epayments
+* Evernote
+* Facebook
+* Flickr
+* Foursquare
+* Gmail
+* GoPro
+* GoPro Cam Suit
+* Google Hangouts
+* Google Maps
+* Hellenic Bank
+* Keepass2Android
+* MAPS.ME
+* Messenger
+* Money Lover
+* Moscow Parking
+* Pocket
+* Raiffeisen
+* Revolut
+* Sberbank
+* Skype
+* Slack
+* Tinkoff
+* Trello
+* Tube Map
+* Twilight
+* Twitter
+* Viber
+* WhatsApp
+* Xender
+* Yahoo Weather
+* Yandex Metro
+* Yandex Maps
+* Yandex Navi
+* Yandex Taxi
+* Yandex Transport
+* Youtube
+* xFi Locator
 
 ### Sublime Text
 
