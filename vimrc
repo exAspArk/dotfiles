@@ -172,7 +172,6 @@ augroup END
 function LargeFile()
   set eventignore+=FileType " no syntax highlighting etc
   setlocal bufhidden=unload " save memory when other file is viewed
-  setlocal buftype=nowrite " is read-only (write with :w new_filename)
   setlocal undolevels=-1 " no undo possible
   setlocal foldmethod=manual
   setlocal noswapfile
