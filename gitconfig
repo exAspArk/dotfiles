@@ -1,6 +1,10 @@
 [user]
   name = exAspArk
   email = exaspark@gmail.com
+[github]
+  user = exAspArk
+[credential]
+  helper = osxkeychain
 [color]
   ui = true
   diff = auto
@@ -11,23 +15,21 @@
 [core]
   excludesfile = ~/.gitignore
   editor = vim --noplugin
+[diff]
+  compactionHeuristic = true
 [merge]
   ff = only
   strategy = recursive
   strategy-option = patience
 [help]
-  autocorrect = 1
+  autocorrect = true
 [push]
   default = current
-[credential]
-  helper = osxkeychain
 [rerere]
-  enabled = 1
-[github]
-  user = exAspArk
+  enabled = true
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
