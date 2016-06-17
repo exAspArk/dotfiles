@@ -35,11 +35,11 @@ bindkey '\e[B' history-beginning-search-forward
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # use ag
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore-dir .git -l -g ""'
+export FZF_DEFAULT_COMMAND='find . ! -path "*/\.*" -type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export MY_PROJECT_PATH="$HOME/Documents/projects"
 # cd to selected directory, by default from NY_PROJECT_PATH
-fd() { cd "$(find ${1:-$MY_PROJECT_PATH} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m)" }
+fd() { cd "$(find ${1:-$MY_PROJECT_PATH} ! -path '*/\.*' -type d 2> /dev/null | fzf +m)" }
 # edit file
 fe() { v $(fzf) }
