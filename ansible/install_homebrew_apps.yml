@@ -28,6 +28,7 @@
         - node
         - unar
         - python3
+        - findutils # to use gfind with -print option
 
     # java for Elasticsearch
     - shell: |
