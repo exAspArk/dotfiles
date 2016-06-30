@@ -24,6 +24,8 @@ make configure_dotfiles
 
 ### Apps
 
+* Simplenote
+* Keynote
 * Airmail (deprecated)
 * Pocket
 * Sublime Text (deprecated)
@@ -58,7 +60,7 @@ make configure_dotfiles
 * Dropbox
 * ES File Explorer
 * Epayments
-* Evernote
+* Simplenote
 * Facebook
 * Flickr
 * Foursquare
