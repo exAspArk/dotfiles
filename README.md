@@ -26,9 +26,7 @@ make configure_dotfiles
 
 * Simplenote
 * Keynote
-* Airmail (deprecated)
 * Pocket
-* Sublime Text (deprecated)
 * Twitter
 * Xcode
 
@@ -46,9 +44,10 @@ make configure_dotfiles
 * Save to Pocket
 * Speed Dial 2
 
-### Android
+### Android apps
 
 * 2GIS
+* @Voice
 * Authenticator
 * Barcode Scanner
 * Booking.com
@@ -60,7 +59,6 @@ make configure_dotfiles
 * Dropbox
 * ES File Explorer
 * Epayments
-* Simplenote
 * Facebook
 * Flickr
 * Foursquare
@@ -79,6 +77,7 @@ make configure_dotfiles
 * Raiffeisen
 * Revolut
 * Sberbank
+* Simplenote
 * Skype
 * Slack
 * Tinkoff
@@ -90,8 +89,8 @@ make configure_dotfiles
 * WhatsApp
 * Xender
 * Yahoo Weather
-* Yandex Metro
 * Yandex Maps
+* Yandex Metro
 * Yandex Navi
 * Yandex Taxi
 * Yandex Transport
@@ -117,9 +116,3 @@ make configure_dotfiles
 * All Autocomplete
 * lispindent
 * BracketHighlighter
-
-### Widgets
-* iStatNano
-
-### Android applications
-* TODO
