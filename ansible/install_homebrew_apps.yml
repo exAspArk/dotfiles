@@ -30,6 +30,7 @@
         - python3
         - findutils # to use gfind with -print option
         - logstash
+        - elixir
 
     # java for Elasticsearch
     - shell: |
