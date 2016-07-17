@@ -33,6 +33,7 @@ Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }             " ruby
 Plug 'tpope/vim-endwise', { 'for': 'ruby', 'on': [] }   " auto end
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }          " run rspec
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }             " bundle commands and smart ctags
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }      " elixir
 
 " clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }        " repl
