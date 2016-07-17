@@ -38,6 +38,9 @@
           brew install java
         fi
 
+    # to avoid using flag --with-openssl-dir=/usr/local/opt/openssl
+    - shell: brew link --force openssl
+
     # services
     - shell: |
         if ! [[ "$(brew ls --versions {{ item }})" ]] ; then
@@ -55,8 +58,8 @@
         - rabbitmq
         - selenium-server-standalone
 
-    # to avoid using flag --with-openssl-dir=/usr/local/opt/openssl
-    - shell: brew link --force openssl
+    # postgresql
+    - shell: createuser -s postgres
 
     # ruby
     - file: path=~/.rbenv state=absent
