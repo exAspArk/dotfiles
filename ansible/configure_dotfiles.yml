@@ -27,12 +27,11 @@
         - zsh/custom/vim.plugin.zsh
         - zsh/custom/rspec.plugin.zsh
         - zsh/custom/sshrc.plugin.zsh
-        - zsh/sync_history.sh
         - sshrc
 
     - shell: |
-        if ! [[ "$(eval "crontab -l | grep 'sync_history.sh$'")" ]] ; then
-          (crontab -l; echo "*/5 * * * * ~/.zsh/sync_history.sh") | crontab -
+        if ! [[ "$(eval "crontab -l | grep 'zsh_history$'")" ]] ; then
+          (crontab -l; echo "*/5 * * * * cp ~/.zsh_history $BACKUP_PATH/zsh_history") | crontab -
         fi
 
     - git: repo=git@github.com:zsh-users/zsh-autosuggestions.git dest=~/.zsh/zsh-autosuggestions clone=yes update=yes
