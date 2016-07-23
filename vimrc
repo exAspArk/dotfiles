@@ -86,7 +86,7 @@ augroup vimrcEx
 
   autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?                            " make ?s part of words
-  autocmd FileType markdown setlocal wrap                                           " automatically wrap for Markdown
+  autocmd FileType markdown setlocal wrap textwidth=240                             " automatically wrap for Markdown
   autocmd FileType gitcommit setlocal textwidth=72                                  " automatically wrap at 72 characters
   autocmd FileType markdown setlocal spell spelllang=ru_ru,en_us                    " enable spellchecking for Markdown messages
   autocmd FileType gitcommit setlocal spell                                         " enable spellchecking for git commit messages
