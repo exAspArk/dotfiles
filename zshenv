@@ -14,6 +14,8 @@ export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
 export PATH=$PATH:/usr/local/heroku/bin # Added by the Heroku Toolbelt
 
+export BACKUP_DIR=~/Dropbox/_backups
+
 # Load all of your custom configurations from custom/
 for config_file (~/.zsh/custom/*.zsh(N)); do
   source $config_file
