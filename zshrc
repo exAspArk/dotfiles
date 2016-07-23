@@ -12,20 +12,6 @@ plugins=()
 
 source $ZSH/oh-my-zsh.sh
 
-# Custom title for iTerm 2 tab
-export DISABLE_AUTO_TITLE="true"
-function title {
-  echo -ne "\033]0;${PWD##*/}\007"
-}
-
-chpwd() {
-  # Show contents of directory after cd-ing into it
-  l
-  # Show current directory for iTerm tab title
-  title
-}
-chpwd
-
 # load zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '\e[A' history-beginning-search-backward
@@ -34,12 +20,33 @@ bindkey '\e[B' history-beginning-search-forward
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# use ag
+export BACKUP_PATH=~/Dropbox/_backups
+export PROJECT_PATH=~/Documents/projects
+
+# Custom title for iTerm 2 tab
+export DISABLE_AUTO_TITLE="true"
+function title { echo -ne "\033]0;${PWD##*/}\007" }
+
+chpwd() {
+  l # Show contents of directory after cd-ing into it
+  title # Show current directory for iTerm tab title
+}
+
+# use ag for fzf
 export FZF_DEFAULT_COMMAND='gfind . ! -path "./\.*" -type f -printf "%P\n"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-export MY_PROJECT_PATH="$HOME/Documents/projects"
 # cd to selected directory, by default from NY_PROJECT_PATH
-fd() { cd "$(find ${1:-$MY_PROJECT_PATH} ! -path '*/\.*' -type d 2> /dev/null | fzf +m)" }
+fd() { cd "$(find ${1:-$PROJECT_PATH} ! -path '*/\.*' -type d 2> /dev/null | fzf +m)" }
 # edit file
 fe() { v $(fzf) }
+
+# ON LOAD: ####################################################################
+
+# show content and set the curdir in title
+(chpwd &)
+
+# use a new zsh history if it's newer
+(if [[ $BACKUP_PATH/zsh_history -nt ~/.zsh_history ]]; then
+  echo "Synced zsh_history file from backup directory"; cp $BACKUP_PATH/zsh_history ~/.zsh_history;
+fi &)
