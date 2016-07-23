@@ -166,6 +166,12 @@ vnoremap p "_dP
 " add binding.pry line
 nnoremap <Leader>p Orequire 'pry'; binding.pry<Esc>
 
+" use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
 " open large files > 10 MB
 let g:LargeFile = 10 * 1024 * 1024
 augroup LargeFile
@@ -182,18 +188,32 @@ endfunction
 
 " create dir for new file
 function s:MKDir(...)
-  if         !a:0
-        \|| isdirectory(a:1)
-        \|| filereadable(a:1)
-        \|| isdirectory(fnamemodify(a:1, ':p:h'))
+  if !a:0 || isdirectory(a:1) || filereadable(a:1) || isdirectory(fnamemodify(a:1, ':p:h'))
     return
   endif
   return mkdir(fnamemodify(a:1, ':p:h'), 'p')
 endfunction
 command -bang -bar -nargs=? -complete=file E :call s:MKDir(<f-args>) | e<bang> <args>
 
-" use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-endif
+" show list of all filetypes
+function SortUnique(list, ...)
+  let dictionary = {}
+  for i in a:list
+    let dictionary[string(i)] = i
+  endfor
+  if ( exists( 'a:1' ) )
+    let result = sort( values( dictionary ), a:1 )
+  else
+    let result = sort( values( dictionary ) )
+  endif
+  return result
+endfunction
+command Filetypes execute "echo
+      \ join(
+        \ SortUnique(
+          \ map(
+            \ split(
+              \ globpath(&rtp, 'ftplugin/*.vim') . globpath(&rtp, 'syntax/*.vim'),
+              \ '\n'),
+            \ \"fnamemodify(v:val, ':t:r')\")),
+        \'\n')"
