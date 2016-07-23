@@ -3,19 +3,22 @@ install_ansible:
 	sudo pip install ansible
 
 install_homebrew:
-	ansible-playbook ansible/install_homebrew.yml -i ansible/local -vv -e curdir=$(CURDIR)
+	make play PLAYBOOK=ansible/install_homebrew.yml
 
 install_homebrew_apps:
-	ansible-playbook ansible/install_homebrew_apps.yml -i ansible/local -vv -e curdir=$(CURDIR)
+	make play PLAYBOOK=ansible/install_homebrew_apps.yml
 
 install_oh_my_zsh:
-	ansible-playbook ansible/install_oh_my_zsh.yml -i ansible/local -vv -e curdir=$(CURDIR)
+	make play PLAYBOOK=ansible/install_oh_my_zsh.yml
 
 install_homebrew_cask_apps:
-	ansible-playbook ansible/install_homebrew_cask_apps.yml -i ansible/local -vv -e curdir=$(CURDIR)
+	make play PLAYBOOK=ansible/install_homebrew_cask_apps.yml
 
 configure_vim:
-	ansible-playbook ansible/configure_vim.yml -i ansible/local -vv -e curdir=$(CURDIR)
+	make play PLAYBOOK=ansible/configure_vim.yml
 
 configure_dotfiles:
-	ansible-playbook ansible/configure_dotfiles.yml -i ansible/local -vv -e curdir=$(CURDIR) --ask-become-pass
+	make play PLAYBOOK=ansible/configure_dotfiles.yml OPTIONS=--ask-become-pass
+
+play:
+	ansible-playbook $(PLAYBOOK) -i ansible/local -vv -e curdir=$(CURDIR) $(OPTIONS)

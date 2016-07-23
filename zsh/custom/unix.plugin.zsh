@@ -1,3 +1,4 @@
 alias l="ls -al"
 alias mkdir="mkdir -p"
-alias permission='stat -f "%OLp"'
+alias perm='stat -f "%OLp"'
+alias psa='ps auxfww'
