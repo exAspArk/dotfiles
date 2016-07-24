@@ -9,7 +9,6 @@
     - get_url: url=https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim dest=~/.vim/autoload/plug.vim
     - shell: vim +PlugInstall +qall
     - shell: ~/.vim/plugged/YouCompleteMe/install.py --clang-completer
-    - shell: git clone git@github.com:cyphactor/alt.git ~/.vim/alt
     - shell: npm -g install instant-markdown-d
     - shell: gem install gem-ctags
     - shell: gem ctags

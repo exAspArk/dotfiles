@@ -70,7 +70,7 @@ map <Leader>a :call RunAllSpecs()<CR>
 
 " alternate files
 function! AltCommand(path, vim_command)
-  let l:alternate = system("find . -name '*.rb' -type f -print0 | ~/.vim/alt/alt " . a:path)
+  let l:alternate = system("find . -name '*.rb' -type f -print0 | alt " . a:path)
   if empty(l:alternate)
     echo "No alternate file for " . a:path . " exists!"
   else

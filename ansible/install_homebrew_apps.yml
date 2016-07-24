@@ -31,6 +31,10 @@
         - logstash
         - elixir
 
+    # alt
+    - shell: brew tap "codebreakdown/homebrew-oss"
+    - shell: brew install codebreakdown/oss/alt
+
     # java for Elasticsearch
     - shell: |
         if ! [[ "$(eval "brew cask list | grep '^java$'")" ]] ; then
