@@ -48,6 +48,6 @@ export FZF_DEFAULT_COMMAND='gfind . ! -path "./\.*" -type f -printf "%P\n"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # cd to selected directory, by default from NY_PROJECT_PATH
-fd() { cd "$(find ${1:-$PROJECT_PATH} ! -path '*/\.*' -type d 2> /dev/null | fzf +m)" }
+fd() { cd "$(find ${1:-$PROJECT_PATH} ! -path '*/\.*' ! -path '*/node_modules/*' -type d 2> /dev/null | fzf +m)" }
 # edit file
 fe() { v $(fzf) }
