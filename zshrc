@@ -1,5 +1,12 @@
-export BACKUP_PATH=~/Dropbox/_backups
-export PROJECT_PATH=~/Documents/projects
+# Set name of the theme to load. Look in ~/.oh-my-zsh/themes/
+ZSH_THEME="exaspark"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=()
+
+source $ZSH/oh-my-zsh.sh
 
 # Custom title for iTerm 2 tab
 export DISABLE_AUTO_TITLE="true"
@@ -27,16 +34,6 @@ chpwd # emulate cd action
 (sync_zsh_history &)
 
 # #############################################################################
-
-# Set name of the theme to load. Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="arrow"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=()
-
-source $ZSH/oh-my-zsh.sh
 
 # load zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

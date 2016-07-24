@@ -27,7 +27,6 @@
         - fzf
         - node
         - unar
-        - python3
         - findutils # to use gfind with -print option
         - logstash
         - elixir
@@ -75,5 +74,3 @@
     - shell: kibana plugin --install elasticsearch/marvel/latest
     - shell: brew services restart elasticsearch
     - shell: brew services restart kibana
-
-    - shell: pip3 install howdoi

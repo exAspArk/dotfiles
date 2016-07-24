@@ -24,3 +24,6 @@ unset config_file
 if command -v rbenv &>/dev/null ; then
   eval "$(rbenv init - --no-rehash)"
 fi
+
+export BACKUP_PATH=~/Dropbox/_backups
+export PROJECT_PATH=~/Documents/projects
