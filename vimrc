@@ -106,7 +106,7 @@ nnoremap tt :!ctags -R<CR>
 nnoremap rr :redraw!<CR>
 
 " replace text in a project with sed
-nnoremap re :!find . -name '*' -type f -print0 \| xargs -0 sed -i '' 's,search,replace,g'
+nnoremap re :!gfind . -name '*' -type f -print0 \| xargs -0 sed -i '' 's,search,replace,g'
 
 " Clear current search highlight by double tapping //
 nnoremap // :noh<CR>
