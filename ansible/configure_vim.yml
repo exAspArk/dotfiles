@@ -12,7 +12,7 @@
 
     - stat: path=~/.vim/plugged/YouCompleteMe/third_party/ycmd/ycm_core.so
       register: ycm_core
-    - shell: ~/.vim/plugged/YouCompleteMe/install.py --gocode-completer --tern-completer
+    - shell: ~/.vim/plugged/YouCompleteMe/install.py --clang-completer --gocode-completer --tern-completer
       when: ycm_core.stat.exists == False
 
     - shell: npm -g install instant-markdown-d
