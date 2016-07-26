@@ -36,6 +36,7 @@ set hlsearch          " highlight same words while searching with Shift + *
 
 " line numbers
 set number            " show
+set cursorline        " and current line
 set numberwidth=5     " line numbers width
 
 " make it obvious where 120 characters is
@@ -65,8 +66,13 @@ set ttimeoutlen=1
 set visualbell t_vb=
 
 " highlight trailing whitespaces
-highlight ExtraWhitespace ctermbg=172 guifg=#d78700
+hi ExtraWhitespace ctermbg=172 guifg=#d78700
 match ExtraWhitespace /\s\+$/
+
+" highlight line number only
+hi CursorLine NONE
+hi CursorLineNr term=bold ctermfg=245 gui=bold guifg=#8a8a8a
+hi LineNr ctermfg=238 guifg=#444444
 
 augroup vimrcEx
   " clears all the autocmd's for the current group
@@ -81,8 +87,8 @@ augroup vimrcEx
     \ endif
 
   " highlight trailing whitespaces
-  autocmd InsertLeave * highlight ExtraWhitespace ctermbg=172 guifg=#d78700
-  autocmd InsertEnter * highlight ExtraWhitespace NONE
+  autocmd InsertLeave * hi ExtraWhitespace ctermbg=172 guifg=#d78700
+  autocmd InsertEnter * hi ExtraWhitespace NONE
 
   autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?                            " make ?s part of words
