@@ -3,7 +3,7 @@
   tasks:
     - shell: |
         if ! [[ "$(eval "brew cask list | grep '^{{ item }}$'")" ]] ; then
-          brew install {{ item }}
+          brew cask install {{ item }}
         fi
       with_items:
         - google-chrome

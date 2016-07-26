@@ -4,6 +4,10 @@
     - shell: brew update
     - shell: brew tap homebrew/services # e.g. allow 'brew services start mysql' command
 
+    # alt
+    - shell: brew tap "codebreakdown/homebrew-oss"
+    - shell: brew install codebreakdown/oss/alt
+
     # apps
     - shell: |
         if ! [[ "$(brew ls --versions {{ item }})" ]] ; then
@@ -31,15 +35,12 @@
         - logstash
         - elixir
 
-    # alt
-    - shell: brew tap "codebreakdown/homebrew-oss"
-    - shell: brew install codebreakdown/oss/alt
-
     # java for Elasticsearch
-    - shell: |
-        if ! [[ "$(eval "brew cask list | grep '^java$'")" ]] ; then
-          brew install java
-        fi
+    - shell: brew cask list | grep '^java$'
+      ignore_errors: true
+      register: java_exists
+    - shell: java_exists
+      when: java_exists|failed
 
     # to avoid using flag --with-openssl-dir=/usr/local/opt/openssl
     - shell: brew link --force openssl
@@ -63,6 +64,7 @@
 
     # postgresql
     - shell: createuser -s postgres
+      ignore_errors: true
 
     # ruby
     - file: path=~/.rbenv state=absent
@@ -72,9 +74,29 @@
     - shell: npm install phantom phantomjs -g
 
     # elasticsearch plugins
+    - shell: /usr/local/Cellar/elasticsearch/*/libexec/bin/plugin list | grep 'license$'
+      ignore_errors: true
+      register: license_exists
     - shell: /usr/local/Cellar/elasticsearch/*/libexec/bin/plugin install license
+      when: license_exists|failed
+
+    - shell: /usr/local/Cellar/elasticsearch/*/libexec/bin/plugin list | grep 'marvel-agent$'
+      ignore_errors: true
+      register: marvel_agent_exists
     - shell: /usr/local/Cellar/elasticsearch/*/libexec/bin/plugin install marvel-agent
+      when: marvel_agent_exists|failed
+
+    - shell: kibana plugin -l | grep '^sense$'
+      ignore_errors: true
+      register: sense_exists
     - shell: kibana plugin --install elastic/sense
+      when: sense_exists|failed
+
+    - shell: kibana plugin -l | grep '^marvel$'
+      ignore_errors: true
+      register: marvel_exists
     - shell: kibana plugin --install elasticsearch/marvel/latest
+      when: marvel_exists|failed
+
     - shell: brew services restart elasticsearch
     - shell: brew services restart kibana

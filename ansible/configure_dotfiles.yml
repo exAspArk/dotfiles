@@ -4,11 +4,8 @@
     - file: path=/etc/zprofile state=absent
       become: yes
       become_user: root
-    - file: path=/etc/zprofile state=touch owner=root group=wheel mode=0444
-      become: yes
-      become_user: root
 
-    - file: path=~/.zsh state=absent
+    - file: path=~/.zsh state=directory
     - file: path=~/.zsh/custom state=directory
     - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link
       with_items:
@@ -31,10 +28,11 @@
 
     - file: src={{ curdir }}/zsh/themes/exaspark.zsh-theme dest=~/.oh-my-zsh/themes/exaspark.zsh-theme state=link
 
-    - shell: |
-        if ! [[ "$(eval "crontab -l | grep 'zsh_history$'")" ]] ; then
-          (crontab -l; echo "*/15 * * * * cp -p ~/.zsh_history $BACKUP_PATH/zsh_history") | crontab -
-        fi
+    - shell: crontab -l | grep 'zsh_history$'
+      ignore_errors: true
+      register: zsh_history_scheduled
+    - shell: (crontab -l; echo "*/15 * * * * cp -p ~/.zsh_history $BACKUP_PATH/zsh_history") | crontab -
+      when: zsh_history_scheduled|failed
 
     - git: repo=git@github.com:zsh-users/zsh-autosuggestions.git dest=~/.zsh/zsh-autosuggestions clone=yes update=no
 

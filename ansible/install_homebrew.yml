@@ -1,7 +1,15 @@
 ---
 - hosts: all
   tasks:
-    - get_url: url=https://raw.githubusercontent.com/Homebrew/install/master/install dest=/tmp/homebrew_install.rb
-    - command: ruby /tmp/homebrew_install.rb
+    - shell: brew -v
+      register: brew_exists
       ignore_errors: yes
-    - command: rm /tmp/homebrew_install.rb
+
+    - get_url: url=https://raw.githubusercontent.com/Homebrew/install/master/install dest=/tmp/homebrew_install.rb
+      when: brew_exists|failed
+
+    - shell: ruby /tmp/homebrew_install.rb
+      when: brew_exists|failed
+
+    - file: path=/tmp/homebrew_install.rb state=absent
+      when: brew_exists|failed

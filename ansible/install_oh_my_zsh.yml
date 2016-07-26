@@ -1,7 +1,14 @@
 ---
 - hosts: all
   tasks:
-    - get_url: url=https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh dest=/tmp/oh_my_zsh_install.sh mode=0744
-    - command: sh -c /tmp/oh_my_zsh_install.sh
+    - shell: echo $ZSH_VERSION
       ignore_errors: yes
-    - command: rm /tmp/oh_my_zsh_install.sh
+
+    - get_url: url=https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh dest=/tmp/oh_my_zsh_install.sh mode=0744
+      when: zsh_version.stdout
+
+    - shell: sh -c /tmp/oh_my_zsh_install.sh
+      when: zsh_version.stdout
+
+    - shell: rm /tmp/oh_my_zsh_install.sh
+      when: zsh_version.stdout
