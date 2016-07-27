@@ -36,7 +36,6 @@ set hlsearch          " highlight same words while searching with Shift + *
 
 " line numbers
 set number            " show
-set cursorline        " and current line
 set numberwidth=5     " line numbers width
 
 " make it obvious where 120 characters is
@@ -69,10 +68,8 @@ set visualbell t_vb=
 hi ExtraWhitespace ctermbg=172 guifg=#d78700
 match ExtraWhitespace /\s\+$/
 
-" highlight line number only
-hi CursorLine NONE
-hi CursorLineNr term=bold ctermfg=245 gui=bold guifg=#8a8a8a
-hi LineNr ctermfg=238 guifg=#444444
+" make line number brighter
+hi LineNr ctermfg=240 guifg=#585858
 
 augroup vimrcEx
   " clears all the autocmd's for the current group
