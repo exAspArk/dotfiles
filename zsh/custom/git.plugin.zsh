@@ -52,6 +52,8 @@ alias grs='git reset'
 alias grsh='git reset --hard'
 alias grss='git reset --soft HEAD~'
 
+alias grv='git revert'
+
 alias gsh='git stash'
 alias gshp='git stash pop'
 
