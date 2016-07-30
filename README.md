@@ -32,17 +32,17 @@ make configure_dotfiles
 
 ### Google Chrome extensions
 
-* AdBlock
 * AngularJS Batarang
-* Disconnect
 * EditThisCookie
 * Flashcontrol
+* Ghostery
 * Google Dictionary (by Google)
 * HTTPS Everywhere
 * JSON Formatter
 * Postman
 * Save to Pocket
 * Speed Dial 2
+* uBlock
 
 ### Android apps
 
