@@ -47,7 +47,6 @@ make configure_dotfiles
 ### Android apps
 
 * 2GIS
-* @Voice
 * Authenticator
 * Barcode Scanner
 * Booking.com
@@ -57,45 +56,47 @@ make configure_dotfiles
 * Citymapper
 * Couple
 * Dropbox
-* ES File Explorer
 * Epayments
+* ES File Explorer
 * Facebook
 * Flickr
 * Foursquare
 * Gmail
 * GoPro
-* GoPro Cam Suit
-* Google Hangouts
-* Google Maps
+* Hangouts
 * Hellenic Bank
+* Hipchat
 * Keepass2Android
+* Maps (Yandex)
 * MAPS.ME
-* Messenger
+* Messenger (Facebook)
+* Metro (Yandex)
 * Money Lover
 * Moscow Parking
+* Navigator
 * Pocket
 * Raiffeisen
 * Revolut
-* Sberbank
 * Simplenote
 * Skype
 * Slack
+* Taxi (Yandex)
 * Tinkoff
+* Translate
+* Transport (Yandex)
 * Trello
 * Tube Map
 * Twilight
 * Twitter
 * Viber
+* Weather (Yahoo!)
 * WhatsApp
 * Xender
-* Yahoo Weather
-* Yandex Maps
-* Yandex Metro
-* Yandex Navi
-* Yandex Taxi
-* Yandex Transport
-* Youtube
 * xFi Locator
+* Yandex.Navi
+* Youtube
+* Сбербанк
+* @Voice
 
 ### Sublime Text
 
