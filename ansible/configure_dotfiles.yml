@@ -9,6 +9,7 @@
     - file: path=~/.zsh/custom state=directory
     - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link
       with_items:
+        - ansible.cfg
         - irbrc
         - gemrc
         - gitconfig
