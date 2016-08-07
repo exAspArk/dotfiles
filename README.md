@@ -39,7 +39,6 @@ make configure_dotfiles
 * Google Dictionary (by Google)
 * HTTPS Everywhere
 * JSON Formatter
-* MightyText
 * Postman
 * Save to Pocket
 * Speed Dial 2
@@ -72,7 +71,6 @@ make configure_dotfiles
 * MAPS.ME
 * Messenger (Facebook)
 * Metro (Yandex)
-* MightyText
 * Money Lover
 * Moscow Parking
 * Navigator
@@ -90,6 +88,7 @@ make configure_dotfiles
 * Twilight
 * Twitter
 * Viber
+* VLC
 * Weather (Yahoo!)
 * WhatsApp
 * Xender
