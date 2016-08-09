@@ -29,11 +29,10 @@
 
     - file: src={{ curdir }}/zsh/themes/exaspark.zsh-theme dest=~/.oh-my-zsh/themes/exaspark.zsh-theme state=link
 
-    - shell: crontab -l | grep 'zsh_history$'
-      ignore_errors: true
-      register: zsh_history_scheduled
-    - shell: (crontab -l; echo "*/15 * * * * cp -p ~/.zsh_history $BACKUP_PATH/zsh_history") | crontab -
-      when: zsh_history_scheduled|failed
+    - cron:
+        name: "Backup configs"
+        minute: "0" # every hour
+        job: "cd {{ curdir }} && ansible-playbook ansible/backup_configs.yml -i ansible/local"
 
     - git: repo=git@github.com:zsh-users/zsh-autosuggestions.git dest=~/.zsh/zsh-autosuggestions clone=yes update=no
 

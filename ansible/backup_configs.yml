@@ -1,0 +1,23 @@
+---
+- hosts: all
+  tasks:
+    - set_fact: backup_path={{ lookup('env', 'BACKUP_PATH') }}
+
+    - stat: path=~/.zsh_history
+      register: zsh_history
+
+    - stat: path={{ backup_path }}/zsh_history
+      register: backup_zsh_history
+
+    - set_fact: newer_zsh_history={{ backup_zsh_history.stat.exists and zsh_history.stat.ctime > backup_zsh_history.stat.ctime }}
+
+    - file: path={{ backup_path }}/zsh_history state=absent
+      when: newer_zsh_history
+
+    - pause: seconds=10
+      when: newer_zsh_history
+
+    - copy: src=~/.zsh_history dest={{ backup_path }}/zsh_history
+      when: newer_zsh_history or not backup_zsh_history.stat.exists
+
+    - synchronize: src=~/.ssh/ dest={{ backup_path }}/ssh times=yes recursive=yes rsync_opts="-u"
