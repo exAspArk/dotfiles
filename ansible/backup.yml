@@ -1,8 +1,6 @@
 ---
 - hosts: all
   tasks:
-    - set_fact: backup_path={{ lookup('env', 'BACKUP_PATH') }}
-
     - stat: path=~/.zsh_history
       register: zsh_history
 

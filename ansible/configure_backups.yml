@@ -18,5 +18,5 @@
         minute: "0" # every hour
         job: >
           cd {{ curdir }} &&
-          /usr/local/bin/ansible-playbook ansible/backup.yml -i ansible/local 2>&1 |
+          /usr/local/bin/ansible-playbook ansible/backup.yml -i ansible/local -e backup_path={{ lookup('env', 'BACKUP_PATH') }} 2>&1 |
           /usr/bin/logger -p cron.info
