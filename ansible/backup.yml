@@ -21,3 +21,9 @@
       when: newer_zsh_history or not backup_zsh_history.stat.exists
 
     - synchronize: src=~/.ssh/ dest={{ backup_path }}/ssh times=yes recursive=yes rsync_opts="-u"
+
+    - synchronize:
+        src: '~/Library/Application Support/Sequel Pro/Data/Favorites.plist'
+        dest: '{{ backup_path }}/SequelProFavorites.plist'
+        times: yes
+        rsync_opts: "-u"
