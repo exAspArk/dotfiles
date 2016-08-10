@@ -3,7 +3,7 @@
   tasks:
     - file: path=/etc/zprofile state=absent
       become: yes
-      become_user: root
+      become_method: sudo
 
     - file: path=~/.zsh state=directory
     - file: path=~/.zsh/custom state=directory
@@ -33,6 +33,18 @@
         name: "Backup configs"
         minute: "0" # every hour
         job: "cd {{ curdir }} && ansible-playbook ansible/backup_configs.yml -i ansible/local"
+
+    - lineinfile:
+        dest: "/etc/syslog.conf"
+        regexp: 'cron\.\* '
+        line: "cron.*      /var/log/syslog.cron.log"
+      become: yes
+      become_method: sudo
+    - shell: >
+        launchctl unload /System/Library/LaunchDaemons/com.apple.syslogd.plist &&
+        launchctl load /System/Library/LaunchDaemons/com.apple.syslogd.plist
+      become: yes
+      become_method: sudo
 
     - git: repo=git@github.com:zsh-users/zsh-autosuggestions.git dest=~/.zsh/zsh-autosuggestions clone=yes update=no
 

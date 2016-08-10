@@ -18,7 +18,7 @@ configure_vim:
 	make play PLAYBOOK=ansible/configure_vim.yml
 
 configure_dotfiles:
-	make play PLAYBOOK=ansible/configure_dotfiles.yml OPTIONS=--ask-become-pass
+	make play PLAYBOOK=ansible/configure_dotfiles.yml
 
 play:
-	ansible-playbook $(PLAYBOOK) -i ansible/local -vv -e curdir=$(CURDIR) $(OPTIONS)
+	ansible-playbook $(PLAYBOOK) -i ansible/local -vv -e curdir=$(CURDIR)
