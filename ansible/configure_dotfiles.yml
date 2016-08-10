@@ -29,23 +29,6 @@
 
     - file: src={{ curdir }}/zsh/themes/exaspark.zsh-theme dest=~/.oh-my-zsh/themes/exaspark.zsh-theme state=link
 
-    - cron:
-        name: "Backup configs"
-        minute: "0" # every hour
-        job: "cd {{ curdir }} && ansible-playbook ansible/backup_configs.yml -i ansible/local"
-
-    - lineinfile:
-        dest: "/etc/syslog.conf"
-        regexp: 'cron\.\* '
-        line: "cron.*      /var/log/syslog.cron.log"
-      become: yes
-      become_method: sudo
-    - shell: >
-        launchctl unload /System/Library/LaunchDaemons/com.apple.syslogd.plist &&
-        launchctl load /System/Library/LaunchDaemons/com.apple.syslogd.plist
-      become: yes
-      become_method: sudo
-
     - git: repo=git@github.com:zsh-users/zsh-autosuggestions.git dest=~/.zsh/zsh-autosuggestions clone=yes update=no
 
     - file: path=~/.sshrc.d state=directory

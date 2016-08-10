@@ -18,6 +18,7 @@ make install_homebrew_cask_apps
 
 make configure_vim
 make configure_dotfiles
+make configure_backups
 ```
 
 ## Other tools and apps:

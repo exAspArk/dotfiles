@@ -1,0 +1,22 @@
+---
+- hosts: all
+  tasks:
+    - lineinfile:
+        dest: "/etc/syslog.conf"
+        regexp: 'cron\.\* '
+        line: "cron.*      /var/log/syslog.cron.log"
+      become: yes
+      become_method: sudo
+    - shell: >
+        launchctl unload /System/Library/LaunchDaemons/com.apple.syslogd.plist &&
+        launchctl load /System/Library/LaunchDaemons/com.apple.syslogd.plist
+      become: yes
+      become_method: sudo
+
+    - cron:
+        name: "Backup configs"
+        minute: "0" # every hour
+        job: >
+          cd {{ curdir }} &&
+          /usr/local/bin/ansible-playbook ansible/backup.yml -i ansible/local 2>&1 |
+          /usr/bin/logger -p cron.info
