@@ -55,6 +55,9 @@ nnoremap ® :MRU<CR>
 map <leader><leader> :NERDTreeToggle<CR>
 " open current file's path
 map <leader>c :NERDTreeFind<CR>
+" cd by updating NERDTree current directory as well
+command -bar -nargs=1 -complete=file CD execute ":cd " .
+  \ fnamemodify(<q-args>, ':p:h') . " | NERDTree " . fnamemodify(<q-args>, ':p:h')
 
 " search with CtrlSF
 nnoremap <C-f> "_:CtrlSF 
