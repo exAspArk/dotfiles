@@ -32,4 +32,6 @@
         - keeweb
         - franz
         - ccmenu
+        - zoomus
+        - typora
     - shell: "{{ curdir }}/iterm2/install-settings.sh" # run in Terminal
