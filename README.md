@@ -90,7 +90,7 @@ make configure_backups
 * Twitter
 * Viber
 * VLC
-* Weather (Yahoo!)
+* Weather (Yandex)
 * WhatsApp
 * Xender
 * xFi Locator
@@ -98,23 +98,3 @@ make configure_backups
 * Youtube
 * Сбербанк
 * @Voice
-
-### Sublime Text
-
-* Better CoffeeScript
-* ChangeQuotes
-* git
-* gitgutter
-* indent xml
-* pretty json
-* rails last migration
-* path tools
-* github tool
-* markdown preview
-* rspec
-* FileBrowse
-* SublimeREPL
-* Tag
-* All Autocomplete
-* lispindent
-* BracketHighlighter
