@@ -71,6 +71,9 @@
     - file: path=~/.rbenv state=absent
     - file: src=/usr/local/opt/rbenv dest=~/.rbenv state=link
 
+    # computer stats
+    - shell: gem install iStats
+
     # - shell: brew install phantomjs # v2 currently does not work with OS X El Capitan, use lines below:
     - shell: npm install phantom phantomjs -g
 
