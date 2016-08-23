@@ -22,7 +22,6 @@
         - licecap # record gifs from screen
         - libreoffice
         - cyberduck
-        - slack
         - android-file-transfer
         - rescuetime
         - pixlr
@@ -34,4 +33,5 @@
         - ccmenu
         - zoomus
         - typora
+        - spectacle
     - shell: "{{ curdir }}/iterm2/install-settings.sh" # run in Terminal
