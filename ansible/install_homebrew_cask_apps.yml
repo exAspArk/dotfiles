@@ -34,4 +34,5 @@
         - zoomus
         - typora
         - spectacle
+        - go2shell
     - shell: "{{ curdir }}/iterm2/install-settings.sh" # run in Terminal
