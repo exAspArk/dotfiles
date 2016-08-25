@@ -94,7 +94,7 @@ make configure_backups
 * Twitter
 * Viber
 * VLC
-* Weather (Yandex)
+* Weather (Yahoo!)
 * WhatsApp
 * Xender
 * xFi Locator
