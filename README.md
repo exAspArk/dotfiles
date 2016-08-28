@@ -62,7 +62,6 @@ make configure_backups
 * Couple
 * Dropbox
 * Epayments
-* ES File Explorer
 * Facebook
 * Flickr
 * Foursquare
@@ -85,6 +84,7 @@ make configure_backups
 * Simplenote
 * Skype
 * Slack
+* Solid Explorer
 * Taxi (Yandex)
 * Tinkoff
 * Translate
