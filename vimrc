@@ -1,11 +1,12 @@
 let mapleader = " "
 
+syntax on " enable syntax highlighting
+
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
 filetype plugin indent on " required to detect filetype
-syntax on                 " enable syntax highlighting
 
 " theme
 set t_Co=256
