@@ -59,7 +59,7 @@ map <leader>c :NERDTreeFind<CR>
 " cd by updating NERDTree current directory and iTerm title
 command -bar -nargs=1 -complete=file CD execute ":cd " . fnamemodify(<q-args>, ':p:h') .
   \ " | NERDTree " . fnamemodify(<q-args>, ':p:h') . " | NERDTreeToggle" .
-  \ " | :silent !title" | execute ":redraw!"
+  \ " | :silent !title_pwd" | execute ":redraw!"
 
 " search with CtrlSF
 nnoremap <C-f> "_:CtrlSF 
