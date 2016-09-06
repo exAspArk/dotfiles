@@ -27,3 +27,6 @@ fi
 
 export BACKUP_PATH=~/Dropbox/_backups
 export PROJECT_PATH=~/Documents/projects
+
+# title function for iTerm
+title() { echo -ne "\033]0;${PWD##*/}\007" }

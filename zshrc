@@ -10,7 +10,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Custom title for iTerm 2 tab
 export DISABLE_AUTO_TITLE="true"
-title() { echo -ne "\033]0;${PWD##*/}\007" }
 
 # after cd hook
 chpwd() {
