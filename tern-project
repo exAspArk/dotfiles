@@ -10,6 +10,7 @@
     "requirejs": {
       "baseURL": "./",
       "paths": {}
-    }
+    },
+    "node": {}
   }
 }

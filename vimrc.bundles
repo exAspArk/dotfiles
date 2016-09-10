@@ -111,8 +111,12 @@ augroup lazy_load
                       \|   call youcompleteme#Enable()
                       \| endif
                       \| autocmd! lazy_load
+augroup END
+
+augroup custom_types
+  autocmd!
   autocmd FileType javascript call plug#load('yajs.vim', 'vim-jsx')
-                      \| execute 'autocmd! lazy_load'
+                      \| execute 'autocmd! custom_types'
                       \| doautocmd FileType
 augroup END
 
