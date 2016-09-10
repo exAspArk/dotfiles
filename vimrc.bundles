@@ -36,8 +36,8 @@ Plug 'tpope/vim-bundler', { 'for': 'ruby' }             " bundle commands and sm
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }      " elixir
 
 " js / jsx / html
-Plug 'othree/yajs.vim', { 'for': ['javascript'] }       " javascript
-Plug 'mxw/vim-jsx', { 'for': ['javascript'] }           " jsx
+Plug 'othree/yajs.vim', { 'for': [] }                   " javascript
+Plug 'mxw/vim-jsx', { 'for': [] }                       " jsx
 Plug 'valloric/MatchTagAlways', { 'for': ['html', 'javascript.jsx'] } " highlight match tags
 
 " clojure
@@ -103,7 +103,7 @@ let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments = 1
 
-" load some plugins after entering into insert mode, not while starting vim
+" Plug load some plugins not while starting vim
 augroup lazy_load
   autocmd!
   autocmd! InsertEnter * call plug#load('YouCompleteMe', 'delimitMate', 'vim-endwise')
@@ -111,6 +111,9 @@ augroup lazy_load
                       \|   call youcompleteme#Enable()
                       \| endif
                       \| autocmd! lazy_load
+  autocmd FileType javascript call plug#load('yajs.vim', 'vim-jsx')
+                      \| execute 'autocmd! lazy_load'
+                      \| doautocmd FileType
 augroup END
 
 " status line
