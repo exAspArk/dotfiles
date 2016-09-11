@@ -141,10 +141,6 @@ inoremap ˚ <Esc>:m .-2<CR>==gi
 vnoremap ∆ :m '>+1<CR>gv=gv
 vnoremap ˚ :m '<-2<CR>gv=gv
 
-" move lines left / right and retain the visual selection
-vnoremap > >gv
-vnoremap < <gv
-
 " copy relative filepath
 nnoremap cP :let @+ = expand("%")<CR>
 " copy full filepath
