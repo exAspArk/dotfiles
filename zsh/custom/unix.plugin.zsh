@@ -3,3 +3,4 @@ alias mkdir="mkdir -p"
 alias perm='stat -f "%OLp"'
 alias p='ps auxfww'
 alias c='cat'
+alias m='make'
