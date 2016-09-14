@@ -154,7 +154,7 @@ nnoremap ∑ :bd<CR>
 " format xml
 nnoremap fx :%!xmllint --format --encode UTF-8 -<CR>
 " format json
-nnoremap fj :%!python -m json.tool<CR>
+nnoremap fj :%! cat % \| python -c "import json,sys; print json.dumps(json.load(sys.stdin), indent=2, ensure_ascii=False, separators=(',', ':')).encode('utf8')"<CR><CR>
 
 " save file with Alt + s
 " note that remapping C-s requires flow control to be disabled, e.g. in .bashrc or .zshrc
