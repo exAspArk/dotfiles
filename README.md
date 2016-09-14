@@ -39,6 +39,7 @@ make configure_backups
 
 * AngularJS Batarang
 * EditThisCookie
+* Falcon
 * Flashcontrol
 * Ghostery
 * Google Dictionary (by Google)
