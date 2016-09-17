@@ -38,6 +38,7 @@ make configure_backups
 ### Google Chrome extensions
 
 * AngularJS Batarang
+* React Developer Tools
 * EditThisCookie
 * Falcon
 * Flashcontrol
