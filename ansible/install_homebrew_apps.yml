@@ -25,7 +25,8 @@
         - leiningen
         - sphinx
         - the_silver_searcher
-        - vim
+        - python3
+        - "vim --with-python3"
         - wget
         - sshrc
         - fzf
