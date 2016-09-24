@@ -20,14 +20,8 @@ for config_file (~/.zsh/custom/*.zsh(N)); do
 done
 unset config_file
 
-# load rbenv if available
-if command -v rbenv &>/dev/null ; then
-  eval "$(rbenv init - --no-rehash)"
-fi
-
 export BACKUP_PATH=~/Dropbox/_backups
 export PROJECT_PATH=~/Documents/projects
 
 # title function for iTerm
 title_pwd() { echo -ne "\033]0;${PWD##*/}\007" }
-

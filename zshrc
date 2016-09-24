@@ -34,6 +34,11 @@ chpwd # emulate cd action
 
 # #############################################################################
 
+# load rbenv if available
+if command -v rbenv &>/dev/null ; then
+  eval "$(rbenv init - --no-rehash)"
+fi
+
 # load zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '\e[A' history-beginning-search-backward
