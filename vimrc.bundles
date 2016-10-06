@@ -6,8 +6,8 @@ Plug 'scrooloose/syntastic'                             " check syntax
 Plug 'tpope/vim-commentary'                             " comments
 Plug 'tpope/vim-repeat'                                 " repeat more commands with '.'
 Plug 'terryma/vim-multiple-cursors'                     " multiple cursors like in ST
-Plug 'Valloric/YouCompleteMe', { 'on': [] }             " autocomplete
-Plug 'Raimondi/delimitMate', { 'on': [] },              " closing brackets
+Plug 'Shougo/neocomplete.vim', { 'on': [] }             " autocomplete
+Plug 'Raimondi/delimitMate', { 'on': [] }               " closing brackets
 Plug 'terryma/vim-expand-region'                        " change visual selection by using '+' / '-'
 
 " navigation
@@ -33,7 +33,6 @@ Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }             " ruby
 Plug 'tpope/vim-endwise', { 'for': 'ruby', 'on': [] }   " auto end
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }          " run rspec
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }             " bundle commands and smart ctags
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }      " elixir
 
 " js / jsx / html
 Plug 'othree/yajs.vim', { 'for': [] }                   " javascript
@@ -44,6 +43,7 @@ Plug 'valloric/MatchTagAlways', { 'for': ['html', 'javascript.jsx'] } " highligh
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }        " repl
 
 " syntaxes and languages
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }      " elixir
 Plug 'slim-template/vim-slim', { 'for': 'slim' }        " slim
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }    " coffee script
 Plug 'suan/vim-instant-markdown', { 'for': 'markdown' } " real time markdown editing
@@ -98,17 +98,12 @@ if executable('ag')
   let g:ctrlsf_ackprg = 'ag' " use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 endif
 
-" autocomplete
-let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_complete_in_comments = 1
-
 " Plug load some plugins not while starting vim
 augroup lazy_load
   autocmd!
-  autocmd! InsertEnter * call plug#load('YouCompleteMe', 'delimitMate', 'vim-endwise')
-                      \| if exists('g:loaded_youcompleteme')
-                      \|   call youcompleteme#Enable()
+  autocmd! InsertEnter * call plug#load('neocomplete.vim', 'delimitMate', 'vim-endwise')
+                      \| if exists('g:loaded_neocomplete')
+                      \|   call neocomplete#init#enable()
                       \| endif
                       \| autocmd! lazy_load
 augroup END
@@ -119,6 +114,24 @@ augroup custom_types
                       \| execute 'autocmd! custom_types'
                       \| doautocmd FileType
 augroup END
+
+" autocomplete
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#min_keyword_length = 2
+let g:neocomplete#sources#syntax#min_keyword_length = 2
+let g:neocomplete#max_list = 5
+let g:neocomplete#enable_ignore_case = 0
+let g:neocomplete#enable_smart_case = 0
+let g:neocomplete#auto_complete_delay = 0
+let g:neocomplete#enable_auto_select = 0
+let g:neocomplete#enable_fuzzy_completion = 0
+if !exists('g:neocomplete#delimiter_patterns')
+  let g:neocomplete#delimiter_patterns= {}
+endif
+let g:neocomplete#delimiter_patterns.ruby = ['::']
+
+" <TAB>: completion
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " status line
 let g:airline#extensions#tabline#enabled = 1
