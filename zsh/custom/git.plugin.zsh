@@ -6,6 +6,7 @@ alias gaa='git add --all'
 
 alias gb='git branch'
 alias gbd='git branch -d'
+alias gbD='git branch -D'
 alias gbs='git branch --sort=-committerdate'
 alias gbm='git branch --merged master'
 
