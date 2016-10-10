@@ -77,6 +77,12 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
+" git gutter
+nmap <Leader>j <Plug>GitGutterNextHunk
+nmap <Leader>k <Plug>GitGutterPrevHunk
+nmap <Leader>u <Plug>GitGutterUndoHunk
+nmap <Leader>d <Plug>GitGutterPreviewHunk
+
 " alternate files
 function! AltCommand(path, vim_command)
   let l:alternate = system("gfind . -name '*.rb' -type f -print0 | alt " . a:path)
