@@ -50,6 +50,13 @@
 	<real>1</real>
 	<key>GlobalKeyMap</key>
 	<dict>
+		<key>0x68-0x40000</key>
+		<dict>
+			<key>Action</key>
+			<integer>10</integer>
+			<key>Text</key>
+			<string>[104;5u</string>
+		</dict>
 		<key>0x7f-0x100000</key>
 		<dict>
 			<key>Action</key>
@@ -243,11 +250,17 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame Preferences</key>
-	<string>413 340 606 456 0 0 1440 877 </string>
+	<string>413 398 606 456 0 0 1440 877 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>-1270 588 620 392 -1920 0 1920 1177 </string>
+	<key>NSWindow Frame SessionsPreferences</key>
+	<string>-1651 139 606 456 -1920 0 1920 1177 </string>
+	<key>NSWindow Frame SharedPreferences</key>
+	<string>-1198 495 937 465 -1920 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>-1920 0 1919 1177 -1920 0 1920 1177 </string>
+	<string>-1917 4 1914 1170 -1920 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>-1920 704 570 473 -1920 0 1920 1177 </string>
+	<string>0 0 1383 877 0 0 1440 877 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1488,9 +1501,13 @@
 	<key>NoSyncInstallationId</key>
 	<string>DDCAFFD1-93DB-4815-AF1E-D6EAA2954F1E</string>
 	<key>NoSyncLastTipTime</key>
-	<real>490264953.06906003</real>
+	<real>490875616.11882502</real>
 	<key>NoSyncNeverRemindPrefsChangesCopy</key>
 	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
@@ -1499,6 +1516,8 @@
 	<real>477570500.24209201</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
 	<real>489461031.80975997</real>
+	<key>NoSyncTipsDisabled</key>
+	<true/>
 	<key>NoSyncTipsToNotShow</key>
 	<array>
 		<string>000</string>
@@ -1507,6 +1526,11 @@
 		<string>0002</string>
 		<string>0003</string>
 		<string>0004</string>
+		<string>0005</string>
+		<string>0006</string>
+		<string>0007</string>
+		<string>0008</string>
+		<string>0009</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -1576,7 +1600,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-07-15T08:37:05Z</date>
+	<date>2016-10-10T04:46:23Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -1622,6 +1646,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.4</string>
+	<string>3.0.10</string>
 </dict>
 </plist>
