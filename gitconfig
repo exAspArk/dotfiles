@@ -14,7 +14,7 @@
    meta = yellow
 [core]
   excludesfile = ~/.gitignore
-  editor = vim --noplugin
+  editor = nvim --noplugin
 [diff]
   compactionHeuristic = true
 [merge]
