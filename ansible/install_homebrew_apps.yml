@@ -26,7 +26,7 @@
         - sphinx
         - the_silver_searcher
         - python3
-        - "vim --with-python3"
+        - "vim --with-lua"
         - wget
         - sshrc
         - fzf
