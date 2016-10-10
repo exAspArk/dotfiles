@@ -45,11 +45,12 @@ set textwidth=120
 set colorcolumn=+1
 set formatoptions+=w " for wraping long lines without broken words
 
-" softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
+" spaces
+set tabstop=2     " tab width
+set shiftwidth=2  " indent size
+set softtabstop=2 " simulated tab width
+set expandtab     " spaces on tab press
+set shiftround    " spaces when >, <
 
 " map russian keyboard
 set keymap=russian-jcukenwin
