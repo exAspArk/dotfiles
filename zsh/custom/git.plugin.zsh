@@ -48,7 +48,17 @@ alias gst='git status'
 
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit -m "--wip--"'
 
-alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold yellow)%d%C(reset) %C(white)%s%C(reset) %C(dim white)(%an)%C(reset) (%C(bold blue)%h%C(reset)) (%C(bold green)%ar%C(reset))'"
+glog() {
+  local LAST_COMMIT_TIME="$(git log -1 --pretty=format:%cd)"
+  local FORMAT=''
+  FORMAT+='%C(bold yellow)%d%C(reset) '  # ref name
+  FORMAT+='%C(white)%s%C(reset) '        # commit message
+  FORMAT+='%C(dim white)(%an)%C(reset) ' # author name
+  FORMAT+='[%C(bold blue)%h%C(reset)] '  # abbreviated commit hash
+  FORMAT+='(%C(bold green)%ar%C(reset))' # author date, relative
+
+  git log --graph --all --before=$LAST_COMMIT_TIME --format=format:$FORMAT
+}
 alias gclog="git log --no-merges --pretty=format:'%s (%an)'"
 alias ggrep="git log --grep"
 
