@@ -1,6 +1,6 @@
 export ZSH=$HOME/.oh-my-zsh # Path to your oh-my-zsh installation.
 
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR=$VISUAL
 
 export LANG=en_US.UTF-8 # You may need to manually set your language environment

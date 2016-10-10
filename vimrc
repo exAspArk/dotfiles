@@ -2,14 +2,15 @@ let mapleader = " "
 
 syntax on " enable syntax highlighting
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("~/.vimrc.plugins"))
+  source ~/.vimrc.plugins
 endif
 
 filetype plugin indent on " required to detect filetype
 
 " theme
 set t_Co=256
+set background=dark
 
 " status line
 set statusline=%f\ %=col:%2c\ line:%2l
