@@ -17,10 +17,6 @@ Plug 'kopischke/vim-fetch'                              " open file with line an
 Plug 'yegappan/mru'                                     " most recently used files
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
 
-" theme
-Plug 'w0ng/vim-hybrid'                                  " theme
-Plug 'bling/vim-airline'                                " status line
-
 " files
 Plug 'tpope/vim-eunuch'                                 " helpers for UNIX shell commands (mkdir, rename, etc.)
 
@@ -47,6 +43,10 @@ Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }      " elixir
 Plug 'slim-template/vim-slim', { 'for': 'slim' }        " slim
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }    " coffee script
 Plug 'suan/vim-instant-markdown', { 'for': 'markdown' } " real time markdown editing
+
+" theme
+Plug 'w0ng/vim-hybrid'                                  " theme
+Plug 'bling/vim-airline'                                " status line
 
 call plug#end()
 
@@ -135,6 +135,9 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " status line
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_detect_crypt = 0
+let g:airline_section_y = ''
+let g:airline_section_warning = ''
 
 " multiple cursors
 let g:multi_cursor_start_key='<C-n>'
