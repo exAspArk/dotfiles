@@ -1,6 +1,8 @@
 ---
 - hosts: all
   tasks:
+    - shell: pip3 install --upgrade neovim
+
     - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link
       with_items:
         - vimrc

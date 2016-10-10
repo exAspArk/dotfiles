@@ -66,9 +66,6 @@ set ttimeoutlen=1
 " disable sound
 set visualbell t_vb=
 
-" enable built-in autocomplete
-set omnifunc=syntaxcomplete#Complete
-
 " highlight trailing whitespaces
 hi ExtraWhitespace ctermbg=172 guifg=#d78700
 match ExtraWhitespace /\s\+$/
