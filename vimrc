@@ -12,6 +12,8 @@ filetype plugin indent on " required to detect filetype
 set t_Co=256
 set background=dark
 
+set shell=/bin/bash
+
 " status line
 set statusline=%f\ %=col:%2c\ line:%2l
 
