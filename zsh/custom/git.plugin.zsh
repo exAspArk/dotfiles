@@ -74,3 +74,5 @@ alias gshp='git stash pop'
 alias gcl='git reset --hard HEAD'
 
 alias gs='git show'
+
+alias gstats='git shortlog -sn --no-merges'
