@@ -26,6 +26,7 @@
         - sphinx
         - the_silver_searcher
         - python3
+        - 'neovim/neovim/neovim'
         - wget
         - sshrc
         - fzf
