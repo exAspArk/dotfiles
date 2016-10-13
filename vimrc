@@ -52,7 +52,8 @@ set tabstop=2     " tab width
 set shiftwidth=2  " indent size
 set softtabstop=2 " simulated tab width
 set expandtab     " spaces on tab press
-set shiftround    " spaces when >, <
+set smartindent   " indent automatically
+set shiftround    " uses shiftwidth when >, <
 
 " map russian keyboard
 set keymap=russian-jcukenwin
