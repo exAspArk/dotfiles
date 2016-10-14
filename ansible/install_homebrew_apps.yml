@@ -36,7 +36,7 @@
         - logstash
         - elixir
         - tmux-cssh
-        - httpie
+        - ipcalc
 
     # java for Elasticsearch
     - shell: brew cask list | grep '^java$'
