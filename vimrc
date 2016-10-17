@@ -112,7 +112,7 @@ nnoremap wl gggqG
 nnoremap tt :!gem ctags && gfind . -name '*.rb' -type f -print0 \| xargs -0 ctags -R -V<CR>
 
 " redraw vim
-nnoremap rr :edit! \| redraw!<CR>
+nnoremap rr :so $MYVIMRC \| edit! \| redraw!<CR>
 
 " replace text in a project with sed
 nnoremap re :!gfind . -name '*' -type f -print0 \| xargs -0 sed -i '' 's,search,replace,g'
@@ -191,7 +191,7 @@ augroup LargeFile
   " files with filesize too large are recognized too (getfsize = -2)
   autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
 augroup END
-function LargeFile()
+function! LargeFile()
   set eventignore+=FileType " no syntax highlighting etc
   setlocal bufhidden=unload " save memory when other file is viewed
   setlocal undolevels=-1 " no undo possible
@@ -200,16 +200,16 @@ function LargeFile()
 endfunction
 
 " create dir for new file
-function s:MKDir(...)
+function! s:MKDir(...)
   if !a:0 || isdirectory(a:1) || filereadable(a:1) || isdirectory(fnamemodify(a:1, ':p:h'))
     return
   endif
   return mkdir(fnamemodify(a:1, ':p:h'), 'p')
 endfunction
-command -bang -bar -nargs=? -complete=file E :call s:MKDir(<f-args>) | e<bang> <args>
+command! -bang -bar -nargs=? -complete=file E :call s:MKDir(<f-args>) | e<bang> <args>
 
 " show list of all filetypes
-function SortUnique(list, ...)
+function! SortUnique(list, ...)
   let dictionary = {}
   for i in a:list
     let dictionary[string(i)] = i
@@ -221,7 +221,7 @@ function SortUnique(list, ...)
   endif
   return result
 endfunction
-command Filetypes execute "echo
+command! Filetypes execute "echo
       \ join(
         \ SortUnique(
           \ map(
