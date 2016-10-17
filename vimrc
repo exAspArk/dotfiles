@@ -32,7 +32,6 @@ set nopaste           " enable formatting while pasting
 set pastetoggle=<F2>  " switch paste mode
 set clipboard=unnamed " yank to and paste the selection without prepending "*
 set autowrite         " save file before switching a buffer
-set autoindent        " indent
 set showmatch         " highlight matching brackets
 set autoread          " when file was changed
 set lazyredraw        " redraw only when we need to"
@@ -52,8 +51,11 @@ set tabstop=2     " tab width
 set shiftwidth=2  " indent size
 set softtabstop=2 " simulated tab width
 set expandtab     " spaces on tab press
-set smartindent   " indent automatically
 set shiftround    " uses shiftwidth when >, <
+
+" indention
+set smartindent   " indent automatically
+set autoindent    " indent
 
 " map russian keyboard
 set keymap=russian-jcukenwin

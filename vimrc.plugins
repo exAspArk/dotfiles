@@ -47,6 +47,7 @@ Plug 'suan/vim-instant-markdown', { 'for': 'markdown' } " real time markdown edi
 " theme
 Plug 'w0ng/vim-hybrid'                                  " theme
 Plug 'bling/vim-airline'                                " status line
+Plug 'Yggdroot/indentLine'                              " indent columns
 
 call plug#end()
 
@@ -120,6 +121,9 @@ augroup custom_types
                       \| execute 'autocmd! custom_types'
                       \| doautocmd FileType
 augroup END
+
+" indent char
+let g:indentLine_char = '¦'
 
 " autocomplete
 let g:deoplete#enable_ignore_case = 0
