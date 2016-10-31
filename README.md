@@ -65,6 +65,7 @@ make configure_backups
 * Dropbox
 * Epayments
 * Facebook
+* File Manager (by Flashlight + Clock)
 * Flickr
 * Foursquare
 * Gmail
@@ -86,7 +87,6 @@ make configure_backups
 * Simplenote
 * Skype
 * Slack
-* Solid Explorer
 * Taxi (Yandex)
 * Tinkoff
 * Translate
