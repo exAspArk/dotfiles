@@ -34,4 +34,16 @@
         - typora
         - spectacle
         - go2shell
+        - the-unarchiver
+        - mplayerx
     - shell: "{{ curdir }}/iterm2/install-settings.sh" # run in Terminal
+
+    - shell: |
+        if ! mas list | grep {{ item }}; then
+          mas intsall $(mas search {{ item }} | awk '{print $1}' | head -1)
+        fi
+      with_items:
+        - Simplenote
+        - Twitter
+        - Pocket
+        - Keynote

@@ -29,11 +29,6 @@ make configure_backups
 ### Apps
 
 * Docker for Mac
-* Simplenote
-* Keynote
-* Pocket
-* Twitter
-* Xcode
 
 ### Google Chrome extensions
 

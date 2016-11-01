@@ -8,6 +8,11 @@
     - shell: brew tap "codebreakdown/homebrew-oss"
     - shell: brew install codebreakdown/oss/alt
 
+    - shell: |
+      if ! xcode-select -p | grep CommandLineTools ; then
+        xcode-select --install
+      fi
+
     # apps
     - shell: |
         if ! [[ "$(brew ls --versions {{ item }})" ]] ; then
@@ -37,6 +42,7 @@
         - elixir
         - tmux-cssh
         - ipcalc
+        - mas
 
     # java for Elasticsearch
     - shell: brew cask list | grep '^java$'
