@@ -41,7 +41,7 @@ make configure_backups
 * Google Dictionary (by Google)
 * HTTPS Everywhere
 * JSON Formatter
-* Postman + Postman Interceptor
+* Postman
 * Save to Pocket
 * Speed Dial 2
 * uBlock
