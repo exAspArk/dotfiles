@@ -44,7 +44,7 @@ make configure_backups
 * Postman
 * Save to Pocket
 * Speed Dial 2
-* uBlock
+* uBlock Origin
 
 ### Android apps
 
