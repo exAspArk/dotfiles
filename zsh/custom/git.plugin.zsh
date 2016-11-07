@@ -57,7 +57,7 @@ glog() {
   FORMAT+='[%C(bold blue)%h%C(reset)] '  # abbreviated commit hash
   FORMAT+='(%C(bold green)%ar%C(reset))' # author date, relative
 
-  git log --graph --all --before=$LAST_COMMIT_TIME --format=format:$FORMAT
+  git log --graph --branches --remotes --tags --before=$LAST_COMMIT_TIME --format=format:$FORMAT
 }
 alias gclog="git log --no-merges --pretty=format:'%s (%an)'"
 alias ggrep="git log --grep"
