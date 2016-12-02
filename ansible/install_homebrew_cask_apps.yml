@@ -36,6 +36,7 @@
         - go2shell
         - the-unarchiver
         - mplayerx
+        - purevpn
     - shell: "{{ curdir }}/iterm2/install-settings.sh" # run in Terminal
 
     - shell: |

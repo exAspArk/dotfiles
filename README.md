@@ -49,10 +49,12 @@ make configure_backups
 ### Android apps
 
 * 2GIS
+* AliExpress
 * Authenticator
 * Barcode Scanner
-* Booking.com
 * Bookmate
+* Bubble Level
+* Calm
 * CamScanner
 * Chrome
 * Citymapper
@@ -64,7 +66,7 @@ make configure_backups
 * Flickr
 * Foursquare
 * Gmail
-* GoPro
+* Google Tips
 * Hangouts
 * Hellenic Bank
 * Hipchat
@@ -73,20 +75,24 @@ make configure_backups
 * MAPS.ME
 * Messenger (Facebook)
 * Metro (Yandex)
+* MobileVOIP
 * Money Lover
-* Moscow Parking
 * Navigator
 * Pocket
+* PureVPN
 * Raiffeisen
 * Revolut
+* Signal
 * Simplenote
 * Skype
 * Slack
+* Sygic Travel
 * Taxi (Yandex)
 * Tinkoff
 * Translate
 * Transport (Yandex)
 * Trello
+* TripAdvisor
 * Twilight
 * Twitter
 * Viber
@@ -97,5 +103,6 @@ make configure_backups
 * xFi Locator
 * Yandex.Navi
 * Youtube
+* Zoom
 * Сбербанк
 * @Voice
