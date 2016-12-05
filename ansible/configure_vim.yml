@@ -1,8 +1,10 @@
 ---
 - hosts: all
   tasks:
-    - name: install nvim-client for python
+    - name: install nvim-client for python for deoplete.nvim
       shell: pip3 install --upgrade neovim
+    - name: install gem neovim for deoplete.vim
+    - shell: sudo gem install neovim
 
     - name: increase key repeate speed
       shell: defaults write NSGlobalDomain KeyRepeat -int 1
