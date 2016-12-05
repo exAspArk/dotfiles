@@ -23,6 +23,8 @@ alias gcp='git cherry-pick'
 
 alias gd='git diff HEAD'
 
+alias gbl='git blame'
+
 alias gf='git fetch --all'
 
 alias gl='git pull'
