@@ -22,6 +22,7 @@ alias gcs='git checkout staging'
 alias gcp='git cherry-pick'
 
 alias gd='git diff HEAD'
+alias gdf='git diff --name-status HEAD'
 
 alias gbl='git blame'
 
@@ -59,7 +60,7 @@ glog() {
   FORMAT+='[%C(bold blue)%h%C(reset)] '  # abbreviated commit hash
   FORMAT+='(%C(bold green)%ar%C(reset))' # author date, relative
 
-  git log --graph --branches --remotes --tags --before=$LAST_COMMIT_TIME --format=format:$FORMAT
+  git log --graph --branches --remotes --tags --before="$LAST_COMMIT_TIME" --format=format:"$FORMAT"
 }
 alias gclog="git log --no-merges --pretty=format:'%s (%an)'"
 alias ggrep="git log --grep"
