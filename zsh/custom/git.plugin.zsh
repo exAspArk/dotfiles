@@ -33,6 +33,7 @@ alias glr='git pull --rebase'
 
 alias gp='git push'
 alias gpt='git push --tags'
+alias gpu='git push -u origin'
 
 alias gt='git tag'
 
