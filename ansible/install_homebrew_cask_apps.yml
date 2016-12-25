@@ -41,7 +41,7 @@
 
     - shell: |
         if ! mas list | grep {{ item }}; then
-          mas intsall $(mas search {{ item }} | awk '{print $1}' | head -1)
+          mas intsall $(mas search '{{ item }}' | awk '{print $1}' | head -1)
         fi
       with_items:
         - Simplenote
@@ -49,3 +49,4 @@
         - Pocket
         - Keynote
         - Spark
+        - Tomato One
