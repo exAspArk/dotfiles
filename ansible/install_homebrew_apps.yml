@@ -43,6 +43,7 @@
         - tmux-cssh
         - ipcalc
         - mas
+        - yarn
 
     # java for Elasticsearch
     - shell: brew cask list | grep '^java$'
