@@ -10,6 +10,7 @@ Plug 'Shougo/deoplete.nvim', { 'on': [], 'do': ':UpdateRemotePlugins', 'tag': 'e
 Plug 'Raimondi/delimitMate', { 'on': [] }               " closing brackets
 Plug 'terryma/vim-expand-region'                        " change visual selection by using '+' / '-'
 Plug 'mbbill/undotree'                                  " undo history tree
+Plug 'Yggdroot/indentLine'                              " indent columns
 
 " navigation
 Plug 'scrooloose/nerdtree'                              " file tree
@@ -124,6 +125,10 @@ augroup custom_types
                       \| execute 'autocmd! custom_types'
                       \| doautocmd FileType
 augroup END
+
+" indent lines char
+let g:indentLine_char = '¦'
+autocmd Filetype json let g:indentLine_setConceal = 0 " show quotes for JSON
 
 " autocomplete
 let g:deoplete#enable_ignore_case = 0
