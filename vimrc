@@ -179,6 +179,12 @@ nnoremap dd "_dd
 " add binding.pry line
 nnoremap <Leader>p Orequire 'pry'; binding.pry<Esc>
 
+" setup undodir if +persistent_undo option included
+if has('persistent_undo') && isdirectory($HOME . '/.vim/undo')
+  set undodir=~/.vim/undo
+  set undofile
+end
+
 " use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " use Ag over Grep

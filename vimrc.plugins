@@ -9,6 +9,7 @@ Plug 'terryma/vim-multiple-cursors'                     " multiple cursors like 
 Plug 'Shougo/deoplete.nvim', { 'on': [], 'do': ':UpdateRemotePlugins', 'tag': 'e28d519' } " autocomplete, use e28d519 because of https://github.com/Shougo/deoplete.nvim/issues/291
 Plug 'Raimondi/delimitMate', { 'on': [] }               " closing brackets
 Plug 'terryma/vim-expand-region'                        " change visual selection by using '+' / '-'
+Plug 'mbbill/undotree'                                  " undo history tree
 
 " navigation
 Plug 'scrooloose/nerdtree'                              " file tree
@@ -80,8 +81,11 @@ map <Leader>a :call RunAllSpecs()<CR>
 " git gutter
 nmap <Leader>j <Plug>GitGutterNextHunk
 nmap <Leader>k <Plug>GitGutterPrevHunk
-nmap <Leader>u <Plug>GitGutterUndoHunk
 nmap <Leader>d <Plug>GitGutterPreviewHunk
+
+" undo history
+nmap <Leader>u :UndotreeToggle<CR>
+let g:undotree_SetFocusWhenToggle = 1
 
 " alternate files
 function! AltCommand(path, vim_command)
