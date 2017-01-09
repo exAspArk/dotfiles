@@ -58,7 +58,6 @@ make configure_backups
 * CamScanner
 * Chrome
 * Citymapper
-* Couple
 * Dropbox
 * Epayments
 * Facebook
@@ -99,6 +98,7 @@ make configure_backups
 * VLC
 * Weather (Yahoo!)
 * WhatsApp
+* Wunderlist
 * Xender
 * xFi Locator
 * Yandex.Navi
