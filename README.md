@@ -90,7 +90,6 @@ make configure_backups
 * Tinkoff
 * Translate
 * Transport (Yandex)
-* Trello
 * TripAdvisor
 * Twilight
 * Twitter
