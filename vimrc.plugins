@@ -127,6 +127,7 @@ augroup custom_types
 augroup END
 
 " indent lines char
+let g:indentLine_enabled = 1
 let g:indentLine_char = '¦'
 autocmd Filetype json let g:indentLine_setConceal = 0 " show quotes for JSON
 
