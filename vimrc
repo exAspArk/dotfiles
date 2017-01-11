@@ -112,7 +112,7 @@ nnoremap wl gggqG
 nnoremap tt :!gem ctags && gfind . -name '*.rb' -type f -print0 \| xargs -0 ctags -R -V<CR>
 
 " redraw vim
-nnoremap rr :so $MYVIMRC \| edit! \| redraw!<CR>
+nnoremap rr :so $MYVIMRC \| redraw!<CR>
 
 " replace text in a project with sed
 nnoremap re :!gfind . -name '*' -type f -print0 \| xargs -0 sed -i '' 's,search,replace,g'
