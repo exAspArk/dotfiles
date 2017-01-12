@@ -77,15 +77,17 @@ nnoremap <C-[><C-[> [<C-d>
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+" map <Leader>a :call RunAllSpecs()<CR>
 
 " git gutter
 nmap <Leader>j <Plug>GitGutterNextHunk
 nmap <Leader>k <Plug>GitGutterPrevHunk
+nmap <Leader>u <Plug>GitGutterUndoHunk
+nmap <Leader>a <Plug>GitGutterStageHunk
 nmap <Leader>d <Plug>GitGutterPreviewHunk
 
 " undo history
-nmap <Leader>u :UndotreeToggle<CR>
+nmap <Leader>h :UndotreeToggle<CR>
 let g:undotree_SetFocusWhenToggle = 1
 
 " alternate files
