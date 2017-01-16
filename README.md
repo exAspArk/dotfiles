@@ -18,6 +18,8 @@ make install_homebrew_apps
 make install_oh_my_zsh
 make install_homebrew_cask_apps
 
+make configure_ruby RUBY_VERSION=2.4.0
+
 make configure_vim
 make configure_dotfiles
 

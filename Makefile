@@ -14,6 +14,9 @@ install_oh_my_zsh:
 install_homebrew_cask_apps:
 	make play PLAYBOOK=ansible/install_homebrew_cask_apps.yml
 
+configure_ruby:
+	make play PLAYBOOK=ansible/configure_ruby.yml OPTIONS="--ask-become-pass --extra-vars='ruby_version=$(RUBY_VERSION)'"
+
 configure_vim:
 	make play PLAYBOOK=ansible/configure_vim.yml
 
