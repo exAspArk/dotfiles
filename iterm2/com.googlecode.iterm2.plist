@@ -251,16 +251,18 @@
 	</dict>
 	<key>NSWindow Frame Preferences</key>
 	<string>413 398 606 456 0 0 1440 877 </string>
+	<key>NSWindow Frame ProfilesPanel</key>
+	<string>-1575 735 735 382 -1920 0 1920 1177 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>-1270 588 620 392 -1920 0 1920 1177 </string>
+	<string>381 363 620 392 0 0 1440 877 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>-1651 139 606 456 -1920 0 1920 1177 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>-1198 495 937 465 -1920 0 1920 1177 </string>
+	<string>-1197 495 796 473 -1920 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>-1917 4 1914 1170 -1920 0 1920 1177 </string>
+	<string>-1920 0 1919 1177 -1920 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 0 1383 877 0 0 1440 877 </string>
+	<string>-1920 391 570 473 -1920 0 1920 1177 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1490,6 +1492,8 @@
 			<string>/Users/exaspark/Documents/projects</string>
 		</dict>
 	</array>
+	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
+	<true/>
 	<key>NoSyncConfirmBeta</key>
 	<true/>
 	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
@@ -1583,6 +1587,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/exaspark/Documents/projects/my/dotfiles/iterm2</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
@@ -1600,7 +1606,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-10-10T04:46:23Z</date>
+	<date>2017-01-16T10:35:29Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -1646,6 +1652,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.10</string>
+	<string>3.0.13</string>
 </dict>
 </plist>
