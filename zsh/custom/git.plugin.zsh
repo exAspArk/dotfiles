@@ -9,7 +9,7 @@ alias gbd='git branch -d'
 alias gbD='git branch -D'
 alias gbs='git branch --sort=-committerdate'
 alias gbm='git branch --merged'
-alias gbt='git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD) feature/SCD-1744_static_errors'
+alias gbt='git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD) $(git rev-parse --abbrev-ref HEAD)'
 
 alias gc='git commit -v'
 alias gc!='git commit -v --amend'
