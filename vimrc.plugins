@@ -131,7 +131,11 @@ augroup END
 " indent lines char
 let g:indentLine_enabled = 1
 let g:indentLine_char = '¦'
-autocmd Filetype json let g:indentLine_setConceal = 0 " show quotes for JSON
+
+augroup json_conceal
+  autocmd! Filetype json let g:indentLine_enabled = 0
+                      \| autocmd! json_conceal
+augroup END
 
 " autocomplete
 let g:deoplete#enable_ignore_case = 0
