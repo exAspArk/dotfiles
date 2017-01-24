@@ -70,6 +70,9 @@ set ttimeoutlen=1
 " disable sound
 set visualbell t_vb=
 
+" automatically refresh changed files
+set autoread
+
 " highlight trailing whitespaces
 hi ExtraWhitespace ctermbg=172 guifg=#d78700
 match ExtraWhitespace /\s\+$/
@@ -112,7 +115,7 @@ nnoremap wl gggqG
 nnoremap tt :!gem ctags && gfind . -name '*.rb' -type f -print0 \| xargs -0 ctags -R -V<CR>
 
 " redraw vim
-nnoremap rr :so $MYVIMRC \| redraw!<CR>
+nnoremap rr :checktime \| redraw!<CR>
 
 " replace text in a project with sed
 nnoremap re :!gfind . -name '*' -type f -print0 \| xargs -0 sed -i '' 's,search,replace,g'
