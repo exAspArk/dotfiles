@@ -6,8 +6,10 @@ export EDITOR=$VISUAL
 export LANG=en_US.UTF-8 # You may need to manually set your language environment
 export CC=/usr/bin/gcc
 
-export PATH="./bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/local/bin"
-export PATH=$PATH:"/usr/local/git/bin"
+export PATH=./bin
+export PATH=$PATH:/usr/local/opt/gnu-tar/libexec/gnubin # use gnu tar
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/local/bin
+export PATH=$PATH:/usr/local/git/bin
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin

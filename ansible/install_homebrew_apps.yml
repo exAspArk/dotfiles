@@ -38,6 +38,7 @@
         - node
         - unar
         - findutils # to use gfind with -print option
+        - gnu-tar # for Ansible unarchive module
         - logstash
         - elixir
         - tmux-cssh
