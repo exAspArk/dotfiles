@@ -59,10 +59,8 @@ make configure_backups
 * Calm
 * CamScanner
 * Chrome
-* Citymapper
 * Dropbox
 * Epayments
-* Facebook
 * File Manager (by Flashlight + Clock)
 * Flickr
 * Foursquare
@@ -81,7 +79,6 @@ make configure_backups
 * Navigator
 * Pocket
 * PureVPN
-* Raiffeisen
 * Revolut
 * Signal
 * Simplenote
@@ -89,10 +86,8 @@ make configure_backups
 * Slack
 * Sygic Travel
 * Taxi (Yandex)
-* Tinkoff
 * Translate
 * Transport (Yandex)
-* TripAdvisor
 * Twilight
 * Twitter
 * Viber
