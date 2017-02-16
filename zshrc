@@ -39,6 +39,11 @@ if command -v rbenv &>/dev/null ; then
   eval "$(rbenv init - --no-rehash)"
 fi
 
+# load pyenv if available
+if command -v pyenv &>/dev/null ; then
+  eval "$(pyenv init -)"
+fi
+
 # load zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '\e[A' history-beginning-search-backward

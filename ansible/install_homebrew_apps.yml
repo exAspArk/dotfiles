@@ -23,6 +23,7 @@
         - openssl
         - rbenv
         - ruby-build
+        - pyenv
         - cmake
         - ctags
         - go
@@ -30,7 +31,6 @@
         - leiningen
         - sphinx
         - the_silver_searcher
-        - python3
         - 'neovim/neovim/neovim'
         - wget
         - sshrc

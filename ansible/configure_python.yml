@@ -1,0 +1,25 @@
+---
+- hosts: all
+  tasks:
+    - name: "Install Python {{ python_version }}"
+      shell: |
+        if ! pyenv versions | grep '{{ python_version }}' ; then
+          pyenv install {{ python_version }}
+        fi
+
+    - name: Install pip
+      shell: easy_install pip
+      environment:
+        PYENV_VERSION: "{{ python_version }}"
+
+    - name: Rehash
+      shell: pyenv rehash
+
+    - name: Install nvim-client for python for deoplete.nvim
+      shell: pip install --upgrade neovim
+      become: true # should be installed via sudo
+      environment:
+        PYENV_VERSION: "{{ python_version }}"
+
+    - name: Rehash
+      shell: pyenv rehash

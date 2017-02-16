@@ -17,6 +17,11 @@ install_homebrew_cask_apps:
 configure_ruby:
 	make play PLAYBOOK=ansible/configure_ruby.yml OPTIONS="--ask-become-pass --extra-vars='ruby_version=$(RUBY_VERSION)'"
 
+configure_python:
+	make play PLAYBOOK=ansible/configure_python.yml OPTIONS="--ask-become-pass --extra-vars='python_version=$(PYTHON_VERSION)'"
+install_new_ansible:
+	make play PLAYBOOK=ansible/install_new_ansible.yml OPTIONS="--ask-become-pass --extra-vars='python_version=$(PYTHON_VERSION)'"
+
 configure_vim:
 	make play PLAYBOOK=ansible/configure_vim.yml
 

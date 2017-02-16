@@ -12,6 +12,9 @@
       environment:
         RBENV_VERSION: "{{ ruby_version }}"
 
+    - name: Rehash
+      shell: rbenv rehash
+
     - name: Install gem neovim for deoplete.vim
       shell: gem install neovim
       become: true # should be installed via sudo
@@ -22,3 +25,6 @@
       shell: gem install gem-ctags
       environment:
         RBENV_VERSION: "{{ ruby_version }}"
+
+    - name: Rehash
+      shell: rbenv rehash

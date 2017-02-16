@@ -19,6 +19,8 @@ make install_oh_my_zsh
 make install_homebrew_cask_apps
 
 make configure_ruby RUBY_VERSION=2.4.0
+make configure_python PYTHON_VERSION=3.6.0
+make install_new_ansible PYTHON_VERSION=3.6.0
 
 make configure_vim
 make configure_dotfiles
