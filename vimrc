@@ -106,7 +106,6 @@ augroup vimrcEx
   autocmd FileType clojure setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,=,<,>,:,$ " customize keywords
   autocmd filetype crontab setlocal nobackup nowritebackup                          " allow to edit crontab -e
   autocmd BufWritePre *.rb,*.coffee,*.md,*.rake,*.clj,*.js,*.jsx :%s/\s\+$//e       " remove trailing whitespaces
-  autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif               " in Neovim terminal
 augroup END
 
 " wrap long lines
@@ -134,7 +133,7 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 " neovim terminal by Alt + d
-nnoremap ∂ :belowright vsplit \| edit term://zsh<CR>
+nnoremap ∂ :belowright vsplit \| edit term://zsh \| set hidden<CR>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -144,8 +143,6 @@ nnoremap <C-l> <C-w>l
 
 if has('nvim') " in terminal too
   tnoremap <Esc> <C-\><C-n>
-  tnoremap <C-j> <C-\><C-n><C-w>j
-  tnoremap <C-k> <C-\><C-n><C-w>k
   tnoremap <C-h> <C-\><C-n><C-w>h
   tnoremap <C-l> <C-\><C-n><C-w>l
 end
