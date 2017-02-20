@@ -39,6 +39,9 @@ if command -v rbenv &>/dev/null ; then
   eval "$(rbenv init - --no-rehash)"
 fi
 
+# no default shell ruby version in Neovim terminal
+rbenv shell --unset
+
 # load pyenv if available
 if command -v pyenv &>/dev/null ; then
   eval "$(pyenv init -)"
