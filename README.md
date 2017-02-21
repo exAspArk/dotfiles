@@ -49,6 +49,7 @@ make configure_backups
 * Save to Pocket
 * Speed Dial 2
 * uBlock Origin
+* Voice Instead
 
 ### Android apps
 
@@ -57,6 +58,7 @@ make configure_backups
 * Authenticator
 * Barcode Scanner
 * Bookmate
+* BSPlayer FREE
 * Bubble Level
 * Calm
 * CamScanner
