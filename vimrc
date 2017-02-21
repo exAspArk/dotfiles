@@ -80,6 +80,25 @@ match ExtraWhitespace /\s\+$/
 " make line number brighter
 hi LineNr ctermfg=240 guifg=#585858
 
+function! PrepareTerminal()
+  if &buftype == 'terminal' && has('nvim') && !empty(matchstr(expand("%"), 'term://.\+:zsh$')) " in my zsh terminal
+    startinsert
+    set nobuflisted
+
+    " close terminal buffer by Alt + w
+    nnoremap ∑ :bd!<CR>
+    " map escape for terminal buffer
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <C-h> <C-\><C-n><C-w>h
+    tnoremap <C-l> <C-\><C-n><C-w>l
+  else
+    " close usual buffer by Alt + w
+    nnoremap ∑ :bd<CR>
+    " unmap escape for usual buffer
+    silent! tunmap <Esc>
+  endif
+endfunction
+
 augroup vimrcEx
   " clears all the autocmd's for the current group
   autocmd!
@@ -106,6 +125,7 @@ augroup vimrcEx
   autocmd FileType clojure setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,=,<,>,:,$ " customize keywords
   autocmd filetype crontab setlocal nobackup nowritebackup                          " allow to edit crontab -e
   autocmd BufWritePre *.rb,*.coffee,*.md,*.rake,*.clj,*.js,*.jsx :%s/\s\+$//e       " remove trailing whitespaces
+  autocmd BufEnter * call PrepareTerminal()
 augroup END
 
 " wrap long lines
@@ -141,11 +161,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-if has('nvim') " in terminal too
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <C-h> <C-\><C-n><C-w>h
-  tnoremap <C-l> <C-\><C-n><C-w>l
-end
+" max / min tab size
+nnoremap ƒ :tabedit %<CR>
+nnoremap Ï :tabclose<CR>
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -165,10 +183,9 @@ nnoremap cLP :let @+=expand("%") . ':' . line(".")<CR>
 " copy full filepath
 nnoremap cFP :let @+=expand("%:p")<CR>
 
-" navigating between buffers with Alt + ] / [ / w / W
+" navigating between buffers with Alt + ] / [ / W
 nnoremap ‘ :bn<CR>
 nnoremap “ :bp<CR>
-nnoremap ∑ :bd<CR>
 nnoremap „ :bd!<CR>
 
 " format xml

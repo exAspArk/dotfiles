@@ -67,9 +67,6 @@ command! -bar -nargs=1 -complete=file CD execute ":cd " . fnamemodify(<q-args>, 
   \ " | NERDTree " . fnamemodify(<q-args>, ':p:h') . " | NERDTreeToggle" .
   \ " | :silent !title_pwd" | execute ":redraw!"
 
-" search with CtrlSF
-nnoremap <C-f> "_:CtrlSF 
-
 " jump to defenition with fireplace
 nnoremap <C-[><C-[> [<C-d>
 
@@ -104,7 +101,8 @@ nnoremap <Leader>o :call AltCommand(expand('%'), ':e')<CR>
 " run FZF by using Alt + P
 nnoremap π "_:FZF<CR>
 
-" CtrlSF
+" search with CtrlSF
+nnoremap <C-f> "_:CtrlSF 
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_position = 'bottom'
 if executable('ag')
