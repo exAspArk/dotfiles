@@ -1,6 +1,8 @@
 # dotfiles
 
-![Screenshot](./img/screenshot.png)
+## Demo
+
+<a href="https://www.youtube.com/watch?v=XqWLLvihz4Q" align="center"><img src="./img/thumbnail.png" alt="Demo" height="316px" width="560px" ></a>
 
 ## Requrements
 
