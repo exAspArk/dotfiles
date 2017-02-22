@@ -92,8 +92,13 @@ function! PrepareTerminal()
     tnoremap <C-h> <C-\><C-n><C-w>h
     tnoremap <C-l> <C-\><C-n><C-w>l
   else
-    " close usual buffer by Alt + w
-    nnoremap ∑ :bd<CR>
+    " close usual buffer by Alt + w without moving split windows
+    nnoremap <silent> ∑
+      \ :if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1<CR>
+        \ bd<CR>
+      \ else<CR>
+        \ bp \| bd #<CR>
+      \ endif<CR>
     " unmap escape for usual buffer
     silent! tunmap <Esc>
   endif
