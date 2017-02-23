@@ -56,13 +56,21 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 glog() {
   local LAST_COMMIT_TIME="$(git log -1 --pretty=format:%cd)"
   local FORMAT=''
+  FORMAT+='%C(bold blue)%h%C(reset)'     # abbreviated commit hash
   FORMAT+='%C(bold yellow)%d%C(reset) '  # ref name
   FORMAT+='%C(white)%s%C(reset) '        # commit message
-  FORMAT+='%C(dim white)(%an)%C(reset) ' # author name
-  FORMAT+='[%C(bold blue)%h%C(reset)] '  # abbreviated commit hash
-  FORMAT+='(%C(bold green)%ar%C(reset))' # author date, relative
+  FORMAT+='%C(dim white)– %an%C(reset) ' # author name
+  FORMAT+='%C(dim yellow)(%ad)%C(reset)' # author date custom
 
-  git log --graph --branches --remotes --tags --before="$LAST_COMMIT_TIME" --format=format:"$FORMAT"
+  git log \
+    --graph \
+    --branches \
+    --remotes \
+    --tags \
+    --topo-order \
+    --before="$LAST_COMMIT_TIME" \
+    --format=format:"$FORMAT" \
+    --date=format:'%Y-%m-%d %H:%M:%S'
 }
 alias gclog="git log --no-merges --pretty=format:'%s (%an)'"
 alias ggrep="git log --grep"

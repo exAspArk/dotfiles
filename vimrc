@@ -98,7 +98,7 @@ function! PrepareTerminal()
         \ bd<CR>
       \ else<CR>
         \ bp \| bd #<CR>
-      \ endif<CR>
+      \ endif<CR><CR>
     " unmap escape for usual buffer
     silent! tunmap <Esc>
   endif
