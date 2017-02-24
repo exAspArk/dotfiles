@@ -47,6 +47,7 @@ alias gra='git remote add'
 alias grb='git rebase'
 alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
+alias grbs='git rebase --skip'
 alias grbi='git rebase -i'
 
 alias gst='git status'
