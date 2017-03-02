@@ -196,7 +196,24 @@ nnoremap „ :bd!<CR>
 " format xml
 nnoremap fx :%!xmllint --format --encode UTF-8 -<CR>
 " format json
-nnoremap fj :%! cat % \| python -c "import json,sys; print json.dumps(json.load(sys.stdin), indent=2, ensure_ascii=False, separators=(',', ':')).encode('utf8')"<CR><CR>
+nnoremap fj :%! cat % \| ruby -e "require 'json'; puts JSON.pretty_generate(JSON.parse(STDIN.read))"<CR>
+" format and sort keys in json
+nnoremap fsj :%! cat % \| ruby -e "
+  \ require 'json';
+  \ hash = JSON.parse(STDIN.read);
+  \ def deep_sort(hash);
+  \   hash.sort.map { \|(k, v)\|;
+  \     case v;
+  \     when Hash;
+  \       [k, deep_sort(v)];
+  \     when Array;
+  \       [k, v.sort_by(&:to_s)];
+  \     else;
+  \       [k, v];
+  \     end;
+  \   }.to_h;
+  \ end;
+  \ puts JSON.pretty_generate(deep_sort(hash))"<CR><CR>
 
 " save file with Alt + s
 " note that remapping C-s requires flow control to be disabled, e.g. in .bashrc or .zshrc
