@@ -57,11 +57,12 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 glog() {
   local LAST_COMMIT_TIME="$(git log -1 --pretty=format:%cd)"
   local FORMAT=''
-  FORMAT+='%C(bold blue)%h%C(reset)'     # abbreviated commit hash
+  FORMAT+='%C(bold blue)%h%C(reset) '    # abbreviated commit hash
+  FORMAT+='%C(dim green)%G?%C(reset)'    # verified commit
   FORMAT+='%C(bold yellow)%d%C(reset) '  # ref name
   FORMAT+='%C(white)%s%C(reset) '        # commit message
   FORMAT+='%C(dim white)– %an%C(reset) ' # author name
-  FORMAT+='%C(dim yellow)(%ad)%C(reset)' # author date custom
+  FORMAT+='%C(dim yellow)(%ad)'          # author date custom
 
   git log \
     --graph \
