@@ -35,6 +35,7 @@ make configure_backups
 ### Apps
 
 * Docker for Mac
+* GPG Suite
 
 ### Google Chrome extensions
 

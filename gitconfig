@@ -1,6 +1,7 @@
 [user]
   name = exAspArk
   email = exaspark@gmail.com
+	signingKey = BD577CB7
 [github]
   user = exAspArk
 [credential]
@@ -33,3 +34,7 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true

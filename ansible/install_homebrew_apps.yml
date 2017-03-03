@@ -46,6 +46,7 @@
         - mas
         - yarn
         - jid
+        - gpg
 
     # java for Elasticsearch
     - shell: brew cask list | grep '^java$'
