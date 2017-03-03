@@ -25,3 +25,13 @@
         dest: '{{ backup_path }}/SequelProFavorites.plist'
         times: yes
         rsync_opts: "-u"
+
+    - file: path={{ backup_path }}/gpg state=directory
+
+    - name: Backup GPG key
+      shell: >
+        gpg -a --export {{ item }} > {{ backup_path }}/gpg/public_{{ item }}.key &&
+        gpg -a --export-secret-keys {{ item }} > {{ backup_path }}/gpg/private_{{ item }}.key &&
+        gpg --export-ownertrust > {{ backup_path }}/gpg/ownertrust.txt
+      with_items:
+        - exaspark@gmail.com
