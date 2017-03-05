@@ -84,6 +84,7 @@ make configure_backups
 * MobileVOIP
 * Money Lover
 * Navigator
+* Player FM
 * Pocket
 * PureVPN
 * Revolut
@@ -99,7 +100,6 @@ make configure_backups
 * Twitter
 * Viber
 * VLC
-* Weather (Yahoo!)
 * WhatsApp
 * Wunderlist
 * Xender
