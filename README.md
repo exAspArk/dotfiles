@@ -58,6 +58,7 @@ make configure_backups
 
 * 2GIS
 * AliExpress
+* Audio Recorder (Sony Mobile Communication)
 * Authenticator
 * Barcode Scanner
 * Bookmate
