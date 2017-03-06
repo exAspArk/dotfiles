@@ -22,3 +22,4 @@
           cd {{ curdir }} &&
           ansible-playbook ansible/backup.yml -i ansible/local -e backup_path={{ lookup('env', 'BACKUP_PATH') }} 2>&1 |
           /usr/bin/logger -p cron.info"
+          > /dev/null
