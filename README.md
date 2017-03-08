@@ -78,10 +78,8 @@ make configure_backups
 * Hellenic Bank
 * Hipchat
 * Keepass2Android
-* Maps (Yandex)
 * MAPS.ME
 * Messenger (Facebook)
-* Metro (Yandex)
 * MobileVOIP
 * Money Lover
 * Navigator
@@ -94,9 +92,7 @@ make configure_backups
 * Skype
 * Slack
 * Sygic Travel
-* Taxi (Yandex)
 * Translate
-* Transport (Yandex)
 * Twilight
 * Twitter
 * Viber
@@ -105,7 +101,6 @@ make configure_backups
 * Wunderlist
 * Xender
 * xFi Locator
-* Yandex.Navi
 * Youtube
 * Zoom
 * Сбербанк
