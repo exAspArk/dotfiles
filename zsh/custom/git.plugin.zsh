@@ -72,7 +72,7 @@ glog() {
     --topo-order \
     --before="$LAST_COMMIT_TIME" \
     --format=format:"$FORMAT" \
-    --date=format:'%Y-%m-%d %H:%M:%S'
+    --date=iso
 }
 alias gclog="git log --no-merges --pretty=format:'%s (%an)'"
 alias ggrep="git log --grep"
