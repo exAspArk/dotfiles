@@ -91,7 +91,6 @@ make configure_backups
 * Simplenote
 * Skype
 * Slack
-* Sygic Travel
 * Translate
 * Twilight
 * Twitter
