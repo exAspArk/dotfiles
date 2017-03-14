@@ -72,10 +72,10 @@ make configure_backups
 * File Manager (by Flashlight + Clock)
 * Flickr
 * Foursquare
+* G1 Genius
 * Gmail
 * Google Tips
 * Hangouts
-* Hellenic Bank
 * Hipchat
 * Keepass2Android
 * MAPS.ME
@@ -94,6 +94,7 @@ make configure_backups
 * Translate
 * Twilight
 * Twitter
+* Uber
 * Viber
 * VLC
 * WhatsApp
