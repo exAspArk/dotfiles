@@ -8,10 +8,12 @@
     - shell: brew tap "codebreakdown/homebrew-oss"
     - shell: brew install codebreakdown/oss/alt
 
+    - shell: brew install Caskroom/cask/java
+
     - shell: |
-      if ! xcode-select -p | grep CommandLineTools ; then
-        xcode-select --install
-      fi
+        if ! xcode-select -p | grep CommandLineTools ; then
+          xcode-select --install
+        fi
 
     # apps
     - shell: |
@@ -28,6 +30,7 @@
         - ctags
         - go
         - imagemagick
+        - graphicsmagick
         - leiningen
         - sphinx
         - the_silver_searcher
@@ -47,6 +50,7 @@
         - yarn
         - jid
         - gpg
+        - nvm
 
     # java for Elasticsearch
     - shell: brew cask list | grep '^java$'

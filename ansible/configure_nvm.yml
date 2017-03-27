@@ -1,0 +1,33 @@
+---
+- hosts: all
+  tasks:
+    - name: Add nvm directory
+      file: path=~/.nvm state=directory
+
+    - name: "Install Ruby {{ ruby_version }}"
+      shell: |
+        if ! rbenv versions | grep '{{ ruby_version }}' ; then
+          rbenv install {{ ruby_version }}
+        fi
+
+    - name: Install bundler
+      shell: gem install bundler
+      environment:
+        RBENV_VERSION: "{{ ruby_version }}"
+
+    - name: Rehash
+      shell: rbenv rehash
+
+    - name: Install gem neovim for deoplete.vim
+      shell: gem install neovim
+      become: true # should be installed via sudo
+      environment:
+        RBENV_VERSION: "{{ ruby_version }}"
+
+    - name: Install gem gem-ctags
+      shell: gem install gem-ctags
+      environment:
+        RBENV_VERSION: "{{ ruby_version }}"
+
+    - name: Rehash
+      shell: rbenv rehash

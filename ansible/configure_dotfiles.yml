@@ -7,7 +7,7 @@
 
     - file: path=~/.zsh state=directory
     - file: path=~/.zsh/custom state=directory
-    - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link
+    - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link force=yes
       with_items:
         - ansible.cfg
         - irbrc
