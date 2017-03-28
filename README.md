@@ -62,6 +62,7 @@ make configure_backups
 * Audio Recorder (Sony Mobile Communication)
 * Authenticator
 * Barcode Scanner
+* Beck Taxi
 * Bookmate
 * BSPlayer FREE
 * Bubble Level
@@ -76,11 +77,13 @@ make configure_backups
 * G1 Genius
 * Gmail
 * Google Tips
+* Green P
 * Hangouts
 * Hipchat
 * Keepass2Android
 * MAPS.ME
 * Messenger (Facebook)
+* Mint
 * MobileVOIP
 * Money Lover
 * Navigator
@@ -88,10 +91,13 @@ make configure_backups
 * Pocket
 * PureVPN
 * Revolut
+* RocketMan Transit
+* Scotiabank Mobile Banking
 * Signal
 * Simplenote
 * Skype
 * Slack
+* Stocard
 * Translate
 * Twilight
 * Twitter
