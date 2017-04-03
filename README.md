@@ -79,7 +79,6 @@ make configure_backups
 * Google Tips
 * Green P
 * Hangouts
-* Hipchat
 * Keepass2Android
 * MAPS.ME
 * Messenger (Facebook)
@@ -92,7 +91,6 @@ make configure_backups
 * PureVPN
 * Revolut
 * RocketMan Transit
-* Scotiabank Mobile Banking
 * Signal
 * Simplenote
 * Skype
