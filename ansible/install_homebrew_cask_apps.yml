@@ -37,6 +37,7 @@
         - the-unarchiver
         - purevpn
         - keycastr # show keystrokes
+        - sqlitebrowser
     - shell: "{{ curdir }}/iterm2/install-settings.sh" # run in Terminal
 
     - shell: |

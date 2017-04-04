@@ -21,9 +21,10 @@ make install_oh_my_zsh
 make install_homebrew_cask_apps
 
 make configure_ruby RUBY_VERSION=2.4.1
-make configure_python PYTHON_VERSION=2.7.13
-make configure_nvm
+make configure_python PYTHON_VERSION=3.6.1 # for NeoVim
+make configure_python PYTHON_VERSION=2.7.13 # for Ansible
 make install_new_ansible PYTHON_VERSION=2.7.13
+make configure_nvm
 
 make configure_dotfiles
 make configure_vim
