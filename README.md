@@ -58,7 +58,6 @@ make configure_backups
 
 ### Android apps
 
-* 2GIS
 * AliExpress
 * Audio Recorder (Sony Mobile Communication)
 * Authenticator
@@ -67,6 +66,7 @@ make configure_backups
 * Bookmate
 * BSPlayer FREE
 * Bubble Level
+* Buffer
 * Calm
 * CamScanner
 * Chrome
