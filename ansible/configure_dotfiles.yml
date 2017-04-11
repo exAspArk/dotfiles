@@ -44,3 +44,6 @@
       with_items:
         - vimrc
         - irbrc
+
+    - name: Install Pygments for cat syntax highlighting
+      shell: easy_install Pygments
