@@ -51,6 +51,14 @@
         - jid
         - gpg
         - nvm
+        - xhyve
+        - docker-machine-driver-xhyve
+        - kubectl
+
+    - name: Set permissions for docker-machine-driver-xhyve
+      shell: |
+        sudo chown root:wheel /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve &&
+        sudo chmod u+s /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
 
     # java for Elasticsearch
     - shell: brew cask list | grep '^java$'
