@@ -66,7 +66,6 @@ make configure_backups
 * Bookmate
 * BSPlayer FREE
 * Bubble Level
-* Buffer
 * Calm
 * CamScanner
 * Chrome
@@ -98,6 +97,7 @@ make configure_backups
 * Simplenote
 * Skype
 * Slack
+* SocialPilot
 * Stocard
 * Translate
 * Twilight
