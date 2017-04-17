@@ -47,3 +47,7 @@
 
     - name: Install Pygments for cat syntax highlighting
       shell: easy_install Pygments
+
+    - name: Install aws-shell
+      shell: pip install --upgrade aws-shell
+      become: true # should be installed via sudo

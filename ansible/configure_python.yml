@@ -15,17 +15,5 @@
     - name: Rehash
       shell: pyenv rehash
 
-    - name: Install nvim-client for python for deoplete.nvim
-      shell: pip install --upgrade neovim
-      become: true # should be installed via sudo
-      environment:
-        PYENV_VERSION: "{{ python_version }}"
-
-    - name: Install aws-shell
-      shell: pip install --upgrade aws-shell
-      become: true # should be installed via sudo
-      environment:
-        PYENV_VERSION: "{{ python_version }}"
-
     - name: Rehash
       shell: pyenv rehash
