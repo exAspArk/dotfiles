@@ -40,6 +40,7 @@
         - spring.plugin.zsh
         - unix.plugin.zsh
         - vim.plugin.zsh
+        - sshrc.plugin.zsh
     - file: src={{ curdir }}/{{ item }} dest=~/.sshrc.d/{{ item }} state=link
       with_items:
         - vimrc
