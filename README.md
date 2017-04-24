@@ -63,17 +63,15 @@ make configure_backups
 * Audio Recorder (Sony Mobile Communication)
 * Authenticator
 * Barcode Scanner
-* Beck Taxi
 * Bookmate
 * BSPlayer FREE
 * Bubble Level
-* Calm
 * CamScanner
+* CarShare
 * Chrome
 * Dropbox
 * Enterprise CarShare
 * File Manager (by Flashlight + Clock)
-* Flickr
 * Foursquare
 * G1 Genius
 * Gmail
@@ -93,23 +91,24 @@ make configure_backups
 * PureVPN
 * Remote app:PlayMemories Mobile by Sony
 * Revolut
-* RocketMan Transit
+* Ritual
 * Signal
 * Simplenote
 * Skype
 * Slack
 * SocialPilot
 * Stocard
+* To-Do Microsoft
 * Translate
 * Twilight
 * Twitter
 * Uber
 * Unit Converter by Digit Grove
 * Universe - Find Local Events
+* Uploader for Flick
 * Viber
 * VLC
 * WhatsApp
-* Wunderlist
 * Xender
 * xFi Locator
 * Youtube
