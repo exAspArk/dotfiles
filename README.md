@@ -55,13 +55,13 @@ make configure_backups
 * Save to Pocket
 * Speed Dial 2
 * uBlock Origin
-* Voice Instead
 
 ### Android apps
 
 * AliExpress
 * Audio Recorder (Sony Mobile Communication)
 * Authenticator
+* Auto redial
 * Barcode Scanner
 * Bookmate
 * BSPlayer FREE
@@ -92,10 +92,12 @@ make configure_backups
 * Remote app:PlayMemories Mobile by Sony
 * Revolut
 * Ritual
+* Safari queue
 * Signal
 * Simplenote
 * Skype
 * Slack
+* Snapseed
 * SocialPilot
 * Stocard
 * To-Do Microsoft
