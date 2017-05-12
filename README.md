@@ -52,6 +52,7 @@ make configure_backups
 * HTTPS Everywhere
 * JSON Formatter
 * Postman
+* Postman Interceptor
 * Save to Pocket
 * Speed Dial 2
 * uBlock Origin
