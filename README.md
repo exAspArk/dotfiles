@@ -39,6 +39,7 @@ make configure_backups
 
 * Docker for Mac
 * GPG Suite
+* MongoDB Compass
 
 ### Google Chrome extensions
 
