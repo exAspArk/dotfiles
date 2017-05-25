@@ -2,6 +2,7 @@ if [ -n "$ZSH_VERSION" ]; then alias git='nocorrect git'; fi
 alias g='git'
 
 alias ga='git add'
+alias gap='git add -p'
 alias gaa='git add --all'
 
 alias gb='git branch'
@@ -24,6 +25,7 @@ alias gcp='git cherry-pick'
 
 alias gd='git diff HEAD'
 alias gdf='git diff --name-status HEAD'
+alias gds='git diff --staged'
 
 alias gbl='git blame'
 
@@ -33,6 +35,7 @@ alias gl='git pull'
 alias glr='git pull --rebase'
 
 alias gp='git push'
+alias gpf='git push -f'
 alias gpt='git push --tags'
 alias gpu='git push -u origin'
 
