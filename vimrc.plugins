@@ -52,6 +52,9 @@ Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'w0ng/vim-hybrid'                                  " theme
 Plug 'bling/vim-airline'                                " status line
 
+" repl
+Plug 'metakirby5/codi.vim'
+
 call plug#end()
 
 " theme
