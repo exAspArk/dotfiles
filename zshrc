@@ -4,7 +4,7 @@ ZSH_THEME="exaspark"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=()
+plugins=(z)
 
 source $ZSH/oh-my-zsh.sh
 
