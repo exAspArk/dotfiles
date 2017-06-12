@@ -3,31 +3,31 @@
 	email = exaspark@gmail.com
 	signingKey = BD577CB7
 [github]
-  user = exAspArk
+	user = exAspArk
 [credential]
-  helper = osxkeychain
+	helper = osxkeychain
 [color]
-  ui = true
-  diff = auto
-  status = auto
-  branch = auto
+	ui = true
+	diff = auto
+	status = auto
+	branch = auto
 [color "diff"]
-   meta = yellow
+	meta = yellow
 [core]
-  excludesfile = ~/.gitignore
-  editor = nvim --noplugin
+	excludesfile = ~/.gitignore
+	editor = nvim --noplugin
 [diff]
-  compactionHeuristic = true
+	compactionHeuristic = true
 [merge]
-  ff = only
-  strategy = recursive
-  strategy-option = patience
+	ff = only
+	strategy = recursive
+	strategy-option = patience
 [help]
-  autocorrect = true
+	autocorrect = true
 [push]
-  default = current
+	default = current
 [rerere]
-  enabled = true
+	enabled = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

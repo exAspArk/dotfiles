@@ -86,7 +86,6 @@ make configure_backups
 * Messenger (Facebook)
 * Mint
 * MobileVOIP
-* Money Lover
 * Navigator
 * Player FM
 * Pocket
@@ -112,6 +111,7 @@ make configure_backups
 * Uploader for Flick
 * Viber
 * VLC
+* Wealthsimple
 * WhatsApp
 * Xender
 * xFi Locator
