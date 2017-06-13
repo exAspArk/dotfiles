@@ -5,11 +5,13 @@
       become: yes
       become_method: sudo
 
+    - file: path=~/.bundle state=directory
     - file: path=~/.zsh state=directory
     - file: path=~/.zsh/custom state=directory
     - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link force=yes
       with_items:
         - ansible.cfg
+        - bundle/config
         - irbrc
         - gemrc
         - gitconfig
