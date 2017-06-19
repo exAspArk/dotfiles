@@ -23,7 +23,7 @@ alias gcs='git checkout staging'
 
 alias gcp='git cherry-pick'
 
-alias gd='git diff HEAD'
+alias gd='git diff HEAD --color-words'
 alias gdf='git diff --name-status HEAD'
 alias gds='git diff --staged'
 
@@ -91,7 +91,7 @@ alias gshp='git stash pop'
 
 alias gcl='git reset --hard HEAD'
 
-alias gs='git show'
+alias gs='git show --color-words'
 
 # commit count
 alias gstats='git shortlog -sn --no-merges'
