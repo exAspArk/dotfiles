@@ -110,6 +110,7 @@ nnoremap π "_:FZF<CR>
 nnoremap <C-f> "_:CtrlSF 
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_position = 'bottom'
+let g:ctrlsf_ignore_dir = ['node_modules']
 if executable('ag')
   let g:ctrlsf_ackprg = 'ag' " use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 endif

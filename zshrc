@@ -60,7 +60,7 @@ bindkey '\e[B' history-beginning-search-forward
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # use ag for fzf
-export FZF_DEFAULT_COMMAND='gfind . ! -path "./.git*" -type f -printf "%P\n"'
+export FZF_DEFAULT_COMMAND='gfind . ! -path "./.git/*" ! -path "./node_modules/*" -type f -printf "%P\n"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # cd to selected directory, by default from NY_PROJECT_PATH
