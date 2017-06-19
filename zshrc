@@ -41,7 +41,10 @@ fi
 
 # load nvm
 export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+nvm() {
+  . "$(brew --prefix nvm)/nvm.sh" --no-use
+  nvm $@
+}
 
 # no default shell ruby version in Neovim terminal
 rbenv shell --unset
