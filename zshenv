@@ -18,6 +18,8 @@ export PATH=$PATH:/usr/local/heroku/bin # Added by the Heroku Toolbelt
 
 export PATH=$PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
 
+export PATH="$PATH:$(yarn global bin)"
+
 # Load all of your custom configurations from custom/
 for config_file (~/.zsh/custom/*.zsh(N)); do
   source $config_file
