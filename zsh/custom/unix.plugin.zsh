@@ -14,3 +14,5 @@ c() {
     cat $1
   fi
 }
+alias pbc='pbcopy'
+alias pbp='pbpaste'
