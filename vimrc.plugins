@@ -10,7 +10,7 @@ Plug 'Shougo/deoplete.nvim', { 'on': [], 'do': ':UpdateRemotePlugins', 'tag': 'e
 Plug 'Raimondi/delimitMate', { 'on': [] }               " closing brackets
 Plug 'terryma/vim-expand-region'                        " change visual selection by using '+' / '-'
 Plug 'mbbill/undotree'                                  " undo history tree
-Plug 'Yggdroot/indentLine'                              " indent columns
+Plug 'nathanaelkane/vim-indent-guides'                  " indent columns
 
 " navigation
 Plug 'scrooloose/nerdtree'                              " file tree
@@ -132,14 +132,10 @@ augroup custom_types
                       \| doautocmd FileType
 augroup END
 
-" indent lines char
-let g:indentLine_enabled = 1
-let g:indentLine_char = '¦'
-
-augroup json_conceal
-  autocmd! Filetype json let g:indentLine_enabled = 0
-                      \| autocmd! json_conceal
-augroup END
+" vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
+hi IndentGuidesOdd ctermbg=234
+hi IndentGuidesEven ctermbg=235
 
 " autocomplete
 let g:deoplete#enable_ignore_case = 0

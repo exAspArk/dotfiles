@@ -1,16 +1,19 @@
 let mapleader = " "
 
-syntax on " enable syntax highlighting
-
-if filereadable(expand("~/.vimrc.plugins"))
-  source ~/.vimrc.plugins
-endif
-
-filetype plugin indent on " required to detect filetype
+" enable syntax highlighting
+syntax on
 
 " theme
 set t_Co=256
 set background=dark
+
+" load plugins
+if filereadable(expand("~/.vimrc.plugins"))
+  source ~/.vimrc.plugins
+endif
+
+" required to detect filetype
+filetype plugin indent on
 
 set shell=/bin/bash
 
