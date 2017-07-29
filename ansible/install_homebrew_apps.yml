@@ -54,6 +54,7 @@
         - xhyve
         - docker-machine-driver-xhyve
         - kubectl
+        - heroku
 
     - name: Set permissions for docker-machine-driver-xhyve
       shell: |
