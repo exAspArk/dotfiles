@@ -54,6 +54,7 @@ make configure_backups
 * Save to Pocket
 * Speed Dial 2
 * uBlock Origin
+* Vimium
 
 ### Android apps
 
@@ -87,7 +88,6 @@ make configure_backups
 * Player FM
 * Pocket
 * PureVPN
-* Remote app:PlayMemories Mobile by Sony
 * Revolut
 * Ritual
 * Safari queue
