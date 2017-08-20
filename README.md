@@ -54,7 +54,6 @@ make configure_backups
 * Save to Pocket
 * Speed Dial 2
 * uBlock Origin
-* Vimium
 
 ### Android apps
 
@@ -69,11 +68,11 @@ make configure_backups
 * CamScanner
 * CarShare
 * Chrome
+* CLEANit
 * Dropbox
 * Enterprise CarShare
 * File Manager (by Flashlight + Clock)
 * Foursquare
-* G1 Genius
 * Gmail
 * Google Tips
 * Green P
@@ -96,7 +95,6 @@ make configure_backups
 * Skype
 * Slack
 * Snapseed
-* SocialPilot
 * Stocard
 * To-Do Microsoft
 * Translate
@@ -108,11 +106,9 @@ make configure_backups
 * Uploader for Flick
 * Viber
 * VLC
-* Wealthsimple
 * WhatsApp
 * Xender
 * xFi Locator
 * Youtube
 * Zoom
-* Сбербанк
 * @Voice
