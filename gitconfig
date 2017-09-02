@@ -19,7 +19,6 @@
 [diff]
 	compactionHeuristic = true
 [merge]
-	ff = only
 	strategy = recursive
 	strategy-option = patience
 [help]
