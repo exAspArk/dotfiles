@@ -128,6 +128,7 @@ augroup END
 augroup custom_types
   autocmd!
   autocmd FileType javascript call plug#load('yajs.vim', 'vim-jsx')
+                      \| nnoremap tt :!find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
                       \| execute 'autocmd! custom_types'
                       \| doautocmd FileType
 augroup END
