@@ -62,13 +62,13 @@ make configure_backups
 * Authenticator
 * Auto redial
 * Barcode Scanner
+* Blue light filter
 * Bookmate
 * BSPlayer FREE
 * Bubble Level
 * CamScanner
 * CarShare
 * Chrome
-* CLEANit
 * Dropbox
 * Enterprise CarShare
 * File Manager (by Flashlight + Clock)
@@ -76,6 +76,7 @@ make configure_backups
 * Gmail
 * Google Tips
 * Green P
+* Greenify
 * GroupNet
 * Hangouts
 * Keepass2Android
@@ -98,7 +99,6 @@ make configure_backups
 * Stocard
 * To-Do Microsoft
 * Translate
-* Twilight
 * Twitter
 * Uber
 * Unit Converter by Digit Grove

@@ -55,6 +55,9 @@
         - docker-machine-driver-xhyve
         - kubectl
         - heroku
+        - ntfs-3g
+        - ffmpeg
+        - rsync
 
     - name: Set permissions for docker-machine-driver-xhyve
       shell: |
