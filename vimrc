@@ -76,6 +76,12 @@ set visualbell t_vb=
 " automatically refresh changed files
 set autoread
 
+" fold method definitions
+set foldenable        " enable folding
+set foldlevelstart=10 " open most folds by default
+set foldmethod=indent " fold based on indent level
+nnoremap fo za        " folding shortcut
+
 " highlight trailing whitespaces
 hi ExtraWhitespace ctermbg=172 guifg=#d78700
 match ExtraWhitespace /\s\+$/
