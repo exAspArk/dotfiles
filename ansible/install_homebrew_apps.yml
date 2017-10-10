@@ -50,6 +50,9 @@
         - yarn
         - jid
         - gpg
+        - gpg2
+        - gpg-agent
+        - pinentry-mac
         - nvm
         - xhyve
         - docker-machine-driver-xhyve
@@ -58,6 +61,7 @@
         - ntfs-3g
         - ffmpeg
         - rsync
+        - trash
 
     - name: Set permissions for docker-machine-driver-xhyve
       shell: |
