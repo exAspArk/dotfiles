@@ -38,4 +38,4 @@
 [tag]
 	gpgsign = true
 [gpg]
-	program = /usr/local/bin/gpg2
+	program = /usr/local/MacGPG2/bin/gpg2

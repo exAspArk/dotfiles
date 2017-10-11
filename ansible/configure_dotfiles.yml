@@ -8,10 +8,12 @@
     - file: path=~/.bundle state=directory
     - file: path=~/.zsh state=directory
     - file: path=~/.zsh/custom state=directory
+    - file: path=~/.gnupg state=directory
     - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link force=yes
       with_items:
         - ansible.cfg
         - bundle/config
+        - gnupg/gpg-agent.conf
         - irbrc
         - gemrc
         - gitconfig
