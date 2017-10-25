@@ -58,6 +58,7 @@
         - ffmpeg
         - rsync
         - trash
+        - pstree
 
     - name: Set permissions for docker-machine-driver-xhyve
       shell: |
