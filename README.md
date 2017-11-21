@@ -43,27 +43,29 @@ make configure_backups
 
 ### Google Chrome extensions
 
-* React Developer Tools
 * EditThisCookie
 * Falcon
 * Flashcontrol
 * HTTPS Everywhere
+* Grammarly for Chrome
 * JSON Formatter
+* ModHeader
 * Postman
 * Postman Interceptor
+* React Developer Tools
 * Save to Pocket
 * Speed Dial 2
 * uBlock Origin
 
 ### Android apps
 
+* Truecaller: Caller ID, SMS spam blocking & Dialer
 * AliExpress
 * Audio Recorder (Sony Mobile Communication)
 * Authenticator
 * Auto redial
 * Barcode Scanner
 * Blue light filter
-* Bookmate
 * BSPlayer FREE
 * Bubble Level
 * CamScanner
