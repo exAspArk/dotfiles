@@ -164,7 +164,7 @@ let g:multi_cursor_start_word_key='g<C-n>'
 let g:instant_markdown_slow = 1
 
 " rspec command
-let g:rspec_command = "!rr {spec}"
+let g:rspec_command = "!spring --version > /dev/null && spring rspec {spec} || bundle exec rspec {spec}"
 
 " MatchTagAlways
 let g:mta_use_matchparen_group = 0

@@ -44,6 +44,7 @@ set hlsearch          " highlight same words while searching with Shift + *
 " line numbers
 set number            " show
 set numberwidth=5     " line numbers width
+set number relativenumber " hybrid relative number + absolute
 
 " make it obvious where 120 characters is
 set textwidth=120
@@ -128,6 +129,10 @@ augroup vimrcEx
   " highlight trailing whitespaces
   autocmd InsertLeave * hi ExtraWhitespace ctermbg=172 guifg=#d78700
   autocmd InsertEnter * hi ExtraWhitespace NONE
+
+  " don't use relative numbers in insert more
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 
   autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?                            " make ?s part of words

@@ -59,7 +59,6 @@ make configure_backups
 
 ### Android apps
 
-* Truecaller: Caller ID, SMS spam blocking & Dialer
 * AliExpress
 * Audio Recorder (Sony Mobile Communication)
 * Authenticator
@@ -113,4 +112,3 @@ make configure_backups
 * xFi Locator
 * Youtube
 * Zoom
-* @Voice

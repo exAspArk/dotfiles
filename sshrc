@@ -7,7 +7,6 @@ if [[ -f ~/.bash_logout  ]]; then source ~/.bash_logout ; fi
 
 source ${SSHHOME}/.sshrc.d/bundler.plugin.zsh
 source ${SSHHOME}/.sshrc.d/git.plugin.zsh
-source ${SSHHOME}/.sshrc.d/spring.plugin.zsh
 source ${SSHHOME}/.sshrc.d/unix.plugin.zsh
 source ${SSHHOME}/.sshrc.d/vim.plugin.zsh
 source ${SSHHOME}/.sshrc.d/sshrc.plugin.zsh
