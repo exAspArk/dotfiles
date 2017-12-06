@@ -65,7 +65,6 @@ make configure_backups
 * Auto redial
 * Barcode Scanner
 * Blue light filter
-* BSPlayer FREE
 * Bubble Level
 * CamScanner
 * CarShare
