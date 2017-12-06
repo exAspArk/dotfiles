@@ -90,25 +90,21 @@ match ExtraWhitespace /\s\+$/
 " make line number brighter
 hi LineNr ctermfg=240 guifg=#585858
 
+" close buffer by Alt + w
+nnoremap ∑ :bd<CR>
+" close buffer with force by Alt + q
+nnoremap œ :bd!<CR>
+
 function! PrepareTerminal()
   if &buftype == 'terminal' && has('nvim') && !empty(matchstr(expand("%"), 'term://.\+:zsh$')) " in my zsh terminal
     startinsert
     set nobuflisted
 
-    " close terminal buffer by Alt + w
-    nnoremap ∑ :bd!<CR>
     " map escape for terminal buffer
     tnoremap <Esc> <C-\><C-n>
     tnoremap <C-h> <C-\><C-n><C-w>h
     tnoremap <C-l> <C-\><C-n><C-w>l
   else
-    " close usual buffer by Alt + w without moving split windows
-    nnoremap <silent> ∑
-      \ :if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1<CR>
-        \ bd<CR>
-      \ else<CR>
-        \ bp \| bd #<CR>
-      \ endif<CR><CR>
     " unmap escape for usual buffer
     silent! tunmap <Esc>
   endif
