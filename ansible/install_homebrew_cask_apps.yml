@@ -39,6 +39,7 @@
         - minikube
         - google-cloud-sdk # requires Python2
         - osxfuse
+        - insomnia
 
     - shell: "{{ curdir }}/iterm2/install-settings.sh" # run in Terminal
 

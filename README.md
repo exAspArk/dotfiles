@@ -39,6 +39,7 @@ make configure_backups
 
 * Docker for Mac
 * GPG Suite
+* GraphQL Playground
 * MongoDB Compass
 
 ### Google Chrome extensions
@@ -50,8 +51,6 @@ make configure_backups
 * Grammarly for Chrome
 * JSON Formatter
 * ModHeader
-* Postman
-* Postman Interceptor
 * React Developer Tools
 * Save to Pocket
 * Speed Dial 2
