@@ -122,16 +122,11 @@ augroup lazy_load
                       \| if exists('g:loaded_deoplete')
                       \|   call deoplete#enable()
                       \| endif
-                      \| autocmd! lazy_load
 augroup END
 
 augroup custom_types
   autocmd!
   autocmd FileType javascript call plug#load('yajs.vim', 'vim-jsx')
-                      \| nnoremap tt :!find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
-                      \| nnoremap <Leader>p Odebugger;<Esc>
-                      \| execute 'autocmd! custom_types'
-                      \| doautocmd FileType
 augroup END
 
 " vim-indent-guides

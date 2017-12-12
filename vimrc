@@ -138,9 +138,13 @@ augroup vimrcEx
   autocmd FileType gitcommit setlocal spell                                         " enable spellchecking for git commit messages
   autocmd FileType css,scss,sass setlocal iskeyword+=-                              " allow stylesheets to autocomplete hyphenated words
   autocmd FileType clojure setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,=,<,>,:,$ " customize keywords
-  autocmd filetype crontab setlocal nobackup nowritebackup                          " allow to edit crontab -e
+  autocmd FileType crontab setlocal nobackup nowritebackup                          " allow to edit crontab -e
   autocmd BufWritePre *.rb,*.coffee,*.md,*.rake,*.clj,*.js,*.jsx :%s/\s\+$//e       " remove trailing whitespaces
   autocmd BufEnter * call PrepareTerminal()
+
+  autocmd BufRead *.js,*.jsx nnoremap <Leader>p Odebugger;<Esc>
+    \| nnoremap tt :!find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
+
 augroup END
 
 " wrap long lines
