@@ -40,6 +40,7 @@
         - google-cloud-sdk # requires Python2
         - osxfuse
         - insomnia
+        - mist # ethereum
 
     - shell: "{{ curdir }}/iterm2/install-settings.sh" # run in Terminal
 

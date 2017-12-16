@@ -59,6 +59,7 @@
         - rsync
         - trash
         - pstree
+        - geth # ethereum
 
     - name: Set permissions for docker-machine-driver-xhyve
       shell: |
@@ -101,7 +102,11 @@
     - file: src=/usr/local/opt/rbenv dest=~/.rbenv state=link
 
     # - shell: brew install phantomjs # v2 currently does not work with OS X El Capitan, use lines below:
-    - shell: npm install phantom phantomjs -g
+    - shell: yarn global add phantom
+    - shell: yarn global add phantomjs
+
+    # ethereum
+    - shell: yarn global add truffle
 
     # elasticsearch plugins
     - shell: /usr/local/Cellar/elasticsearch/*/libexec/bin/plugin list | grep 'license$'

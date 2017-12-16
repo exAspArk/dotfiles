@@ -47,6 +47,7 @@ Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }    " coffee script
 " Plug 'suan/vim-instant-markdown', { 'for': 'markdown' } " real time markdown editing
 Plug 'nono/vim-handlebars', { 'for': 'handlebars.html' }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+Plug 'tomlion/vim-solidity', { 'for': 'solidity' }      " solidity
 
 " theme
 Plug 'w0ng/vim-hybrid'                                  " theme
