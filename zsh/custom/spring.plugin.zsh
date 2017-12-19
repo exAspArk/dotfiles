@@ -1,4 +1,3 @@
-alias rg='spring rails g'
 alias rs='spring rails s'
 alias rc='spring rails c'
 alias sr='spring rspec'

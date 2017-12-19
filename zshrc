@@ -61,8 +61,6 @@ bindkey '\e[B' history-beginning-search-forward
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# use ag for fzf
 export FZF_DEFAULT_COMMAND='gfind . ! -path "./.git/*" ! -path "./node_modules/*" -type f -printf "%P\n"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 

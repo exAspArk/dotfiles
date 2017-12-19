@@ -33,7 +33,7 @@
         - graphicsmagick
         - leiningen
         - sphinx
-        - the_silver_searcher
+        - ripgrep
         - 'neovim/neovim/neovim'
         - wget
         - sshrc

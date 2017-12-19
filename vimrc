@@ -254,10 +254,9 @@ if has('persistent_undo') && isdirectory($HOME . '/.vim/undo')
   set undofile
 end
 
-" use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+" use ripgrep
+if executable('rg')
+  set grepprg=rg\ --vimgrep " use rg over grep
 endif
 
 " open large files > 10 MB
