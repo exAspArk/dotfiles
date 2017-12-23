@@ -142,16 +142,18 @@ augroup vimrcEx
   autocmd BufWritePre *.rb,*.coffee,*.md,*.rake,*.clj,*.js,*.jsx,*.sol :%s/\s\+$//e " remove trailing whitespaces
   autocmd BufEnter * call PrepareTerminal()
 
-  autocmd BufRead *.js,*.jsx nnoremap <Leader>p Odebugger;<Esc>
+  autocmd BufRead *.rb
+    \ nnoremap <Leader>p Orequire 'pry'; binding.pry<Esc> " add binding.pry line
+    \| nnoremap tt :!gem ctags && gfind . -name '*.rb' -type f -print0 \| xargs -0 ctags -R -V<CR> " build ctags by using 'gem-ctags' gem
+
+  autocmd BufRead *.js,*.jsx
+    \ nnoremap <Leader>p Odebugger;<Esc>
     \| nnoremap tt :!find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
 
 augroup END
 
 " wrap long lines
 nnoremap wl gggqG
-
-" Build ctags by using 'gem-ctags' gem
-nnoremap tt :!gem ctags && gfind . -name '*.rb' -type f -print0 \| xargs -0 ctags -R -V<CR>
 
 " redraw vim
 nnoremap rr :so $MYVIMRC \| checktime<CR>
@@ -244,9 +246,6 @@ vnoremap p "_dP
 
 " delete line without yanking (copying) it
 nnoremap dd "_dd
-
-" add binding.pry line
-nnoremap <Leader>p Orequire 'pry'; binding.pry<Esc>
 
 " setup undodir if +persistent_undo option included
 if has('persistent_undo') && isdirectory($HOME . '/.vim/undo')
