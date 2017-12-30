@@ -1,0 +1,55 @@
+snippet if
+abbr    if ... end
+	if ${1:#:condition}
+		${2}
+	end
+
+snippet unless
+abbr    unless ... end
+	unless ${1:#:condition}
+		${2}
+	end
+
+snippet def
+abbr    def ... end
+	def ${1:#:method_name}
+		${2}
+	end
+
+snippet do
+abbr    do ... end
+	do
+		${1}
+	end
+
+snippet dovar
+abbr    do |var| ... end
+	do |${1:#:var}|
+		$1${2}
+	end
+
+snippet each
+options word
+	each { |${1:#:var}| $1${2} }
+
+snippet map
+options word
+	map { |${1:#:var}| $1${2} }
+
+snippet case
+abbr    case ... when ... end
+options head
+	case ${1}
+	when ${2}
+		${3}
+	end
+
+snippet class
+	class ${1:`substitute(expand('%:t:r:r:r'), '\v%(^(.)|_(.))', '\u\1\u\2', 'g')`}
+		${2}
+	end
+
+snippet module
+	module ${1:`substitute(expand('%:t:r:r:r'), '\v%(^(.)|_(.))', '\u\1\u\2', 'g')`}
+		${2}
+	end

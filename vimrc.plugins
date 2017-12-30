@@ -11,6 +11,7 @@ Plug 'terryma/vim-expand-region'                        " change visual selectio
 Plug 'mbbill/undotree'                                  " undo history tree
 Plug 'nathanaelkane/vim-indent-guides'                  " indent columns
 Plug 'w0rp/ale'                                         " lint
+Plug 'Shougo/neosnippet', { 'on': [] }                  " snippets
 
 " navigation
 Plug 'scrooloose/nerdtree'                              " file tree
@@ -122,7 +123,7 @@ endif
 " Plug load some plugins not while starting vim
 augroup lazy_load
   autocmd!
-  autocmd! InsertEnter * call plug#load('deoplete.nvim', 'delimitMate', 'vim-endwise')
+  autocmd! InsertEnter * call plug#load('deoplete.nvim', 'delimitMate', 'vim-endwise', 'neosnippet')
                       \| if exists('g:loaded_deoplete')
                       \|   call deoplete#enable()
                       \| endif
@@ -160,9 +161,6 @@ let g:airline_section_warning = ''
 let g:multi_cursor_start_key='<C-n>'
 let g:multi_cursor_start_word_key='g<C-n>'
 
-" markdown preview
-let g:instant_markdown_slow = 1
-
 " rspec command
 let g:rspec_runner = "os_x_iterm2"
 let g:rspec_command = "below new | term spring --version > /dev/null && spring rspec {spec} || bundle exec rspec {spec}"
@@ -178,3 +176,13 @@ let g:jsx_ext_required = 0
 
 " Markdown livedown
 nmap md :LivedownToggle<CR>
+
+" neosnippet
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.vim-snippets'
+" w/o neosnippet-snippets plugin
+let g:neosnippet#disable_runtime_snippets = {
+\   '_' : 1,
+\ }
+" expand snippet on TAB or switch to the next suggestion with deoplete
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"

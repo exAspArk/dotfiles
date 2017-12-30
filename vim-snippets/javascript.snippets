@@ -1,0 +1,48 @@
+snippet if
+options head
+	if (${1:#:condition}) {
+		${2};
+	}
+
+snippet if-else
+abbr    ife
+options head
+	if (${1:#:condition}) {
+		${2};
+	} else {
+		${3};
+	}
+
+snippet switch
+options head
+	switch (${1:#:var}) {
+		case ${2}: {
+			${3};
+			break;
+		}
+		default: {
+			${4};
+		}
+	}
+
+snippet try
+options head
+	try {
+		${1:something};
+	} catch (${2}) {
+		${3};
+	}
+
+snippet con
+options head
+	console.log(${0:var});
+
+snippet import
+abbr    import { Member } from "module";
+options head
+	import { ${1:Member} } from "${2}";
+
+snippet import-default
+abbr    import Member from "module";
+options head
+	import ${1:Member} from "${2}";

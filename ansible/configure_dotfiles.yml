@@ -9,6 +9,7 @@
     - file: path=~/.zsh state=directory
     - file: path=~/.zsh/custom state=directory
     - file: path=~/.gnupg state=directory
+    - file: path=~/.vim-snippets state=directory
     - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link force=yes
       with_items:
         - ansible.cfg
@@ -20,6 +21,8 @@
         - gitignore
         - pryrc
         - spring.rb
+        - vim-snippets/javascript.snippets
+        - vim-snippets/ruby.snippets
         - zshenv
         - zshrc
         - zsh/custom/bundler.plugin.zsh
@@ -27,7 +30,6 @@
         - zsh/custom/spring.plugin.zsh
         - zsh/custom/unix.plugin.zsh
         - zsh/custom/vim.plugin.zsh
-        - zsh/custom/rspec.plugin.zsh
         - zsh/custom/sshrc.plugin.zsh
         - sshrc
         - tern-project
