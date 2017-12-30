@@ -1,18 +1,46 @@
+snippet froz
+	frozen_string_literal: true
+
+snippet req
+	require '${1}'
+
+snippet class
+abbr    class ... end
+options head
+	class ${1:`substitute(expand('%:t:r:r:r'), '\v%(^(.)|_(.))', '\u\1\u\2', 'g')`}
+		${2}
+	end
+
+snippet module
+abbr    module ... end
+options head
+	module ${1:`substitute(expand('%:t:r:r:r'), '\v%(^(.)|_(.))', '\u\1\u\2', 'g')`}
+		${2}
+	end
+
+snippet def
+abbr    def ... end
+options head
+	def ${1:#:method_name}
+		${2}
+	end
+
+snippet priv
+abbr    private
+	privatprivate
+	${0}
+
 snippet if
 abbr    if ... end
+options head
 	if ${1:#:condition}
 		${2}
 	end
 
 snippet unless
 abbr    unless ... end
+options head
 	unless ${1:#:condition}
-		${2}
-	end
-
-snippet def
-abbr    def ... end
-	def ${1:#:method_name}
 		${2}
 	end
 
@@ -23,18 +51,18 @@ abbr    do ... end
 	end
 
 snippet dovar
-abbr    do |var| ... end
-	do |${1:#:var}|
-		$1${2}
+abbr    do |i| ... end
+	do |${1:#:i}|
+		${2:$1}
 	end
 
-snippet each
-options word
-	each { |${1:#:var}| $1${2} }
+snippet ->
+abbr    -> { ... }
+	-> { ${1} }
 
-snippet map
-options word
-	map { |${1:#:var}| $1${2} }
+snippet ->(
+abbr    ->(i) { ... }
+	->(${1:#:i}) { ${2:$1} }
 
 snippet case
 abbr    case ... when ... end
@@ -44,12 +72,12 @@ options head
 		${3}
 	end
 
-snippet class
-	class ${1:`substitute(expand('%:t:r:r:r'), '\v%(^(.)|_(.))', '\u\1\u\2', 'g')`}
-		${2}
-	end
+snippet each
+abbr    each { |i| ... }
+options word
+	each { |${1:#:i}| ${2:$1} }
 
-snippet module
-	module ${1:`substitute(expand('%:t:r:r:r'), '\v%(^(.)|_(.))', '\u\1\u\2', 'g')`}
-		${2}
-	end
+snippet map
+abbr    map { |i| ... }
+options word
+	map { |${1:#:i}| ${2:$1} }

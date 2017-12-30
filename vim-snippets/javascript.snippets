@@ -1,11 +1,22 @@
+snippet const
+abbr    const ... = ...;
+options head
+	const ${1} = ${2};
+
+snippet let
+abbr    let ... = ...;
+options head
+	let ${1} = ${2};
+
 snippet if
+abbr    if (...) { ... }
 options head
 	if (${1:#:condition}) {
 		${2};
 	}
 
-snippet if-else
-abbr    ife
+snippet ifelse
+abbr    if (...) { ... } else { ... }
 options head
 	if (${1:#:condition}) {
 		${2};
@@ -14,6 +25,7 @@ options head
 	}
 
 snippet switch
+abbr    switch (...) { ... }
 options head
 	switch (${1:#:var}) {
 		case ${2}: {
@@ -26,6 +38,7 @@ options head
 	}
 
 snippet try
+abbr    try { ... } catch (...) { ... }
 options head
 	try {
 		${1:something};
@@ -34,15 +47,50 @@ options head
 	}
 
 snippet con
+abbr    console.log(...);
 options head
 	console.log(${0:var});
 
 snippet import
 abbr    import { Member } from "module";
 options head
-	import { ${1:Member} } from "${2}";
+	import { ${1:Member} } from "${2:$1}";
 
-snippet import-default
+snippet imp
 abbr    import Member from "module";
 options head
-	import ${1:Member} from "${2}";
+	import ${1} from "${2:$1}";
+
+snippet ret
+abbr    return ...;
+	return ${0:result};
+
+# React #######################################################################
+
+snippet ren
+abbr    render() { ... }
+options head
+	render() {
+		return (
+			${1:<div />}
+		);
+	}
+
+snippet setState
+abbr    setState({ ... });
+options word
+	setState({
+		${1}: ${2}
+	});
+
+# JSX #########################################################################
+
+snippet <div
+abbr    <div>...</div>
+	<div>
+		${0}
+	</div>
+
+snippet <a
+abbr    <a href="...">...</a>
+	<a href="${1:#}">${0:$1}</a>

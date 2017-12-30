@@ -21,6 +21,8 @@
         - gitignore
         - pryrc
         - spring.rb
+        - vim-snippets/coffee.snippets
+        - vim-snippets/html.snippets
         - vim-snippets/javascript.snippets
         - vim-snippets/ruby.snippets
         - zshenv
