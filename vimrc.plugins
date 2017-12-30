@@ -2,7 +2,6 @@ call plug#begin('~/.vim/plugged')
 
 " text editing
 Plug 'tpope/vim-surround'                               " better brackets
-Plug 'scrooloose/syntastic'                             " check syntax
 Plug 'tpope/vim-commentary'                             " comments
 Plug 'tpope/vim-repeat'                                 " repeat more commands with '.'
 Plug 'terryma/vim-multiple-cursors'                     " multiple cursors like in ST
@@ -11,6 +10,7 @@ Plug 'Raimondi/delimitMate', { 'on': [] }               " closing brackets
 Plug 'terryma/vim-expand-region'                        " change visual selection by using '+' / '-'
 Plug 'mbbill/undotree'                                  " undo history tree
 Plug 'nathanaelkane/vim-indent-guides'                  " indent columns
+Plug 'w0rp/ale'                                         " lint
 
 " navigation
 Plug 'scrooloose/nerdtree'                              " file tree
@@ -172,9 +172,6 @@ let g:mta_use_matchparen_group = 0
 let g:mta_set_default_matchtag_color = 0
 highlight MatchTag ctermbg=240 guifg=#585858
 let g:mta_filetypes = {'html' : 1, 'javascript.jsx': 1}
-
-" Javascript
-let g:syntastic_javascript_checkers = ['eslint']
 
 " JSX
 let g:jsx_ext_required = 0
