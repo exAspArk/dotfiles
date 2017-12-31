@@ -64,39 +64,42 @@ make configure_backups
 * Auto redial
 * Barcode Scanner
 * Blue light filter
+* Brave
 * Bubble Level
 * CamScanner
-* CarShare
-* Chrome
+* CarShare (Enterprise)
 * Dropbox
-* Enterprise CarShare
-* File Manager (by Flashlight + Clock)
+* File Manager + (by Flashlight + Clock)
+* Files Go
+* Flickr
 * Foursquare
 * Gmail
 * Google Tips
-* Green P
 * Greenify
 * GroupNet
-* Hangouts
+* InstaRyde
 * Keepass2Android
+* Lyft
 * MAPS.ME
 * Messenger (Facebook)
 * Mint
 * MobileVOIP
 * Navigator
+* P Reader
+* Paytm
 * Player FM
 * Pocket
 * PureVPN
 * Revolut
 * Ritual
-* Safari queue
 * Signal
+* Simple radio
 * Simplenote
 * Skype
 * Slack
 * Snapseed
 * Stocard
-* To-Do Microsoft
+* TickTick
 * Translate
 * Twitter
 * Uber

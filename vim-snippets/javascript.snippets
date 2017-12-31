@@ -3,6 +3,13 @@ abbr    const ... = ...;
 options head
 	const ${1} = ${2};
 
+snippet const-func
+abbr    const func = (args) => { ... };
+options head
+	const ${1:#:functionName} = (${2}) => {
+		${3};
+	};
+
 snippet let
 abbr    let ... = ...;
 options head
@@ -15,7 +22,7 @@ options head
 		${2};
 	}
 
-snippet ifelse
+snippet if-else
 abbr    if (...) { ... } else { ... }
 options head
 	if (${1:#:condition}) {
@@ -64,6 +71,10 @@ options head
 snippet ret
 abbr    return ...;
 	return ${0:result};
+
+snippet exp
+abbr    export default ...;
+	export default ${0};
 
 # React #######################################################################
 
