@@ -98,6 +98,7 @@ make configure_backups
 * Skype
 * Slack
 * Snapseed
+* Speed Booster (by Mobile Health Club)
 * Stocard
 * TickTick
 * Translate

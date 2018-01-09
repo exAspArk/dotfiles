@@ -116,7 +116,7 @@ let g:ctrlsf_ignore_dir = ['node_modules', '.git'] " does not work https://githu
 if executable('rg')
   let g:ctrlsf_ackprg = 'rg' " use ripgrep
   let g:ctrlsf_extra_backend_args = {
-    \ 'rg': '--no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*"'
+    \ 'rg': '--no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!tags" --glob "!log/*"'
     \ }
 endif
 
@@ -173,9 +173,6 @@ let g:mta_filetypes = {'html' : 1, 'javascript.jsx': 1}
 
 " JSX
 let g:jsx_ext_required = 0
-
-" Markdown livedown
-nmap md :LivedownToggle<CR>
 
 " neosnippet
 let g:neosnippet#enable_snipmate_compatibility = 1
