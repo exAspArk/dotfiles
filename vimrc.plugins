@@ -116,7 +116,7 @@ let g:ctrlsf_ignore_dir = ['node_modules', '.git'] " does not work https://githu
 if executable('rg')
   let g:ctrlsf_ackprg = 'rg' " use ripgrep
   let g:ctrlsf_extra_backend_args = {
-    \ 'rg': '--no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!tags" --glob "!log/*"'
+    \ 'rg': '--no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!bower_components/*" --glob "!dist/" --glob "!tmp/*" --glob "!tags" --glob "!log/*"'
     \ }
 endif
 
@@ -170,6 +170,9 @@ let g:mta_use_matchparen_group = 0
 let g:mta_set_default_matchtag_color = 0
 highlight MatchTag ctermbg=240 guifg=#585858
 let g:mta_filetypes = {'html' : 1, 'javascript.jsx': 1}
+
+" don't run linters on opening a file
+let g:ale_lint_on_enter = 0
 
 " JSX
 let g:jsx_ext_required = 0
