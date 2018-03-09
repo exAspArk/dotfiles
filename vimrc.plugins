@@ -116,7 +116,7 @@ let g:ctrlsf_ignore_dir = ['node_modules', '.git'] " does not work https://githu
 if executable('rg')
   let g:ctrlsf_ackprg = 'rg' " use ripgrep
   let g:ctrlsf_extra_backend_args = {
-    \ 'rg': '--no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!bower_components/*" --glob "!dist/" --glob "!tmp/*" --glob "!tags" --glob "!log/*"'
+    \ 'rg': '--no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!bower_components/*" --glob "!dist/" --glob "!tmp/*" --glob "!tags" --glob "!log/*" --glob "!.bundle/*"'
     \ }
 endif
 
