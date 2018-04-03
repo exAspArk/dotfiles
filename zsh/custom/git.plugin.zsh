@@ -35,7 +35,7 @@ alias gl='git pull'
 alias glr='git pull --rebase'
 
 alias gp='git push'
-alias gpf='git push -f'
+alias gpf='git push --force-with-lease'
 alias gpt='git push --tags'
 alias gpu='git push -u origin'
 
