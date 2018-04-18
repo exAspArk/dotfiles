@@ -49,6 +49,7 @@ Plug 'shime/vim-livedown', { 'for': 'markdown' }        " real time markdown edi
 Plug 'nono/vim-handlebars', { 'for': 'handlebars.html' }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'tomlion/vim-solidity', { 'for': 'solidity' }      " solidity
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 
 " theme
 Plug 'w0ng/vim-hybrid'                                  " theme
