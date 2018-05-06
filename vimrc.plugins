@@ -113,7 +113,7 @@ nnoremap π "_:FZF<CR>
 nnoremap <C-f> "_:CtrlSF 
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_position = 'bottom'
-let g:ctrlsf_ignore_dir = ['node_modules', '.git'] " does not work https://github.com/dyng/ctrlsf.vim/pull/194
+let g:ctrlsf_ignore_dir = ['node_modules', '.git', 'deps']
 if executable('rg')
   let g:ctrlsf_ackprg = 'rg' " use ripgrep
   let g:ctrlsf_extra_backend_args = {
