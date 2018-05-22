@@ -42,7 +42,7 @@ Plug 'valloric/MatchTagAlways', { 'for': ['html', 'javascript.jsx'] } " highligh
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }        " repl
 
 " syntaxes and languages
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }      " elixir
+Plug 'elixir-lang/vim-elixir', { 'for': ['elixir', 'eelixir'] } " elixir
 Plug 'slim-template/vim-slim', { 'for': 'slim' }        " slim
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }    " coffee script
 Plug 'shime/vim-livedown', { 'for': 'markdown' }        " real time markdown editing

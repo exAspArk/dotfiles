@@ -26,6 +26,8 @@ for config_file (~/.zsh/custom/*.zsh(N)); do
 done
 unset config_file
 
+export ERL_AFLAGS="-kernel shell_history enabled" # iex history for Elixir
+
 export BACKUP_PATH=~/Dropbox/_backups
 export PROJECT_PATH=~/Documents/projects
 
