@@ -16,7 +16,7 @@ chpwd() {
   # Show current directory for iTerm tab title
   # Show contents of directory
   # Asynchronously
-  (title_pwd && l &)
+  (title_pwd &)
 }
 
 # use a zsh_history from backup directory if it's newer
