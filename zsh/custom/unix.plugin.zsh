@@ -16,3 +16,6 @@ c() {
 }
 alias pbc='pbcopy'
 alias pbp='pbpaste'
+
+# mert
+alias ms='mert start'

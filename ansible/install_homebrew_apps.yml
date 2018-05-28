@@ -108,6 +108,9 @@
     # ethereum
     - shell: yarn global add truffle
 
+    # mert for iTerm 3
+    - shell: yarn global add mert
+
     # elasticsearch plugins
     - shell: /usr/local/Cellar/elasticsearch/*/libexec/bin/plugin list | grep 'license$'
       ignore_errors: true
