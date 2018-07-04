@@ -60,6 +60,7 @@
         - trash
         - pstree
         - geth # ethereum
+        - bat # syntax highlight
 
     - name: Set permissions for docker-machine-driver-xhyve
       shell: |

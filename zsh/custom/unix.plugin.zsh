@@ -8,8 +8,8 @@ alias tf='tail -f'
 alias ports='lsof -i -n -P'
 alias ':q'='exit'
 c() {
-  if hash pygmentize 2>/dev/null; then
-    pygmentize -g $1
+  if which bat 2>/dev/null; then
+    bat $1
   else
     cat $1
   fi
