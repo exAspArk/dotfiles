@@ -61,6 +61,7 @@
         - pstree
         - geth # ethereum
         - bat # syntax highlight
+        - watch
 
     - name: Set permissions for docker-machine-driver-xhyve
       shell: |

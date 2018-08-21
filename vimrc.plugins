@@ -9,7 +9,7 @@ Plug 'Shougo/deoplete.nvim', { 'on': [], 'do': ':UpdateRemotePlugins', 'tag': 'e
 Plug 'Raimondi/delimitMate', { 'on': [] }               " closing brackets
 Plug 'terryma/vim-expand-region'                        " change visual selection by using '+' / '-'
 Plug 'mbbill/undotree'                                  " undo history tree
-Plug 'nathanaelkane/vim-indent-guides'                  " indent columns
+" Plug 'nathanaelkane/vim-indent-guides'                  " indent columns
 Plug 'w0rp/ale'                                         " lint
 Plug 'Shougo/neosnippet', { 'on': [] }                  " snippets
 
