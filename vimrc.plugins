@@ -117,7 +117,7 @@ let g:ctrlsf_ignore_dir = ['node_modules', '.git', 'deps']
 if executable('rg')
   let g:ctrlsf_ackprg = 'rg' " use ripgrep
   let g:ctrlsf_extra_backend_args = {
-    \ 'rg': '--hidden --follow'
+    \ 'rg': '--hidden'
     \ }
 endif
 
