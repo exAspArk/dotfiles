@@ -16,6 +16,6 @@ c() {
 }
 alias pbc='pbcopy'
 alias pbp='pbpaste'
+alias hist="history | awk '{a[\$2]++}END{for(i in a){print a[i] \" \" i}}' | sort -rn | head"
 
-# mert
 alias ms='mert start'

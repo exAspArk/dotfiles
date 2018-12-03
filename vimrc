@@ -150,7 +150,7 @@ augroup vimrcEx
     \ nnoremap <Leader>p Odebugger;<Esc>
     \| nnoremap tt :!find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
 
-  autocmd BufRead *.ex
+  autocmd BufRead *.ex,*.exs
     \ nnoremap <Leader>p Orequire IEx; IEx.pry<Esc>
 
 augroup END
