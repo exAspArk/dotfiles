@@ -61,7 +61,7 @@ bindkey '\e[B' history-beginning-search-forward
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='gfind . ! -path "./.git/*" ! -path "./node_modules/*" -type f -printf "%P\n"'
+export FZF_DEFAULT_COMMAND='gfind . -regextype posix-egrep ! -regex "\.\/(\.git|\.deliver|node_modules|deps|_build|dist)\/.*" -type f -printf "%P\n"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # cd to selected directory, by default from NY_PROJECT_PATH
