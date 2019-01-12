@@ -9,7 +9,7 @@ Plug 'Shougo/deoplete.nvim', { 'on': [], 'do': ':UpdateRemotePlugins', 'tag': 'e
 Plug 'Raimondi/delimitMate', { 'on': [] }               " closing brackets
 Plug 'terryma/vim-expand-region'                        " change visual selection by using '+' / '-'
 Plug 'mbbill/undotree'                                  " undo history tree
-" Plug 'nathanaelkane/vim-indent-guides'                  " indent columns
+Plug 'nathanaelkane/vim-indent-guides'                  " indent columns
 Plug 'w0rp/ale'                                         " lint
 Plug 'Shougo/neosnippet', { 'on': [] }                  " snippets
 
@@ -38,11 +38,14 @@ Plug 'othree/yajs.vim', { 'for': [] }                   " javascript
 Plug 'mxw/vim-jsx', { 'for': [] }                       " jsx
 Plug 'valloric/MatchTagAlways', { 'for': ['html', 'javascript.jsx'] } " highlight match tags
 
+" elixir
+Plug 'mhinz/vim-mix-format', { 'for': ['elixir', 'eelixir'] }
+Plug 'elixir-lang/vim-elixir', { 'for': ['elixir', 'eelixir'] }
+
 " clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }        " repl
 
 " syntaxes and languages
-Plug 'elixir-lang/vim-elixir', { 'for': ['elixir', 'eelixir'] } " elixir
 Plug 'slim-template/vim-slim', { 'for': 'slim' }        " slim
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }    " coffee script
 Plug 'shime/vim-livedown', { 'for': 'markdown' }        " real time markdown editing
@@ -177,6 +180,9 @@ let g:ale_lint_on_enter = 0
 
 " JSX
 let g:jsx_ext_required = 0
+
+" elixir
+let g:mix_format_on_save = 1
 
 " neosnippet
 let g:neosnippet#enable_snipmate_compatibility = 1
