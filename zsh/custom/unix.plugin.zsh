@@ -19,3 +19,5 @@ alias pbp='pbpaste'
 alias hist="history | awk '{a[\$2]++}END{for(i in a){print a[i] \" \" i}}' | sort -rn | head"
 
 alias ms='mert start'
+alias y='yarn'
+alias mi='iex -S mix'

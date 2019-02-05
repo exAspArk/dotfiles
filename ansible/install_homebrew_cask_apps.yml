@@ -6,7 +6,7 @@
           brew cask install {{ item }}
         fi
       with_items:
-        - google-chrome
+        - brave-browser
         - skype
         - dropbox
         - sourcetree
