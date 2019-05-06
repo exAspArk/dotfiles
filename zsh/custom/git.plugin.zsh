@@ -26,6 +26,7 @@ alias gcp='git cherry-pick'
 alias gd='git diff HEAD --color-words'
 alias gdf='git diff --name-status HEAD'
 alias gds='git diff --staged'
+alias gdm='git diff master...'
 
 alias gbl='git blame'
 
