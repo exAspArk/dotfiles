@@ -1,17 +1,18 @@
 ---
 - hosts: all
   tasks:
-    - name: increase key repeate speed
-      shell: defaults write NSGlobalDomain KeyRepeat -int 1
+    # - name: increase key repeate speed
+    #   shell: defaults write NSGlobalDomain KeyRepeat -int 1
 
-    - name: shorter delay until key repeat
-      shell: defaults write NSGlobalDomain InitialKeyRepeat -int 12
+    # - name: shorter delay until key repeat
+    #   shell: defaults write NSGlobalDomain InitialKeyRepeat -int 12
 
     - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link
       with_items:
         - vimrc
         - vimrc.plugins
 
+    - file: path=~/.config state=directory
     - file: src=~/.vim dest=~/.config/nvim state=link
     - file: src=~/.vimrc dest=~/.config/nvim/init.vim state=link
 

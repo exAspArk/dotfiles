@@ -13,21 +13,14 @@
 ```
 git clone git@github.com:exAspArk/dotfiles.git
 
-make install_essential # ansible, brew, brave, dropbox, iterm, zsh, asdf
-make configure_dotfiles
-
-make install_homebrew_apps
-make install_homebrew_cask_apps
-
-make configure_ruby RUBY_VERSION=2.4.1
-make configure_python PYTHON_VERSION=3.6.1 # for NeoVim
-make configure_python PYTHON_VERSION=2.7.13 # for new Ansible
-pyenv global 2.7.13
-make install_new_ansible PYTHON_VERSION=2.7.13
-make configure_nvm
-
+make install_essential # ansible, brew, brave, dropbox, iterm, zsh, asdf, yarn, neovim, python
 make configure_dotfiles
 make configure_vim
+
+make install_cli_apps
+make install_gui_apps
+
+make configure_ruby RUBY_VERSION=2.4.1
 
 make configure_backups
 ```
@@ -38,7 +31,6 @@ make configure_backups
 
 * Docker for Mac
 * GPG Suite
-* GraphQL Playground
 * MongoDB Compass
 
 ### Google Chrome extensions
@@ -53,7 +45,6 @@ make configure_backups
 * React Developer Tools
 * Save to Pocket
 * Speed Dial 2
-* uBlock Origin
 
 ### Android apps
 

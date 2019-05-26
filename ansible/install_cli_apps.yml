@@ -23,53 +23,43 @@
       with_items:
         - git
         - openssl
-        # - rbenv
-        # - ruby-build
-        # - pyenv
-        # - nvm
         - cmake
         - ctags
-        - go
         - imagemagick
-        # - graphicsmagick # imagemagick fork
-        # - leiningen # clojure
-        # - sphinx
         - ripgrep
-        - 'neovim/neovim/neovim'
         - wget
         - sshrc
         - fzf
-        # - node
         - unar
         - findutils # to use gfind with -print option
         - gnu-tar # for Ansible unarchive module
-        # - logstash
-        # - elixir
-        - tmux-cssh
-        - ipcalc
-        - mas
-        - yarn
+        - mas # mac app store cli
         - jid
-        # - xhyve
-        # - docker-machine-driver-xhyve # minikube
-        # - kubectl
-        # - heroku
-        - ntfs-3g
         - ffmpeg
         - rsync
         - trash
         - pstree
         - geth # ethereum
         - bat # syntax highlight
-        - watch
-
-    # - name: Set permissions for docker-machine-driver-xhyve
-    #   shell: |
-    #     sudo chown root:wheel /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve &&
-    #     sudo chmod u+s /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
+        - watch # gnu
+        # - ntfs-3g
+        # - tmux-cssh
+        # - go
+        # - graphicsmagick # imagemagick fork
+        # - leiningen # clojure
+        # - sphinx
+        # - logstash
+        # - ipcalc
+        # - xhyve
+        # - docker-machine-driver-xhyve # minikube
+        # - kubectl
+        # - heroku
 
     # to avoid using flag --with-openssl-dir=/usr/local/opt/openssl
     - shell: brew link --force openssl
+
+    # mert for iTerm 3
+    - shell: yarn global add mert
 
     # services
     - shell: |
@@ -92,10 +82,6 @@
     - shell: createuser -s postgres
       ignore_errors: true
 
-    # ruby
-    - file: path=~/.rbenv state=absent
-    - file: src=/usr/local/opt/rbenv dest=~/.rbenv state=link
-
     # # phantomjs
     # # - shell: brew install phantomjs # v2 currently does not work with OS X El Capitan, use lines below:
     # - shell: yarn global add phantom
@@ -104,8 +90,10 @@
     # # ethereum
     # - shell: yarn global add truffle
 
-    # mert for iTerm 3
-    - shell: yarn global add mert
+    # - name: Set permissions for docker-machine-driver-xhyve
+    #   shell: |
+    #     sudo chown root:wheel /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve &&
+    #     sudo chmod u+s /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
 
     # # elasticsearch plugins
     # - shell: /usr/local/Cellar/elasticsearch/*/libexec/bin/plugin list | grep 'license$'

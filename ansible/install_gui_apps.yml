@@ -6,39 +6,40 @@
           brew cask install {{ item }}
         fi
       with_items:
-        - skype
         - sourcetree
-        - tunnelblick
-        - sequel-pro
-        - psequel
         - jumpcut
-        - flux
         - the-unarchiver
         - mplayerx
-        - utorrent
         - licecap # record gifs from screen
-        - libreoffice
-        - cyberduck
         - android-file-transfer
-        - rescuetime
-        - pixlr
         - paragon-ntfs
         - keeweb
-        - franz
-        - ccmenu
         - zoomus
         - typora
         - spectacle
         - go2shell
         - purevpn
         - keycastr # show keystrokes
-        - sqlitebrowser
-        - minikube
-        - google-cloud-sdk # requires Python2
         - osxfuse
         - insomnia
-        - mist # ethereum
         - tableplus # sql GUI vs psequel
+        - slack
+        - qbittorrent
+        - gpg-suite
+        - graphql-playground
+        # - sqlitebrowser
+        # - skype
+        # - tunnelblick
+        # - sequel-pro # mysql
+        # - psequel # postgres
+        # - libreoffice
+        # - cyberduck
+        # - rescuetime
+        # - franz
+        # - ccmenu
+        # - minikube
+        # - google-cloud-sdk # requires Python2
+        # - mist # ethereum
 
     - shell: |
         if ! mas list | grep {{ item }}; then
@@ -46,8 +47,9 @@
         fi
       with_items:
         - Simplenote
-        - Twitter
         - Pocket
         - Keynote
         - Spark
-        - Monosnap
+        - Xcode
+        # - Monosnap
+        # - Twitter

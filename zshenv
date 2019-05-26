@@ -31,5 +31,10 @@ export ERL_AFLAGS="-kernel shell_history enabled" # iex history for Elixir
 export BACKUP_PATH=~/Dropbox/_backups
 export PROJECT_PATH=~/Documents/projects
 
+# zlib for asdf python installation
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+
 # title function for iTerm
 title_pwd() { echo -ne "\033]0;${PWD##*/}\007" }

@@ -1,30 +1,21 @@
 ---
 - hosts: all
   tasks:
-    - name: "Install Ruby {{ ruby_version }}"
-      shell: |
-        if ! rbenv versions | grep '{{ ruby_version }}' ; then
-          rbenv install {{ ruby_version }}
-        fi
+    - shell: asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+    - shell: "asdf install ruby {{ ruby_version }}"
 
     - name: Install bundler
       shell: gem install bundler
       environment:
-        RBENV_VERSION: "{{ ruby_version }}"
-
-    - name: Rehash
-      shell: rbenv rehash
+        ASDF_RUBY_VERSION: "{{ ruby_version }}"
 
     - name: Install gem neovim for deoplete.vim
       shell: gem install neovim
       become: true # should be installed via sudo
       environment:
-        RBENV_VERSION: "{{ ruby_version }}"
+        ASDF_RUBY_VERSION: "{{ ruby_version }}"
 
     - name: Install gem gem-ctags
       shell: gem install gem-ctags
       environment:
-        RBENV_VERSION: "{{ ruby_version }}"
-
-    - name: Rehash
-      shell: rbenv rehash
+        ASDF_RUBY_VERSION: "{{ ruby_version }}"

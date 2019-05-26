@@ -21,7 +21,7 @@
         - brave-browser
         - dropbox
         - iterm2
-    - shell: "{{ curdir }}/iterm2/install-settings.sh" # run in Terminal
+    - shell: "{{ curdir }}/iterm2/install-settings.sh || echo 'run in Terminal'"
 
     # oh my zsh
     - shell: echo $ZSH_VERSION
@@ -33,10 +33,19 @@
     - shell: rm /tmp/oh_my_zsh_install.sh
       when: zsh_version is undefined
 
-    # asdf
+    # asdf and yarn
     - shell: |
         if ! [[ "$(brew ls --versions {{ item }})" ]] ; then
           brew install {{ item }}
         fi
       with_items:
         - asdf
+        - zlib # for asdf python
+        - yarn
+        - 'neovim/neovim/neovim'
+
+    # python
+    - shell: asdf plugin-add python https://github.com/danhper/asdf-python.git
+    - shell: asdf install python 3.7.3
+    - shell: asdf install python 2.7.16
+    - shell: asdf global python 3.7.3 2.7.16

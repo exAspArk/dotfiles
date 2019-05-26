@@ -1,5 +1,5 @@
 if command -v nvim &> /dev/null; then
-  alias v='PYENV_VERSION=3.6.1 nvim'
+  alias v='ASDF_PYTHON_VERSION=3.7.3 nvim'
 else
   alias v='vim'
 fi

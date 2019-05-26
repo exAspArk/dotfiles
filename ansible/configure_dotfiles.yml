@@ -12,6 +12,7 @@
     - file: path=~/.vim-snippets state=directory
     - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link force=yes
       with_items:
+        - asdfrc
         - ansible.cfg
         - bundle/config
         - gnupg/gpg-agent.conf
@@ -38,7 +39,7 @@
 
     - file: src={{ curdir }}/zsh/themes/exaspark.zsh-theme dest=~/.oh-my-zsh/themes/exaspark.zsh-theme state=link
 
-    - git: repo=git@github.com:zsh-users/zsh-autosuggestions.git dest=~/.zsh/zsh-autosuggestions clone=yes update=no
+    - git: repo=https://github.com/zsh-users/zsh-autosuggestions.git dest=~/.zsh/zsh-autosuggestions clone=yes update=no
 
     - file: path=~/.sshrc.d state=directory
     - file: src={{ curdir }}/zsh/custom/{{ item }} dest=~/.sshrc.d/{{ item }} state=link
@@ -53,7 +54,3 @@
       with_items:
         - vimrc
         - irbrc
-
-    - name: Install aws-shell
-      shell: pip install --upgrade aws-shell
-      become: true # should be installed via sudo

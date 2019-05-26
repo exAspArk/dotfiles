@@ -1,5 +1,0 @@
----
-- hosts: all
-  tasks:
-    - name: Add nvm directory
-      file: path=~/.nvm state=directory
