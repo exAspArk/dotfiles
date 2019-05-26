@@ -6,9 +6,7 @@
           brew cask install {{ item }}
         fi
       with_items:
-        - brave-browser
         - skype
-        - dropbox
         - sourcetree
         - tunnelblick
         - sequel-pro
@@ -25,7 +23,6 @@
         - rescuetime
         - pixlr
         - paragon-ntfs
-        - iterm2
         - keeweb
         - franz
         - ccmenu
@@ -42,8 +39,6 @@
         - insomnia
         - mist # ethereum
         - tableplus # sql GUI vs psequel
-
-    - shell: "{{ curdir }}/iterm2/install-settings.sh" # run in Terminal
 
     - shell: |
         if ! mas list | grep {{ item }}; then

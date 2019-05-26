@@ -1,15 +1,10 @@
-install_ansible:
+install_essential:
 	sudo easy_install pip
 	sudo pip install ansible
-
-install_homebrew:
-	make play PLAYBOOK=ansible/install_homebrew.yml
+	make play PLAYBOOK=ansible/install_essential.yml
 
 install_homebrew_apps:
 	make play PLAYBOOK=ansible/install_homebrew_apps.yml
-
-install_oh_my_zsh:
-	make play PLAYBOOK=ansible/install_oh_my_zsh.yml
 
 install_homebrew_cask_apps:
 	make play PLAYBOOK=ansible/install_homebrew_cask_apps.yml

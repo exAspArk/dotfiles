@@ -13,11 +13,10 @@
 ```
 git clone git@github.com:exAspArk/dotfiles.git
 
-make install_ansible
+make install_essential # ansible, brew, brave, dropbox, iterm, zsh, asdf
+make configure_dotfiles
 
-make install_homebrew
 make install_homebrew_apps
-make install_oh_my_zsh
 make install_homebrew_cask_apps
 
 make configure_ruby RUBY_VERSION=2.4.1

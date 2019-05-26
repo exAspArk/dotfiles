@@ -1,0 +1,42 @@
+---
+- hosts: all
+  tasks:
+    # brew
+    - shell: brew -v
+      register: brew_exists
+      ignore_errors: yes
+    - get_url: url=https://raw.githubusercontent.com/Homebrew/install/master/install dest=/tmp/homebrew_install.rb
+      when: brew_exists|failed
+    - shell: ruby /tmp/homebrew_install.rb
+      when: brew_exists|failed
+    - file: path=/tmp/homebrew_install.rb state=absent
+      when: brew_exists|failed
+
+    # brave and iterm
+    - shell: |
+        if ! [[ "$(eval "brew cask list | grep '^{{ item }}$'")" ]] ; then
+          brew cask install {{ item }}
+        fi
+      with_items:
+        - brave-browser
+        - dropbox
+        - iterm2
+    - shell: "{{ curdir }}/iterm2/install-settings.sh" # run in Terminal
+
+    # oh my zsh
+    - shell: echo $ZSH_VERSION
+      ignore_errors: yes
+    - get_url: url=https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh dest=/tmp/oh_my_zsh_install.sh mode=0744
+      when: zsh_version is undefined
+    - shell: sh -c /tmp/oh_my_zsh_install.sh
+      when: zsh_version is undefined
+    - shell: rm /tmp/oh_my_zsh_install.sh
+      when: zsh_version is undefined
+
+    # asdf
+    - shell: |
+        if ! [[ "$(brew ls --versions {{ item }})" ]] ; then
+          brew install {{ item }}
+        fi
+      with_items:
+        - asdf
