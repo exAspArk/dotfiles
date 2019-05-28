@@ -34,8 +34,7 @@ chpwd # emulate cd action
 
 # #############################################################################
 
-source $(brew --prefix asdf)/asdf.sh
-source $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
+source /usr/local/opt/asdf/asdf.sh
 
 # load zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
