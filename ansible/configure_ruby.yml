@@ -2,20 +2,20 @@
 - hosts: all
   tasks:
     - shell: asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
-    - shell: "asdf install ruby {{ ruby_version }}"
+    - shell: "asdf install ruby {{ version }}"
 
     - name: Install bundler
       shell: gem install bundler
       environment:
-        ASDF_RUBY_VERSION: "{{ ruby_version }}"
+        ASDF_RUBY_VERSION: "{{ version }}"
 
     - name: Install gem neovim for deoplete.vim
       shell: gem install neovim
       become: true # should be installed via sudo
       environment:
-        ASDF_RUBY_VERSION: "{{ ruby_version }}"
+        ASDF_RUBY_VERSION: "{{ version }}"
 
     - name: Install gem gem-ctags
       shell: gem install gem-ctags
       environment:
-        ASDF_RUBY_VERSION: "{{ ruby_version }}"
+        ASDF_RUBY_VERSION: "{{ version }}"

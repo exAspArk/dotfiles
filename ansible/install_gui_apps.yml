@@ -27,6 +27,7 @@
         - qbittorrent
         - gpg-suite
         - graphql-playground
+        - google-chrome
         # - sqlitebrowser
         # - skype
         # - tunnelblick

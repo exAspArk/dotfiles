@@ -10,7 +10,10 @@ install_gui_apps:
 	make play PLAYBOOK=ansible/install_gui_apps.yml
 
 configure_ruby:
-	make play PLAYBOOK=ansible/configure_ruby.yml OPTIONS="--ask-become-pass --extra-vars='ruby_version=$(RUBY_VERSION)'"
+	make play PLAYBOOK=ansible/configure_ruby.yml OPTIONS="--ask-become-pass --extra-vars='version=$(VERSION)'"
+
+configure_node:
+	make play PLAYBOOK=ansible/configure_node.yml OPTIONS="--ask-become-pass --extra-vars='version=$(VERSION)'"
 
 configure_vim:
 	make play PLAYBOOK=ansible/configure_vim.yml
