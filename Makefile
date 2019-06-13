@@ -15,6 +15,9 @@ configure_ruby:
 configure_node:
 	make play PLAYBOOK=ansible/configure_node.yml OPTIONS="--ask-become-pass --extra-vars='version=$(VERSION)'"
 
+configure_elixir:
+	make play PLAYBOOK=ansible/configure_elixir.yml OPTIONS="--ask-become-pass --extra-vars='version=$(VERSION) otp=$(OTP)'"
+
 configure_vim:
 	make play PLAYBOOK=ansible/configure_vim.yml
 

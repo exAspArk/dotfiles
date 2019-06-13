@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - shell: asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git || echo ok
+    - shell: "asdf install erlang {{ otp }}.0"
+    - shell: "asdf global erlang {{ otp }}.0"
+    - shell: asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git || echo ok
+    - shell: "asdf install elixir {{ version }}-otp-{{ otp }}"
+    - shell: "asdf global elixir {{ version }}-otp-{{ otp }}"

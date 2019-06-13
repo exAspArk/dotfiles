@@ -22,6 +22,7 @@ make install_gui_apps
 
 make configure_ruby VERSION=2.4.1
 make configure_node VERSION=10.15.3
+make configure_elixir VERSION=1.8.2 OTP=22
 
 make configure_backups
 ```

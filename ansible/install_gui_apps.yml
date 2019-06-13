@@ -28,6 +28,7 @@
         - gpg-suite
         - graphql-playground
         - google-chrome
+        - google-cloud-sdk # gcloud
         # - sqlitebrowser
         # - skype
         # - tunnelblick

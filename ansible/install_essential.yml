@@ -41,6 +41,7 @@
       with_items:
         - asdf
         - zlib # for asdf python
+        - sqlite # for asdf python
         - yarn
         - 'neovim/neovim/neovim'
 
