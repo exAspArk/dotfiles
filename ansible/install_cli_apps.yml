@@ -42,6 +42,7 @@
         - geth # ethereum
         - bat # syntax highlight
         - watch # gnu
+        - kubernetes-helm
         # - ntfs-3g
         # - tmux-cssh
         # - go
