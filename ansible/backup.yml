@@ -22,13 +22,13 @@
 
     - file: path={{ backup_path }}/gpg state=directory
 
-    - name: Backup GPG key
-      shell: >
-        gpg -a --export {{ item }} > {{ backup_path }}/gpg/public_{{ item }}.key &&
-        gpg -a --export-secret-keys {{ item }} > {{ backup_path }}/gpg/private_{{ item }}.key &&
-        gpg --export-ownertrust > {{ backup_path }}/gpg/ownertrust.txt
-      with_items:
-        - exaspark@gmail.com
+    # - name: Backup GPG key
+    #   shell: >
+    #     gpg -a --export {{ item }} > {{ backup_path }}/gpg/public_{{ item }}.key &&
+    #     gpg -a --export-secret-keys {{ item }} > {{ backup_path }}/gpg/private_{{ item }}.key &&
+    #     gpg --export-ownertrust > {{ backup_path }}/gpg/ownertrust.txt
+    #   with_items:
+    #     - exaspark@gmail.com
 
     # - name: Check Sequel Pro favorites existance
     #   stat: path="~/Library/Application Support/Sequel Pro/Data/Favorites.plist"
