@@ -41,6 +41,9 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
 
+# kubectl
+source <(kubectl completion zsh)
+
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="gfind . \
