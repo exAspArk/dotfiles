@@ -62,7 +62,6 @@ glog() {
   local LAST_COMMIT_TIME="$(git log -1 --pretty=format:%cd)"
   local FORMAT=''
   FORMAT+='%C(bold blue)%h%C(reset) '    # abbreviated commit hash
-  FORMAT+='%C(dim green)%G?%C(reset)'    # verified commit
   FORMAT+='%C(bold yellow)%d%C(reset) '  # ref name
   FORMAT+='%C(white)%s%C(reset) '        # commit message
   FORMAT+='%C(dim white)– %an%C(reset) ' # author name
