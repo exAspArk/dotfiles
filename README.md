@@ -17,12 +17,13 @@ make install_essential # ansible, brew, brave, dropbox, iterm, zsh, asdf, yarn, 
 make configure_dotfiles
 make configure_vim
 
-make install_cli_apps
-make install_gui_apps
-
 make configure_ruby VERSION=2.4.1
 make configure_node VERSION=10.15.3
 make configure_elixir VERSION=1.8.2 OTP=22
+make configure_java VERSION=oracle-8.141
+
+make install_cli_apps
+make install_gui_apps
 
 make configure_backups
 ```

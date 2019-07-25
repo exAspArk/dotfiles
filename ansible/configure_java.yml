@@ -1,0 +1,5 @@
+---
+- hosts: all
+  tasks:
+    - shell: asdf plugin-add java https://github.com/asdf-vm/asdf-ruby.git
+    - shell: "asdf install java {{ version }}"
