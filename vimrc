@@ -139,7 +139,7 @@ augroup vimrcEx
   autocmd FileType css,scss,sass setlocal iskeyword+=-                              " allow stylesheets to autocomplete hyphenated words
   autocmd FileType clojure setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,=,<,>,:,$ " customize keywords
   autocmd FileType crontab setlocal nobackup nowritebackup                          " allow to edit crontab -e
-  autocmd BufWritePre *.rb,*.coffee,*.md,*.rake,*.clj,*.js,*.jsx,*.sol,*.ex :%s/\s\+$//e " remove trailing whitespaces
+  autocmd BufWritePre *.rb,*.haml,*.coffee,*.md,*.rake,*.clj,*.js,*.jsx,*.sol,*.ex :%s/\s\+$//e " remove trailing whitespaces
   autocmd BufEnter * call PrepareTerminal()
 
   autocmd BufRead *.rb
