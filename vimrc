@@ -152,7 +152,7 @@ augroup vimrcEx
 
   autocmd BufRead *.ex,*.exs
     \ nnoremap <Leader>p Orequire IEx; IEx.pry<Esc>
-
+    \| nnoremap tt :!ctags -R --exclude={.git,node_modules} -V<CR>
 augroup END
 
 " wrap long lines

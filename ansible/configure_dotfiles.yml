@@ -36,6 +36,7 @@
         - zsh/custom/sshrc.plugin.zsh
         - sshrc
         - tern-project
+        - ctags
 
     - file: src={{ curdir }}/zsh/themes/exaspark.zsh-theme dest=~/.oh-my-zsh/themes/exaspark.zsh-theme state=link
 
