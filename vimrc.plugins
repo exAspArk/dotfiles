@@ -9,7 +9,6 @@ Plug 'Shougo/deoplete.nvim', { 'on': [], 'do': ':UpdateRemotePlugins' }
 Plug 'Raimondi/delimitMate', { 'on': [] }               " closing brackets
 Plug 'alvan/vim-closetag', { 'on': [] }                 " closing tags
 Plug 'terryma/vim-expand-region'                        " change visual selection by using '+' / '-'
-Plug 'mbbill/undotree'                                  " undo history tree
 Plug 'nathanaelkane/vim-indent-guides'                  " indent columns
 Plug 'w0rp/ale'                                         " lint
 Plug 'Shougo/neosnippet', { 'on': [] }                  " snippets
@@ -42,8 +41,8 @@ Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
 
 " elixir
-Plug 'mhinz/vim-mix-format', { 'for': ['elixir', 'eelixir'] }
 Plug 'elixir-lang/vim-elixir', { 'for': ['elixir', 'eelixir'] }
+Plug 'mhinz/vim-mix-format', { 'for': ['elixir', 'eelixir'] }
 
 " clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }        " repl
