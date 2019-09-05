@@ -36,7 +36,9 @@ Plug 'tpope/vim-bundler', { 'for': 'ruby' }             " bundle commands and sm
 " js / jsx / ts / tsx / html
 Plug 'othree/yajs.vim', { 'for': [] }                   " javascript
 Plug 'mxw/vim-jsx', { 'for': [] }                       " jsx
-Plug 'valloric/MatchTagAlways', { 'for': ['html', 'javascript.jsx'] } " highlight match tags
+Plug 'valloric/MatchTagAlways', { 'for': [
+  \ 'html', 'eruby', 'javascript.jsx', 'typescript.tsx'
+  \ ] }                                                 " highlight match tags
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
 
@@ -177,7 +179,7 @@ let g:rspec_command = "below new | term spring --version > /dev/null && spring r
 let g:mta_use_matchparen_group = 0
 let g:mta_set_default_matchtag_color = 0
 highlight MatchTag ctermbg=240 guifg=#585858
-let g:mta_filetypes = {'html' : 1, 'javascript.jsx': 1}
+let g:mta_filetypes = {'html' : 1, 'eruby': 1, 'javascript.jsx': 1, 'typescript.tsx': 1}
 
 " don't run linters on opening a file
 let g:ale_lint_on_enter = 0
