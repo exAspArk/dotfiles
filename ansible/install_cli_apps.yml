@@ -41,6 +41,7 @@
         - bat # syntax highlight
         - watch # gnu
         - kubernetes-helm
+        - stern # kube logs
         # - ntfs-3g
         # - tmux-cssh
         # - go
