@@ -2,4 +2,6 @@
 - hosts: all
   tasks:
     - shell: asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+    - shell: bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
     - shell: "asdf install nodejs {{ version }}"
+    - shell: asdf global nodejs {{ version }}

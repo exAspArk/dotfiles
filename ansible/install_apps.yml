@@ -1,0 +1,79 @@
+---
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - shell: apt install {{ item }}
+      with_items:
+        - git
+        - openssl
+        - cmake
+        - ctags
+        - imagemagick
+        - wget
+        - jid
+        - ffmpeg
+        - rsync
+        - playonlinux # wine
+        - libpq-dev
+        - postgresql
+        - redis
+        - inotify-tools
+        - xclip # for neovim copy/paste
+        - apt-show-versions # upgradable versions
+
+    # ripgrep
+    - shell: curl https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb -L -o ~/Downloads/ripgrep_11.0.2_amd64.deb
+    - shell: apt install ~/Downloads/ripgrep_11.0.2_amd64.deb
+    - shell: rm ~/Downloads/ripgrep_11.0.2_amd64.deb
+
+    # sshrc
+    - shell: curl https://raw.githubusercontent.com/Russell91/sshrc/master/sshrc -o ~/Downloads/sshrc
+    - shell: chmod +x ~/Downloads/sshrc && mv ~/Downloads/sshrc /usr/local/bin
+
+    # wine
+    - shell: dpkg --add-architecture i386
+    - shell: wget -O - -q https://dl.winehq.org/wine-builds/winehq.key | apt-key add -
+    - shell: apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
+    - shell: apt update && apt install --install-recommends winehq-stable
+
+    # tableplus
+    - shell: wget -O - -q http://deb.tableplus.com/apt.tableplus.com.gpg.key | apt-key add -
+    - shell: add-apt-repository "deb [arch=amd64] https://deb.tableplus.com/debian tableplus main"
+    - shell: apt update && apt install tableplus
+
+    # z
+    - shell: wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O ~/z.sh
+
+    # complete-alias
+    - shell: wget https://raw.githubusercontent.com/cykerway/complete-alias/master/bash_completion.sh -O ~/bash_completion.sh
+
+    # gcolor2
+    - shell: curl https://mirrors.kernel.org/ubuntu/pool/universe/g/gcolor2/gcolor2_0.4-2.1ubuntu1_amd64.deb -L -o ~/Downloads/gcolor2_0.4-2.1ubuntu1_amd64.deb
+    - shell: apt install ~/Downloads/gcolor2_0.4-2.1ubuntu1_amd64.deb
+    - shell: rm ~/Downloads/gcolor2_0.4-2.1ubuntu1_amd64.deb
+
+    # kube permissions
+    - shell: apt install kubectl
+    - shell: chown -R $USER $HOME/.kube
+
+    # gcloud
+    - shell: echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+    - shell: curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+    - shell: apt-get update && apt-get install google-cloud-sdk
+    - shell: chown -R $USER $HOME/.config/gcloud
+
+    # bash-powerline
+    - shell: curl https://raw.githubusercontent.com/riobard/bash-powerline/master/bash-powerline.sh > ~/.bash-powerline.sh
+
+    # clipboard manager
+    - shell: apt install gnome-tweaks
+    - shell: git clone https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator .git ~/.local/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com
+
+    # openvpn
+    - shell: apt install network-manager-openvpn
+    - shell: apt install network-manager-openvpn-gnome
+
+    # flux
+    - shell: add-apt-repository ppa:nathan-renniewaldock/flux
+    - shell: apt update && apt install fluxgui

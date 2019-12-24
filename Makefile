@@ -1,13 +1,11 @@
 install_essential:
-	sudo easy_install pip
-	sudo pip install ansible
+	sudo apt-add-repository ppa:ansible/ansible && \
+	sudo apt update && \
+	sudo apt install ansible && \
 	make play PLAYBOOK=ansible/install_essential.yml
 
-install_cli_apps:
-	make play PLAYBOOK=ansible/install_cli_apps.yml
-
-install_gui_apps:
-	make play PLAYBOOK=ansible/install_gui_apps.yml
+install_apps:
+	make play PLAYBOOK=ansible/install_apps.yml
 
 configure_ruby:
 	make play PLAYBOOK=ansible/configure_ruby.yml OPTIONS="--ask-become-pass --extra-vars='version=$(VERSION)'"

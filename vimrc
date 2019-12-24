@@ -33,7 +33,7 @@ set ignorecase        " /the would find 'the' or 'The', add \C if you want 'the'
 set smartcase         " while /The would find only 'The' etc.
 set nopaste           " enable formatting while pasting
 set pastetoggle=<F2>  " switch paste mode
-set clipboard=unnamed " yank to and paste the selection without prepending "*
+set clipboard=unnamedplus " yank to and paste the selection without prepending "*
 set autowrite         " save file before switching a buffer
 set autoindent        " indent
 set showmatch         " highlight matching brackets
@@ -90,26 +90,6 @@ match ExtraWhitespace /\s\+$/
 " make line number brighter
 hi LineNr ctermfg=240 guifg=#585858
 
-" close buffer by Alt + w
-nnoremap ∑ :bd<CR>
-" close buffer with force by Alt + q
-nnoremap œ :bd!<CR>
-
-function! PrepareTerminal()
-  if &buftype == 'terminal' && has('nvim') && !empty(matchstr(expand("%"), 'term://.\+:zsh$')) " in my zsh terminal
-    startinsert
-    set nobuflisted
-
-    " map escape for terminal buffer
-    tnoremap <Esc> <C-\><C-n>
-    tnoremap <C-h> <C-\><C-n><C-w>h
-    tnoremap <C-l> <C-\><C-n><C-w>l
-  else
-    " unmap escape for usual buffer
-    silent! tunmap <Esc>
-  endif
-endfunction
-
 augroup vimrcEx
   " clears all the autocmd's for the current group
   autocmd!
@@ -141,11 +121,10 @@ augroup vimrcEx
   autocmd FileType clojure setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,=,<,>,:,$ " customize keywords
   autocmd FileType crontab setlocal nobackup nowritebackup                          " allow to edit crontab -e
   autocmd BufWritePre *.rb,*.haml,*.coffee,*.md,*.rake,*.clj,*.js,*.jsx,*.ts,*.tsx,*.sol,*.ex :%s/\s\+$//e " remove trailing whitespaces
-  autocmd BufEnter * call PrepareTerminal()
 
   autocmd BufRead *.rb
     \ nnoremap <Leader>p Orequire 'pry'; binding.pry<Esc> " add binding.pry line
-    \| nnoremap tt :!gem ctags && gfind . -name '*.rb' -type f -print0 \| xargs -0 ctags -R -V<CR> " build ctags by using 'gem-ctags' gem
+    \| nnoremap tt :!gem ctags && find . -name '*.rb' -type f -print0 \| xargs -0 ctags -R -V<CR> " build ctags by using 'gem-ctags' gem
 
   autocmd BufRead *.js,*.jsx
     \ nnoremap <Leader>p Odebugger;<Esc>
@@ -156,6 +135,9 @@ augroup vimrcEx
     \| nnoremap tt :!ctags -R --exclude={.git,node_modules} -V<CR>
 augroup END
 
+" jump to method or function definition with ctags
+nnoremap <A-d> <C-]>
+
 " wrap long lines
 nnoremap wl gggqG
 
@@ -163,14 +145,14 @@ nnoremap wl gggqG
 nnoremap rr :so $MYVIMRC \| checktime<CR>
 
 " replace text in a project with sed
-nnoremap <Leader>re :!gfind . -name '*' -type f -print0 \| xargs -0 sed -i '' 's,search,replace,g'
+nnoremap <Leader>re :!find . -name '*' -type f -print0 \| xargs -0 sed -i '' 's,search,replace,g'
 nnoremap re :%s,search,replace,gc
 
 " Clear current search highlight by double tapping //
 nnoremap // :noh<CR>
 
 " switch to Russian keyboard
-inoremap <C-c> <C-^>
+inoremap <A-c> <C-^>
 
 " get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -178,14 +160,11 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" neovim terminal by Alt + d
-nnoremap ∂ :belowright vsplit \| edit term://zsh \| set hidden<CR>
-
 " Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-h> <C-w>h
+nnoremap <A-l> <C-w>l
 
 " max / min tab size
 nnoremap ƒ :tabedit %<CR>
@@ -194,13 +173,16 @@ nnoremap Ï :tabclose<CR>
 " highlight last inserted text
 nnoremap gV `[v`]
 
+" visual blockwise selection
+nnoremap <A-v> <C-v>
+
 " move line up / down with Alt + j / k
-nnoremap ∆ :m .+1<CR>==
-nnoremap ˚ :m .-2<CR>==
-inoremap ∆ <Esc>:m .+1<CR>==gi
-inoremap ˚ <Esc>:m .-2<CR>==gi
-vnoremap ∆ :m '>+1<CR>gv=gv
-vnoremap ˚ :m '<-2<CR>gv=gv
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " copy relative filepath
 nnoremap cP :let @+=expand("%")<CR>
@@ -209,10 +191,11 @@ nnoremap cLP :let @+=expand("%") . ':' . line(".")<CR>
 " copy full filepath
 nnoremap cFP :let @+=expand("%:p")<CR>
 
-" navigating between buffers with Alt + ] / [ / W
-nnoremap ‘ :bn<CR>
-nnoremap “ :bp<CR>
-nnoremap „ :bd!<CR>
+" navigating between buffers
+nnoremap <A-w> :bd<CR>
+nnoremap <A-q> :bd!<CR>
+nnoremap <A-]> :bn<CR>
+nnoremap <A-[> :bp<CR>
 
 " format xml
 nnoremap fx :%!xmllint --format --encode UTF-8 -<CR>
@@ -238,8 +221,8 @@ nnoremap fsj :%! cat % \| ruby -e "
 
 " save file with Alt + s
 " note that remapping C-s requires flow control to be disabled, e.g. in .bashrc or .zshrc
-map ß <esc>:w<CR>
-imap ß <esc>:w<CR>
+map <A-s> <esc>:w<CR>
+imap <A-s> <esc>:w<CR>
 
 " change without yanking
 nnoremap c "_c

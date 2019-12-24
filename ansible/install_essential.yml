@@ -1,52 +1,47 @@
 ---
 - hosts: all
+  become: yes
+  become_method: sudo
   tasks:
-    # brew
-    - shell: brew -v
-      register: brew_exists
-      ignore_errors: yes
-    - get_url: url=https://raw.githubusercontent.com/Homebrew/install/master/install dest=/tmp/homebrew_install.rb
-      when: brew_exists|failed
-    - shell: ruby /tmp/homebrew_install.rb
-      when: brew_exists|failed
-    - file: path=/tmp/homebrew_install.rb state=absent
-      when: brew_exists|failed
+    # brave
+    - shell: apt install apt-transport-https curl
+    - shell: curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+    - shell: echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | tee /etc/apt/sources.list.d/brave-browser-release.list
+    - shell: apt update && apt install brave-browser
 
-    # brave and iterm
-    - shell: |
-        if ! [[ "$(eval "brew cask list | grep '^{{ item }}$'")" ]] ; then
-          brew cask install {{ item }}
-        fi
-      with_items:
-        - brave-browser
-        - dropbox
-        - iterm2
-    - shell: "{{ curdir }}/iterm2/install-settings.sh || echo 'run in Terminal'"
+    # hyper
+    - shell: curl https://releases.hyper.is/download/deb -L -o ~/Downloads/hyper.deb
+    - shell: apt install ~/Downloads/hyper.deb
+    - shell: rm ~/Downloads/hyper.deb
 
-    # oh my zsh
-    - shell: echo $ZSH_VERSION
-      ignore_errors: yes
-    - get_url: url=https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh dest=/tmp/oh_my_zsh_install.sh mode=0744
-      when: zsh_version is undefined
-    - shell: sh -c /tmp/oh_my_zsh_install.sh
-      when: zsh_version is undefined
-    - shell: rm /tmp/oh_my_zsh_install.sh
-      when: zsh_version is undefined
+    # dropbox
+    - shell: curl https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2019.02.14_amd64.deb -o ~/Downloads/dropbox_2019.02.14_amd64.deb
+    - shell: apt install ~/Downloads/dropbox_2019.02.14_amd64.deb
+    - shell: rm ~/Downloads/dropbox_2019.02.14_amd64.deb
 
-    # asdf and yarn
-    - shell: |
-        if ! [[ "$(brew ls --versions {{ item }})" ]] ; then
-          brew install {{ item }}
-        fi
-      with_items:
-        - asdf
-        - zlib # for asdf python
-        - sqlite # for asdf python
-        - yarn
-        - 'neovim/neovim/neovim'
+    # keeweb
+    - shell: curl https://github.com/keeweb/keeweb/releases/download/v1.12.3/KeeWeb-1.12.3.linux.x64.deb -o ~/Downloads/KeeWeb-1.12.3.linux.x64.deb
+    - shell: apt install KeeWeb-1.12.3.linux.x64.deb
+
+    # neovim
+    - shell: wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage && chmod +x nvim.appimage && mv nvim.appimage /usr/local/bin/nvim
+
+    # yarn
+    - shell: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+    - shell: echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+    - shell: apt update && apt install yarn
+
+    # asdf
+    - shell: git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
+
+    # gpg
+    - shell: apt install gpg2
+    - shell: gpg --import {{ backup_path }}/gpg/private_exaspark@gmail.com.key
+    - shell: gpg --import-ownertrust {{ backup_path }}/gpg/ownertrust.txt
 
     # python
     - shell: asdf plugin-add python https://github.com/danhper/asdf-python.git
-    - shell: asdf install python 3.7.3
-    - shell: asdf install python 2.7.16
-    - shell: asdf global python 3.7.3 2.7.16
+    - shell: asdf install python 3.8.1
+    - shell: apt install libsqlite3-dev # for gcloud before installing python 2
+    - shell: asdf install python 2.7.17
+    - shell: asdf global python 3.8.1 2.7.17

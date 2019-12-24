@@ -6,14 +6,13 @@
       become_method: sudo
 
     - file: path=~/.bundle state=directory
-    - file: path=~/.zsh state=directory
-    - file: path=~/.zsh/custom state=directory
     - file: path=~/.gnupg state=directory
     - file: path=~/.vim-snippets state=directory
     - file: src={{ curdir }}/{{ item }} dest=~/.{{ item }} state=link force=yes
       with_items:
         - asdfrc
         - ansible.cfg
+        - bash_aliases
         - bundle/config
         - gnupg/gpg-agent.conf
         - irbrc
@@ -26,32 +25,15 @@
         - vim-snippets/html.snippets
         - vim-snippets/javascript.snippets
         - vim-snippets/ruby.snippets
-        - zshenv
-        - zshrc
-        - zsh/custom/bundler.plugin.zsh
-        - zsh/custom/git.plugin.zsh
-        - zsh/custom/spring.plugin.zsh
-        - zsh/custom/unix.plugin.zsh
-        - zsh/custom/vim.plugin.zsh
-        - zsh/custom/sshrc.plugin.zsh
         - sshrc
         - tern-project
         - ctags
-
-    - file: src={{ curdir }}/zsh/themes/exaspark.zsh-theme dest=~/.oh-my-zsh/themes/exaspark.zsh-theme state=link
-
-    - git: repo=https://github.com/zsh-users/zsh-autosuggestions.git dest=~/.zsh/zsh-autosuggestions clone=yes update=no
+        - bashrc
+        - hyper.js
 
     - file: path=~/.sshrc.d state=directory
-    - file: src={{ curdir }}/zsh/custom/{{ item }} dest=~/.sshrc.d/{{ item }} state=link
-      with_items:
-        - bundler.plugin.zsh
-        - git.plugin.zsh
-        - spring.plugin.zsh
-        - unix.plugin.zsh
-        - vim.plugin.zsh
-        - sshrc.plugin.zsh
     - file: src={{ curdir }}/{{ item }} dest=~/.sshrc.d/{{ item }} state=link
       with_items:
         - vimrc
         - irbrc
+        - bash_aliases

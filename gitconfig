@@ -38,7 +38,7 @@
 [tag]
 	gpgsign = true
 [gpg]
-	program = /usr/local/MacGPG2/bin/gpg2
+	program = /usr/bin/gpg
 [pager]
 	branch = false
 [diff "sopsdiffer"]
