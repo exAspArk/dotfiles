@@ -41,6 +41,7 @@ make configure_backups
 * Helm
 * Stern
 * Sops
+* [FacetimeHD driver](https://github.com/patjak/bcwc_pcie/wiki/Get-Started)
 
 ### Google Chrome extensions
 

@@ -21,6 +21,7 @@
         - inotify-tools
         - xclip # for neovim copy/paste
         - apt-show-versions # upgradable versions
+        - sshfs
 
     # ripgrep
     - shell: curl https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb -L -o ~/Downloads/ripgrep_11.0.2_amd64.deb
