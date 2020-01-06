@@ -20,7 +20,7 @@ make configure_vim
 make configure_ruby VERSION=2.5.7
 make configure_node VERSION=12.14.0
 make configure_elixir VERSION=1.9.4 OTP=22
-make configure_java VERSION=oracle-8.141
+make configure_java VERSION=adopt-openjdk-8u232-b09
 
 make install_apps
 
