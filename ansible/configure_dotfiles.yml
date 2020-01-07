@@ -30,6 +30,7 @@
         - ctags
         - bashrc
         - hyper.js
+        - iex.exs
 
     - file: path=~/.sshrc.d state=directory
     - file: src={{ curdir }}/{{ item }} dest=~/.sshrc.d/{{ item }} state=link
