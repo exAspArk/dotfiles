@@ -166,7 +166,11 @@ highlight MatchTag ctermbg=240 guifg=#585858
 let g:mta_filetypes = {'html' : 1, 'eruby': 1, 'javascript.jsx': 1, 'typescript.tsx': 1}
 
 " don't run linters on opening a file
+let g:ale_lint_on_save = 1
+let g:ale_lint_delay = 1000
 let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
 
 " JSX
 let g:jsx_ext_required = 0
