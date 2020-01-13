@@ -79,3 +79,9 @@
     # flux
     - shell: add-apt-repository ppa:nathan-renniewaldock/flux
     - shell: apt update && apt install fluxgui
+
+    # alt
+    - shell: asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
+    - shell: asdf install rust 1.40.0
+    - shell: clone https://github.com/uptech/alt.git ~/Downloads/alt
+    - shell: cd ~/Downloads/alt && cargo build --release && mv target/release/alt /usr/local/bin
