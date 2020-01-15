@@ -13,7 +13,7 @@
 ```
 git clone git@github.com:exAspArk/dotfiles.git
 
-make install_essential # ansible, brew, brave, dropbox, iterm, zsh, asdf, yarn, neovim, python
+make install_essential
 make configure_dotfiles
 make configure_vim
 

@@ -145,7 +145,7 @@ nnoremap wl gggqG
 nnoremap rr :so $MYVIMRC \| checktime<CR>
 
 " replace text in a project with sed
-nnoremap <Leader>re :!find . -name '*' -type f -print0 \| xargs -0 sed -i '' 's,search,replace,g'
+nnoremap <Leader>re :!find . -name '*' -type f -print0 \| xargs -0 sed -i 's,search,replace,g'
 nnoremap re :%s,search,replace,gc
 
 " Clear current search highlight by double tapping //
@@ -176,7 +176,7 @@ nnoremap gV `[v`]
 " visual blockwise selection
 nnoremap <A-v> <C-v>
 
-" move line up / down with Alt + j / k
+" move line up / down with Ctrl + j / k
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
 inoremap <C-j> <Esc>:m .+1<CR>==gi

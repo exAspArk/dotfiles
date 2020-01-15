@@ -9,10 +9,11 @@
     - shell: echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | tee /etc/apt/sources.list.d/brave-browser-release.list
     - shell: apt update && apt install brave-browser
 
-    # hyper
-    - shell: curl https://releases.hyper.is/download/deb -L -o ~/Downloads/hyper.deb
-    - shell: apt install ~/Downloads/hyper.deb
-    - shell: rm ~/Downloads/hyper.deb
+    # kitty
+    - shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+    - shell: ln -s ~/.local/kitty.app/bin/kitty /usr/local/bin/kitty
+    - shell: cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications
+    - shell: sed -i "s/Icon\=kitty/Icon\=\/home\/$USER\/.local\/kitty.app\/share\/icons\/hicolor\/256x256\/apps\/kitty.png/g" ~/.local/share/applications/kitty.desktop
 
     # dropbox
     - shell: curl https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2019.02.14_amd64.deb -o ~/Downloads/dropbox_2019.02.14_amd64.deb

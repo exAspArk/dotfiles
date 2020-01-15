@@ -45,10 +45,12 @@
     - shell: apt update && apt install tableplus
 
     # z
-    - shell: wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O ~/z.sh
+    - shell: wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O ~/.z.sh
+    - shell: sed -i 's,builtin cd,cd,g'
 
     # complete-alias
-    - shell: wget https://raw.githubusercontent.com/cykerway/complete-alias/master/bash_completion.sh -O ~/bash_completion.sh
+    - shell: apt install bash-completion
+    - shell: curl https://raw.githubusercontent.com/cykerway/complete-alias/master/complete_alias >> ~/.bash_completion
 
     # gcolor2
     - shell: curl https://mirrors.kernel.org/ubuntu/pool/universe/g/gcolor2/gcolor2_0.4-2.1ubuntu1_amd64.deb -L -o ~/Downloads/gcolor2_0.4-2.1ubuntu1_amd64.deb

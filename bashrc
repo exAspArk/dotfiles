@@ -109,7 +109,6 @@ export PROJECT_PATH=~/Documents/projects
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND="find . \
-! -path \"./.deliver/*\" \
 ! -path \"./.git/*\" \
 ! -path \"./_build/*\" \
 ! -path \"./deps/*\" \
@@ -121,9 +120,14 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
-. ~/bash_completion.sh
+. ~/.bash_completion
 source <(kubectl completion bash)
 
 source ~/.bash-powerline.sh
 
-. ~/z.sh
+function title_pwd() { echo -ne "\033]0;${PWD##*/}\007"; }
+function cd() { builtin cd "$@" && title_pwd; }
+
+title_pwd
+
+. ~/.z.sh
