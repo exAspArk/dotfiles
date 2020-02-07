@@ -31,16 +31,12 @@ make configure_backups
 
 ### Apps
 
-* Mailspring
-* Slack
-* Simplenote
+* Dropbox
+* KeeWeb
 * GitAhead
+* Simplenote
 * Licecap (Wine)
 * VNC Viewer (Wine)
-* KeeWeb
-* Helm
-* Stern
-* Sops
 * [FacetimeHD driver](https://github.com/patjak/bcwc_pcie/wiki/Get-Started)
 
 ### Google Chrome extensions

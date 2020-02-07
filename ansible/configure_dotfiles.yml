@@ -29,7 +29,6 @@
         - tern-project
         - ctags
         - bashrc
-        - hyper.js
         - iex.exs
 
     - file: path=~/.sshrc.d state=directory

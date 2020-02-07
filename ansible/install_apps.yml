@@ -22,15 +22,31 @@
         - xclip # for neovim copy/paste
         - apt-show-versions # upgradable versions
         - sshfs
+        - deluge
+        - vlc
         - jq
 
-    # ripgrep
-    - shell: curl https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb -L -o ~/Downloads/ripgrep_11.0.2_amd64.deb
-    - shell: apt install ~/Downloads/ripgrep_11.0.2_amd64.deb
-    - shell: rm ~/Downloads/ripgrep_11.0.2_amd64.deb
+    - shell: snap install {{ item }}
+      with_items:
+        - mailspring
+        - slack
+        - helm3
+        - ngrok
 
-    # sshrc
-    - shell: curl https://raw.githubusercontent.com/Russell91/sshrc/master/sshrc -o ~/Downloads/sshrc
+    - shell: brew install {{ item }}
+      with_items:
+        - neovim
+        - stern
+        - sops
+        - asdf
+        - ripgrep
+        - z
+
+    # use custom cd in z
+    - shell: sed -i 's,builtin cd,cd,g'
+
+    # sshrc << not packaged
+    - shell: curl https://raw.githubusercontent.com/exAspArk/sshrc/master/sshrc -o ~/Downloads/sshrc
     - shell: chmod +x ~/Downloads/sshrc && mv ~/Downloads/sshrc /usr/local/bin
 
     # wine
@@ -44,15 +60,11 @@
     - shell: add-apt-repository "deb [arch=amd64] https://deb.tableplus.com/debian tableplus main"
     - shell: apt update && apt install tableplus
 
-    # z
-    - shell: wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O ~/.z.sh
-    - shell: sed -i 's,builtin cd,cd,g'
-
     # complete-alias
     - shell: apt install bash-completion
     - shell: curl https://raw.githubusercontent.com/cykerway/complete-alias/master/complete_alias >> ~/.bash_completion
 
-    # gcolor2
+    # gcolor2 << not packaged
     - shell: curl https://mirrors.kernel.org/ubuntu/pool/universe/g/gcolor2/gcolor2_0.4-2.1ubuntu1_amd64.deb -L -o ~/Downloads/gcolor2_0.4-2.1ubuntu1_amd64.deb
     - shell: apt install ~/Downloads/gcolor2_0.4-2.1ubuntu1_amd64.deb
     - shell: rm ~/Downloads/gcolor2_0.4-2.1ubuntu1_amd64.deb
@@ -67,7 +79,7 @@
     - shell: apt-get update && apt-get install google-cloud-sdk
     - shell: chown -R $USER $HOME/.config/gcloud
 
-    # bash-powerline
+    # bash-powerline << not packaged
     - shell: curl https://raw.githubusercontent.com/riobard/bash-powerline/master/bash-powerline.sh > ~/.bash-powerline.sh
 
     # clipboard manager
@@ -82,8 +94,12 @@
     - shell: add-apt-repository ppa:nathan-renniewaldock/flux
     - shell: apt update && apt install fluxgui
 
-    # alt
+    # alt << not packaged
     - shell: asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
     - shell: asdf install rust 1.40.0
     - shell: clone https://github.com/uptech/alt.git ~/Downloads/alt
     - shell: cd ~/Downloads/alt && cargo build --release && mv target/release/alt /usr/local/bin
+
+    # unetbootin (iso)
+    - shell: add-apt-repository ppa:gezakovacs/ppa
+    - shell: apt update && apt install unetbootin

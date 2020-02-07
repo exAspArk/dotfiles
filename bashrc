@@ -96,16 +96,12 @@ shopt -s autocd
 
 export VISUAL=nvim
 export EDITOR=$VISUAL
-
 export LANG=en_US.UTF-8
 
 export ERL_AFLAGS="-kernel shell_history enabled" # iex history for Elixir
 
 export BACKUP_PATH=~/Dropbox/_backups
 export PROJECT_PATH=~/Documents/projects
-
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND="find . \
@@ -122,7 +118,6 @@ bind '"\e[B": history-search-forward'
 
 . ~/.bash_completion
 source <(kubectl completion bash)
-
 source ~/.bash-powerline.sh
 
 function title_pwd() { echo -ne "\033]0;${PWD##*/}\007"; }
@@ -130,4 +125,5 @@ function cd() { builtin cd "$@" && title_pwd; }
 
 title_pwd
 
-. ~/.z.sh
+. /home/linuxbrew/.linuxbrew/opt/asdf/asdf.sh
+. /home/linuxbrew/.linuxbrew/etc/profile.d/z.sh

@@ -111,8 +111,8 @@ augroup vimrcEx
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 
   autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml setlocal iskeyword=@,48-57,192-255,_,!,?           " make ?s part of words
-  autocmd FileType elixir setlocal iskeyword=@,48-57,192-255,_,!,?                    " make ?s part of words
+  autocmd FileType ruby,eruby,yaml setlocal iskeyword=@,48-57,192-255,_,?           " make ?s part of words
+  autocmd FileType elixir setlocal iskeyword=@,48-57,192-255,_,?                    " make ?s part of words
   autocmd FileType markdown setlocal wrap textwidth=240                             " automatically wrap for Markdown
   autocmd FileType gitcommit setlocal textwidth=72                                  " automatically wrap at 72 characters
   autocmd FileType markdown setlocal spell spelllang=ru_ru,en_us                    " enable spellchecking for Markdown messages
