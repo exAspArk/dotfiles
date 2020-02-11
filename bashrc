@@ -94,24 +94,7 @@ fi
 # change dir without cd
 shopt -s autocd
 
-export VISUAL=nvim
-export EDITOR=$VISUAL
-export LANG=en_US.UTF-8
-
-export ERL_AFLAGS="-kernel shell_history enabled" # iex history for Elixir
-
-export BACKUP_PATH=~/Dropbox/_backups
-export PROJECT_PATH=~/Documents/projects
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND="find . \
-! -path \"./.git/*\" \
-! -path \"./_build/*\" \
-! -path \"./deps/*\" \
-! -path \"./dist/*\" \
-! -path \"./node_modules/*\" \
--type f -printf \"%P\n\""
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'

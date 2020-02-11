@@ -28,6 +28,7 @@
         - sshrc
         - tern-project
         - ctags
+        - profile
         - bashrc
         - iex.exs
 

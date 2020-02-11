@@ -25,12 +25,11 @@
         - deluge
         - vlc
         - jq
-
+        - pm-utils # edit /etc/systemd/logind.conf to enable HandleSuspendKey, HandleLidSwitch, HandleLidSwitchDocked suspend
     - shell: snap install {{ item }}
       with_items:
         - mailspring
         - slack
-        - helm3
         - ngrok
 
     - shell: brew install {{ item }}
@@ -103,3 +102,7 @@
     # unetbootin (iso)
     - shell: add-apt-repository ppa:gezakovacs/ppa
     - shell: apt update && apt install unetbootin
+
+    # helm
+    - shell: asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git
+    - shell: asdf install helm 2.16.1
