@@ -1,0 +1,113 @@
+# ---
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    # Macbook + Ubuntu fixes https://medium.com/@racter/how-to-install-ubuntu-16-04-on-a-retina-macbook-11-2-74e7779c0e47
+
+    # CPU bug
+    #
+    # grep . -r /sys/firmware/acpi/interrupts
+    #
+    - shell: >
+      sudo cp /sys/firmware/acpi/interrupts/gpe17 /tmp &&
+      echo "disable" | sudo tee -a /sys/firmware/acpi/interrupts/gpe17 &&
+      echo "mask" | sudo tee -a /sys/firmware/acpi/interrupts/gpe17 &&
+
+    # sudo crontab -e
+    #
+    # @reboot echo "disable" > /sys/firmware/acpi/interrupts/gpe
+    # @reboot echo "mask" > /sys/firmware/acpi/interrupts/gpe
+
+    # add:
+    #
+    # #!/bin/bash
+    # case "$1" in
+    #   thaw|resume)
+    #     echo disable > /sys/firmware/acpi/interrupts/gpe17 2>/dev/null
+    #     ;;
+    #   *)
+    #     ;;
+    # esac
+    # exit $?
+    - shell: >
+      sudo touch /lib/systemd/system-sleep/disable_gpe17 &&
+      sudo chmod +x /lib/systemd/system-sleep/disable_gpe17 &&
+      sudo vi /lib/systemd/system-sleep/disable_gpe17
+
+    # SSD to CPU issue
+    #
+    # sudo vi /usr/lib/pm-utils/power.d/sata_alpm
+    #
+    # replace:
+    #
+    # false) set_sata_alpm max_performance;;
+    # false) set_sata_alpm min_power;;
+
+    # sudo vi /etc/modules
+    #
+    # coretemp
+    # applesmc
+
+    # exponential fan speed control
+    #
+    # sudo vi /etc/mbpfan.conf
+    - shell: >
+      sudo mkdir /usr/local/src &&
+      sudo chmod -R 755 /usr/local/src &&
+      sudo chown -R $USER:$USER /usr/local/src &&
+      cd /usr/local/src &&
+      git clone https://github.com/dgraziotin/mbpfan &&
+      cd mbpfan &&
+      make &&
+      sudo make install &&
+      sudo make tests &&
+      sudo cp mbpfan.service /etc/systemd/system/ &&
+      sudo systemctl enable mbpfan.service &&
+      sudo mbpfan
+
+    # lid + suspending
+    #
+    # HandleLidSwitchDocked=suspend
+    - shell: >
+      sudo vi /etc/systemd/logind.conf
+
+    # FacetimeHD driver (camera) - https://github.com/patjak/bcwc_pcie/wiki/Get-Started
+    - shell: >
+      sudo apt-get install linux-headers git kmod libssl-dev checkinstall &&
+      cd /etc/local/src &&
+      git clone https://github.com/patjak/bcwc_pcie.git &&
+      cd bcwc_pcie/firmware &&
+      sudo make &&
+      sudo make install &&
+      cd .. &&
+      make &&
+      sudo make install &&
+      sudo depmod &&
+      sudo modprobe -r bdc_pci &&
+      sudo modprobe facetimehd &&
+      echo 'facetimehd' | sudo tee -a /etc/suspend-modules.conf &&
+      echo 'bdc_pci' | sudo tee -a /etc/modprobe.d/blacklist-facetimehd.conf
+
+    # battery
+    #
+    # [Unit]
+    # Description=Powertop tunings
+    # [Service]
+    # Type=idle
+    # ExecStart=/usr/bin/powertop --auto-tune
+    # [Install]
+    # WantedBy=multi-user.target
+    - shell: >
+      sudo apt-get install powertop &&
+      sudo apt-get install tlp tlp-rdw &&
+      sudo tlp start &&
+      sudo powertop --calibrate &&
+      sudo ln -s /var/cache/powertop/saved_results.powertop /var/cache/powertop/saved_parameters.powertop &&
+      sudo powertop --auto-tune &&
+      sudo vi /etc/systemd/system/powertop.service
+    - shell: >
+      sudo chmod +x /etc/systemd/system/powertop.service &&
+      sudo systemctl enable powertop &&
+      sudo systemctl start powertop
+

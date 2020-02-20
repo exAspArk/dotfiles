@@ -228,8 +228,9 @@ imap <A-s> <esc>:w<CR>
 nnoremap c "_c
 vnoremap c "_c
 
-" replace currently selected text with default register without yanking it
+" delete / replace currently selected text with default register without yanking it
 vnoremap p "_dP
+vnoremap d "_d
 
 " delete line without yanking (copying) it
 nnoremap dd "_dd

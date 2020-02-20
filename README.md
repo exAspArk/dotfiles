@@ -16,6 +16,7 @@ git clone git@github.com:exAspArk/dotfiles.git
 make install_essential
 make configure_dotfiles
 make configure_vim
+make configure_macbook
 
 make configure_ruby VERSION=2.5.7
 make configure_node VERSION=12.14.0
@@ -37,7 +38,6 @@ make configure_backups
 * Simplenote
 * Licecap (Wine)
 * VNC Viewer (Wine)
-* [FacetimeHD driver](https://github.com/patjak/bcwc_pcie/wiki/Get-Started)
 
 ### Google Chrome extensions
 

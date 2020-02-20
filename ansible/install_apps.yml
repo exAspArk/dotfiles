@@ -14,7 +14,6 @@
         - jid
         - ffmpeg
         - rsync
-        - playonlinux # wine
         - libpq-dev
         - postgresql
         - redis
@@ -25,7 +24,7 @@
         - deluge
         - vlc
         - jq
-        - pm-utils # edit /etc/systemd/logind.conf to enable HandleSuspendKey, HandleLidSwitch, HandleLidSwitchDocked suspend
+        - vim-gui-common
     - shell: snap install {{ item }}
       with_items:
         - mailspring
@@ -106,3 +105,10 @@
     # helm
     - shell: asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git
     - shell: asdf install helm 2.16.1
+
+    # sensors
+    - shell: >
+      sudo apt install lm-sensors &&
+      sudo sensors-detect &&
+      sensors &&
+      sudo apt install psensors
