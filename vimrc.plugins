@@ -112,7 +112,7 @@ if executable('rg')
 endif
 
 " vim-closetag
-let g:closetag_filenames = '*.js,*.tsx'
+let g:closetag_filenames = '*.js,*.tsx,*.xml,*.html'
 
 " Plug load some plugins not while starting vim
 augroup lazy_load

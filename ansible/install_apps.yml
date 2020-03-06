@@ -51,6 +51,7 @@
     - shell: dpkg --add-architecture i386
     - shell: wget -O - -q https://dl.winehq.org/wine-builds/winehq.key | apt-key add -
     - shell: apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
+    - shell: add-apt-repository ppa:cybermax-dexter/sdl2-backport
     - shell: apt update && apt install --install-recommends winehq-stable
 
     # tableplus

@@ -111,3 +111,26 @@
       sudo systemctl enable powertop &&
       sudo systemctl start powertop
 
+    # inverted horizontal scroll
+    - shell: >
+      synclient HorizScrollDelta=-100
+      synclient VertScrollDelta=-100
+
+    # gpu
+    - shell: >
+      sudo apt install xserver-xorg-video-intel
+      sudo apt install xserver-xorg-video-amdgpu
+
+    # keyboard - disable single Super key press that opens Activities
+    - shell: >
+      gsettings set org.gnome.mutter overlay-key ""
+
+    # Custom shortcuts:
+    # * Switch windows: Ctrl + Tab
+    # * Copy a screenshot of an area to clipboard: Shift + Ctrl + Super + $
+    # * Save a screenshot of an area to Pictures: Shift + Ctrl + $
+    # * Lock screen: Ctrl + PowerOff
+    # * Switch to next input: Ctrl + Space
+    # * Switch to previous input: Shift + Ctrl + Space
+    # * Close window: Ctrl + Q
+    # * Hide window: Ctrl + H
