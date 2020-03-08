@@ -25,9 +25,10 @@
         - vlc
         - jq
         - vim-gui-common
+        - geary
+
     - shell: snap install {{ item }}
       with_items:
-        - mailspring
         - slack
         - ngrok
 
