@@ -90,10 +90,6 @@
     - shell: apt install network-manager-openvpn
     - shell: apt install network-manager-openvpn-gnome
 
-    # flux
-    - shell: add-apt-repository ppa:nathan-renniewaldock/flux
-    - shell: apt update && apt install fluxgui
-
     # alt << not packaged
     - shell: asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
     - shell: asdf install rust 1.40.0

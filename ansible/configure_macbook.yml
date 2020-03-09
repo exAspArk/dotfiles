@@ -13,12 +13,11 @@
       sudo cp /sys/firmware/acpi/interrupts/gpe17 /tmp &&
       echo "disable" | sudo tee -a /sys/firmware/acpi/interrupts/gpe17 &&
       echo "mask" | sudo tee -a /sys/firmware/acpi/interrupts/gpe17 &&
-
     # sudo crontab -e
     #
     # @reboot echo "disable" > /sys/firmware/acpi/interrupts/gpe
     # @reboot echo "mask" > /sys/firmware/acpi/interrupts/gpe
-
+    #
     # add:
     #
     # #!/bin/bash
@@ -34,15 +33,6 @@
       sudo touch /lib/systemd/system-sleep/disable_gpe17 &&
       sudo chmod +x /lib/systemd/system-sleep/disable_gpe17 &&
       sudo vi /lib/systemd/system-sleep/disable_gpe17
-
-    # SSD to CPU issue
-    #
-    # sudo vi /usr/lib/pm-utils/power.d/sata_alpm
-    #
-    # replace:
-    #
-    # false) set_sata_alpm max_performance;;
-    # false) set_sata_alpm min_power;;
 
     # sudo vi /etc/modules
     #
@@ -66,7 +56,7 @@
       sudo systemctl enable mbpfan.service &&
       sudo mbpfan
 
-    # lid + suspending
+    # lid + suspending while charging
     #
     # HandleLidSwitchDocked=suspend
     - shell: >
@@ -91,34 +81,19 @@
 
     # battery
     #
-    # [Unit]
-    # Description=Powertop tunings
-    # [Service]
-    # Type=idle
-    # ExecStart=/usr/bin/powertop --auto-tune
-    # [Install]
-    # WantedBy=multi-user.target
     - shell: >
-      sudo apt-get install powertop &&
       sudo apt-get install tlp tlp-rdw &&
-      sudo tlp start &&
-      sudo powertop --calibrate &&
-      sudo ln -s /var/cache/powertop/saved_results.powertop /var/cache/powertop/saved_parameters.powertop &&
-      sudo powertop --auto-tune &&
-      sudo vi /etc/systemd/system/powertop.service
-    - shell: >
-      sudo chmod +x /etc/systemd/system/powertop.service &&
-      sudo systemctl enable powertop &&
-      sudo systemctl start powertop
+      sudo tlp start
 
     # inverted horizontal scroll
     - shell: >
       synclient HorizScrollDelta=-100
       synclient VertScrollDelta=-100
 
+    # maybe ##############################################################
+
     # gpu
     - shell: >
-      sudo apt install xserver-xorg-video-intel
       sudo apt install xserver-xorg-video-amdgpu
 
     # keyboard - disable single Super key press that opens Activities
@@ -134,3 +109,5 @@
     # * Switch to previous input: Shift + Ctrl + Space
     # * Close window: Ctrl + Q
     # * Hide window: Ctrl + H
+    #
+    # Tweaks -> Keyboard & Mouse -> Additional Layout Option -> Ctrl position -> Swap Left / Right Win with Left / Right Ctrl
