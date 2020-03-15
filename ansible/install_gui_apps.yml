@@ -17,18 +17,18 @@
         - zoomus
         - typora
         - spectacle
-        - go2shell
         - purevpn
-        - keycastr # show keystrokes
         - osxfuse
         - insomnia
         - tableplus # sql GUI vs psequel
         - slack
-        - qbittorrent
         - gpg-suite
         - graphql-playground
-        - google-chrome
         - google-cloud-sdk # gcloud
+        - ngrok
+        - kitty
+        - deluge
+        # - keycastr # show keystrokes
         # - sqlitebrowser
         # - skype
         # - tunnelblick
@@ -53,5 +53,3 @@
         - Keynote
         - Spark
         - Xcode
-        # - Monosnap
-        # - Twitter

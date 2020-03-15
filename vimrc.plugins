@@ -33,12 +33,9 @@ Plug 'tpope/vim-endwise', { 'for': 'ruby', 'on': [] }   " auto end
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }          " run rspec
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }             " bundle commands and smart ctags
 
-" js / jsx / ts / tsx / html
+" js / jsx / ts / tsx
 Plug 'othree/yajs.vim', { 'for': [] }                   " javascript
 Plug 'mxw/vim-jsx', { 'for': [] }                       " jsx
-Plug 'valloric/MatchTagAlways', { 'for': [
-  \ 'html', 'eruby', 'javascript.jsx', 'typescript.tsx'
-  \ ] }                                                 " highlight match tags
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
 
@@ -46,23 +43,13 @@ Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
 Plug 'elixir-lang/vim-elixir', { 'for': ['elixir', 'eelixir'] }
 Plug 'mhinz/vim-mix-format', { 'for': ['elixir', 'eelixir'] }
 
-" clojure
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }        " repl
-
 " syntaxes and languages
-Plug 'slim-template/vim-slim', { 'for': 'slim' }        " slim
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }    " coffee script
+Plug 'valloric/MatchTagAlways', { 'for': ['html', 'eruby', 'eelixir', 'javascript.jsx', 'typescript.tsx'] }                                                 " highlight match tags
 Plug 'shime/vim-livedown', { 'for': 'markdown' }        " real time markdown editing
-Plug 'nono/vim-handlebars', { 'for': 'handlebars.html' }
-Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
-Plug 'tomlion/vim-solidity', { 'for': 'solidity' }      " solidity
 
 " theme
 Plug 'w0ng/vim-hybrid'                                  " theme
 Plug 'bling/vim-airline'                                " status line
-
-" repl
-Plug 'metakirby5/codi.vim'
 
 call plug#end()
 
@@ -70,7 +57,7 @@ call plug#end()
 color hybrid
 
 " call MRU plugin with Alt + r
-nnoremap ® :MRU<CR>
+nnoremap <A-r> :MRU<CR>
 
 " open nerdtree
 map <leader><leader> :NERDTreeToggle<CR>
@@ -80,9 +67,6 @@ map <leader>c :NERDTreeFind<CR>
 command! -bar -nargs=1 -complete=file CD execute ":cd " . fnamemodify(<q-args>, ':p:h') .
   \ " | NERDTree " . fnamemodify(<q-args>, ':p:h') . " | NERDTreeToggle" .
   \ " | :silent !title_pwd" | execute ":redraw!"
-
-" jump to defenition with fireplace
-nnoremap <C-[><C-[> [<C-d>
 
 " vim-rspec
 map <Leader>t :call RunCurrentSpecFile()<CR>
@@ -112,11 +96,11 @@ function! AltCommand(path, vim_command)
 endfunction
 nnoremap <Leader>o :call AltCommand(expand('%'), ':e')<CR>
 
-" run FZF by using Alt + P
-nnoremap π "_:FZF<CR>
+" run FZF by using Alt + p
+nnoremap <A-p> "_:FZF<CR>
 
 " search with CtrlSF
-nnoremap <C-f> "_:CtrlSF 
+nnoremap <A-f> "_:CtrlSF 
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_ignore_dir = ['node_modules', '.git', 'deps']
@@ -128,7 +112,7 @@ if executable('rg')
 endif
 
 " vim-closetag
-let g:closetag_filenames = '*.js,*.tsx'
+let g:closetag_filenames = '*.js,*.tsx,*.xml,*.html'
 
 " Plug load some plugins not while starting vim
 augroup lazy_load
@@ -172,7 +156,6 @@ let g:multi_cursor_start_key='<C-n>'
 let g:multi_cursor_start_word_key='g<C-n>'
 
 " rspec command
-let g:rspec_runner = "os_x_iterm2"
 let g:rspec_command = "below new | term spring --version > /dev/null && spring rspec {spec} || bundle exec rspec {spec}"
 
 " MatchTagAlways
@@ -182,7 +165,19 @@ highlight MatchTag ctermbg=240 guifg=#585858
 let g:mta_filetypes = {'html' : 1, 'eruby': 1, 'javascript.jsx': 1, 'typescript.tsx': 1}
 
 " don't run linters on opening a file
+let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_linters = {
+\ 'ruby': ['rubocop'],
+\ }
+let g:ale_fixers = {
+\ 'javascript': ['eslint'],
+\ 'ruby': ['rubocop'],
+\ 'elixir': ['credo']
+\ }
+let g:ale_fix_on_save = 1
 
 " JSX
 let g:jsx_ext_required = 0

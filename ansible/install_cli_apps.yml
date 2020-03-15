@@ -26,7 +26,6 @@
         - imagemagick
         - ripgrep
         - wget
-        - sshrc
         - fzf
         - unar
         - findutils # to use gfind with -print option
@@ -37,29 +36,14 @@
         - rsync
         - trash
         - pstree
-        - geth # ethereum
-        - bat # syntax highlight
         - watch # gnu
-        - kubernetes-helm
+        - sshfs
         - stern # kube logs
-        # - ntfs-3g
-        # - tmux-cssh
-        # - go
-        # - graphicsmagick # imagemagick fork
-        # - leiningen # clojure
-        # - sphinx
-        # - logstash
-        # - ipcalc
-        # - xhyve
-        # - docker-machine-driver-xhyve # minikube
-        # - kubectl
-        # - heroku
+        - jq
+        - sops
 
     # to avoid using flag --with-openssl-dir=/usr/local/opt/openssl
     - shell: brew link --force openssl
-
-    # mert for iTerm 3
-    - shell: yarn global add mert
 
     # services
     - shell: |
@@ -68,57 +52,13 @@
           ln -sfv /usr/local/opt/{{ item }}/*.plist ~/Library/LaunchAgents
         fi
       with_items:
-        # - elasticsearch
-        # - kibana
-        # - memcached
-        # - mongodb
-        # - mysql
         - postgresql
         - redis
-        # - rabbitmq
-        # - selenium-server-standalone
 
     # postgresql
     - shell: createuser -s postgres
       ignore_errors: true
 
-    # # phantomjs
-    # # - shell: brew install phantomjs # v2 currently does not work with OS X El Capitan, use lines below:
-    # - shell: yarn global add phantom
-    # - shell: yarn global add phantomjs
-
-    # # ethereum
-    # - shell: yarn global add truffle
-
-    # - name: Set permissions for docker-machine-driver-xhyve
-    #   shell: |
-    #     sudo chown root:wheel /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve &&
-    #     sudo chmod u+s /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
-
-    # # elasticsearch plugins
-    # - shell: /usr/local/Cellar/elasticsearch/*/libexec/bin/plugin list | grep 'license$'
-    #   ignore_errors: true
-    #   register: license_exists
-    # - shell: /usr/local/Cellar/elasticsearch/*/libexec/bin/plugin install license
-    #   when: license_exists|failed
-
-    # - shell: /usr/local/Cellar/elasticsearch/*/libexec/bin/plugin list | grep 'marvel-agent$'
-    #   ignore_errors: true
-    #   register: marvel_agent_exists
-    # - shell: /usr/local/Cellar/elasticsearch/*/libexec/bin/plugin install marvel-agent
-    #   when: marvel_agent_exists|failed
-
-    # - shell: kibana plugin -l | grep '^sense$'
-    #   ignore_errors: true
-    #   register: sense_exists
-    # - shell: kibana plugin --install elastic/sense
-    #   when: sense_exists|failed
-
-    # - shell: kibana plugin -l | grep '^marvel$'
-    #   ignore_errors: true
-    #   register: marvel_exists
-    # - shell: kibana plugin --install elasticsearch/marvel/latest
-    #   when: marvel_exists|failed
-
-    # - shell: brew services restart elasticsearch
-    # - shell: brew services restart kibana
+    # sshrc << not packaged
+    - shell: curl https://raw.githubusercontent.com/exAspArk/sshrc/master/sshrc -o ~/Downloads/sshrc
+    - shell: chmod +x ~/Downloads/sshrc && mv ~/Downloads/sshrc /usr/local/bin

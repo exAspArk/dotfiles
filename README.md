@@ -13,14 +13,14 @@
 ```
 git clone git@github.com:exAspArk/dotfiles.git
 
-make install_essential # ansible, brew, brave, dropbox, iterm, zsh, asdf, yarn, neovim, python
+make install_essential
 make configure_dotfiles
 make configure_vim
 
-make configure_ruby VERSION=2.4.1
-make configure_node VERSION=10.15.3
-make configure_elixir VERSION=1.8.2 OTP=22
-make configure_java VERSION=oracle-8.141
+make configure_ruby VERSION=2.5.7
+make configure_node VERSION=12.14.0
+make configure_elixir VERSION=1.9.4 OTP=22
+make configure_java VERSION=adopt-openjdk-8u232-b09
 
 make install_cli_apps
 make install_gui_apps
@@ -34,76 +34,65 @@ make configure_backups
 
 * Docker for Mac
 * GPG Suite
-* MongoDB Compass
 
 ### Google Chrome extensions
 
-* EditThisCookie
-* Falcon
-* Flashcontrol
-* HTTPS Everywhere
 * Grammarly for Chrome
 * JSON Formatter
-* ModHeader
 * React Developer Tools
 * Save to Pocket
 * Speed Dial 2
+* uBlock
 
 ### Android apps
 
 * AliExpress
-* Audio Recorder (Sony Mobile Communication)
 * Authenticator
-* Auto redial
-* Barcode Scanner
-* Blue light filter
 * Brave
 * Bubble Level
 * CamScanner
-* CarShare (Enterprise)
 * Dropbox
-* File Manager + (by Flashlight + Clock)
-* Files Go
-* Flickr
-* Foursquare
+* Expo
+* Flip
+* GasBuddy
 * Gmail
-* Google Tips
-* Greenify
-* GroupNet
-* InstaRyde
+* GreenP
+* Hoopla
+* Investing
 * Keepass2Android
-* Lyft
+* Lite
+* Maps
 * MAPS.ME
-* Messenger (Facebook)
+* Messages
 * Mint
 * MobileVOIP
-* Navigator
-* P Reader
+* Nova Settings
 * Paytm
+* Photos
+* Pixel Icon Package
 * Player FM
 * Pocket
+* PRESTO
 * PureVPN
 * Revolut
 * Ritual
-* Signal
-* Simple radio
+* Roku
+* Sheets
 * Simplenote
-* Skype
 * Slack
-* Snapseed
-* Speed Booster (by Mobile Health Club)
+* Stack
 * Stocard
+* Swim Guide
+* T2S
 * TickTick
 * Translate
-* Twitter
 * Uber
-* Unit Converter by Digit Grove
-* Universe - Find Local Events
-* Uploader for Flick
 * Viber
 * VLC
+* VNC Viewer
+* WardenCam
 * WhatsApp
 * Xender
 * xFi Locator
 * Youtube
-* Zoom
+* YouTube Downloader

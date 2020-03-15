@@ -28,30 +28,22 @@
         - vim-snippets/ruby.snippets
         - zshenv
         - zshrc
-        - zsh/custom/bundler.plugin.zsh
-        - zsh/custom/git.plugin.zsh
-        - zsh/custom/spring.plugin.zsh
-        - zsh/custom/unix.plugin.zsh
-        - zsh/custom/vim.plugin.zsh
-        - zsh/custom/sshrc.plugin.zsh
+        - zsh/custom/aliases.zsh
         - sshrc
         - tern-project
         - ctags
+        - iex.exs
 
     - file: src={{ curdir }}/zsh/themes/exaspark.zsh-theme dest=~/.oh-my-zsh/themes/exaspark.zsh-theme state=link
-
     - git: repo=https://github.com/zsh-users/zsh-autosuggestions.git dest=~/.zsh/zsh-autosuggestions clone=yes update=no
 
     - file: path=~/.sshrc.d state=directory
     - file: src={{ curdir }}/zsh/custom/{{ item }} dest=~/.sshrc.d/{{ item }} state=link
       with_items:
-        - bundler.plugin.zsh
-        - git.plugin.zsh
-        - spring.plugin.zsh
-        - unix.plugin.zsh
-        - vim.plugin.zsh
-        - sshrc.plugin.zsh
+        - aliases.zsh
     - file: src={{ curdir }}/{{ item }} dest=~/.sshrc.d/{{ item }} state=link
       with_items:
         - vimrc
         - irbrc
+
+    - file: src={{ curdir }}/kitty.conf dest=~/.config/kitty/kitty.conf state=link force=yes

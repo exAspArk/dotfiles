@@ -20,8 +20,7 @@
 
     - synchronize: src=~/.ssh/ dest={{ backup_path }}/ssh times=yes recursive=yes rsync_opts="-u"
 
-    - file: path={{ backup_path }}/gpg state=directory
-
+    # - file: path={{ backup_path }}/gpg state=directory
     # - name: Backup GPG key
     #   shell: >
     #     gpg -a --export {{ item }} > {{ backup_path }}/gpg/public_{{ item }}.key &&
@@ -29,25 +28,3 @@
     #     gpg --export-ownertrust > {{ backup_path }}/gpg/ownertrust.txt
     #   with_items:
     #     - exaspark@gmail.com
-
-    # - name: Check Sequel Pro favorites existance
-    #   stat: path="~/Library/Application Support/Sequel Pro/Data/Favorites.plist"
-    #   register: sequel_pro_favorites
-
-    # - synchronize:
-    #     src: '~/Library/Application Support/Sequel Pro/Data/Favorites.plist'
-    #     dest: '{{ backup_path }}/SequelProFavorites.plist'
-    #     times: yes
-    #     rsync_opts: "-u"
-    #   when: sequel_pro_favorites.stats.isreg is defined
-
-    # - name: Create PSequel directory
-    #   file: path={{ backup_path }}/psequel state=directory
-
-    # - name: Backup PSequel connections
-    #   synchronize:
-    #     src: "~/Library/Application\ Support/com.psequel.PSequel/"
-    #     dest: "{{ backup_path }}/psequel"
-    #     times: yes
-    #     recursive: yes
-    #     rsync_opts: "-u"

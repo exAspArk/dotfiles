@@ -5,11 +5,7 @@ if [[ -f ~/.bash_login   ]]; then source ~/.bash_login ; fi
 if [[ -f ~/.profile      ]]; then source ~/.profile ; fi
 if [[ -f ~/.bash_logout  ]]; then source ~/.bash_logout ; fi
 
-source ${SSHHOME}/.sshrc.d/bundler.plugin.zsh
-source ${SSHHOME}/.sshrc.d/git.plugin.zsh
-source ${SSHHOME}/.sshrc.d/unix.plugin.zsh
-source ${SSHHOME}/.sshrc.d/vim.plugin.zsh
-source ${SSHHOME}/.sshrc.d/sshrc.plugin.zsh
+source ${SSHHOME}/.sshrc.d/aliases.zsh
 
 export VIMINIT="let \$MYVIMRC='$SSHHOME/.sshrc.d/vimrc' | source \$MYVIMRC"
 
