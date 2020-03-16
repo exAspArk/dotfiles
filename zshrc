@@ -8,12 +8,15 @@ plugins=(z)
 
 source $ZSH/oh-my-zsh.sh
 
-# Custom title for iTerm 2 tab
+# Custom title for a terminal tab
 export DISABLE_AUTO_TITLE="true"
+
+# title function for terminal
+title_pwd() { echo -ne "\033]0;${PWD##*/}\007" }
 
 # after cd hook
 chpwd() {
-  # Show current directory for iTerm tab title
+  # Show current directory for a terminal tab title
   # Show contents of directory
   # Asynchronously
   (title_pwd &)

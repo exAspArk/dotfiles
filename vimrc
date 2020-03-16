@@ -176,9 +176,6 @@ nnoremap gV `[v`]
 " visual blockwise selection
 nnoremap <A-v> <C-v>
 
-nnoremap <A-u> <C-u>
-nnoremap <A-d> <C-d>
-
 " move line up / down with Ctrl + j / k
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==

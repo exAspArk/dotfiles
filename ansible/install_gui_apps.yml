@@ -9,7 +9,7 @@
         - sourcetree
         - jumpcut
         - the-unarchiver
-        - mplayerx
+        - vlc
         - licecap # record gifs from screen
         - android-file-transfer
         - paragon-ntfs
@@ -40,8 +40,9 @@
         # - franz
         # - ccmenu
         # - minikube
-        # - google-cloud-sdk # requires Python2
         # - mist # ethereum
+
+    - shell: gcloud components install kubectl
 
     - shell: |
         if ! mas list | grep {{ item }}; then
@@ -53,3 +54,4 @@
         - Keynote
         - Spark
         - Xcode
+        - Polarr

@@ -7,17 +7,8 @@ export LANG=en_US.UTF-8 # You may need to manually set your language environment
 export CC=/usr/bin/gcc
 
 export PATH=./bin
-export PATH=$PATH:/usr/local/opt/gnu-tar/libexec/gnubin # use gnu tar
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/local/bin
-export PATH=$PATH:/usr/local/git/bin
-
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
-
-export PATH=$PATH:/usr/local/heroku/bin # Added by the Heroku Toolbelt
-
-export PATH=$PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
-
+export PATH=$PATH:/usr/local/opt/gnu-tar/libexec/gnubin
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 export PATH="$PATH:$(yarn global bin)"
 
 # Load all of your custom configurations from custom/
@@ -35,6 +26,3 @@ export PROJECT_PATH=~/Documents/projects
 export LDFLAGS="-L/usr/local/opt/zlib/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include"
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
-
-# title function for iTerm
-title_pwd() { echo -ne "\033]0;${PWD##*/}\007" }
