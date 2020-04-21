@@ -1,25 +1,6 @@
 ---
 - hosts: all
   tasks:
-    # brew
-    - shell: brew -v
-      register: brew_exists
-      ignore_errors: yes
-    - get_url: url=https://raw.githubusercontent.com/Homebrew/install/master/install dest=/tmp/homebrew_install.rb
-      when: brew_exists|failed
-    - shell: ruby /tmp/homebrew_install.rb
-      when: brew_exists|failed
-    - file: path=/tmp/homebrew_install.rb state=absent
-      when: brew_exists|failed
-
-    - shell: |
-        if ! [[ "$(eval "brew cask list | grep '^{{ item }}$'")" ]] ; then
-          brew cask install {{ item }}
-        fi
-      with_items:
-        - brave-browser
-        - dropbox
-
     # oh my zsh
     - shell: echo $ZSH_VERSION
       ignore_errors: yes
@@ -42,8 +23,12 @@
         - yarn
         - 'neovim/neovim/neovim'
 
-    - shell: gpg --import {{ backup_path }}/gpg/private_exaspark@gmail.com.key
-    - shell: gpg --import-ownertrust {{ backup_path }}/gpg/ownertrust.txt
+    - shell: |
+        if ! [[ "$(eval "brew cask list | grep '^{{ item }}$'")" ]] ; then
+          brew cask install {{ item }}
+        fi
+      with_items:
+        - brave-browser
 
     # python
     - shell: asdf plugin-add python https://github.com/danhper/asdf-python.git

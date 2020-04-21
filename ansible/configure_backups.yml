@@ -23,3 +23,6 @@
           ansible-playbook ansible/backup.yml -i ansible/local -e backup_path={{ lookup('env', 'BACKUP_PATH') }} 2>&1 |
           /usr/bin/logger -p cron.info"
           > /dev/null
+
+    - shell: gpg --import {{ lookup('env', 'BACKUP_PATH') }}/gpg/private_exaspark@gmail.com.key
+    - shell: gpg --import-ownertrust {{ lookup('env', 'BACKUP_PATH') }}/gpg/ownertrust.txt

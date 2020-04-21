@@ -28,6 +28,8 @@
         - ngrok
         - kitty
         - deluge
+        - keybase
+        - krisp
         # - keycastr # show keystrokes
         # - sqlitebrowser
         # - skype
@@ -42,6 +44,7 @@
         # - minikube
         # - mist # ethereum
 
+    - shell: brew install sshfs
     - shell: gcloud components install kubectl
 
     - shell: |
