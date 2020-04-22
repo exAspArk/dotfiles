@@ -47,6 +47,9 @@ bindkey '\e[B' history-beginning-search-forward
 # kubectl
 source <(kubectl completion zsh)
 
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/exaspark/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="gfind . \

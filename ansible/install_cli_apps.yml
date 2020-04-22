@@ -40,9 +40,14 @@
         - stern # kube logs
         - jq
         - sops
+        - doctl
+        - awscli
 
     # to avoid using flag --with-openssl-dir=/usr/local/opt/openssl
     - shell: brew link --force openssl
+
+    # heroku
+    - shell: brew tap heroku/brew && brew install heroku
 
     # services
     - shell: |
