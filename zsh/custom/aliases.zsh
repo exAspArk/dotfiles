@@ -55,7 +55,6 @@ alias gcp='git cherry-pick'
 alias gd='git diff HEAD --color-words'
 alias gdf='git diff --name-status HEAD'
 alias gds='git diff --staged'
-alias gdm='git diff master...'
 alias gbl='git blame'
 alias gf='git fetch --all'
 alias gl='git pull'
@@ -94,6 +93,9 @@ glog() {
     --before="$LAST_COMMIT_TIME" \
     --format=format:"$FORMAT" \
     --date=iso
+}
+gdm() {
+  git diff $1^..$1
 }
 alias gclog="git log --no-merges --pretty=format:'%s (%an)'"
 alias ggrep="git log --grep"
