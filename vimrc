@@ -126,9 +126,9 @@ augroup vimrcEx
     \ nnoremap <Leader>p Orequire 'pry'; binding.pry<Esc> " add binding.pry line
     \| nnoremap tt :!gem ctags && gfind . -name '*.rb' -type f -print0 \| xargs -0 ctags -R -V<CR> " build ctags by using 'gem-ctags' gem
 
-  autocmd BufRead *.js,*.jsx
+  autocmd BufRead *.js,*.jsx,*.ts,*.tsx
     \ nnoremap <Leader>p Odebugger;<Esc>
-    \| nnoremap tt :!find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
+    \| nnoremap tt :!gfind . -type f -iregex ".*\.\(js\\|ts\\|tsx\)$" -not -path "./node_modules/*" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
 
   autocmd BufRead *.ex,*.exs
     \ nnoremap <Leader>p Orequire IEx; IEx.pry<Esc>

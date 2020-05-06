@@ -2,10 +2,10 @@ alias be='bundle exec'
 alias bo="bundle open"
 alias b='bundle'
 
-alias rs='spring rails s'
-alias rc='spring rails c'
+alias srs='spring rails s'
+alias src='spring rails c'
 alias sr='spring rspec'
-alias rk='spring rake'
+alias srk='spring rake'
 alias ss='spring stop'
 
 alias s="sshrc"
