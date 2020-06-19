@@ -17,6 +17,10 @@ mkdir -p $PROJECT_PATH/my
 cd $PROJECT_PATH/my
 git clone git@github.com:exAspArk/dotfiles.git
 
+mkdir ~/.ssh
+cp $BACKUP_PATH/ssh/* ~/.ssh
+chmod 600 ~/.ssh/id_rsa
+
 make install_essential
 make configure_dotfiles
 make configure_vim
