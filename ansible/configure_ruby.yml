@@ -1,7 +1,10 @@
 ---
 - hosts: all
   tasks:
-    - shell: asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+    - shell: |
+        if ! [[ "asdf plugin list | grep ruby" ]] ; then
+          asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+        fi
     - shell: "asdf install ruby {{ version }}"
 
     - name: Install bundler

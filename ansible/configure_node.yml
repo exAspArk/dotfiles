@@ -1,7 +1,14 @@
 ---
 - hosts: all
   tasks:
-    - shell: asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+    - shell: |
+        if ! [[ "asdf plugin list | grep nodejs" ]] ; then
+          asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+        fi
+    - shell: |
+        if ! [[ "$(eval "brew cask list | grep '^gpg-suite$'")" ]] ; then
+          brew cask install gpg-suite
+        fi
     - shell: bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
     - shell: "asdf install nodejs {{ version }}"
     - shell: asdf global nodejs {{ version }}

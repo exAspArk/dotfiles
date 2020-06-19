@@ -12,11 +12,9 @@
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-brew cask install dropbox
 
-# set up ssh files
-chmod 600 ~/.ssh/id_rsa
-
+mkdir -p $PROJECT_PATH/my
+cd $PROJECT_PATH/my
 git clone git@github.com:exAspArk/dotfiles.git
 
 make install_essential

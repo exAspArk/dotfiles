@@ -29,6 +29,11 @@
         fi
       with_items:
         - brave-browser
+        - keeweb
+        - dropbox
+
+    - shell: 'defaults write com.apple.Finder AppleShowAllFiles true'
+    - shell: 'killall Finder'
 
     # python
     - shell: asdf plugin-add python https://github.com/danhper/asdf-python.git
