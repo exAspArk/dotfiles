@@ -75,11 +75,11 @@ map <Leader>l :call RunLastSpec()<CR>
 " map <Leader>a :call RunAllSpecs()<CR>
 
 " git gutter
-nmap <Leader>j <Plug>GitGutterNextHunk
-nmap <Leader>k <Plug>GitGutterPrevHunk
-nmap <Leader>u <Plug>GitGutterUndoHunk
-nmap <Leader>a <Plug>GitGutterStageHunk
-nmap <Leader>d <Plug>GitGutterPreviewHunk
+nmap <Leader>j <Plug>(GitGutterNextHunk)
+nmap <Leader>k <Plug>(GitGutterPrevHunk)
+nmap <Leader>u <Plug>(GitGutterUndoHunk)
+nmap <Leader>a <Plug>(GitGutterStageHunk)
+nmap <Leader>d <Plug>(GitGutterPreviewHunk)
 
 " undo history
 nmap <Leader>h :UndotreeToggle<CR>
@@ -154,6 +154,16 @@ let g:airline_section_warning = ''
 " multiple cursors
 let g:multi_cursor_start_key='<C-n>'
 let g:multi_cursor_start_word_key='g<C-n>'
+function! Multiple_cursors_before()
+  if exists('g:loaded_deoplete')
+    call deoplete#disable()
+  endif
+endfunction
+function! Multiple_cursors_after()
+  if exists('g:loaded_deoplete')
+    call deoplete#enable()
+  endif
+endfunction
 
 " rspec command
 let g:rspec_command = "below new | term spring --version > /dev/null && spring rspec {spec} || bundle exec rspec {spec}"
@@ -174,7 +184,6 @@ let g:ale_linters = {
 \ }
 let g:ale_fixers = {
 \ 'javascript': ['eslint'],
-\ 'ruby': ['rubocop']
 \ }
 let g:ale_fix_on_save = 1
 
