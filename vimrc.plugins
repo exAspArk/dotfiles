@@ -5,7 +5,7 @@ Plug 'tpope/vim-surround'                               " better brackets
 Plug 'tpope/vim-commentary'                             " comments
 Plug 'tpope/vim-repeat'                                 " repeat more commands with '.'
 Plug 'terryma/vim-multiple-cursors'                     " multiple cursors like in ST
-Plug 'Shougo/deoplete.nvim', { 'on': [], 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Raimondi/delimitMate', { 'on': [] }               " closing brackets
 Plug 'alvan/vim-closetag', { 'on': [] }                 " closing tags
 Plug 'terryma/vim-expand-region'                        " change visual selection by using '+' / '-'
@@ -117,10 +117,7 @@ let g:closetag_filenames = '*.js,*.tsx,*.xml,*.html'
 " Plug load some plugins not while starting vim
 augroup lazy_load
   autocmd!
-  autocmd! InsertEnter * call plug#load('deoplete.nvim', 'delimitMate', 'vim-endwise', 'neosnippet', 'vim-closetag')
-                      \| if exists('g:loaded_deoplete')
-                      \|   call deoplete#enable()
-                      \| endif
+  autocmd! InsertEnter * call plug#load('delimitMate', 'vim-endwise', 'neosnippet', 'vim-closetag')
 augroup END
 
 augroup custom_types
@@ -134,13 +131,15 @@ hi IndentGuidesOdd ctermbg=234
 hi IndentGuidesEven ctermbg=235
 
 " autocomplete
-let g:deoplete#enable_ignore_case = 0
-let g:deoplete#enable_smart_case = 0
-let g:deoplete#delimiters = ['/', '.', '::', ':', '#']
-let g:deoplete#max_list = 5
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_refresh_delay = 0
-let g:neocomplete#min_pattern_length = 2
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option({
+\ 'auto_complete_delay': 0,
+\ 'auto_refresh_delay': 100,
+\ 'max_list': 5,
+\ 'smart_case': v:false,
+\ 'ignore_case': v:false,
+\ 'converter_auto_delimiter': ['/', '.', '::', ':', '#'],
+\ })
 
 " <TAB>: completion
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -155,13 +154,21 @@ let g:airline_section_warning = ''
 let g:multi_cursor_start_key='<C-n>'
 let g:multi_cursor_start_word_key='g<C-n>'
 function! Multiple_cursors_before()
-  if exists('g:loaded_deoplete')
-    call deoplete#disable()
+  call deoplete#disable()
+  if exists(':CloseTagDisableBuffer')
+    execute ":CloseTagDisableBuffer"
+  endif
+  if exists(':DelimitMateOff')
+    execute ":DelimitMateOff"
   endif
 endfunction
 function! Multiple_cursors_after()
-  if exists('g:loaded_deoplete')
-    call deoplete#enable()
+  call deoplete#enable()
+  if exists(':CloseTagEnableBuffer')
+    execute ":CloseTagEnableBuffer"
+  endif
+  if exists(':DelimitMateOn')
+    execute ":DelimitMateOn"
   endif
 endfunction
 

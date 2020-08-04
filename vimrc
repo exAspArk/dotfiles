@@ -8,7 +8,7 @@ set t_Co=256
 set background=dark
 
 " load plugins
-if filereadable(expand("~/.vimrc.plugins"))
+if has('nvim') && filereadable(expand("~/.vimrc.plugins"))
   source ~/.vimrc.plugins
 endif
 
