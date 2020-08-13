@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'                               " better brackets
 Plug 'tpope/vim-commentary'                             " comments
 Plug 'tpope/vim-repeat'                                 " repeat more commands with '.'
-Plug 'terryma/vim-multiple-cursors'                     " multiple cursors like in ST
+Plug 'mg979/vim-visual-multi'                           " multiple cursors like in ST
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Raimondi/delimitMate', { 'on': [] }               " closing brackets
 Plug 'alvan/vim-closetag', { 'on': [] }                 " closing tags
@@ -149,28 +149,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_detect_crypt = 0
 let g:airline_section_y = ''
 let g:airline_section_warning = ''
-
-" multiple cursors
-let g:multi_cursor_start_key='<C-n>'
-let g:multi_cursor_start_word_key='g<C-n>'
-function! Multiple_cursors_before()
-  call deoplete#disable()
-  if exists(':CloseTagDisableBuffer')
-    execute ":CloseTagDisableBuffer"
-  endif
-  if exists(':DelimitMateOff')
-    execute ":DelimitMateOff"
-  endif
-endfunction
-function! Multiple_cursors_after()
-  call deoplete#enable()
-  if exists(':CloseTagEnableBuffer')
-    execute ":CloseTagEnableBuffer"
-  endif
-  if exists(':DelimitMateOn')
-    execute ":DelimitMateOn"
-  endif
-endfunction
 
 " rspec command
 let g:rspec_command = "below new | term spring --version > /dev/null && spring rspec {spec} || bundle exec rspec {spec}"
