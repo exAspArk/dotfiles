@@ -9,7 +9,6 @@ export CC=/usr/bin/gcc
 export PATH=./bin
 export PATH=$PATH:/usr/local/opt/gnu-tar/libexec/gnubin
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
-export PATH="$PATH:$(yarn global bin)"
 
 # Load all of your custom configurations from custom/
 for config_file (~/.zsh/custom/*.zsh(N)); do

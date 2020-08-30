@@ -38,6 +38,7 @@ chpwd # emulate cd action
 # #############################################################################
 
 source /usr/local/opt/asdf/asdf.sh
+export PATH="$PATH:$(yarn global bin)"
 
 # load zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
