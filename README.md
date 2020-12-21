@@ -47,27 +47,34 @@ make configure_backups
 * Grammarly for Chrome
 * JSON Formatter
 * React Developer Tools
+* Redux DevTools
 * Save to Pocket
 * Speed Dial 2
-* uBlock
+* uBlock Origin
+* HTTPS Everywhere
 
 ### Android apps
 
+* Adobe Acrobat Reader
 * AliExpress
 * Authenticator
-* Brave
 * Bubble Level
+* Calendar
 * CamScanner
+* cloudLibrary
 * Dropbox
-* Expo
-* Flip
+* Fongo
 * GasBuddy
 * Gmail
 * GreenP
 * Hoopla
+* Image Edge Mobile (Sony)
 * Investing
 * Keepass2Android
-* Lite
+* Libby
+* Kiwi Browser
+* Lite (Facebook)
+* Lyft
 * Maps
 * MAPS.ME
 * Messages
@@ -81,7 +88,7 @@ make configure_backups
 * Pocket
 * PRESTO
 * PureVPN
-* Revolut
+* Ring
 * Ritual
 * Roku
 * Sheets
@@ -96,10 +103,12 @@ make configure_backups
 * Uber
 * Viber
 * VLC
+* Voice Recorder
 * VNC Viewer
 * WardenCam
 * WhatsApp
 * Xender
 * xFi Locator
-* Youtube
-* YouTube Downloader
+* YouTube Vanced
+* Zoom
+* @Voice

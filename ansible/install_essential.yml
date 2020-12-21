@@ -28,7 +28,7 @@
           brew cask install {{ item }}
         fi
       with_items:
-        - brave-browser
+        - eloston-chromium
         - keeweb
         - dropbox
 
