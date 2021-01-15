@@ -197,10 +197,10 @@ nnoremap <A-q> :bd!<CR>
 nnoremap <A-]> :bn<CR>
 nnoremap <A-[> :bp<CR>
 
-" format xml
-nnoremap fx :%!xmllint --format --encode UTF-8 -<CR>
-" format json
-nnoremap fj :%! cat % \| ruby -e "require 'json'; puts JSON.pretty_generate(JSON.parse(STDIN.read))"<CR>
+" format
+autocmd FileType xml nnoremap <buffer> ff :%!xmllint --format --encode UTF-8 -<CR>
+autocmd FileType html nnoremap <buffer> ff :%!tidy -q -i -w 120 --show-errors 0<CR>
+autocmd FileType json nnoremap <buffer> ff :%! cat % \| ruby -e "require 'json'; puts JSON.pretty_generate(JSON.parse(STDIN.read))"<CR>
 " format and sort keys in json
 nnoremap fsj :%! cat % \| ruby -e "
   \ require 'json';
