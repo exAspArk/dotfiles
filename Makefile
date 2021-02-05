@@ -1,6 +1,5 @@
 install_essential:
-	sudo easy_install pip
-	sudo pip install ansible
+	sudo pip3 install ansible
 	make play PLAYBOOK=ansible/install_essential.yml
 
 install_cli_apps:
@@ -13,13 +12,16 @@ configure_ruby:
 	make play PLAYBOOK=ansible/configure_ruby.yml OPTIONS="--ask-become-pass --extra-vars='version=$(VERSION)'"
 
 configure_node:
-	make play PLAYBOOK=ansible/configure_node.yml OPTIONS="--ask-become-pass --extra-vars='version=$(VERSION)'"
+	make play PLAYBOOK=ansible/configure_node.yml OPTIONS="--extra-vars='version=$(VERSION)'"
 
 configure_elixir:
-	make play PLAYBOOK=ansible/configure_elixir.yml OPTIONS="--ask-become-pass --extra-vars='version=$(VERSION) otp=$(OTP)'"
+	make play PLAYBOOK=ansible/configure_elixir.yml OPTIONS="--extra-vars='version=$(VERSION) otp=$(OTP)'"
+
+configure_python:
+	make play PLAYBOOK=ansible/configure_python.yml OPTIONS="--extra-vars='version=$(VERSION)'"
 
 configure_java:
-	make play PLAYBOOK=ansible/configure_java.yml OPTIONS="--ask-become-pass --extra-vars='version=$(VERSION)'"
+	make play PLAYBOOK=ansible/configure_java.yml OPTIONS="--extra-vars='version=$(VERSION)'"
 
 configure_vim:
 	make play PLAYBOOK=ansible/configure_vim.yml

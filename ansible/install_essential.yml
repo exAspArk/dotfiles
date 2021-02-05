@@ -4,11 +4,14 @@
     # oh my zsh
     - shell: echo $ZSH_VERSION
       ignore_errors: yes
+      register: zsh_version
     - get_url: url=https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh dest=/tmp/oh_my_zsh_install.sh mode=0744
       when: zsh_version is undefined
     - shell: sh -c /tmp/oh_my_zsh_install.sh
       when: zsh_version is undefined
     - shell: rm /tmp/oh_my_zsh_install.sh
+      when: zsh_version is undefined
+    - shell: compaudit | xargs chmod g-w,o-w
       when: zsh_version is undefined
 
     # asdf and yarn
@@ -18,14 +21,12 @@
         fi
       with_items:
         - asdf
-        - zlib # for asdf python
-        - sqlite # for asdf python
         - yarn
         - 'neovim/neovim/neovim'
 
     - shell: |
-        if ! [[ "$(eval "brew cask list | grep '^{{ item }}$'")" ]] ; then
-          brew cask install {{ item }}
+        if ! [[ "$(eval "brew list --cask | grep '^{{ item }}$'")" ]] ; then
+          brew install --cask {{ item }}
         fi
       with_items:
         - eloston-chromium
@@ -34,9 +35,3 @@
 
     - shell: 'defaults write com.apple.Finder AppleShowAllFiles true'
     - shell: 'killall Finder'
-
-    # python
-    - shell: asdf plugin-add python https://github.com/danhper/asdf-python.git
-    - shell: asdf install python 3.7.3
-    - shell: asdf install python 2.7.16
-    - shell: asdf global python 3.7.3 2.7.16

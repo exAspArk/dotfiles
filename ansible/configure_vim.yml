@@ -18,7 +18,8 @@
 
     - shell: yarn global add https://github.com/ramitos/jsctags.git
     - shell: yarn global add livedown
+    - shell: yarn global add neovim
 
     - name: Install nvim-client for python for deoplete.nvim
-      shell: pip install --upgrade neovim
+      shell: pip3 install --upgrade neovim
       become: true # should be installed via sudo

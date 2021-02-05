@@ -2,8 +2,8 @@
 - hosts: all
   tasks:
     - shell: |
-        if ! [[ "$(eval "brew cask list | grep '^{{ item }}$'")" ]] ; then
-          brew cask install {{ item }}
+        if ! [[ "$(eval "brew list --cask | grep '^{{ item }}$'")" ]] ; then
+          brew install --cask {{ item }}
         fi
       with_items:
         - sourcetree

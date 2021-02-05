@@ -11,30 +11,34 @@
 ## Install
 
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+mkdir ~/.ssh
+cp $BACKUP_PATH/ssh/* ~/.ssh
+chmod 600 ~/.ssh/id_rsa
 
 mkdir -p $PROJECT_PATH/my
 cd $PROJECT_PATH/my
 git clone git@github.com:exAspArk/dotfiles.git
 
-mkdir ~/.ssh
-cp $BACKUP_PATH/ssh/* ~/.ssh
-chmod 600 ~/.ssh/id_rsa
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 make install_essential
-make configure_dotfiles
-make configure_vim
 
+make configure_python VERSION=3.7.3 # neovim dependency
 make configure_ruby VERSION=2.5.7
 make configure_node VERSION=12.14.0
 make configure_elixir VERSION=1.9.4 OTP=22
 make configure_java VERSION=adopt-openjdk-8u232-b09
+
+make configure_dotfiles
+make configure_vim
 
 make install_cli_apps
 make install_gui_apps
 
 make configure_backups
 ```
+
+Set up [GPG](https://gist.github.com/exAspArk/d5cffe82f3151c40669be1aa4122e952#method-2).
 
 ## Other tools and apps:
 
@@ -44,6 +48,7 @@ make configure_backups
 
 ### Google Chrome extensions
 
+* [Chromium Web Store](https://github.com/NeverDecaf/chromium-web-store)
 * Grammarly for Chrome
 * JSON Formatter
 * React Developer Tools

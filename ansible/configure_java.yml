@@ -6,7 +6,8 @@
           brew install jq
         fi
     - shell: |
-        if ! [[ "asdf plugin list | grep java" ]] ; then
+        if ! [[ "$(asdf plugin list | grep java)" ]] ; then
           asdf plugin-add java https://github.com/halcyon/asdf-java.git
         fi
     - shell: "asdf install java {{ version }}"
+    - shell: "asdf global java {{ version }}"
