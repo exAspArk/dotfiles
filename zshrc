@@ -41,6 +41,10 @@ source /usr/local/opt/asdf/asdf.sh
 export PATH="$PATH:$(yarn global bin)"
 export PATH=$PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
 
+export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+export PATH="/usr/local/opt/mysql-client@5.7/bin:$PATH"
+export PATH="/usr/local/opt/docker-compose/bin:$PATH"
+
 # load zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '\e[A' history-beginning-search-backward
