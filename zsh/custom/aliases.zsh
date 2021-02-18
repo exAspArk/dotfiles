@@ -111,3 +111,7 @@ alias gs='git show --color-words'
 alias gstats='git shortlog -sn --no-merges'
 # lines count
 alias glstats='git ls-files -z | xargs -0n1 git blame -w --line-porcelain | grep -a "^author " | sort -f | uniq -c | sort -n -r'
+
+jiq() {
+  echo "" | fzf --print-query --preview "cat $1 | jq {q}"
+}
