@@ -166,10 +166,9 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters = {
 \ 'ruby': ['rubocop'],
+\ 'javascript': ['eslint'],
 \ }
 let g:ale_fixers = {
-\ 'javascript': ['eslint'],
-\ 'javascriptreact': ['eslint'],
 \ }
 let g:ale_fix_on_save = 1
 

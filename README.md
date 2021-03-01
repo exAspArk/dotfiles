@@ -70,7 +70,6 @@ Set up [GPG](https://gist.github.com/exAspArk/d5cffe82f3151c40669be1aa4122e952#m
 * Dropbox
 * Fongo
 * GasBuddy
-* Gmail
 * GreenP
 * Hoopla
 * Image Edge Mobile (Sony)
@@ -99,6 +98,7 @@ Set up [GPG](https://gist.github.com/exAspArk/d5cffe82f3151c40669be1aa4122e952#m
 * Sheets
 * Simplenote
 * Slack
+* Spark mail
 * Stack
 * Stocard
 * Swim Guide
