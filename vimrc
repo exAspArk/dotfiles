@@ -233,8 +233,10 @@ vnoremap c "_c
 vnoremap p "_dP
 vnoremap d "_d
 
-" delete line without yanking (copying) it
+" delete line / word / end of line without yanking (copying) it
 nnoremap dd "_dd
+nnoremap de "_de
+nnoremap D "_D
 
 " setup undodir if +persistent_undo option included
 if has('persistent_undo') && isdirectory($HOME . '/.vim/undo')
