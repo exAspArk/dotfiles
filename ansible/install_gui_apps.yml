@@ -14,7 +14,7 @@
         - android-file-transfer
         - paragon-ntfs
         - keeweb
-        - zoomus
+        - zoom
         - typora
         - spectacle
         - purevpn
@@ -23,7 +23,6 @@
         - tableplus # sql GUI vs psequel
         - slack
         - gpg-suite
-        - graphql-playground
         - google-cloud-sdk # gcloud
         - ngrok
         - kitty
