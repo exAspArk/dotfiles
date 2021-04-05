@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'                               " better brackets
 Plug 'tpope/vim-commentary'                             " comments
 Plug 'tpope/vim-repeat'                                 " repeat more commands with '.'
+Plug 'tpope/vim-abolish'                                " coerce camelCase / snake_case
 Plug 'mg979/vim-visual-multi'                           " multiple cursors like in ST
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Raimondi/delimitMate', { 'on': [] }               " closing brackets
@@ -100,7 +101,7 @@ nnoremap <Leader>o :call AltCommand(expand('%'), ':e')<CR>
 nnoremap <A-p> "_:FZF<CR>
 
 " search with CtrlSF
-nnoremap <A-f> "_:CtrlSF 
+nnoremap <A-f> "_:CtrlSF<Space>
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_ignore_dir = ['node_modules', '.git', 'deps', '.next', 'tmp']

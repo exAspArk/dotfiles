@@ -208,7 +208,10 @@ noremap <A-s> <esc>:w<CR>
 inoremap <A-s> <esc>:w<CR>
 
 " cut content to new buffer
-vnoremap <Leader>x x :w \| :enew<CR>pGE
+vnoremap <Leader>x x :w \| :enew<CR>pGE :w<Space>
+
+" list buffers
+nnoremap <Leader>b :ls<CR>:b<Space>
 
 " saveas with :S filepath
 command -nargs=1 -complete=file S :saveas <args>
