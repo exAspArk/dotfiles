@@ -126,20 +126,20 @@ augroup vimrcEx
   autocmd BufWritePre *.rb,*.haml,*.coffee,*.md,*.rake,*.clj,*.js,*.jsx,*.ts,*.tsx,*.sol,*.ex :%s/\s\+$//e " remove trailing whitespaces
 
   autocmd BufRead *.rb
-    \ nnoremap <Leader>p Orequire 'pry'; binding.pry<Esc> " add binding.pry line
+    \ nnoremap <A-p> Orequire 'pry'; binding.pry<Esc> " add binding.pry line
     \| nnoremap tt :!gem ctags && gfind . -name '*.rb' -type f -print0 \| xargs -0 ctags -R -V<CR> " build ctags by using 'gem-ctags' gem
 
   autocmd BufRead *.js,*.jsx,*.ts,*.tsx
-    \ nnoremap <Leader>p Odebugger;<Esc>
+    \ nnoremap <A-p> Odebugger;<Esc>
     \| nnoremap tt :!gfind . -type f -iregex ".*\.\(js\\|ts\\|tsx\)$" -not -path "./node_modules/*" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
 
   autocmd BufRead *.ex,*.exs
-    \ nnoremap <Leader>p Orequire IEx; IEx.pry<Esc>
+    \ nnoremap <A-p> Orequire IEx; IEx.pry<Esc>
     \| nnoremap tt :!ctags -R --exclude={.git,node_modules} -V<CR>
 augroup END
 
 " jump to method or function definition with ctags
-nnoremap <A-d> <C-]>
+nnoremap <Leader>d <C-]>
 
 " wrap long lines
 nnoremap wl gggqG
