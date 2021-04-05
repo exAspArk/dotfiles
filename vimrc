@@ -102,6 +102,9 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
 
+  " create directory if doesn't exist before saving
+  autocmd BufWritePre * if !isdirectory(expand('%:h')) | call mkdir(expand('%:h'), 'p') | endif
+
   " highlight trailing whitespaces
   autocmd InsertLeave * hi ExtraWhitespace ctermbg=172 guifg=#d78700
   autocmd InsertEnter * hi ExtraWhitespace NONE
@@ -170,9 +173,6 @@ nnoremap <A-l> <C-w>l
 nnoremap ƒ :tabedit %<CR>
 nnoremap Ï :tabclose<CR>
 
-" highlight last inserted text
-nnoremap gV `[v`]
-
 " visual blockwise selection
 nnoremap <A-v> <C-v>
 
@@ -202,28 +202,16 @@ autocmd FileType xml,html nnoremap <buffer> ff :%!xmllint --format --encode UTF-
 autocmd FileType xml,json,typescript.tsx vmap <buffer> ff :%!tidy -q -i -w 0 -xml --show-errors 0<CR>
 autocmd FileType json nnoremap <buffer> ff :%! cat % \| ruby -e "require 'json'; puts JSON.pretty_generate(JSON.parse(STDIN.read))"<CR>
 
-" format and sort keys in json
-nnoremap fsj :%! cat % \| ruby -e "
-  \ require 'json';
-  \ hash = JSON.parse(STDIN.read);
-  \ def deep_sort(hash);
-  \   hash.sort.map { \|(k, v)\|;
-  \     case v;
-  \     when Hash;
-  \       [k, deep_sort(v)];
-  \     when Array;
-  \       [k, v.sort_by(&:to_s)];
-  \     else;
-  \       [k, v];
-  \     end;
-  \   }.to_h;
-  \ end;
-  \ puts JSON.pretty_generate(deep_sort(hash))"<CR><CR>
-
 " save file with Alt + s
 " note that remapping C-s requires flow control to be disabled, e.g. in .bashrc or .zshrc
-map <A-s> <esc>:w<CR>
-imap <A-s> <esc>:w<CR>
+noremap <A-s> <esc>:w<CR>
+inoremap <A-s> <esc>:w<CR>
+
+" cut content to new buffer
+vnoremap <Leader>x x :w \| :enew<CR>pGE
+
+" saveas with :S filepath
+command -nargs=1 -complete=file S :saveas <args>
 
 " change without yanking
 nnoremap c "_c
@@ -262,15 +250,6 @@ function! LargeFile()
   setlocal foldmethod=manual
   setlocal noswapfile
 endfunction
-
-" create dir for new file
-function! s:MKDir(...)
-  if !a:0 || isdirectory(a:1) || filereadable(a:1) || isdirectory(fnamemodify(a:1, ':p:h'))
-    return
-  endif
-  return mkdir(fnamemodify(a:1, ':p:h'), 'p')
-endfunction
-command! -bang -bar -nargs=? -complete=file E :call s:MKDir(<f-args>) | e<bang> <args>
 
 " show list of all filetypes
 function! SortUnique(list, ...)
