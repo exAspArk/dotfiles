@@ -65,6 +65,7 @@ export FZF_DEFAULT_COMMAND="gfind . \
 ! -path \"./deps/*\" \
 ! -path \"./dist/*\" \
 ! -path \"*/node_modules/*\" \
+! -path \"*/.next/*\" \
 -type f -printf \"%P\n\""
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
