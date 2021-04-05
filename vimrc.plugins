@@ -3,7 +3,6 @@ call plug#begin('~/.vim/plugged')
 " text editing
 Plug 'tpope/vim-surround'                               " better brackets
 Plug 'tpope/vim-commentary'                             " comments
-Plug 'tpope/vim-repeat'                                 " repeat more commands with '.'
 Plug 'tpope/vim-abolish'                                " coerce camelCase / snake_case
 Plug 'mg979/vim-visual-multi'                           " multiple cursors like in ST
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -34,8 +33,8 @@ Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }          " run rspec
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }             " bundle commands and smart ctags
 
 " js / jsx / ts / tsx
-Plug 'othree/yajs.vim', { 'for': [] }                   " javascript
-Plug 'mxw/vim-jsx', { 'for': [] }                       " jsx
+Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }  " javascript
+Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript'] } " jsx
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
 
@@ -106,15 +105,14 @@ if executable('rg')
     \ }
 endif
 
-augroup lazy_load
+augroup lazy_load_on_insert
   autocmd!
-  autocmd FileType javascript call plug#load('yajs.vim', 'vim-jsx')
   autocmd InsertEnter * call plug#load('delimitMate')
   autocmd InsertEnter *.rb call plug#load('vim-endwise')
   autocmd InsertEnter *.js,*.jsx,*.tsx,*.xml,*.html,*.erb,*.eex call plug#load('vim-closetag')
 augroup END
 
-" disable <...>
+" disable auto closing <:>
 let delimitMate_matchpairs = "(:),{:},[:]"
 
 " vim-indent-guides
