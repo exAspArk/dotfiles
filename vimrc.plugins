@@ -94,7 +94,7 @@ nnoremap <Leader>o :call AltCommand(expand('%'), ':e')<CR>
 nnoremap <Leader>p "_:FZF<CR>
 
 " search with CtrlSF
-nnoremap <A-f> "_:CtrlSF<Space>
+nnoremap <Leader>f "_:CtrlSF<Space>
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_ignore_dir = ['node_modules', '.git', 'deps', '.next', 'tmp']
@@ -130,6 +130,7 @@ call deoplete#custom#option({
 \ 'ignore_case': v:false,
 \ 'converter_auto_delimiter': ['/', '.', '::', ':', '#'],
 \ })
+set completeopt-=preview " don't show preview with documentation
 
 " <TAB>: completion
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
