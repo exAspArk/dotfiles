@@ -125,17 +125,21 @@ augroup vimrcEx
   autocmd FileType crontab setlocal nobackup nowritebackup                          " allow to edit crontab -e
   autocmd BufWritePre *.rb,*.haml,*.coffee,*.md,*.rake,*.clj,*.js,*.jsx,*.ts,*.tsx,*.sol,*.ex :%s/\s\+$//e " remove trailing whitespaces
 
+  " debugger
   autocmd BufRead *.rb
     \ nnoremap <A-p> Orequire 'pry'; binding.pry<Esc> " add binding.pry line
     \| nnoremap tt :!gem ctags && gfind . -name '*.rb' -type f -print0 \| xargs -0 ctags -R -V<CR> " build ctags by using 'gem-ctags' gem
-
   autocmd BufRead *.js,*.jsx,*.ts,*.tsx
     \ nnoremap <A-p> Odebugger;<Esc>
     \| nnoremap tt :!gfind . -type f -iregex ".*\.\(js\\|ts\\|tsx\)$" -not -path "./node_modules/*" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
-
   autocmd BufRead *.ex,*.exs
     \ nnoremap <A-p> Orequire IEx; IEx.pry<Esc>
     \| nnoremap tt :!ctags -R --exclude={.git,node_modules} -V<CR>
+
+  " format
+  autocmd FileType xml,html nnoremap <buffer> ff :%!xmllint --format --encode UTF-8 -<CR>
+  autocmd FileType xml,json,typescript.tsx vmap <buffer> ff :%!tidy -q -i -w 0 -xml --show-errors 0<CR>
+  autocmd FileType json nnoremap <buffer> ff :%! cat % \| ruby -e "require 'json'; puts JSON.pretty_generate(JSON.parse(STDIN.read))"<CR>
 augroup END
 
 " jump to method or function definition with ctags
@@ -196,11 +200,6 @@ nnoremap <A-w> :bd<CR>
 nnoremap <A-q> :bd!<CR>
 nnoremap <A-]> :bn<CR>
 nnoremap <A-[> :bp<CR>
-
-" format
-autocmd FileType xml,html nnoremap <buffer> ff :%!xmllint --format --encode UTF-8 -<CR>
-autocmd FileType xml,json,typescript.tsx vmap <buffer> ff :%!tidy -q -i -w 0 -xml --show-errors 0<CR>
-autocmd FileType json nnoremap <buffer> ff :%! cat % \| ruby -e "require 'json'; puts JSON.pretty_generate(JSON.parse(STDIN.read))"<CR>
 
 " save file with Alt + s
 " note that remapping C-s requires flow control to be disabled, e.g. in .bashrc or .zshrc

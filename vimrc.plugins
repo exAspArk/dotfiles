@@ -5,19 +5,19 @@ Plug 'tpope/vim-surround'                               " better brackets
 Plug 'tpope/vim-commentary'                             " comments
 Plug 'tpope/vim-abolish'                                " coerce camelCase / snake_case
 Plug 'mg979/vim-visual-multi'                           " multiple cursors like in ST
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'on': [] } " autocomplete
 Plug 'Raimondi/delimitMate', { 'on': [] }               " closing brackets
 Plug 'alvan/vim-closetag', { 'on': [] }                 " closing tags
 Plug 'terryma/vim-expand-region'                        " change visual selection by using '+' / '-'
 Plug 'nathanaelkane/vim-indent-guides'                  " indent columns
-Plug 'w0rp/ale'                                         " lint
+Plug 'w0rp/ale', { 'on': [] }                           " lint
 
 " navigation
-Plug 'scrooloose/nerdtree'                              " file tree
-Plug 'dyng/ctrlsf.vim'                                  " better text search
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " file tree
+Plug 'dyng/ctrlsf.vim', { 'on': 'CtrlSF' }              " better text search
 Plug 'kopischke/vim-fetch'                              " open file with line and column number
-Plug 'yegappan/mru'                                     " most recently used files
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
+Plug 'yegappan/mru', { 'on': 'MRU' }                    " most recently used files
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all', 'on': 'FZF' } " fuzzy search
 
 " files
 Plug 'tpope/vim-eunuch'                                 " helpers for UNIX shell commands (mkdir, rename, etc.)
@@ -33,10 +33,10 @@ Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }          " run rspec
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }             " bundle commands and smart ctags
 
 " js / jsx / ts / tsx
-Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }  " javascript
-Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript'] } " jsx
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
+Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
+Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript'] }
 
 " elixir
 Plug 'elixir-lang/vim-elixir', { 'for': ['elixir', 'eelixir'] }
@@ -107,7 +107,16 @@ endif
 
 augroup lazy_load_on_insert
   autocmd!
-  autocmd InsertEnter * call plug#load('delimitMate')
+  autocmd InsertEnter * call plug#load('delimitMate', 'ale', 'deoplete.nvim') |
+    \ call deoplete#custom#option({
+    \ 'auto_complete_delay': 0,
+    \ 'auto_refresh_delay': 100,
+    \ 'max_list': 5,
+    \ 'smart_case': v:false,
+    \ 'ignore_case': v:false,
+    \ 'converter_auto_delimiter': ['/', '.', '::', ':', '#'],
+    \ })
+
   autocmd InsertEnter *.rb call plug#load('vim-endwise')
   autocmd InsertEnter *.js,*.jsx,*.tsx,*.xml,*.html,*.erb,*.eex call plug#load('vim-closetag')
 augroup END
@@ -122,14 +131,6 @@ hi IndentGuidesEven ctermbg=235
 
 " autocomplete
 let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option({
-\ 'auto_complete_delay': 0,
-\ 'auto_refresh_delay': 100,
-\ 'max_list': 5,
-\ 'smart_case': v:false,
-\ 'ignore_case': v:false,
-\ 'converter_auto_delimiter': ['/', '.', '::', ':', '#'],
-\ })
 set completeopt-=preview " don't show preview with documentation
 
 " <TAB>: completion
