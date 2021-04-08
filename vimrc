@@ -128,17 +128,17 @@ augroup vimrcEx
   " debugger
   autocmd BufRead *.rb
     \ nnoremap <A-p> Orequire 'pry'; binding.pry<Esc> " add binding.pry line
-    \| nnoremap tt :!gem ctags && gfind . -name '*.rb' -type f -print0 \| xargs -0 ctags -R -V<CR> " build ctags by using 'gem-ctags' gem
+    \| nnoremap tt :!gem ctags && fd --type file --extension rb --print0 \| xargs -0 ctags -R -V<CR> " build ctags by using 'gem-ctags' gem
   autocmd BufRead *.js,*.jsx,*.ts,*.tsx
     \ nnoremap <A-p> Odebugger;<Esc>
-    \| nnoremap tt :!gfind . -type f -iregex ".*\.\(js\\|ts\\|tsx\)$" -not -path "./node_modules/*" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
+    \| nnoremap tt :!fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 \| xargs -0 ctags -R -V<CR>
   autocmd BufRead *.ex,*.exs
     \ nnoremap <A-p> Orequire IEx; IEx.pry<Esc>
-    \| nnoremap tt :!ctags -R --exclude={.git,node_modules} -V<CR>
+    \| nnoremap tt :!fd --type file --extension ex --extension exs --print0 \| xargs -0 ctags -R -V<CR>
 
   " format
   autocmd FileType xml,html nnoremap <buffer> ff :%!xmllint --format --encode UTF-8 -<CR>
-  autocmd FileType xml,json,typescript.tsx vmap <buffer> ff :%!tidy -q -i -w 0 -xml --show-errors 0<CR>
+  autocmd FileType xml,json,javascriptreact,typescriptreact vmap <buffer> ff :%!tidy -q -i -w 0 -xml --show-errors 0<CR>
   autocmd FileType json nnoremap <buffer> ff :%! cat % \| ruby -e "require 'json'; puts JSON.pretty_generate(JSON.parse(STDIN.read))"<CR>
 augroup END
 
@@ -152,7 +152,7 @@ nnoremap wl gggqG
 nnoremap rr :so $MYVIMRC \| checktime<CR>
 
 " replace text in a project with sed
-nnoremap <Leader>re :!gfind . -name '*' -type f -print0 \| xargs -0 sed -i '' 's,search,replace,g'
+nnoremap <Leader>re :!fd --type file --print0 \| xargs -0 sed -i '' 's,search,replace,g'
 nnoremap re :%s,search,replace,gc
 
 " Clear current search highlight by double tapping //

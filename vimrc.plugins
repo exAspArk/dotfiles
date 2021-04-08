@@ -43,7 +43,7 @@ Plug 'elixir-lang/vim-elixir', { 'for': ['elixir', 'eelixir'] }
 Plug 'mhinz/vim-mix-format', { 'for': ['elixir', 'eelixir'] }
 
 " syntaxes and languages
-Plug 'valloric/MatchTagAlways', { 'for': ['xml', 'html', 'eruby', 'eelixir', 'javascript.jsx', 'typescript.tsx'] } " highlight matching tags
+Plug 'valloric/MatchTagAlways', { 'for': ['xml', 'html', 'eruby', 'eelixir', 'javascriptreact', 'typescriptreact'] } " highlight matching tags
 Plug 'shime/vim-livedown', { 'for': 'markdown' }        " real time markdown editing
 
 " theme
@@ -81,7 +81,7 @@ nmap <Leader>a <Plug>(GitGutterStageHunk)
 
 " alternate files
 function! AltCommand(path, vim_command)
-  let l:alternate = system("gfind . -name '*.rb' -type f -print0 | alt " . a:path)
+  let l:alternate = system("alt " . a:path)
   if empty(l:alternate)
     echo "No alternate file for " . a:path . " exists!"
   else
@@ -149,7 +149,7 @@ let g:rspec_command = "below new | term spring --version > /dev/null && spring r
 let g:mta_use_matchparen_group = 0
 let g:mta_set_default_matchtag_color = 0
 highlight MatchTag ctermbg=240 guifg=#585858
-let g:mta_filetypes = {'html' : 1, 'eruby': 1, 'javascript.jsx': 1, 'typescript.tsx': 1}
+let g:mta_filetypes = {'html' : 1, 'eruby': 1, 'javascriptreact': 1, 'typescriptreact': 1}
 
 " don't run linters on opening a file
 let g:ale_lint_on_save = 1

@@ -58,19 +58,13 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/exaspark/Library/Caches/heroku/autocomplete/zsh_
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="gfind . \
-! -path \"./.deliver/*\" \
-! -path \"./.git/*\" \
-! -path \"./_build/*\" \
-! -path \"./deps/*\" \
-! -path \"./dist/*\" \
-! -path \"*/node_modules/*\" \
-! -path \"*/.next/*\" \
-! -path \"*/tmp/*\" \
--type f -printf \"%P\n\""
+export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --ignore-case --no-ignore \
+--exclude .git \
+--exclude .next \
+--exclude .deliver \
+--exclude _build \
+--exclude deps \
+--exclude dist \
+--exclude node_modules \
+--exclude tmp"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# cd to selected directory, by default from NY_PROJECT_PATH
-fd() { cd "$(gfind ${1:-$PROJECT_PATH} ! -path '*/\.*' ! -path '*/node_modules/*' -type d | fzf -0)" }
-# edit file
-fe() { v $(fzf) }

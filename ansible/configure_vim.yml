@@ -16,7 +16,6 @@
     - shell: nvim +PlugInstall! +qall
       ignore_errors: yes # because of the error: Output is not to a terminal
 
-    - shell: yarn global add https://github.com/ramitos/jsctags.git
     - shell: yarn global add livedown
     - shell: yarn global add neovim
 

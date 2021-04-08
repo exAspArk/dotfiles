@@ -25,10 +25,10 @@
         - ctags
         - imagemagick
         - ripgrep
+        - fd # faster than find
         - wget
         - fzf
         - unar
-        - findutils # to use gfind with -print option
         - gnu-tar # for Ansible unarchive module
         - mas # mac app store cli
         - jid
