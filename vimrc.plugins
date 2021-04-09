@@ -91,7 +91,7 @@ endfunction
 nnoremap <Leader>o :call AltCommand(expand('%'), ':e')<CR>
 
 " run FZF by using Alt + p
-nnoremap <Leader>p "_:FZF<CR>
+nnoremap <Leader>p "_:FZF -i<CR>
 
 " search with CtrlSF
 nnoremap <Leader>f "_:CtrlSF<Space>
