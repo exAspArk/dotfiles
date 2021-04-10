@@ -114,8 +114,7 @@ augroup vimrcEx
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 
   autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml setlocal iskeyword=@,48-57,192-255,_,?           " make ?s part of words
-  autocmd FileType elixir setlocal iskeyword=@,48-57,192-255,_,?                    " make ?s part of words
+  autocmd FileType ruby,eruby,yaml,elixir setlocal iskeyword=@,48-57,192-255,_,?,!  " make @,numbers,latin chars,_,?,! part of words
   autocmd FileType markdown setlocal wrap textwidth=240                             " automatically wrap for Markdown
   autocmd FileType gitcommit setlocal textwidth=72                                  " automatically wrap at 72 characters
   autocmd FileType markdown setlocal spell spelllang=ru_ru,en_us                    " enable spellchecking for Markdown messages
@@ -128,13 +127,16 @@ augroup vimrcEx
   " debugger
   autocmd BufRead *.rb
     \ nnoremap <A-p> Orequire 'pry'; binding.pry<Esc> " add binding.pry line
-    \| nnoremap tt :!gem ctags && fd --type file --extension rb --print0 \| xargs -0 ctags -R -V<CR> " build ctags by using 'gem-ctags' gem
+    \| nnoremap tt :!gem ctags && fd --type file --extension rb --print0 \| xargs -0 ripper-tags -R -a --extra=q<CR> " build ctags by using 'gem-ctags' and 'ripper-tags' gems
+    \| nnoremap <Leader>d :silent! set iskeyword+=:<CR> <C-]> \| :set iskeyword-=:<CR>
   autocmd BufRead *.js,*.jsx,*.ts,*.tsx
     \ nnoremap <A-p> Odebugger;<Esc>
-    \| nnoremap tt :!fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 \| xargs -0 ctags -R -V<CR>
+    \| nnoremap tt :!fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 \| xargs -0 ctags -R -a<CR>
+    \| nnoremap <Leader>d <C-]>
   autocmd BufRead *.ex,*.exs
     \ nnoremap <A-p> Orequire IEx; IEx.pry<Esc>
-    \| nnoremap tt :!fd --type file --extension ex --extension exs --print0 \| xargs -0 ctags -R -V<CR>
+    \| nnoremap tt :!fd --type file --extension ex --extension exs --print0 \| xargs -0 ctags -R -a<CR>
+    \| nnoremap <Leader>d <C-]>
 
   " format
   autocmd FileType xml,html nnoremap <buffer> ff :%!xmllint --format --encode UTF-8 -<CR>

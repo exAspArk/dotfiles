@@ -23,3 +23,8 @@
       shell: gem install gem-ctags
       environment:
         ASDF_RUBY_VERSION: "{{ version }}"
+
+    # better than ctags, supports Module::Class
+    - shell: gem install ripper-tags
+      environment:
+        ASDF_RUBY_VERSION: "{{ version }}"
