@@ -47,8 +47,8 @@ set numberwidth=5     " line numbers width
 set number relativenumber " hybrid relative number + absolute
 
 " make it obvious where 120 characters is
-set textwidth=120
-set colorcolumn=+1
+set colorcolumn=120
+set textwidth=240
 set formatoptions+=w " for wraping long lines without broken words
 
 " spaces
@@ -115,8 +115,8 @@ augroup vimrcEx
 
   autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml,elixir setlocal iskeyword=@,48-57,192-255,_,?,!  " make @,numbers,latin chars,_,?,! part of words
-  autocmd FileType markdown setlocal wrap textwidth=240                             " automatically wrap for Markdown
-  autocmd FileType gitcommit setlocal textwidth=72                                  " automatically wrap at 72 characters
+  autocmd FileType markdown setlocal wrap colorcolumn=240                             " automatically wrap for Markdown
+  autocmd FileType gitcommit setlocal colorcolumn=72                                  " automatically wrap at 72 characters
   autocmd FileType markdown setlocal spell spelllang=ru_ru,en_us                    " enable spellchecking for Markdown messages
   autocmd FileType gitcommit setlocal spell                                         " enable spellchecking for git commit messages
   autocmd FileType css,scss,sass setlocal iskeyword+=-                              " allow stylesheets to autocomplete hyphenated words
@@ -128,7 +128,7 @@ augroup vimrcEx
   autocmd BufRead *.rb
     \ nnoremap <A-p> Orequire 'pry'; binding.pry<Esc> " add binding.pry line
     \| nnoremap tt :!gem ctags && fd --type file --extension rb --print0 \| xargs -0 ripper-tags -R -a --extra=q<CR> " build ctags by using 'gem-ctags' and 'ripper-tags' gems
-    \| nnoremap <Leader>d :silent! set iskeyword+=:<CR> <C-]> \| :set iskeyword-=:<CR>
+    \| nnoremap <Leader>d :silent! setlocal iskeyword+=:<CR> <C-]> \| :setlocal iskeyword-=:<CR>
   autocmd BufRead *.js,*.jsx,*.ts,*.tsx
     \ nnoremap <A-p> Odebugger;<Esc>
     \| nnoremap tt :!fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 \| xargs -0 ctags -R -a<CR>
@@ -215,7 +215,7 @@ vnoremap <Leader>x x :w \| :enew<CR>pGE :w<Space>
 nnoremap <Leader>b :ls<CR>:b<Space>
 
 " saveas with :S filepath
-command -nargs=1 -complete=file S :saveas <args>
+command! -nargs=1 -complete=file S :saveas <args>
 
 " change without yanking
 nnoremap c "_c
@@ -248,7 +248,7 @@ augroup LargeFile
   autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
 augroup END
 function! LargeFile()
-  set eventignore+=FileType " no syntax highlighting etc
+  setlocal eventignore+=FileType " no syntax highlighting etc
   setlocal bufhidden=unload " save memory when other file is viewed
   setlocal undolevels=-1 " no undo possible
   setlocal foldmethod=manual
