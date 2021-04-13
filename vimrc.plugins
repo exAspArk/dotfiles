@@ -101,7 +101,7 @@ let g:ctrlsf_ignore_dir = ['.git', '.next', 'node_modules', 'deps', 'tmp']
 if executable('rg')
   let g:ctrlsf_ackprg = 'rg' " use ripgrep
   let g:ctrlsf_extra_backend_args = {
-    \ 'rg': '--hidden --no-ignore'
+    \ 'rg': '--hidden --no-ignore --glob !tags'
     \ }
 endif
 
