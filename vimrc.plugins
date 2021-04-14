@@ -97,7 +97,7 @@ nnoremap <Leader>p "_:FZF -i<CR>
 nnoremap <Leader>f "_:CtrlSF<Space>
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_position = 'bottom'
-let g:ctrlsf_ignore_dir = ['.git', '.next', 'node_modules', 'deps', 'tmp']
+let g:ctrlsf_ignore_dir = ['.git', '.next', 'node_modules', 'deps', 'tmp', 'log']
 if executable('rg')
   let g:ctrlsf_ackprg = 'rg' " use ripgrep
   let g:ctrlsf_extra_backend_args = {

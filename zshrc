@@ -66,5 +66,6 @@ export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --ignore-case --no-
 --exclude deps \
 --exclude dist \
 --exclude node_modules \
+--exclude log \
 --exclude tmp"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
