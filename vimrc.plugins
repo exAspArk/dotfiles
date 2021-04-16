@@ -16,8 +16,8 @@ Plug 'w0rp/ale', { 'on': [] }                           " lint
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " file tree
 Plug 'dyng/ctrlsf.vim', { 'on': 'CtrlSF' }              " better text search
 Plug 'kopischke/vim-fetch'                              " open file with line and column number
-Plug 'yegappan/mru', { 'on': 'MRU' }                    " most recently used files
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all', 'on': 'FZF' } " fuzzy search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
+Plug 'junegunn/fzf.vim'                                 " :History for recently open files
 
 " files
 Plug 'tpope/vim-eunuch'                                 " helpers for UNIX shell commands (mkdir, rename, etc.)
@@ -55,9 +55,6 @@ call plug#end()
 " theme
 color hybrid
 
-" call MRU plugin with Alt + r
-nnoremap <Leader>r :MRU<CR>
-
 " open nerdtree
 map <leader><leader> :NERDTreeToggle<CR>
 " open current file's path
@@ -74,6 +71,7 @@ map <Leader>l :call RunLastSpec()<CR>
 " map <Leader>a :call RunAllSpecs()<CR>
 
 " git gutter
+let g:gitgutter_map_keys = 0
 nmap <Leader>j <Plug>(GitGutterNextHunk)
 nmap <Leader>k <Plug>(GitGutterPrevHunk)
 nmap <Leader>u <Plug>(GitGutterUndoHunk)
@@ -93,6 +91,9 @@ nnoremap <Leader>o :call AltCommand(expand('%'), ':e')<CR>
 " run FZF by using Alt + p
 nnoremap <Leader>p "_:FZF -i<CR>
 
+nnoremap <Leader>h :History<CR>
+let g:fzf_preview_window = []
+
 " search with CtrlSF
 nnoremap <Leader>f "_:CtrlSF<Space>
 let g:ctrlsf_case_sensitive = 'no'
@@ -101,7 +102,7 @@ let g:ctrlsf_ignore_dir = ['.git', '.next', 'node_modules', 'deps', 'tmp', 'log'
 if executable('rg')
   let g:ctrlsf_ackprg = 'rg' " use ripgrep
   let g:ctrlsf_extra_backend_args = {
-    \ 'rg': '--hidden --no-ignore --glob !tags'
+    \ 'rg': '--hidden --no-ignore --glob !tags --glob !.pry_history'
     \ }
 endif
 
