@@ -154,7 +154,7 @@ nnoremap wl gggqG
 nnoremap rr :so $MYVIMRC \| checktime<CR>
 
 " replace text in a project with sed
-nnoremap <Leader>re :!fd --type file --print0 \| xargs -0 sed -i '' 's,search,replace,g'
+nnoremap <Leader>re :!fd --type file --extension jsx --print0 \| xargs -0 sed -i '' 's,search,replace,g'
 nnoremap re :%s,search,replace,gc
 
 " Clear current search highlight by double tapping //

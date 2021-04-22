@@ -17,7 +17,7 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " file 
 Plug 'dyng/ctrlsf.vim', { 'on': 'CtrlSF' }              " better text search
 Plug 'kopischke/vim-fetch'                              " open file with line and column number
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
-Plug 'junegunn/fzf.vim'                                 " :History for recently open files
+Plug 'yegappan/mru', { 'on': 'FZFMru' }                    " most recently used files
 
 " files
 Plug 'tpope/vim-eunuch'                                 " helpers for UNIX shell commands (mkdir, rename, etc.)
@@ -91,8 +91,8 @@ nnoremap <Leader>o :call AltCommand(expand('%'), ':e')<CR>
 " run FZF by using Alt + p
 nnoremap <Leader>p "_:FZF -i<CR>
 
-nnoremap <Leader>h :History<CR>
-let g:fzf_preview_window = []
+" MRU
+nnoremap <Leader>h :FZFMru<CR>
 
 " search with CtrlSF
 nnoremap <Leader>f "_:CtrlSF<Space>
