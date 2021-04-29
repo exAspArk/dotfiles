@@ -26,7 +26,7 @@ make install_essential
 make configure_python VERSION=3.7.3 # neovim dependency
 make configure_ruby VERSION=2.5.7
 make configure_node VERSION=12.14.0
-make configure_elixir VERSION=1.9.4 OTP=22
+make configure_elixir VERSION=1.9.4-otp-22 OTP=22.3.4.18
 make configure_java VERSION=adopt-openjdk-8u232-b09
 
 make configure_dotfiles

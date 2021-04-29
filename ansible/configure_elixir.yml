@@ -5,11 +5,11 @@
         if ! [[ "$(asdf plugin list | grep erlang)" ]] ; then
           asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
         fi
-    - shell: "asdf install erlang {{ otp }}.0"
-    - shell: "asdf global erlang {{ otp }}.0"
+    - shell: "asdf install erlang {{ otp }}"
+    - shell: "asdf global erlang {{ otp }}"
     - shell: |
         if ! [[ "$(asdf plugin list | grep elixir)" ]] ; then
           asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
         fi
-    - shell: "asdf install elixir {{ version }}-otp-{{ otp }}"
-    - shell: "asdf global elixir {{ version }}-otp-{{ otp }}"
+    - shell: "asdf install elixir {{ version }}"
+    - shell: "asdf global elixir {{ version }}"
