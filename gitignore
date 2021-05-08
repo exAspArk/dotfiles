@@ -14,3 +14,5 @@ tags
 
 log/
 db/*.sqlite3
+
+docker-compose.override.yml
