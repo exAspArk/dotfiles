@@ -6,6 +6,7 @@ ZSH_THEME="exaspark"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(z)
 
+DISABLE_AUTO_UPDATE=true
 source $ZSH/oh-my-zsh.sh
 
 # Custom title for a terminal tab

@@ -133,7 +133,7 @@ augroup vimrcEx
     \ nnoremap <A-p> Odebugger;<Esc>
     \| nnoremap tt :!fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 \| xargs -0 ctags -R -a<CR>
     \| nnoremap <Leader>d <C-]>
-  autocmd BufRead *.ex,*.exs
+  autocmd BufRead *.ex,*.exs,*.eex
     \ nnoremap <A-p> Orequire IEx; IEx.pry<Esc>
     \| nnoremap tt :!fd --type file --extension ex --extension exs --print0 \| xargs -0 ctags -R -a<CR>
     \| nnoremap <Leader>d <C-]>
