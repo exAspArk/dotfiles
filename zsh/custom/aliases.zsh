@@ -29,6 +29,7 @@ alias ':q'='exit'
 alias pbc='pbcopy'
 alias pbp='pbpaste'
 alias hist="history | awk '{a[\$2]++}END{for(i in a){print a[i] \" \" i}}' | sort -rn | head"
+alias tree="find . -print | sed -e 's;[^/]*/;|__;g;s;__|; |;g'"
 
 alias y='yarn'
 alias mi='iex -S mix'
