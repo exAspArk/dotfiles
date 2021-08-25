@@ -28,6 +28,7 @@ Plug 'airblade/vim-gitgutter'                           " git gutter
 
 " ruby / rails
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }             " ruby
+Plug 'tpope/vim-rails', { 'for': 'ruby' }               " rails
 Plug 'tpope/vim-endwise', { 'for': 'ruby', 'on': [] }   " auto end
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }          " run rspec
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }             " bundle commands and smart ctags
