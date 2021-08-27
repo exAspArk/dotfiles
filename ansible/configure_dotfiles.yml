@@ -47,3 +47,9 @@
 
     - file: path=~/.config/kitty state=directory
     - file: src={{ curdir }}/kitty.conf dest=~/.config/kitty/kitty.conf state=link force=yes
+
+    - file: path=~/.config/nvim state=directory
+    - file: src={{ curdir }}/coc-settings.json dest=~/.config/nvim/coc-settings.json state=link force=yes
+
+    - file: path=~/.config/coc/extensions state=directory
+    - file: src={{ curdir }}/coc-package.json dest=~/.config/coc/extensions/package.json state=link force=yes

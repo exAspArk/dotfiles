@@ -5,12 +5,12 @@ Plug 'tpope/vim-surround'                               " better brackets
 Plug 'tpope/vim-commentary'                             " comments
 Plug 'tpope/vim-abolish'                                " coerce camelCase / snake_case
 Plug 'mg979/vim-visual-multi'                           " multiple cursors like in ST
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'on': [] } " autocomplete
 Plug 'Raimondi/delimitMate', { 'on': [] }               " closing brackets
 Plug 'alvan/vim-closetag', { 'on': [] }                 " closing tags
 Plug 'terryma/vim-expand-region'                        " change visual selection by using '+' / '-'
 Plug 'nathanaelkane/vim-indent-guides'                  " indent columns
 Plug 'w0rp/ale', { 'on': [] }                           " lint
+Plug 'neoclide/coc.nvim', { 'on': [], 'branch': 'release'} " autocomplete and LSP: coc-solargraph, coc-tsserver
 
 " navigation
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " file tree
@@ -18,7 +18,7 @@ Plug 'dyng/ctrlsf.vim', { 'on': 'CtrlSF' }              " better text search
 Plug 'kopischke/vim-fetch'                              " open file with line and column number
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
 Plug 'exAspArk/mru', { 'on': 'MRU', 'branch': 'buffer' } " most recently used files
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim'                                  " search buffers
 
 " files
 Plug 'tpope/vim-eunuch'                                 " helpers for UNIX shell commands (mkdir, rename, etc.)
@@ -114,19 +114,14 @@ endif
 
 augroup lazy_load_on_insert
   autocmd!
-  autocmd InsertEnter * call plug#load('delimitMate', 'ale', 'deoplete.nvim') |
-    \ call deoplete#custom#option({
-    \ 'auto_complete_delay': 0,
-    \ 'auto_refresh_delay': 100,
-    \ 'max_list': 5,
-    \ 'smart_case': v:false,
-    \ 'ignore_case': v:false,
-    \ 'converter_auto_delimiter': ['/', '.', '::', ':', '#'],
-    \ })
+  autocmd InsertEnter * call plug#load('delimitMate', 'ale', 'coc.nvim')
 
   autocmd InsertEnter *.rb call plug#load('vim-endwise')
   autocmd InsertEnter *.js,*.jsx,*.tsx,*.xml,*.html,*.erb,*.eex call plug#load('vim-closetag')
 augroup END
+
+" <TAB>: completion
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " disable auto closing <:>
 let delimitMate_matchpairs = "(:),{:},[:]"
@@ -135,13 +130,6 @@ let delimitMate_matchpairs = "(:),{:},[:]"
 let g:indent_guides_enable_on_vim_startup = 1
 hi IndentGuidesOdd ctermbg=234
 hi IndentGuidesEven ctermbg=235
-
-" autocomplete
-let g:deoplete#enable_at_startup = 1
-set completeopt-=preview " don't show preview with documentation
-
-" <TAB>: completion
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " status line
 let g:airline#extensions#tabline#enabled = 1

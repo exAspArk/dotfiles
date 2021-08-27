@@ -22,3 +22,5 @@
     - name: Install nvim-client for python for deoplete.nvim
       shell: pip3 install --upgrade neovim pynvim
       become: true # should be installed via sudo
+
+    - shell: cd ~/.config/coc/extensions && yarn install
