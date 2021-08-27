@@ -18,6 +18,7 @@ Plug 'dyng/ctrlsf.vim', { 'on': 'CtrlSF' }              " better text search
 Plug 'kopischke/vim-fetch'                              " open file with line and column number
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
 Plug 'exAspArk/mru', { 'on': 'MRU', 'branch': 'buffer' } " most recently used files
+Plug 'junegunn/fzf.vim'
 
 " files
 Plug 'tpope/vim-eunuch'                                 " helpers for UNIX shell commands (mkdir, rename, etc.)
@@ -91,6 +92,9 @@ nnoremap <Leader>o :call AltCommand(expand('%'), ':e')<CR>
 
 " run FZF by using Alt + p
 nnoremap <Leader>p "_:FZF -i<CR>
+
+" list buffers
+nnoremap <Leader>b :Buffers<CR>
 
 " MRU
 let MRU_Open_File_Use_Buffers = 1
