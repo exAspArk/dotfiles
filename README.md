@@ -42,10 +42,6 @@ Set up [GPG](https://gist.github.com/exAspArk/d5cffe82f3151c40669be1aa4122e952#m
 
 ## Other tools and apps:
 
-### Apps
-
-* Docker for Mac
-
 ### Google Chrome extensions
 
 * [Chromium Web Store](https://github.com/NeverDecaf/chromium-web-store)

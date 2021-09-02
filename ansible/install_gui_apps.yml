@@ -28,6 +28,7 @@
         - kitty
         - deluge
         - keybase
+        - docker
         # - keycastr # show keystrokes
         # - sqlitebrowser
         # - skype
