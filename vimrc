@@ -83,6 +83,10 @@ set foldlevelstart=20 " open most folds by default
 set foldmethod=indent " fold based on indent level
 nnoremap fo za        " folding shortcut
 
+" coc.nvim settings:
+set cmdheight=2    " give more space for displaying messages.
+set updatetime=300 " having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
+
 " highlight trailing whitespaces
 hi ExtraWhitespace ctermbg=172 guifg=#d78700
 match ExtraWhitespace /\s\+$/
