@@ -17,7 +17,6 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " file 
 Plug 'dyng/ctrlsf.vim', { 'on': 'CtrlSF' }              " better text search
 Plug 'kopischke/vim-fetch'                              " open file with line and column number
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
-Plug 'exAspArk/mru', { 'on': 'MRU', 'branch': 'buffer' } " most recently used files
 Plug 'junegunn/fzf.vim'                                  " search buffers
 
 " files
@@ -96,9 +95,8 @@ nnoremap <Leader>p "_:FZF -i<CR>
 " list buffers
 nnoremap <Leader>b :Buffers<CR>
 
-" MRU
-let MRU_Open_File_Use_Buffers = 1
-nnoremap <Leader>h :MRU<CR>
+" list recently open files
+nnoremap <Leader>h :History<CR>
 
 " search with CtrlSF
 nnoremap <Leader>f "_:CtrlSF<Space>
