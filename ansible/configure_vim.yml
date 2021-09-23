@@ -24,3 +24,6 @@
       become: true # should be installed via sudo
 
     - shell: cd ~/.config/coc/extensions && yarn install
+
+    # faster repeat time requires a restart
+    - shell: defaults write -g KeyRepeat -int 1

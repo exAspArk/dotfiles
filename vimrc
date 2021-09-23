@@ -212,6 +212,12 @@ nnoremap <A-[> :bp<CR>
 noremap <A-s> <esc>:w<CR>
 inoremap <A-s> <esc>:w<CR>
 
+" save file and exit
+nnoremap <Leader>wq :wq<CR>
+
+" don't save and exit
+nnoremap <Leader>cq :cq<CR>
+
 " cut content to new buffer
 vnoremap <Leader>x x :w \| :enew<CR>pGE :w<Space>
 
