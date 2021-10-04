@@ -29,7 +29,7 @@ Plug 'airblade/vim-gitgutter'                           " git gutter
 " ruby / rails
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }             " ruby
 Plug 'tpope/vim-rails', { 'for': 'ruby' }               " rails
-Plug 'tpope/vim-endwise', { 'for': 'ruby', 'on': [] }   " auto end
+Plug 'tpope/vim-endwise', { 'for': ['ruby', 'elixir'], 'on': [] } " auto end
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }          " run rspec
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }             " bundle commands and smart ctags
 
@@ -110,11 +110,16 @@ if executable('rg')
     \ }
 endif
 
+" visual-multi
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<A-n>'
+let g:VM_maps['Find Subword Under'] = '<A-n>'
+
 augroup lazy_load_on_insert
   autocmd!
   autocmd InsertEnter * call plug#load('delimitMate', 'ale', 'coc.nvim')
 
-  autocmd InsertEnter *.rb call plug#load('vim-endwise')
+  autocmd InsertEnter *.rb,*.ex call plug#load('vim-endwise')
   autocmd InsertEnter *.js,*.jsx,*.tsx,*.xml,*.html,*.erb,*.eex call plug#load('vim-closetag')
 augroup END
 
