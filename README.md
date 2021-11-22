@@ -87,7 +87,6 @@ Set up [GPG](https://gist.github.com/exAspArk/d5cffe82f3151c40669be1aa4122e952#m
 * Player FM
 * Pocket
 * PRESTO
-* PureVPN
 * Ring
 * Ritual
 * Roku
@@ -106,6 +105,7 @@ Set up [GPG](https://gist.github.com/exAspArk/d5cffe82f3151c40669be1aa4122e952#m
 * VLC
 * Voice Recorder
 * VNC Viewer
+* VPN Unlimited
 * WardenCam
 * WhatsApp
 * Xender

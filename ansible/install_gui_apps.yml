@@ -9,7 +9,6 @@
         - sourcetree
         - jumpcut
         - the-unarchiver
-        - vlc
         - licecap # record gifs from screen
         - android-file-transfer
         - paragon-ntfs
@@ -17,7 +16,6 @@
         - zoom
         - typora
         - spectacle
-        - purevpn
         - osxfuse
         - insomnia
         - tableplus # sql GUI vs psequel
@@ -57,3 +55,5 @@
         - Spark
         - Xcode
         - Polarr
+        - Elmedia Video Player
+        - VPN Unlimited

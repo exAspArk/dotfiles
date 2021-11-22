@@ -11,6 +11,7 @@ Plug 'terryma/vim-expand-region'                        " change visual selectio
 Plug 'nathanaelkane/vim-indent-guides'                  " indent columns
 Plug 'w0rp/ale', { 'on': [] }                           " lint
 Plug 'neoclide/coc.nvim', { 'on': [], 'branch': 'release'} " autocomplete and LSP: coc-solargraph, coc-tsserver
+Plug 'github/copilot.vim', { 'on': [] }                 " smart autocompletion
 
 " navigation
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " file tree
@@ -99,7 +100,7 @@ nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>h :History<CR>
 
 " search with CtrlSF
-nnoremap <Leader>f "_:CtrlSF<Space>
+nnoremap <Leader>f "_:CtrlSF -ignoredir spec<Space>
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_ignore_dir = ['.git', '.next', 'node_modules', 'deps', 'tmp', 'log']
@@ -117,7 +118,7 @@ let g:VM_maps['Find Subword Under'] = '<A-n>'
 
 augroup lazy_load_on_insert
   autocmd!
-  autocmd InsertEnter * call plug#load('delimitMate', 'ale', 'coc.nvim')
+  autocmd InsertEnter * call plug#load('delimitMate', 'ale', 'coc.nvim', 'copilot.vim')
 
   autocmd InsertEnter *.rb,*.ex call plug#load('vim-endwise')
   autocmd InsertEnter *.js,*.jsx,*.tsx,*.xml,*.html,*.erb,*.eex call plug#load('vim-closetag')
