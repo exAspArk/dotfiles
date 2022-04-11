@@ -6,6 +6,7 @@
           brew install --cask {{ item }}
         fi
       with_items:
+        - google-chrome
         - sourcetree
         - jumpcut
         - the-unarchiver
@@ -21,15 +22,15 @@
         - tableplus # sql GUI vs psequel
         - slack
         - gpg-suite
-        - google-cloud-sdk # gcloud
         - ngrok
         - kitty
-        - deluge
-        - keybase
         - docker
+        - qbittorrent
+        - karabiner-elements
+        # - keybase
+        # - google-cloud-sdk # gcloud
         # - keycastr # show keystrokes
         # - sqlitebrowser
-        # - skype
         # - tunnelblick
         # - sequel-pro # mysql
         # - psequel # postgres
@@ -42,7 +43,8 @@
         # - mist # ethereum
 
     - shell: brew install sshfs
-    - shell: gcloud components install kubectl
+
+    # - shell: gcloud components install kubectl
 
     - shell: |
         if ! mas list | grep {{ item }}; then
@@ -50,10 +52,10 @@
         fi
       with_items:
         - Simplenote
-        - Pocket
         - Keynote
         - Spark
         - Xcode
         - Polarr
         - Elmedia Video Player
         - VPN Unlimited
+        - Yubico Authenticator

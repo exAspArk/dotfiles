@@ -23,7 +23,17 @@
       shell: pip3 install --upgrade neovim pynvim
       become: true # should be installed via sudo
 
-    - shell: cd ~/.config/coc/extensions && yarn install
-
     # faster repeat time requires a restart
     - shell: defaults write -g KeyRepeat -int 1
+
+    - shell: cd ~/.vim/plugged/coc.nvim && yarn install
+
+    - file: path=~/.config/nvim state=directory
+    - file: src={{ curdir }}/coc-settings.json dest=~/.config/nvim/coc-settings.json state=link force=yes
+
+    - file: path=~/.config/coc/extensions state=directory
+    - file: src={{ curdir }}/coc-package.json dest=~/.config/coc/extensions/package.json state=link force=yes
+    - shell: cd ~/.config/coc/extensions && yarn install
+
+    # Run in nvim after loading the plugin
+    # - shell: nvim +Copilot setup +qall

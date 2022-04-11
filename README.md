@@ -42,6 +42,9 @@ Set up [GPG](https://gist.github.com/exAspArk/d5cffe82f3151c40669be1aa4122e952#m
 
 ## Other tools and apps:
 
+* pCloud
+* YubiKey Manager
+
 ### Google Chrome extensions
 
 * [Chromium Web Store](https://github.com/NeverDecaf/chromium-web-store)
@@ -49,10 +52,14 @@ Set up [GPG](https://gist.github.com/exAspArk/d5cffe82f3151c40669be1aa4122e952#m
 * JSON Formatter
 * React Developer Tools
 * Redux DevTools
-* Save to Pocket
 * Speed Dial 2
 * uBlock Origin
 * HTTPS Everywhere
+* Magical - Text Expander
+* ProWritingAid
+* Take Webpage Screenshots Entirely
+* Vimium
+* I don't care about cookies
 
 ### Android apps
 

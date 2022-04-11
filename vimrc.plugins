@@ -47,6 +47,7 @@ Plug 'mhinz/vim-mix-format', { 'for': ['elixir', 'eelixir'] }
 " syntaxes and languages
 Plug 'valloric/MatchTagAlways', { 'for': ['xml', 'html', 'eruby', 'eelixir', 'javascriptreact', 'typescriptreact'] } " highlight matching tags
 Plug 'shime/vim-livedown', { 'for': 'markdown' }        " real time markdown editing
+Plug 'jjo/vim-cue', { 'for': 'cue' }
 
 " theme
 Plug 'w0ng/vim-hybrid'                                  " theme

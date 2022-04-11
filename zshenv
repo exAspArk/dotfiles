@@ -10,6 +10,10 @@ export PATH=./bin
 export PATH=$PATH:/usr/local/opt/gnu-tar/libexec/gnubin
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
 # Load all of your custom configurations from custom/
 for config_file (~/.zsh/custom/*.zsh(N)); do
   source $config_file

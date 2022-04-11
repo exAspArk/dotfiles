@@ -38,9 +38,8 @@ chpwd # emulate cd action
 
 # #############################################################################
 
-source /usr/local/opt/asdf/asdf.sh
 export PATH="$PATH:$(yarn global bin)"
-export PATH=$PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
+# export PATH=$PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
 
 export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 export PATH="/usr/local/opt/mysql-client@5.7/bin:$PATH"
@@ -59,7 +58,7 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/exaspark/Library/Caches/heroku/autocomplete/zsh_
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --ignore-case --no-ignore \
+export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --ignore-case --no-ignore --strip-cwd-prefix \
 --exclude .git \
 --exclude .next \
 --exclude .deliver \
@@ -68,5 +67,6 @@ export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --ignore-case --no-
 --exclude dist \
 --exclude node_modules \
 --exclude log \
+--exclude cue.mod \
 --exclude tmp"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

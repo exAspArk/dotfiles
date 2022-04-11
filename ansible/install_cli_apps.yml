@@ -40,15 +40,17 @@
         - stern # kube logs
         - jq
         - sops
-        - doctl
+        # - doctl
         - awscli
         - tidy-html5
+        - dokku/repo/dokku
+        - argocd
 
     # to avoid using flag --with-openssl-dir=/usr/local/opt/openssl
     - shell: brew link --force openssl
 
     # heroku
-    - shell: brew tap heroku/brew && brew install heroku
+    # - shell: brew tap heroku/brew && brew install heroku
 
     # services
     - shell: |
@@ -67,3 +69,4 @@
     # sshrc << not packaged
     - shell: curl https://raw.githubusercontent.com/exAspArk/sshrc/master/sshrc -o ~/Downloads/sshrc
     - shell: chmod +x ~/Downloads/sshrc && mv ~/Downloads/sshrc /usr/local/bin
+      become: true

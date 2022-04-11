@@ -11,7 +11,7 @@ alias ss='bundle exec spring stop'
 alias s="sshrc"
 
 if command -v nvim &> /dev/null; then
-  alias v='ASDF_PYTHON_VERSION=3.7.3 nvim'
+  alias v='ASDF_PYTHON_VERSION=3.10.4 nvim'
 else
   alias v='vim'
 fi
