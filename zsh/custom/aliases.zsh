@@ -16,13 +16,15 @@ else
   alias v='vim'
 fi
 
+alias t="ZSH_TERM=1 v -c ':e term://zsh'"
+
 alias c="cat"
 alias l="ls -al"
 alias mkdir="mkdir -p"
 alias perm='stat -f "%OLp"'
 alias p='ps auxfww'
 alias m='make'
-alias t='tail'
+alias tl='tail'
 alias tf='tail -f'
 alias ports='lsof -i -n -P'
 alias ':q'='exit'
@@ -41,6 +43,7 @@ alias gap='git add -p'
 alias gai='git add -i'
 alias gaa='git add --all'
 alias gb='git branch'
+alias gbc='git branch --show-current && git branch --show-current | pbcopy' # copy current branch name
 alias gbd='git branch -d'
 alias gbD='git branch -D'
 alias gbs='git branch --sort=-committerdate'
@@ -110,6 +113,7 @@ alias gsh='git stash'
 alias gshp='git stash pop'
 alias gcl='git reset --hard HEAD'
 alias gs='git show --color-words'
+alias gsc='git rev-parse HEAD && git rev-parse HEAD | pbcopy' # copy current commit SHA
 # commit count
 alias gstats='git shortlog -sn --no-merges'
 # lines count

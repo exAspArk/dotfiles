@@ -8,7 +8,12 @@ set t_Co=256
 set background=dark
 
 " load plugins
-if has('nvim') && filereadable(expand("~/.vimrc.plugins"))
+if $ZSH_TERM == '1'
+  call plug#begin('~/.vim/plugged')
+  Plug 'terryma/vim-expand-region'
+  Plug 'tpope/vim-fugitive'
+  call plug#end()
+elseif has('nvim') && filereadable(expand("~/.vimrc.plugins"))
   source ~/.vimrc.plugins
 endif
 
@@ -87,6 +92,11 @@ nnoremap fo za        " folding shortcut
 set cmdheight=2    " give more space for displaying messages.
 set updatetime=300 " having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
 
+if $ZSH_TERM == '1'
+  set laststatus=0
+  set nonumber norelativenumber
+endif
+
 " highlight trailing whitespaces
 hi ExtraWhitespace ctermbg=172 guifg=#d78700
 match ExtraWhitespace /\s\+$/
@@ -113,9 +123,11 @@ augroup vimrcEx
   autocmd InsertLeave * hi ExtraWhitespace ctermbg=172 guifg=#d78700
   autocmd InsertEnter * hi ExtraWhitespace NONE
 
-  " don't use relative numbers in insert more
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  if $ZSH_TERM != '1'
+    " don't use relative numbers in insert more
+    autocmd BufLeave,FocusLost,InsertEnter * setlocal norelativenumber
+    autocmd BufEnter,FocusGained,InsertLeave * setlocal relativenumber
+  endif
 
   autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml,elixir setlocal iskeyword=@,48-57,192-255,_,?    " make @,numbers,latin chars,_,? part of words
@@ -243,6 +255,13 @@ vnoremap d "_d
 nnoremap dd "_dd
 nnoremap de "_de
 nnoremap D "_D
+
+" Enter visual mode in terminal
+tnoremap <Esc> <C-\><C-n>
+" Still allow exiting fzf screen with Esc
+autocmd FileType fzf tnoremap <buffer> <esc> <c-c>
+" Enter insert mode automatically
+autocmd TermOpen * startinsert
 
 " setup undodir if +persistent_undo option included
 if has('persistent_undo') && isdirectory($HOME . '/.vim/undo')

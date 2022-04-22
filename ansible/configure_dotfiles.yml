@@ -44,4 +44,4 @@
     - file: src={{ curdir }}/kitty.conf dest=~/.config/kitty/kitty.conf state=link force=yes
 
     - file: path=~/.config/karabiner state=directory
-    - file: src={{ curdir }}/karabiner.conf dest=~/.config/karabiner/karabiner.json state=link force=yes
+    - file: src={{ curdir }}/karabiner.json dest=~/.config/karabiner/karabiner.json state=link force=yes
