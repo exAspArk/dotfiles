@@ -102,13 +102,14 @@ nnoremap <Leader>h :History<CR>
 
 " search with CtrlSF
 nnoremap <Leader>f "_:CtrlSF -ignoredir spec<Space>
+nnoremap <Leader>F "_:CtrlSF<Space>
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_ignore_dir = ['.git', '.next', 'node_modules', 'deps', 'tmp', 'log']
 if executable('rg')
   let g:ctrlsf_ackprg = 'rg' " use ripgrep
   let g:ctrlsf_extra_backend_args = {
-    \ 'rg': '--hidden --no-ignore --glob !tags --glob !.pry_history'
+    \ 'rg': '--hidden --no-ignore --glob !tags --glob !.pry_history --glob !tsconfig.tsbuildinfo'
     \ }
 endif
 

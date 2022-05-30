@@ -48,18 +48,20 @@ Set up [GPG](https://gist.github.com/exAspArk/d5cffe82f3151c40669be1aa4122e952#m
 ### Google Chrome extensions
 
 * [Chromium Web Store](https://github.com/NeverDecaf/chromium-web-store)
+* Bypass Paywalls
+* Apollo Client Devtools
 * Grammarly for Chrome
-* JSON Formatter
-* React Developer Tools
-* Redux DevTools
-* Speed Dial 2
-* uBlock Origin
 * HTTPS Everywhere
+* I don't care about cookies
+* JSON Formatter
 * Magical - Text Expander
 * ProWritingAid
+* React Developer Tools
+* Speed Dial 2
 * Take Webpage Screenshots Entirely
+* uBlock Origin
+* Video Downloader for Vimeo
 * Vimium
-* I don't care about cookies
 
 ### Android apps
 
