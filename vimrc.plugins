@@ -68,9 +68,9 @@ command! -bar -nargs=1 -complete=file CD execute ":cd " . fnamemodify(<q-args>, 
   \ " | :silent !title_pwd" | execute ":redraw!"
 
 " vim-rspec
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
+" map <Leader>t :call RunCurrentSpecFile()<CR>
+" map <Leader>s :call RunNearestSpec()<CR>
+" map <Leader>l :call RunLastSpec()<CR>
 " map <Leader>a :call RunAllSpecs()<CR>
 
 " git gutter
@@ -93,6 +93,7 @@ nnoremap <Leader>o :call AltCommand(expand('%'), ':e')<CR>
 
 " run FZF by using Alt + p
 nnoremap <Leader>p "_:FZF -i<CR>
+let g:fzf_preview_window = ['up:50%:hidden', 'ctrl-/']
 
 " list buffers
 nnoremap <Leader>b :Buffers<CR>
@@ -100,8 +101,13 @@ nnoremap <Leader>b :Buffers<CR>
 " list recently open files
 nnoremap <Leader>h :History<CR>
 
+" list ctags
+nnoremap <Leader>t :Tags<CR>
+vnoremap <Leader>t y:Tags <C-R>"<CR>
+
 " search with CtrlSF
 nnoremap <Leader>f "_:CtrlSF -ignoredir spec<Space>
+vnoremap <Leader>f y:CtrlSF -ignoredir spec <C-R>"
 nnoremap <Leader>F "_:CtrlSF<Space>
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_position = 'bottom'

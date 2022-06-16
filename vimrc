@@ -130,7 +130,7 @@ augroup vimrcEx
   endif
 
   autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml,elixir setlocal iskeyword=@,48-57,192-255,_,?    " make @,numbers,latin chars,_,? part of words
+  autocmd FileType ruby,eruby,yaml,elixir setlocal iskeyword=@,48-57,192-255,_,?,! " make @,numbers,latin chars,_,? part of words
   autocmd FileType markdown setlocal wrap colorcolumn=240                           " automatically wrap for Markdown
   autocmd FileType gitcommit setlocal colorcolumn=72                                " automatically wrap at 72 characters
   autocmd FileType markdown setlocal spell spelllang=ru_ru,en_us                    " enable spellchecking for Markdown messages
@@ -140,19 +140,25 @@ augroup vimrcEx
   autocmd FileType crontab setlocal nobackup nowritebackup                          " allow to edit crontab -e
   autocmd BufWritePre *.rb,*.haml,*.coffee,*.md,*.rake,*.clj,*.js,*.jsx,*.ts,*.tsx,*.sol,*.ex :%s/\s\+$//e " remove trailing whitespaces
 
+  " Rebuild ctags async on entering the insert mode for the first time
+  autocmd InsertEnter *.rb if !exists('b:has_been_entered_rb')
+    \| let b:has_been_entered_rb = 1
+    \| execute ":!(cp tags tags_tmp 2>/dev/null || :) && (gem ctags || :) && fd --type file --extension rb --print0 | xargs -0 ripper-tags --extra=q -R -a -f tags_tmp && mv tags_tmp tags &"
+    \| endif
+  autocmd InsertEnter *.js,*.jsx,*.ts,*.tsx if !exists('b:has_been_entered_js')
+    \| let b:has_been_entered_js = 1
+    \| execute ":!(cp tags tags_tmp 2>/dev/null || :) && fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 | xargs -0 ctags -R -a -f tags_tmp && mv tags_tmp tags &"
+    \| endif
+  autocmd InsertEnter *.ex,*.exs,*.eex if !exists('b:has_been_entered_ex')
+    \| let b:has_been_entered_ex = 1
+    \| execute ":!(cp tags tags_tmp 2>/dev/null || :) && fd --type file --extension ex --extension exs --print0 | xargs -0 ctags -R -a -f tags_tmp && mv tags_tmp tags &"
+    \| endif
+
   " debugger
-  autocmd BufRead *.rb
-    \ nnoremap <A-p> Orequire 'pry'; binding.pry<Esc> " add binding.pry line
-    \| nnoremap tt :!gem ctags && fd --type file --extension rb --print0 \| xargs -0 ripper-tags -R -a --extra=q<CR> " build ctags by using 'gem-ctags' and 'ripper-tags' gems
-    \| nnoremap <Leader>d :silent! setlocal iskeyword+=:<CR> <C-]> \| :setlocal iskeyword-=:<CR>
-  autocmd BufRead *.js,*.jsx,*.ts,*.tsx
-    \ nnoremap <A-p> Odebugger;<Esc>
-    \| nnoremap tt :!fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 \| xargs -0 ctags -R -a<CR>
-    \| nnoremap <Leader>d <C-]>
-  autocmd BufRead *.ex,*.exs,*.eex
-    \ nnoremap <A-p> Orequire IEx; IEx.pry<Esc>
-    \| nnoremap tt :!fd --type file --extension ex --extension exs --print0 \| xargs -0 ctags -R -a<CR>
-    \| nnoremap <Leader>d <C-]>
+  autocmd BufRead *.rb nnoremap <A-p> Orequire 'pry'; binding.pry<Esc>
+    \| nnoremap <Leader>d :silent! setlocal iskeyword+=:<CR> byw \| :setlocal iskeyword-=:<CR> :ltag <C-R>"<CR>
+  autocmd BufRead *.js,*.jsx,*.ts,*.tsx nnoremap <A-p> Odebugger;<Esc>
+  autocmd BufRead *.ex,*.exs,*.eex nnoremap <A-p> Orequire IEx; IEx.pry<Esc>
 
   " format
   autocmd FileType xml,html nnoremap <buffer> ff :%!xmllint --format --encode UTF-8 -<CR>

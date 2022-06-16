@@ -1,3 +1,7 @@
+# Remove paths prepended automatically
+PATH=$(echo "$PATH" | sed -e 's|/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:||')
+export PATH=$PATH:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin
+
 # Set name of the theme to load. Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="exaspark"
 
