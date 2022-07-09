@@ -159,7 +159,7 @@ augroup vimrcEx
 
   " debugger
   autocmd BufRead *.rb nnoremap <A-p> Orequire 'pry'; binding.pry<Esc>
-    \| nnoremap <Leader>d :silent! setlocal iskeyword+=:<CR> byw \| :setlocal iskeyword-=:<CR> :ltag <C-R>"<CR>
+    \| nnoremap <Leader>d :call JumpToRubyDefinition()<CR>
   autocmd BufRead *.js,*.jsx,*.ts,*.tsx nnoremap <A-p> Odebugger;<Esc>
   autocmd BufRead *.ex,*.exs,*.eex nnoremap <A-p> Orequire IEx; IEx.pry<Esc>
 
@@ -168,6 +168,17 @@ augroup vimrcEx
   autocmd FileType xml,json,javascriptreact,typescriptreact vmap <buffer> ff :%!tidy -q -i -w 0 -xml --show-errors 0<CR>
   autocmd FileType json nnoremap <buffer> ff :%! cat % \| ruby -e "require 'json'; puts JSON.pretty_generate(JSON.parse(STDIN.read))"<CR>
 augroup END
+
+function! JumpToRubyDefinition()
+  " Copy the whole word with "::" namespace delimiters
+  setlocal iskeyword+=:
+  normal yiw
+  setlocal iskeyword-=:
+  " Replace prepending "::"
+  let l:word = substitute(@", "^::", "", "")
+  " Jump to ctag definition
+  execute ":ltag " . word
+endfunction
 
 " jump to method or function definition with ctags
 nnoremap <Leader>d <C-]>

@@ -156,7 +156,7 @@ call s:h("Folded", s:fg, "", "")
 call s:h("FoldColumn", s:fg, "", "")
 call s:h("SignColumn", s:fg, "", "")
 
-call s:h("MatchParen", s:blue, "", "underline")
+call s:h("MatchParen", s:red, "", "underline")
 call s:h("SpecialKey", s:fg, "", "")
 call s:h("Title", s:green, "", "")
 call s:h("WildMenu", s:fg, "", "")
@@ -308,7 +308,7 @@ nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>h :History<CR>
 
 " list ctags
-nnoremap <Leader>t :Tags<CR>
+nnoremap <Leader>t yiw :Tags <C-R>"<CR>
 vnoremap <Leader>t y:Tags <C-R>"<CR>
 
 " search with CtrlSF
