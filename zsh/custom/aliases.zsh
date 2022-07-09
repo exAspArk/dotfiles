@@ -85,8 +85,8 @@ glog() {
   local FORMAT=''
   FORMAT+='%C(bold blue)%h%C(reset) '    # abbreviated commit hash
   FORMAT+='%C(bold yellow)%d%C(reset) '  # ref name
-  FORMAT+='%C(white)%s%C(reset) '        # commit message
-  FORMAT+='%C(dim white)– %an%C(reset) ' # author name
+  FORMAT+='%C(black)%s%C(reset) '        # commit message
+  FORMAT+='%C(dim black)– %an%C(reset) ' # author name
   FORMAT+='%C(dim yellow)(%ad)'          # author date custom
 
   git log \

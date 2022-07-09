@@ -74,3 +74,8 @@ export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --ignore-case --no-
 --exclude cue.mod \
 --exclude tmp"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+  --color=fg:#4d4d4c,bg:#eeeeee,hl:#004e9c
+  --color=fg+:#4d4d4c,bg+:#e8e8e8,hl+:#004e9c
+  --color=info:#4271ae,prompt:#c18401,pointer:#e45649
+  --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'

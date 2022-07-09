@@ -5,7 +5,10 @@ syntax on
 
 " theme
 set t_Co=256
-set background=dark
+set background=light
+if has("termguicolors")
+  set termguicolors
+endif
 
 " load plugins
 if $ZSH_TERM == '1'

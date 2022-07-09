@@ -70,3 +70,7 @@
     - shell: curl https://raw.githubusercontent.com/exAspArk/sshrc/master/sshrc -o ~/Downloads/sshrc
     - shell: chmod +x ~/Downloads/sshrc && mv ~/Downloads/sshrc /usr/local/bin
       become: true
+
+    # fonts
+    - shell: brew tap homebrew/cask-fonts
+    - shell: brew install --cask font-fira-code
