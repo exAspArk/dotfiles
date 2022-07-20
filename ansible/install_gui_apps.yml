@@ -8,7 +8,6 @@
       with_items:
         - google-chrome
         - sourcetree
-        - jumpcut
         - the-unarchiver
         - licecap # record gifs from screen
         - android-file-transfer
@@ -27,6 +26,8 @@
         - docker
         - qbittorrent
         - karabiner-elements
+        - obsidian
+        - syncthing
         # - keybase
         # - google-cloud-sdk # gcloud
         # - keycastr # show keystrokes
@@ -51,7 +52,6 @@
           mas install $(mas search '{{ item }}' | awk '{print $1}' | head -1)
         fi
       with_items:
-        - Simplenote
         - Keynote
         - Spark
         - Xcode
@@ -59,3 +59,4 @@
         - Elmedia Video Player
         - VPN Unlimited
         - Yubico Authenticator
+        - Flycut

@@ -174,8 +174,8 @@ function! JumpToRubyDefinition()
   setlocal iskeyword+=:
   normal yiw
   setlocal iskeyword-=:
-  " Replace prepending "::"
-  let l:word = substitute(@", "^::", "", "")
+  " Replace prepending "::" and "!
+  let l:word = substitute(substitute(@", "^::", "", ""), "^!", "", "")
   " Jump to ctag definition
   execute ":ltag " . word
 endfunction
@@ -281,7 +281,9 @@ tnoremap <Esc> <C-\><C-n>
 " Still allow exiting fzf screen with Esc
 autocmd FileType fzf tnoremap <buffer> <esc> <c-c>
 " Enter insert mode automatically
-autocmd TermOpen * startinsert
+if has('nvim')
+  autocmd TermOpen * startinsert
+endif
 
 " setup undodir if +persistent_undo option included
 if has('persistent_undo') && isdirectory($HOME . '/.vim/undo')
