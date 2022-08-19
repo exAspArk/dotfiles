@@ -146,7 +146,7 @@ augroup vimrcEx
   " Rebuild ctags async on entering the insert mode for the first time
   autocmd InsertEnter *.rb if !exists('b:has_been_entered_rb')
     \| let b:has_been_entered_rb = 1
-    \| execute ":!(cp tags tags_tmp 2>/dev/null || :) && (gem ctags || :) && fd --type file --extension rb --print0 | xargs -0 ripper-tags --extra=q -R -a -f tags_tmp && mv tags_tmp tags &"
+    \| execute ":!(cp tags tags_tmp 2>/dev/null || :) && gem ctags >/dev/null && fd --type file --extension rb --print0 | xargs -0 ripper-tags --extra=q -R -a -f tags_tmp && mv tags_tmp tags &"
     \| endif
   autocmd InsertEnter *.js,*.jsx,*.ts,*.tsx if !exists('b:has_been_entered_js')
     \| let b:has_been_entered_js = 1

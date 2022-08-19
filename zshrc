@@ -67,6 +67,7 @@ export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --ignore-case --no-
 --exclude .next \
 --exclude .deliver \
 --exclude _build \
+--exclude build \
 --exclude deps \
 --exclude dist \
 --exclude node_modules \

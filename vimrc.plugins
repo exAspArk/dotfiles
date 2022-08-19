@@ -317,7 +317,7 @@ vnoremap <Leader>f y:CtrlSF -ignoredir spec <C-R>"
 nnoremap <Leader>F "_:CtrlSF<Space>
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_position = 'bottom'
-let g:ctrlsf_ignore_dir = ['.git', '.next', 'node_modules', 'deps', 'tmp', 'log']
+let g:ctrlsf_ignore_dir = ['.git', '.next', 'node_modules', 'build', 'deps', 'tmp', 'log']
 if executable('rg')
   let g:ctrlsf_ackprg = 'rg' " use ripgrep
   let g:ctrlsf_extra_backend_args = {
@@ -337,8 +337,12 @@ augroup lazy_load_on_insert
   autocmd InsertEnter *.js,*.jsx,*.tsx,*.xml,*.html,*.erb,*.eex call plug#load('vim-closetag')
 augroup END
 
-" <TAB>: completion
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" coc.nvim, remap for complete to use tab and <cr>
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" change completion menu colours
+hi CocSearch ctermfg=127 guifg=#004e9c
+hi CocMenuSel ctermbg=252 guibg=#e5e5e5
 
 " disable auto closing <:>
 let delimitMate_matchpairs = "(:),{:},[:]"
