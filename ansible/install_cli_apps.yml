@@ -8,6 +8,9 @@
     - shell: brew tap "codebreakdown/homebrew-oss"
     - shell: brew install codebreakdown/oss/alt
 
+    - shell: brew tap "brew tap espanso/espanso"
+    - shell: brew install espanso # requires pressing "opt+cmd+s" (toggle_macos_secure_keyboard_entry) in Kitty on MacOS
+
     - shell: |
         if ! xcode-select -p | grep CommandLineTools ; then
           xcode-select --install
