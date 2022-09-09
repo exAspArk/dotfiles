@@ -11,7 +11,7 @@ alias ss='bundle exec spring stop'
 alias s="sshrc"
 
 if command -v nvim &> /dev/null; then
-  alias v='ASDF_PYTHON_VERSION=3.10.4 nvim'
+  alias v='ASDF_PYTHON_VERSION=3.10.4 PATH=/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH nvim'
 else
   alias v='vim'
 fi
@@ -109,6 +109,7 @@ alias grs='git reset'
 alias grsh='git reset --hard'
 alias grss='git reset --soft HEAD~'
 alias gres='git restore'
+alias gress='git restore --staged'
 alias grv='git revert'
 alias gsh='git stash'
 alias gshp='git stash pop'

@@ -16,6 +16,8 @@ Plug 'github/copilot.vim', { 'on': [] }                 " smart autocompletion
 " navigation
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " file tree
 Plug 'dyng/ctrlsf.vim', { 'on': 'CtrlSF' }              " better text search
+Plug 'nvim-lua/plenary.nvim'                            " dependency for nvim-spectre
+Plug 'windwp/nvim-spectre'                              " find and replace
 Plug 'kopischke/vim-fetch'                              " open file with line and column number
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
 Plug 'junegunn/fzf.vim'                                  " search buffers
@@ -310,6 +312,11 @@ nnoremap <Leader>h :History<CR>
 " list ctags
 nnoremap <Leader>t yiw :Tags <C-R>"<CR>
 vnoremap <Leader>t y:Tags <C-R>"<CR>
+
+" spectre
+set splitbelow
+nnoremap <leader>s <cmd>lua require('spectre').open_visual({select_word=true})<CR>
+lua require('config')
 
 " search with CtrlSF
 nnoremap <Leader>f "_:CtrlSF -ignoredir spec<Space>

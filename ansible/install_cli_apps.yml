@@ -33,6 +33,7 @@
         - fzf
         - unar
         - gnu-tar # for Ansible unarchive module
+        - gnu-sed # for spectre-nvim
         - mas # mac app store cli
         - jid
         - ffmpeg

@@ -7,7 +7,7 @@ export LANG=en_US.UTF-8 # You may need to manually set your language environment
 export CC=/usr/bin/gcc
 
 export PATH=./bin
-export PATH=$PATH:/usr/local/opt/gnu-tar/libexec/gnubin
+export PATH=$PATH:/opt/homebrew/opt/gnu-tar/libexec/gnubin
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
 eval "$(/opt/homebrew/bin/brew shellenv)"

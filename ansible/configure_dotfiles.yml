@@ -39,6 +39,7 @@
       with_items:
         - vimrc
         - irbrc
+        - lua/config.lua
 
     - file: path=~/.config/kitty state=directory
     - file: src={{ curdir }}/kitty.conf dest=~/.config/kitty/kitty.conf state=link force=yes
