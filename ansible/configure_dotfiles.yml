@@ -47,4 +47,4 @@
     - file: path=~/.config/karabiner state=directory
     - file: src={{ curdir }}/karabiner.json dest=~/.config/karabiner/karabiner.json state=link force=yes
 
-    - file: src={{ curdir }}/espanso.yml dest="~/Library/Application Support/espanso/match/base.yml" state=link force=yes
+    - file: src={{ backup_path }}/espanso.yml dest="~/Library/Application Support/espanso/match/base.yml" state=link force=yes
