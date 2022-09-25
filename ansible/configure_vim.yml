@@ -35,5 +35,9 @@
     - file: src={{ curdir }}/coc-package.json dest=~/.config/coc/extensions/package.json state=link force=yes
     - shell: cd ~/.config/coc/extensions && yarn install
 
+    # Elixir
+    - shell: git clone https://github.com/elixir-lsp/elixir-ls.git ~/.config/coc/elixir-ls
+    - shell: cd ~/.config/coc/elixir-ls && mix deps.get && mix compile && mix elixir_ls.release -o release
+
     # Run in nvim after loading the plugin
     # - shell: nvim +Copilot setup +qall

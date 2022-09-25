@@ -80,3 +80,5 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
   --color=fg+:#4d4d4c,bg+:#e8e8e8,hl+:#004e9c
   --color=info:#4271ae,prompt:#c18401,pointer:#e45649
   --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
+
+export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1

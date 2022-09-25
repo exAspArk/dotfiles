@@ -35,6 +35,7 @@ alias tree="find . -print | sed -e 's;[^/]*/;|__;g;s;__|; |;g'"
 
 alias y='yarn'
 alias mi='iex -S mix'
+alias k='kubectl'
 
 if [ -n "$ZSH_VERSION" ]; then alias git='nocorrect git'; fi
 alias g='git'
@@ -110,6 +111,9 @@ alias grsh='git reset --hard'
 alias grss='git reset --soft HEAD~'
 alias gres='git restore'
 alias gress='git restore --staged'
+greS() {
+  git restore --staged $1 && git restore $1
+}
 alias grv='git revert'
 alias gsh='git stash'
 alias gshp='git stash pop'

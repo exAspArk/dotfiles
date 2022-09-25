@@ -44,7 +44,7 @@ Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript'] }
 
 " elixir
 Plug 'elixir-lang/vim-elixir', { 'for': ['elixir', 'eelixir'] }
-Plug 'mhinz/vim-mix-format', { 'for': ['elixir', 'eelixir'] }
+" Plug 'mhinz/vim-mix-format', { 'for': ['elixir', 'eelixir'] }
 
 " syntaxes and languages
 Plug 'valloric/MatchTagAlways', { 'for': ['xml', 'html', 'eruby', 'eelixir', 'javascriptreact', 'typescriptreact'] } " highlight matching tags
@@ -324,7 +324,7 @@ vnoremap <Leader>f y:CtrlSF -ignoredir spec <C-R>"
 nnoremap <Leader>F "_:CtrlSF<Space>
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_position = 'bottom'
-let g:ctrlsf_ignore_dir = ['.git', '.next', 'node_modules', 'build', 'deps', 'tmp', 'log']
+let g:ctrlsf_ignore_dir = ['.git', '.next', 'node_modules', 'build', '_build', 'deps', 'tmp', 'log']
 if executable('rg')
   let g:ctrlsf_ackprg = 'rg' " use ripgrep
   let g:ctrlsf_extra_backend_args = {

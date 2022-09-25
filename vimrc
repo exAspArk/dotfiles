@@ -55,7 +55,7 @@ set numberwidth=5     " line numbers width
 set number relativenumber " hybrid relative number + absolute
 
 " make it obvious where 120 characters is
-set colorcolumn=120
+set colorcolumn=121
 set textwidth=240
 set formatoptions+=w " for wraping long lines without broken words
 
@@ -133,7 +133,7 @@ augroup vimrcEx
   endif
 
   autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,eruby,yaml,elixir setlocal iskeyword=@,48-57,192-255,_,?,! " make @,numbers,latin chars,_,? part of words
+  autocmd FileType ruby,eruby,yaml,elixir setlocal iskeyword=@,48-57,192-255,_      " make @,numbers,latin chars,_,? part of words
   autocmd FileType markdown setlocal wrap colorcolumn=240                           " automatically wrap for Markdown
   autocmd FileType gitcommit setlocal colorcolumn=72                                " automatically wrap at 72 characters
   autocmd FileType markdown setlocal spell spelllang=ru_ru,en_us                    " enable spellchecking for Markdown messages
@@ -172,8 +172,12 @@ augroup END
 function! JumpToRubyDefinition()
   " Copy the whole word with "::" namespace delimiters
   setlocal iskeyword+=:
+  setlocal iskeyword+=?
+  setlocal iskeyword+=!
   normal yiw
   setlocal iskeyword-=:
+  setlocal iskeyword-=?
+  setlocal iskeyword-=!
   " Replace prepending "::" and "!
   let l:word = substitute(substitute(@", "^::", "", ""), "^!", "", "")
   " Jump to ctag definition
