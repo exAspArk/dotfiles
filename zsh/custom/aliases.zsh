@@ -124,3 +124,22 @@ alias gsc='git rev-parse HEAD && git rev-parse HEAD | pbcopy' # copy current com
 alias gstats='git shortlog -sn --no-merges'
 # lines count
 alias glstats='git ls-files -z | xargs -0n1 git blame -w --line-porcelain | grep -a "^author " | sort -f | uniq -c | sort -n -r'
+
+alias ghp='gh pr view --web'
+alias ghr='gh repo view --web'
+ghc() {
+  local REPO_PATH=$(git remote -v | grep 'origin.*fetch' | sed -e 's/.*github.com:\(.*\)\.git (fetch)/\1/')
+  open "https://github.com/${REPO_PATH}/commit/$1"
+}
+ghl() {
+  local REPO_PATH=$(git remote -v | grep 'origin.*fetch' | sed -e 's/.*github.com:\(.*\)\.git (fetch)/\1/')
+  local MAIN_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+  local LINE_PATH=$(echo $1 | sed 's/:/#L/')
+  open "https://github.com/${REPO_PATH}/blob/${MAIN_BRANCH}/${LINE_PATH}"
+}
+ghb() {
+  local REPO_PATH=$(git remote -v | grep 'origin.*fetch' | sed -e 's/.*github.com:\(.*\)\.git (fetch)/\1/')
+  local MAIN_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+  local LINE_PATH=$(echo $1 | sed 's/:/#L/')
+  open "https://github.com/${REPO_PATH}/blame/${MAIN_BRANCH}/${LINE_PATH}"
+}

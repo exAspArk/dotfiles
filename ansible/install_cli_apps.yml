@@ -49,6 +49,7 @@
         - tidy-html5
         - dokku/repo/dokku
         - argocd
+        - gh
 
     # to avoid using flag --with-openssl-dir=/usr/local/opt/openssl
     - shell: brew link --force openssl
