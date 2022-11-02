@@ -50,6 +50,7 @@
         - dokku/repo/dokku
         - argocd
         - gh
+        - stats
 
     # to avoid using flag --with-openssl-dir=/usr/local/opt/openssl
     - shell: brew link --force openssl
