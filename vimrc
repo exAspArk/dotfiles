@@ -146,16 +146,20 @@ augroup vimrcEx
   " Rebuild ctags async on entering the insert mode for the first time
   autocmd InsertEnter *.rb if !exists('b:has_been_entered_rb')
     \| let b:has_been_entered_rb = 1
-    \| execute ":!(cp tags tags_tmp 2>/dev/null || :) && gem ctags >/dev/null && fd --type file --extension rb --print0 | xargs -0 ripper-tags --extra=q -R -a -f tags_tmp && mv tags_tmp tags &"
+    \| execute ":!(cp tags tags_tmp 2>/dev/null || :) && (gem ctags >/dev/null && fd --type file --extension rb --print0 | xargs -0 ripper-tags --extra=q -R -a -f tags_tmp || :) && mv tags_tmp tags &"
     \| endif
   autocmd InsertEnter *.js,*.jsx,*.ts,*.tsx if !exists('b:has_been_entered_js')
     \| let b:has_been_entered_js = 1
-    \| execute ":!(cp tags tags_tmp 2>/dev/null || :) && fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 | xargs -0 ctags -R -a -f tags_tmp && mv tags_tmp tags &"
+    \| execute ":!(cp tags tags_tmp 2>/dev/null || :) && (fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 | xargs -0 ctags -R -a -f tags_tmp || :) && mv tags_tmp tags &"
     \| endif
   autocmd InsertEnter *.ex,*.exs,*.eex if !exists('b:has_been_entered_ex')
     \| let b:has_been_entered_ex = 1
-    \| execute ":!(cp tags tags_tmp 2>/dev/null || :) && fd --type file --extension ex --extension exs --print0 | xargs -0 ctags -R -a -f tags_tmp && mv tags_tmp tags &"
+    \| execute ":!(cp tags tags_tmp 2>/dev/null || :) && (fd --type file --extension ex --extension exs --print0 | xargs -0 ctags -R -a -f tags_tmp || :) && mv tags_tmp tags &"
     \| endif
+
+  autocmd BufRead *.rb nnoremap tt :!(gem ctags >/dev/null && fd --type file --extension rb --print0 \| xargs -0 ripper-tags --extra=q -R -a -f tags_tmp \|\| :) && mv tags_tmp tags &<CR>
+  autocmd BufRead *.js,*.jsx,*.ts,*.tsx nnoremap tt :!(fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 \| xargs -0 ctags -R -a -f tags_tmp \|\| :) && mv tags_tmp tags &<CR>
+  autocmd BufRead *.ex,*.exs,*.eex nnoremap tt :!(fd --type file --extension ex --extension exs --print0 \| xargs -0 ctags -R -a -f tags_tmp \|\| :) && mv tags_tmp tags &<CR>
 
   " debugger
   autocmd BufRead *.rb nnoremap <A-p> Orequire 'pry'; binding.pry<Esc>
@@ -163,10 +167,16 @@ augroup vimrcEx
   autocmd BufRead *.js,*.jsx,*.ts,*.tsx nnoremap <A-p> Odebugger;<Esc>
   autocmd BufRead *.ex,*.exs,*.eex nnoremap <A-p> Orequire IEx; IEx.pry<Esc>
 
+  " Elixir syntax highlight
+  autocmd BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+  autocmd BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
+  autocmd BufRead,BufNewFile mix.lock set filetype=elixir
+
   " format
-  autocmd FileType xml,html nnoremap <buffer> ff :%!xmllint --format --encode UTF-8 -<CR>
-  autocmd FileType xml,json,javascriptreact,typescriptreact vmap <buffer> ff :%!tidy -q -i -w 0 -xml --show-errors 0<CR>
+  autocmd FileType xml nnoremap <buffer> ff :%!xmllint --format --encode UTF-8 -<CR>
+  autocmd FileType html nnoremap <buffer> ff :%! cat % \| tidy -q -i -w 0 -ashtml 2>/dev/null<CR>
   autocmd FileType json nnoremap <buffer> ff :%! cat % \| ruby -e "require 'json'; puts JSON.pretty_generate(JSON.parse(STDIN.read))"<CR>
+  autocmd FileType xml,json,javascriptreact,typescriptreact vmap <buffer> ff :%!tidy -q -i -w 0 -xml 2>/dev/null<CR>
 augroup END
 
 function! JumpToRubyDefinition()
