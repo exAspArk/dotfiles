@@ -22,7 +22,7 @@ unset config_file
 
 export ERL_AFLAGS="-kernel shell_history enabled" # iex history for Elixir
 
-export BACKUP_PATH=~/Dropbox/_backups
+export BACKUP_PATH=~/Library/CloudStorage/Dropbox/_backups
 export PROJECT_PATH=~/Documents/projects
 
 # zlib for asdf python installation

@@ -35,6 +35,7 @@
 	trustExitCode = true
 [commit]
 	gpgsign = true
+	template = ~/.stCommitMsg
 [tag]
 	gpgsign = true
 [gpg]
