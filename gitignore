@@ -16,6 +16,7 @@ tags_tmp
 log/
 db/*.sqlite3
 
+.devspace/
 docker-compose.override.yml
 
 tmp.*rb

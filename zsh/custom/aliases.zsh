@@ -81,7 +81,7 @@ alias grbc='git rebase --continue'
 alias grbs='git rebase --skip'
 alias grbi='git rebase -i'
 alias gst='git status'
-alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit -m "--wip--"'
+alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "WIP"'
 glog() {
   local LAST_COMMIT_TIME="$(git log -1 --pretty=format:%cd)"
   local FORMAT=''
@@ -137,9 +137,23 @@ ghl() {
   local LINE_PATH=$(echo $1 | sed 's/:/#L/')
   open "https://github.com/${REPO_PATH}/blob/${MAIN_BRANCH}/${LINE_PATH}"
 }
+ghf() {
+  local REPO_PATH=$(git remote -v | grep 'origin.*fetch' | sed -e 's/.*github.com:\(.*\)\.git (fetch)/\1/')
+  local MAIN_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+  local FILE_PATH=$1
+  open "https://github.com/${REPO_PATH}/blob/${MAIN_BRANCH}/${FILE_PATH}"
+}
 ghb() {
   local REPO_PATH=$(git remote -v | grep 'origin.*fetch' | sed -e 's/.*github.com:\(.*\)\.git (fetch)/\1/')
   local MAIN_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
   local LINE_PATH=$(echo $1 | sed 's/:/#L/')
   open "https://github.com/${REPO_PATH}/blame/${MAIN_BRANCH}/${LINE_PATH}"
+}
+
+vcompress() { # vcompress video.mp4 1280:720
+  ffmpeg -i $1 -vcodec libx264 -crf 24 -vf scale=$2 output.mp4
+}
+
+vspeedup () { # vspeedup video.mp4 1.10
+  ffmpeg -i $1 -vf "setpts=(PTS-STARTPTS)/$2" -af atempo=$2 "output-${2}x.mp4"
 }

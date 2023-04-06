@@ -350,6 +350,15 @@ inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<
 " change completion menu colours
 hi CocSearch ctermfg=127 guifg=#004e9c
 hi CocMenuSel ctermbg=252 guibg=#e5e5e5
+" show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
 
 " disable auto closing <:>
 let delimitMate_matchpairs = "(:),{:},[:]"
