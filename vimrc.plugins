@@ -9,7 +9,7 @@ Plug 'Raimondi/delimitMate', { 'on': [] }               " closing brackets
 Plug 'alvan/vim-closetag', { 'on': [] }                 " closing tags
 Plug 'terryma/vim-expand-region'                        " change visual selection by using '+' / '-'
 Plug 'nathanaelkane/vim-indent-guides'                  " indent columns
-Plug 'w0rp/ale', { 'on': [] }                           " lint
+Plug 'dense-analysis/ale', { 'on': [] }                 " lint
 Plug 'neoclide/coc.nvim', { 'on': [], 'branch': 'release'} " autocomplete and LSP: coc-solargraph, coc-tsserver
 Plug 'github/copilot.vim', { 'on': [] }                 " smart autocompletion
 
@@ -324,7 +324,7 @@ vnoremap <Leader>f y:CtrlSF -ignoredir spec <C-R>"
 nnoremap <Leader>F "_:CtrlSF<Space>
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_position = 'bottom'
-let g:ctrlsf_ignore_dir = ['.git', '.next', 'node_modules', 'build', '_build', 'deps', 'tmp', 'log', 'sorbet']
+let g:ctrlsf_ignore_dir = ['.devspace', '.git', '.next', 'node_modules', 'build', '_build', 'deps', 'tmp', 'log', 'sorbet']
 if executable('rg')
   let g:ctrlsf_ackprg = 'rg' " use ripgrep
   let g:ctrlsf_extra_backend_args = {
@@ -388,6 +388,7 @@ let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_virtualtext_cursor = 'disable'
 let g:ale_linters = {
 \ 'ruby': ['rubocop', 'sorbet'],
 \ 'javascript': ['eslint'],

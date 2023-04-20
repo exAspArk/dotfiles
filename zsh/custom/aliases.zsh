@@ -3,10 +3,28 @@ alias bo="bundle open"
 alias b='bundle'
 
 alias srs='bundle exec spring rails s'
-alias src='bundle exec spring rails c'
-alias sr='bundle exec spring rspec'
-alias srk='bundle exec spring rake'
 alias ss='bundle exec spring stop'
+sr() {
+  if bundle exec spring &> /dev/null; then
+    bundle exec spring rspec $@
+  else
+    bundle exec rspec $@
+  fi
+}
+srk() {
+  if bundle exec spring &> /dev/null; then
+    bundle exec spring rake $@
+  else
+    bundle exec rake $@
+  fi
+}
+src() {
+  if bundle exec spring &> /dev/null; then
+    bundle exec spring rails c $@
+  else
+    bundle exec rails c $@
+  fi
+}
 
 alias s="sshrc"
 

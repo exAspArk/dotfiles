@@ -19,6 +19,11 @@
       environment:
         ASDF_RUBY_VERSION: "{{ version }}"
 
+    - name: Install gem solargraph for coc.nvim
+      shell: gem install solargraph
+      environment:
+        ASDF_RUBY_VERSION: "{{ version }}"
+
     - name: Install gem gem-ctags
       shell: gem install gem-ctags
       environment:
