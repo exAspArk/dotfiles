@@ -320,8 +320,7 @@ lua require('config')
 
 " search with CtrlSF
 nnoremap <Leader>f "_:CtrlSF -ignoredir spec<Space>
-vnoremap <Leader>f y:CtrlSF -ignoredir spec <C-R>"
-nnoremap <Leader>F "_:CtrlSF<Space>
+nnoremap <Leader>g "_:CtrlSF<Space>
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_ignore_dir = ['.devspace', '.git', '.next', 'node_modules', 'build', '_build', 'deps', 'tmp', 'log', 'sorbet']
