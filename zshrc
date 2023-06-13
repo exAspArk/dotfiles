@@ -1,6 +1,14 @@
-# Remove paths prepended automatically
-PATH=$(echo "$PATH" | sed -e 's|/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:||')
-export PATH=$PATH:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin
+export PATH=./bin
+export PATH=$PATH:/opt/homebrew/bin
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+export PATH="$(yarn global bin):$PATH"
+export PATH="/opt/homebrew/opt/mysql-client@5.7/bin:$PATH"
+
+################################################################################
 
 # Set name of the theme to load. Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="exaspark"
@@ -41,13 +49,6 @@ chpwd # emulate cd action
 (sync_zsh_history &)
 
 # #############################################################################
-
-export PATH="$PATH:$(yarn global bin)"
-# export PATH=$PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
-
-export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
-export PATH="/usr/local/opt/mysql-client@5.7/bin:$PATH"
-export PATH="/usr/local/opt/docker-compose/bin:$PATH"
 
 # load zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

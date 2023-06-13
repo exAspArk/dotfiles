@@ -134,9 +134,9 @@ augroup vimrcEx
 
   autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml,elixir setlocal iskeyword=@,48-57,192-255,_      " make @,numbers,latin chars,_,? part of words
-  autocmd FileType markdown setlocal wrap colorcolumn=240                           " automatically wrap for Markdown
-  autocmd FileType gitcommit setlocal colorcolumn=72                                " automatically wrap at 72 characters
+  autocmd FileType markdown setlocal wrap colorcolumn=240 shiftwidth=2              " automatically wrap for Markdown
   autocmd FileType markdown setlocal spell spelllang=ru_ru,en_us                    " enable spellchecking for Markdown messages
+  autocmd FileType gitcommit setlocal colorcolumn=72                                " automatically wrap at 72 characters
   autocmd FileType gitcommit setlocal spell                                         " enable spellchecking for git commit messages
   autocmd FileType css,scss,sass setlocal iskeyword+=-                              " allow stylesheets to autocomplete hyphenated words
   autocmd FileType clojure setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,=,<,>,:,$ " customize keywords

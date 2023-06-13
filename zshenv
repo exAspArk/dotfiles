@@ -1,3 +1,10 @@
+export PATH=./bin
+export PATH=$PATH:/opt/homebrew/bin
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
 export ZSH=$HOME/.oh-my-zsh # Path to your oh-my-zsh installation.
 
 export VISUAL=nvim
@@ -5,14 +12,6 @@ export EDITOR=$VISUAL
 
 export LANG=en_US.UTF-8 # You may need to manually set your language environment
 export CC=/usr/bin/gcc
-
-export PATH=./bin
-export PATH=$PATH:/opt/homebrew/opt/gnu-tar/libexec/gnubin
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # Load all of your custom configurations from custom/
 for config_file (~/.zsh/custom/*.zsh(N)); do

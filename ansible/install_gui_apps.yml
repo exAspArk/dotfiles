@@ -29,6 +29,7 @@
         - syncthing
         - raycast
         - bartender
+        - betterdisplay # fix macOS Ventura display scale bug
         # - keybase
         # - google-cloud-sdk # gcloud
         # - keycastr # show keystrokes
