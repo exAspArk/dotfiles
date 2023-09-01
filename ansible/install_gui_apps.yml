@@ -30,6 +30,7 @@
         - raycast
         - bartender
         - betterdisplay # fix macOS Ventura display scale bug
+        - blackhole-2ch # pass audio output as input to another app
         # - keybase
         # - google-cloud-sdk # gcloud
         # - keycastr # show keystrokes
@@ -62,3 +63,4 @@
         - VPN Unlimited
         - Yubico Authenticator
         - Flycut
+        - WhatsApp

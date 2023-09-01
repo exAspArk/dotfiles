@@ -7,6 +7,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export PATH="$(yarn global bin):$PATH"
 export PATH="/opt/homebrew/opt/mysql-client@5.7/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 ################################################################################
 
