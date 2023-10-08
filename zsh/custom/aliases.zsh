@@ -29,7 +29,7 @@ src() {
 alias s="sshrc"
 
 if command -v nvim &> /dev/null; then
-  alias v='ASDF_PYTHON_VERSION=3.10.4 PATH=/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH nvim'
+  alias v='nvim'
 else
   alias v='vim'
 fi
@@ -123,9 +123,7 @@ glog() {
     --format=format:"$FORMAT" \
     --date=iso
 }
-gdm() {
-  git diff $1^..$1
-}
+gdm() { git diff $1^..$1 }
 alias gclog="git log --no-merges --pretty=format:'%s (%an)'"
 alias ggrep="git log --grep"
 alias grs='git reset'
@@ -133,9 +131,7 @@ alias grsh='git reset --hard'
 alias grss='git reset --soft HEAD~'
 alias gres='git restore'
 alias gress='git restore --staged'
-greS() {
-  git restore --staged $1 && git restore $1
-}
+greS() { git restore --staged $1 && git restore $1 }
 alias grv='git revert'
 alias gsh='git stash'
 alias gshp='git stash pop'
@@ -172,10 +168,12 @@ ghb() {
   open "https://github.com/${REPO_PATH}/blame/${MAIN_BRANCH}/${LINE_PATH}"
 }
 
-vcompress() { # vcompress video.mp4 1280:720
-  ffmpeg -i $1 -vcodec libx264 -crf 24 -vf scale=$2 output.mp4
-}
+# vcompress video.mp4 1280:720
+vcompress() { ffmpeg -i $1 -vcodec libx264 -crf 24 -vf scale=$2 output.mp4 }
+# vspeedup video.mp4 1.10
+vspeedup () { ffmpeg -i $1 -vf "setpts=(PTS-STARTPTS)/$2" -af atempo=$2 "output-${2}x.mp4" }
 
-vspeedup () { # vspeedup video.mp4 1.10
-  ffmpeg -i $1 -vf "setpts=(PTS-STARTPTS)/$2" -af atempo=$2 "output-${2}x.mp4"
-}
+alias ninstall='darwin-rebuild switch'
+alias nupgrade='nix-channel --update && nix-env --upgrade'
+alias nsearch='nix-env -qaP'
+nuninstall() { nix-env --uninstall $1 && nix-collect-garbage }

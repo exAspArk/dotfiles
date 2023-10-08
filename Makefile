@@ -1,36 +1,95 @@
-install_essential:
-	sudo pip3 install ansible
-	make play PLAYBOOK=ansible/install_essential.yml
-
 install_cli_apps:
-	make play PLAYBOOK=ansible/install_cli_apps.yml
+	brew tap "codebreakdown/homebrew-oss" && brew install codebreakdown/oss/alt # https://github.com/uptech/alt
+	brew install stats # internet speed and usage https://github.com/exelban/stats
+	brew install libyaml # for 'psych' gem
+	curl https://raw.githubusercontent.com/exAspArk/sshrc/master/sshrc -o ~/Downloads/sshrc && chmod +x ~/Downloads/sshrc && sudo mkdir -p /usr/local/bin && sudo mv ~/Downloads/sshrc /usr/local/bin/sshrc
+	ln -sf $(PWD)/nixpkgs/darwin-configuration.nix ~/.nixpkgs/darwin-configuration.nix
+	darwin-rebuild switch
+	ln -sf /run/current-system/sw/bin/sed /opt/homebrew/bin/gsed # for Spectre nvim plugin to avoid 'brew install gnu-sed'
+	defaults write com.apple.Finder AppleShowAllFiles true && killall Finder
+	defaults write -g KeyRepeat -int 1 # faster repeat time requires a restart
+	defaults write com.apple.screencapture show-thumbnail -bool false
 
 install_gui_apps:
-	make play PLAYBOOK=ansible/install_gui_apps.yml
-
-configure_ruby:
-	make play PLAYBOOK=ansible/configure_ruby.yml OPTIONS="--ask-become-pass --extra-vars='version=$(VERSION)'"
-
-configure_node:
-	make play PLAYBOOK=ansible/configure_node.yml OPTIONS="--extra-vars='version=$(VERSION)'"
-
-configure_elixir:
-	make play PLAYBOOK=ansible/configure_elixir.yml OPTIONS="--extra-vars='version=$(VERSION) otp=$(OTP)'"
-
-configure_python:
-	make play PLAYBOOK=ansible/configure_python.yml OPTIONS="--extra-vars='version=$(VERSION)'"
-
-configure_java:
-	make play PLAYBOOK=ansible/configure_java.yml OPTIONS="--extra-vars='version=$(VERSION)'"
-
-configure_vim:
-	make play PLAYBOOK=ansible/configure_vim.yml
+	brew install --cask eloston-chromium
+	brew install --cask keeweb
+	brew install --cask kitty
+	brew install --cask obsidian
+	brew install --cask bartender
+	brew install --cask betterdisplay # fix macOS Ventura display scale bug with HiDPI
+	brew install --cask docker
+	brew install --cask gpg-suite
+	brew install --cask insomnia
+	brew install --cask karabiner-elements
+	brew install --cask licecap # record gifs from screen
+	brew install --cask ngrok
+	# brew install --cask osxfuse
+	brew install --cask qbittorrent
+	brew install --cask raycast
+	brew install --cask sourcetree
+	brew install --cask syncthing
+	brew install --cask tableplus # sql GUI vs psequel
+	brew install --cask the-unarchiver
+	brew install --cask zoom
+	brew install --cask espanso
+	brew install --cask slack
+	brew install --cask discord
+	# brew install --cask paragon-ntfs
+	mas install 'Elmedia Video Player'
+	mas install Flycut
+	mas install Keynote
+	mas install Polarr
+	mas install Spark
+	mas install 'VPN Unlimited'
+	mas install WhatsApp
+	mas install Xcode
+	mas install Moom # paid
+	mas install LocalSend # paid
 
 configure_dotfiles:
-	make play PLAYBOOK=ansible/configure_dotfiles.yml OPTIONS=--ask-become-pass
+	sudo rm -rf /etc/zprofile
+	mkdir -p ~/.bundle
+	mkdir -p ~/.zsh/custom
+	mkdir -p ~/.gnupg
+	mkdir -p ~/.sshrc.d/lua
+	mkdir -p ~/.config
+	mkdir -p ~/.config/coc/extensions
+	mkdir -p ~/.config/nvim/lua
+	mkdir -p ~/.config/kitty
+	mkdir -p ~/.config/karabiner
+	mkdir -p ~/.vim/undo
+	mkdir -p ~/.vim/autoload
+	ln -sf $(PWD)/bundle/config ~/.bundle/config
+	ln -sf $(PWD)/gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
+	ln -sf $(PWD)/lua/config.lua ~/.config/nvim/lua/config.lua
+	ln -sf $(PWD)/lua/config.lua ~/.sshrc.d/lua/config.lua
+	ln -sf $(PWD)/zsh/custom/aliases.zsh ~/.sshrc.d/aliases.zsh
+	ln -sf $(PWD)/zsh/custom/aliases.zsh ~/.zsh/custom/aliases.zsh
+	ln -sf $(PWD)/zsh/themes/exaspark.zsh-theme ~/.oh-my-zsh/themes/exaspark.zsh-theme
+	ln -sf $(PWD)/asdfrc ~/.asdfrc
+	ln -sf $(PWD)/coc-package.json ~/.config/coc/extensions/package.json
+	ln -sf $(PWD)/coc-settings.json ~/.config/nvim/coc-settings.json
+	ln -sf $(PWD)/ctags ~/.ctags
+	ln -sf $(PWD)/gemrc ~/.gemrc
+	ln -sf $(PWD)/gitconfig ~/.gitconfig
+	ln -sf $(PWD)/gitignore ~/.gitignore
+	ln -sf $(PWD)/iex.exs ~/.iex.exs
+	ln -sf $(PWD)/irbrc ~/.irbrc
+	ln -sf $(PWD)/irbrc ~/.sshrc.d/irbrc
+	ln -sf $(PWD)/kitty.conf ~/.config/kitty/kitty.conf
+	ln -sf $(PWD)/pryrc ~/.pryrc
+	ln -sf $(PWD)/rubocop.yml ~/.rubocop.yml
+	ln -sf $(PWD)/sshrc ~/.sshrc
+	ln -sf $(PWD)/tern-project ~/.tern-project
+	ln -sf $(PWD)/vimrc ~/.config/nvim/init.vim
+	ln -sf $(PWD)/vimrc ~/.sshrc.d/vimrc
+	ln -sf $(PWD)/vimrc ~/.vimrc
+	ln -sf $(PWD)/vimrc.plugins ~/.vimrc.plugins
+	ln -sf $(PWD)/zshenv ~/.zshenv
+	ln -sf $(PWD)/zshrc ~/.zshrc
+	ln -sf $(BACKUP_PATH)/karabiner.json ~/.config/karabiner/karabiner.json
+	ln -sf $(BACKUP_PATH)/espanso.yml ~/Library/Application\ Support/espanso/match/base.yml
+	git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
 
 configure_backups:
-	make play PLAYBOOK=ansible/configure_backups.yml OPTIONS=--ask-become-pass
-
-play:
-	ansible-playbook $(PLAYBOOK) -i ansible/local -vv -e curdir=$(CURDIR) $(OPTIONS)
+	(crontab -l ; echo "0 * * * * cp ~/.zsh_history $(BACKUP_PATH)/zsh_history") | sort - | uniq - | crontab -

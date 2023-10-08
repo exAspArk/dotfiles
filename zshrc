@@ -1,13 +1,9 @@
+clear # Remove "Last login: ..." message
+
 export PATH=./bin
+export PATH=$PATH:/run/current-system/sw/bin # nix-darwin
 export PATH=$PATH:/opt/homebrew/bin
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
-export PATH="$(yarn global bin):$PATH"
-export PATH="/opt/homebrew/opt/mysql-client@5.7/bin:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 ################################################################################
 
@@ -30,9 +26,7 @@ title_pwd() { echo -ne "\033]0;${PWD##*/}\007" }
 
 # after cd hook
 chpwd() {
-  # Show current directory for a terminal tab title
-  # Show contents of directory
-  # Asynchronously
+  # Show current directory for a terminal tab title asynchronously
   (title_pwd &)
 }
 
@@ -47,7 +41,7 @@ sync_zsh_history() {
 # ON LOAD: ####################################################################
 
 chpwd # emulate cd action
-(sync_zsh_history &)
+# (sync_zsh_history &)
 
 # #############################################################################
 
@@ -57,15 +51,13 @@ bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
 
 # kubectl
-source <(kubectl completion zsh)
-
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/exaspark/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+# source <(kubectl completion zsh)
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --ignore-case --no-ignore --strip-cwd-prefix \
 --exclude .git \
+--exclude .devbox \
 --exclude .next \
 --exclude .deliver \
 --exclude _build \
@@ -83,4 +75,6 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
   --color=info:#4271ae,prompt:#c18401,pointer:#e45649
   --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
 
-export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
+# pnpm
+export PNPM_HOME="~/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"

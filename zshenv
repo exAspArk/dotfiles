@@ -1,9 +1,7 @@
 export PATH=./bin
+export PATH=$PATH:/run/current-system/sw/bin # nix-darwin
 export PATH=$PATH:/opt/homebrew/bin
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 export ZSH=$HOME/.oh-my-zsh # Path to your oh-my-zsh installation.
 
@@ -21,10 +19,7 @@ unset config_file
 
 export ERL_AFLAGS="-kernel shell_history enabled" # iex history for Elixir
 
-export BACKUP_PATH=~/Library/CloudStorage/Dropbox/_backups
-export PROJECT_PATH=~/Documents/projects
+export BACKUP_PATH=~/Dropbox/_Backups
+export PROJECT_PATH=~/Documents/Code
 
-# zlib for asdf python installation
-# export LDFLAGS="-L/usr/local/opt/zlib/lib"
-# export CPPFLAGS="-I/usr/local/opt/zlib/include"
-# export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1

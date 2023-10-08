@@ -265,6 +265,9 @@ nnoremap <A-[> :bp<CR>
 noremap <A-s> <esc>:w<CR>
 inoremap <A-s> <esc>:w<CR>
 
+" Copy error message to clipboard
+nnoremap <Leader>e :let @+ = v:statusmsg<CR>
+
 " save file and exit
 nnoremap <Leader>wq :wq<CR>
 
