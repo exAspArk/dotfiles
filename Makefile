@@ -70,6 +70,7 @@ configure_dotfiles:
 	ln -sf $(PWD)/coc-package.json ~/.config/coc/extensions/package.json
 	ln -sf $(PWD)/coc-settings.json ~/.config/nvim/coc-settings.json
 	ln -sf $(PWD)/ctags ~/.ctags
+	ln -sf $(PWD)/npmrc ~/.npmrc
 	ln -sf $(PWD)/gemrc ~/.gemrc
 	ln -sf $(PWD)/gitconfig ~/.gitconfig
 	ln -sf $(PWD)/gitignore ~/.gitignore

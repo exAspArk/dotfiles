@@ -1,6 +1,7 @@
 clear # Remove "Last login: ..." message
 
 export PATH=./bin
+export PATH="$PATH:$PNPM_HOME"
 export PATH=$PATH:/run/current-system/sw/bin # nix-darwin
 export PATH=$PATH:/opt/homebrew/bin
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
@@ -74,7 +75,3 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
   --color=fg+:#4d4d4c,bg+:#e8e8e8,hl+:#004e9c
   --color=info:#4271ae,prompt:#c18401,pointer:#e45649
   --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
-
-# pnpm
-export PNPM_HOME="~/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"

@@ -26,6 +26,7 @@
     fira-code
     sshfs
     overmind
+    darwin.trash
     # watch # gnu
 
     # Cloud

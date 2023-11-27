@@ -40,7 +40,6 @@ alias c="cat"
 alias l="ls -al"
 alias mkdir="mkdir -p"
 alias perm='stat -f "%OLp"'
-alias p='ps auxfww'
 alias m='make'
 alias tl='tail'
 alias tf='tail -f'
@@ -51,6 +50,7 @@ alias pbp='pbpaste'
 alias hist="history | awk '{a[\$2]++}END{for(i in a){print a[i] \" \" i}}' | sort -rn | head"
 alias tree="find . -print | sed -e 's;[^/]*/;|__;g;s;__|; |;g'"
 
+alias p='pnpm'
 alias y='yarn'
 alias mi='iex -S mix'
 alias k='kubectl'
