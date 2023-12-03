@@ -27,11 +27,15 @@
     sshfs
     overmind
     darwin.trash
-    # watch # gnu
+    bore-cli # ngrok alternative
+    unixtools.watch
 
     # Cloud
     localstack
-    # awscli
+    awscli2
+    argocd
+    kubernetes-helm
+    kubeseal
     # stern # kube logs
     # sops
 

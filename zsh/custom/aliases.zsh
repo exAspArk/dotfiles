@@ -53,7 +53,24 @@ alias tree="find . -print | sed -e 's;[^/]*/;|__;g;s;__|; |;g'"
 alias p='pnpm'
 alias y='yarn'
 alias mi='iex -S mix'
+
 alias k='kubectl'
+alias kg='kubectl get'
+alias kd='kubectl describe'
+alias kdel='kubectl delete'
+alias ke='kubectl edit'
+alias kl='kubectl logs'
+alias kt='kubectl top'
+alias kga="kubectl get \$(kubectl api-resources --namespaced=true --no-headers -o name | egrep -v 'events|nodes' | paste -s -d, - ) --no-headers"
+kn () {
+  if [ -z "$1" ]; then
+    kubectl get namespaces
+    echo ""
+    kubectl config view --minify -o jsonpath='{..namespace}'
+  else
+    kubectl config set-context --current --namespace=$1
+  fi
+}
 
 alias ttr='gem ctags >/dev/null && fd --type file --extension rb --print0 | xargs -0 ripper-tags --extra=q -R -a -f tags_tmp && mv tags_tmp tags'
 alias ttj='fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 | xargs -0 ctags -R -a -f tags_tmp && mv tags_tmp tags'
