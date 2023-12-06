@@ -59,16 +59,35 @@ alias kg='kubectl get'
 alias kd='kubectl describe'
 alias kdel='kubectl delete'
 alias ke='kubectl edit'
+kex() { kubectl exec -it $1 -- bash }
 alias kl='kubectl logs'
 alias kt='kubectl top'
 alias kga="kubectl get \$(kubectl api-resources --namespaced=true --no-headers -o name | egrep -v 'events|nodes' | paste -s -d, - ) --no-headers"
-kn () {
+kn() {
   if [ -z "$1" ]; then
     kubectl get namespaces
     echo ""
     kubectl config view --minify -o jsonpath='{..namespace}'
   else
     kubectl config set-context --current --namespace=$1
+  fi
+}
+ksealed() {
+  kubectl get secret $1 -o json | jq '.data | map_values(@base64d)'
+}
+kseal() { # kseal my-secret KEY1=val1 KEY2=val2
+  secret_name="$1"
+  shift
+
+  keyvals=""
+  for keyval in "$@"; do
+    keyvals="$keyvals --from-literal=$keyval"
+  done
+
+  if test -f sealed-secret.yaml; then
+    eval "kubectl create secret generic $secret_name --dry-run=client $keyvals -o yaml | kubeseal --format yaml --merge-into sealed-secret.yaml"
+  else
+    eval "kubectl create secret generic $secret_name --dry-run=client $keyvals -o yaml | kubeseal --format yaml > sealed-secret.yaml"
   fi
 }
 
@@ -189,6 +208,14 @@ ghb() {
 vcompress() { ffmpeg -i $1 -vcodec libx264 -crf 24 -vf scale=$2 output.mp4 }
 # vspeedup video.mp4 1.10
 vspeedup () { ffmpeg -i $1 -vf "setpts=(PTS-STARTPTS)/$2" -af atempo=$2 "output-${2}x.mp4" }
+# vconcat
+vconcat() {
+  [ -e _concat-list.txt ] && rm _concat-list.txt
+  for f in *.mov; do
+    echo "file $f" >> _concat-list.txt
+  done
+  ffmpeg -f concat -i _concat-list.txt -c copy out.mov && rm _concat-list.txt
+}
 
 alias ninstall='darwin-rebuild switch'
 alias nupgrade='nix-channel --update && nix-env --upgrade'
