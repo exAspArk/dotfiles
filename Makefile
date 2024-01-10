@@ -88,8 +88,9 @@ configure_dotfiles:
 	ln -sf $(PWD)/vimrc.plugins ~/.vimrc.plugins
 	ln -sf $(PWD)/zshenv ~/.zshenv
 	ln -sf $(PWD)/zshrc ~/.zshrc
+	ln -sf $(PWD)/espanso/kitty.yml ~/Library/Application\ Support/espanso/config/kitty.yml
+	ln -sf $(BACKUP_PATH)/espanso-matches.yml ~/Library/Application\ Support/espanso/match/base.yml
 	ln -sf $(BACKUP_PATH)/karabiner.json ~/.config/karabiner/karabiner.json
-	ln -sf $(BACKUP_PATH)/espanso.yml ~/Library/Application\ Support/espanso/match/base.yml
 	git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
 
 configure_backups:
