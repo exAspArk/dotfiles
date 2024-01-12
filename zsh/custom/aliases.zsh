@@ -61,7 +61,9 @@ alias kdel='kubectl delete'
 alias ke='kubectl edit'
 kex() { kubectl exec -it $1 -- bash }
 alias kl='kubectl logs'
+alias klf='kubectl logs -f'
 alias kt='kubectl top'
+alias kpf='kubectl port-forward'
 alias kga="kubectl get \$(kubectl api-resources --namespaced=true --no-headers -o name | egrep -v 'events|nodes' | paste -s -d, - ) --no-headers"
 kn() {
   if [ -z "$1" ]; then

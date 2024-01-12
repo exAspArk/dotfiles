@@ -19,7 +19,7 @@ install_gui_apps:
 	brew install --cask betterdisplay # fix macOS Ventura display scale bug with HiDPI
 	brew install --cask docker
 	brew install --cask gpg-suite
-	brew install --cask insomnia
+	brew install --cask bruno # UI API client
 	brew install --cask karabiner-elements
 	brew install --cask licecap # record gifs from screen
 	brew install --cask ngrok
