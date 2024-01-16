@@ -31,9 +31,11 @@ install_gui_apps:
 	brew install --cask tableplus # sql GUI vs psequel
 	brew install --cask the-unarchiver
 	brew install --cask zoom
+	brew install --cask loom
 	brew install --cask espanso
 	brew install --cask slack
 	brew install --cask discord
+	brew install --cask figma
 	# brew install --cask paragon-ntfs
 	mas install 'Elmedia Video Player'
 	mas install Flycut

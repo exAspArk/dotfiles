@@ -63,7 +63,9 @@ kex() { kubectl exec -it $1 -- bash }
 alias kl='kubectl logs'
 alias klf='kubectl logs -f'
 alias kt='kubectl top'
-alias kpf='kubectl port-forward'
+alias kp='kubectl port-forward'
+kpp() { kubectl port-forward $1 5440:5432 } # 5440 locally
+alias kr='kubectl rollout restart deployment'
 alias kga="kubectl get \$(kubectl api-resources --namespaced=true --no-headers -o name | egrep -v 'events|nodes' | paste -s -d, - ) --no-headers"
 kn() {
   if [ -z "$1" ]; then
