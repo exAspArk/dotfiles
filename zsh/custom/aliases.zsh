@@ -207,6 +207,8 @@ ghb() {
   local LINE_PATH=$(echo $1 | sed 's/:/#L/')
   open "https://github.com/${REPO_PATH}/blame/${MAIN_BRANCH}/${LINE_PATH}"
 }
+# gdiff <file1> <file2>
+alias gdiff='git diff --color-words --no-index'
 
 # vcompress video.mp4 1280:720
 vcompress() { ffmpeg -i $1 -vcodec libx264 -crf 24 -vf scale=$2 output.mp4 }

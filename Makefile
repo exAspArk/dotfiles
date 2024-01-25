@@ -46,7 +46,7 @@ install_gui_apps:
 	mas install WhatsApp
 	mas install Xcode
 	mas install Moom # paid
-	mas install LocalSend # paid
+	mas install LocalSend
 
 configure_dotfiles:
 	sudo rm -rf /etc/zprofile
@@ -79,7 +79,8 @@ configure_dotfiles:
 	ln -sf $(PWD)/iex.exs ~/.iex.exs
 	ln -sf $(PWD)/irbrc ~/.irbrc
 	ln -sf $(PWD)/irbrc ~/.sshrc.d/irbrc
-	ln -sf $(PWD)/kitty.conf ~/.config/kitty/kitty.conf
+	ln -sf $(PWD)/kitty/kitty.conf ~/.config/kitty/kitty.conf
+	ln -sf $(PWD)/kitty/vi-mode.lua ~/.config/kitty/vi-mode.lua
 	ln -sf $(PWD)/pryrc ~/.pryrc
 	ln -sf $(PWD)/rubocop.yml ~/.rubocop.yml
 	ln -sf $(PWD)/sshrc ~/.sshrc
