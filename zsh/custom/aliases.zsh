@@ -27,6 +27,7 @@ src() {
 }
 
 alias s="sshrc"
+alias sk="kitty +kitten ssh" # will create ~/.terminfo on the remote server to fix "top" and other terminal issues
 
 if command -v nvim &> /dev/null; then
   alias v='nvim'
@@ -56,10 +57,13 @@ alias mi='iex -S mix'
 
 alias k='kubectl'
 alias kg='kubectl get'
+alias kgp='kubectl get pods'
+alias kgn='kubectl get nodes -o custom-columns=NODE:.metadata.name,ARCH:.status.nodeInfo.architecture && kubectl get pod -o custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces | sort'
 alias kd='kubectl describe'
+alias kdp='kubectl describe pod'
 alias kdel='kubectl delete'
 alias ke='kubectl edit'
-kex() { kubectl exec -it $1 -- bash }
+kex() { kubectl exec -it $1 -- bash || (echo "No bash, switching to sh" && kubectl exec -it $1 -- sh) }
 alias kl='kubectl logs'
 alias klf='kubectl logs -f'
 alias kt='kubectl top'

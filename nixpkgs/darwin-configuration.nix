@@ -36,6 +36,7 @@
     argocd
     kubernetes-helm
     kubeseal
+    eksctl
     # stern # kube logs
     # sops
 
