@@ -18,6 +18,7 @@ plugins=(z)
 
 DISABLE_AUTO_UPDATE=true
 source $ZSH/oh-my-zsh.sh
+source $BACKUP_PATH/zsh_aliases
 
 # Custom title for a terminal tab
 export DISABLE_AUTO_TITLE="true"

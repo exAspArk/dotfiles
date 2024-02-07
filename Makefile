@@ -80,7 +80,6 @@ configure_dotfiles:
 	ln -sf $(PWD)/irbrc ~/.irbrc
 	ln -sf $(PWD)/irbrc ~/.sshrc.d/irbrc
 	ln -sf $(PWD)/kitty/kitty.conf ~/.config/kitty/kitty.conf
-	ln -sf $(PWD)/kitty/vi-mode.lua ~/.config/kitty/vi-mode.lua
 	ln -sf $(PWD)/pryrc ~/.pryrc
 	ln -sf $(PWD)/rubocop.yml ~/.rubocop.yml
 	ln -sf $(PWD)/sshrc ~/.sshrc

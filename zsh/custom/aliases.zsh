@@ -35,7 +35,7 @@ else
   alias v='vim'
 fi
 
-alias t="ZSH_TERM=1 v -c ':e term://zsh'"
+alias t="VIM_TERM=1 v -c ':e term://zsh'"
 
 alias c="cat"
 alias l="ls -al"
@@ -63,7 +63,7 @@ alias kd='kubectl describe'
 alias kdp='kubectl describe pod'
 alias kdel='kubectl delete'
 alias ke='kubectl edit'
-kex() { kubectl exec -it $1 -- bash || (echo "No bash, switching to sh" && kubectl exec -it $1 -- sh) }
+kex() { kubectl exec -it $1 -- bash }
 alias kl='kubectl logs'
 alias klf='kubectl logs -f'
 alias kt='kubectl top'
