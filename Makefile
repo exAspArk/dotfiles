@@ -2,6 +2,7 @@ install_cli_apps:
 	brew tap "codebreakdown/homebrew-oss" && brew install codebreakdown/oss/alt # https://github.com/uptech/alt
 	brew install stats # internet speed and usage https://github.com/exelban/stats
 	brew install libyaml # for 'psych' gem
+	brew install libpq # for 'pg' gem
 	curl https://raw.githubusercontent.com/exAspArk/sshrc/master/sshrc -o ~/Downloads/sshrc && chmod +x ~/Downloads/sshrc && sudo mkdir -p /usr/local/bin && sudo mv ~/Downloads/sshrc /usr/local/bin/sshrc
 	ln -sf $(PWD)/nixpkgs/darwin-configuration.nix ~/.nixpkgs/darwin-configuration.nix
 	darwin-rebuild switch
@@ -36,6 +37,7 @@ install_gui_apps:
 	brew install --cask slack
 	brew install --cask discord
 	brew install --cask figma
+	brew install --cask cyberduck
 	# brew install --cask paragon-ntfs
 	mas install 'Elmedia Video Player'
 	mas install Flycut

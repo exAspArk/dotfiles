@@ -1,7 +1,51 @@
+# Standard #############################################################################################################
+
+alias c="cat"
+alias l="ls -al"
+alias mkdir="mkdir -p"
+alias perm='stat -f "%OLp"'
+alias m='make'
+alias tl='tail'
+alias tf='tail -f'
+alias ports='lsof -i -n -P'
+alias ':q'='exit'
+alias pbc='pbcopy'
+alias pbp='pbpaste'
+alias hist="history | awk '{a[\$2]++}END{for(i in a){print a[i] \" \" i}}' | sort -rn | head"
+alias tree="find . -print | sed -e 's;[^/]*/;|__;g;s;__|; |;g'"
+
+# Nix ##################################################################################################################
+
+alias ninstall='darwin-rebuild switch'
+alias nupgrade='nix-channel --update && nix-env --upgrade'
+alias nsearch='nix-env -qaP'
+nuninstall() { nix-env --uninstall $1 && nix-collect-garbage }
+
+# SSH ##################################################################################################################
+
+alias s="sshrc"
+alias sk="kitty +kitten ssh" # will create ~/.terminfo on the remote server to fix "top" and other terminal issues
+
+# Vim ##################################################################################################################
+
+if command -v nvim &> /dev/null; then
+  alias v='nvim'
+else
+  alias v='vim'
+fi
+alias t="VIM_TERM=1 v -c ':e term://zsh'"
+
+# Ctags ################################################################################################################
+
+alias ttr='gem ctags >/dev/null && fd --type file --extension rb --print0 | xargs -0 ripper-tags --extra=q -R -a -f tags_tmp && mv tags_tmp tags'
+alias ttj='fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 | xargs -0 ctags -R -a -f tags_tmp && mv tags_tmp tags'
+alias tte='fd --type file --extension ex --extension exs --print0 | xargs -0 ctags -R -a -f tags_tmp && mv tags_tmp tags'
+
+# Ruby #################################################################################################################
+
 alias be='bundle exec'
 alias bo="bundle open"
 alias b='bundle'
-
 alias srs='bundle exec spring rails s'
 alias ss='bundle exec spring stop'
 sr() {
@@ -26,34 +70,16 @@ src() {
   fi
 }
 
-alias s="sshrc"
-alias sk="kitty +kitten ssh" # will create ~/.terminfo on the remote server to fix "top" and other terminal issues
-
-if command -v nvim &> /dev/null; then
-  alias v='nvim'
-else
-  alias v='vim'
-fi
-
-alias t="VIM_TERM=1 v -c ':e term://zsh'"
-
-alias c="cat"
-alias l="ls -al"
-alias mkdir="mkdir -p"
-alias perm='stat -f "%OLp"'
-alias m='make'
-alias tl='tail'
-alias tf='tail -f'
-alias ports='lsof -i -n -P'
-alias ':q'='exit'
-alias pbc='pbcopy'
-alias pbp='pbpaste'
-alias hist="history | awk '{a[\$2]++}END{for(i in a){print a[i] \" \" i}}' | sort -rn | head"
-alias tree="find . -print | sed -e 's;[^/]*/;|__;g;s;__|; |;g'"
+# JS ###################################################################################################################
 
 alias p='pnpm'
 alias y='yarn'
+
+# Elixir ###############################################################################################################
+#
 alias mi='iex -S mix'
+
+# Kubernetes ###########################################################################################################
 
 alias k='kubectl'
 alias kg='kubectl get'
@@ -64,11 +90,11 @@ alias kdp='kubectl describe pod'
 alias kdel='kubectl delete'
 alias ke='kubectl edit'
 kex() { kubectl exec -it $1 -- bash }
+kexsh() { kubectl exec -it $1 -- sh }
 alias kl='kubectl logs'
 alias klf='kubectl logs -f'
 alias kt='kubectl top'
 alias kp='kubectl port-forward'
-kpp() { kubectl port-forward $1 5440:5432 } # 5440 locally
 alias kr='kubectl rollout restart deployment'
 alias kga="kubectl get \$(kubectl api-resources --namespaced=true --no-headers -o name | egrep -v 'events|nodes' | paste -s -d, - ) --no-headers"
 kn() {
@@ -99,9 +125,7 @@ kseal() { # kseal my-secret KEY1=val1 KEY2=val2
   fi
 }
 
-alias ttr='gem ctags >/dev/null && fd --type file --extension rb --print0 | xargs -0 ripper-tags --extra=q -R -a -f tags_tmp && mv tags_tmp tags'
-alias ttj='fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 | xargs -0 ctags -R -a -f tags_tmp && mv tags_tmp tags'
-alias tte='fd --type file --extension ex --extension exs --print0 | xargs -0 ctags -R -a -f tags_tmp && mv tags_tmp tags'
+# Git ##################################################################################################################
 
 if [ -n "$ZSH_VERSION" ]; then alias git='nocorrect git'; fi
 alias g='git'
@@ -186,6 +210,10 @@ alias gsc='git rev-parse HEAD && git rev-parse HEAD | pbcopy' # copy current com
 alias gstats='git shortlog -sn --no-merges'
 # lines count
 alias glstats='git ls-files -z | xargs -0n1 git blame -w --line-porcelain | grep -a "^author " | sort -f | uniq -c | sort -n -r'
+# gdiff <file1> <file2>
+alias gdiff='git diff --color-words --no-index'
+
+# GitHub ###############################################################################################################
 
 alias ghp='gh pr view --web'
 alias ghr='gh repo view --web'
@@ -211,8 +239,8 @@ ghb() {
   local LINE_PATH=$(echo $1 | sed 's/:/#L/')
   open "https://github.com/${REPO_PATH}/blame/${MAIN_BRANCH}/${LINE_PATH}"
 }
-# gdiff <file1> <file2>
-alias gdiff='git diff --color-words --no-index'
+
+# Ffmpeg ###############################################################################################################
 
 # vcompress video.mp4 1280:720
 vcompress() { ffmpeg -i $1 -vcodec libx264 -crf 24 -vf scale=$2 output.mp4 }
@@ -226,8 +254,3 @@ vconcat() {
   done
   ffmpeg -f concat -i _concat-list.txt -c copy out.mov && rm _concat-list.txt
 }
-
-alias ninstall='darwin-rebuild switch'
-alias nupgrade='nix-channel --update && nix-env --upgrade'
-alias nsearch='nix-env -qaP'
-nuninstall() { nix-env --uninstall $1 && nix-collect-garbage }
