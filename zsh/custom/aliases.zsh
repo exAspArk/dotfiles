@@ -13,13 +13,18 @@ alias pbc='pbcopy'
 alias pbp='pbpaste'
 alias hist="history | awk '{a[\$2]++}END{for(i in a){print a[i] \" \" i}}' | sort -rn | head"
 alias tree="find . -print | sed -e 's;[^/]*/;|__;g;s;__|; |;g'"
+alias ip="dscacheutil -q host -a name"
+alias ns='scutil --dns | grep nameserver | sort -u'
+
 
 # Nix ##################################################################################################################
 
 alias ninstall='darwin-rebuild switch'
 alias nupgrade='nix-channel --update && nix-env --upgrade'
 alias nsearch='nix-env -qaP'
-nuninstall() { nix-env --uninstall $1 && nix-collect-garbage }
+nuninstall() {
+  nix-env --uninstall $1 && nix-collect-garbage
+}
 
 # SSH ##################################################################################################################
 
@@ -83,21 +88,38 @@ alias mi='iex -S mix'
 
 alias k='kubectl'
 alias kg='kubectl get'
-alias kgp='kubectl get pods'
+kgp() { # kgp namespace-name
+  if [ -z "$1" ]; then
+    kubectl get pods | grep -v Completed
+  else
+    kubectl get pods -n $1 | grep -v Completed
+  fi
+}
+alias kgpw="watch -n 1 'kubectl get pod'"
+alias kgpa='kubectl get pods -A'
 alias kgn='kubectl get nodes -o custom-columns=NODE:.metadata.name,ARCH:.status.nodeInfo.architecture && kubectl get pod -o custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces | sort'
 alias kd='kubectl describe'
 alias kdp='kubectl describe pod'
 alias kdel='kubectl delete'
 alias ke='kubectl edit'
-kex() { kubectl exec -it $1 -- bash }
-kexsh() { kubectl exec -it $1 -- sh }
+kex() { # kex pod-name container-name
+  if [ -z "$2" ]; then
+    kubectl exec -it $1 -- bash
+  else
+    kubectl exec -it $1 -c $2 -- bash
+  fi
+}
+kexsh() {
+  kubectl exec -it $1 -- sh
+}
 alias kl='kubectl logs'
 alias klf='kubectl logs -f'
 alias kt='kubectl top'
 alias kp='kubectl port-forward'
 alias kr='kubectl rollout restart deployment'
+alias kk='kubectl kustomize'
 alias kga="kubectl get \$(kubectl api-resources --namespaced=true --no-headers -o name | egrep -v 'events|nodes' | paste -s -d, - ) --no-headers"
-kn() {
+kn() { # kn namespace-name
   if [ -z "$1" ]; then
     kubectl get namespaces
     echo ""
@@ -109,9 +131,16 @@ kn() {
 ksealed() {
   kubectl get secret $1 -o json | jq '.data | map_values(@base64d)'
 }
-kseal() { # kseal my-secret KEY1=val1 KEY2=val2
+kseal() { # kseal my-secret KEY1=val1 KEY2=val2 or kseal my-secret.yaml
   secret_name="$1"
   shift
+
+  # If secret_name ends with .yaml
+  if [[ $secret_name == *.yaml ]]; then
+    cat $secret_name | kubeseal --format yaml > sealed-secret.temp.yaml
+    mv sealed-secret.temp.yaml $secret_name
+    return
+  fi
 
   keyvals=""
   for keyval in "$@"; do
@@ -191,7 +220,9 @@ glog() {
     --format=format:"$FORMAT" \
     --date=iso
 }
-gdm() { git diff $1^..$1 }
+gdm() {
+  git diff $1^..$1
+}
 alias gclog="git log --no-merges --pretty=format:'%s (%an)'"
 alias ggrep="git log --grep"
 alias grs='git reset'
@@ -199,7 +230,9 @@ alias grsh='git reset --hard'
 alias grss='git reset --soft HEAD~'
 alias gres='git restore'
 alias gress='git restore --staged'
-greS() { git restore --staged $1 && git restore $1 }
+greS() {
+  git restore --staged $1 && git restore $1
+}
 alias grv='git revert'
 alias gsh='git stash'
 alias gshp='git stash pop'
@@ -243,9 +276,13 @@ ghb() {
 # Ffmpeg ###############################################################################################################
 
 # vcompress video.mp4 1280:720
-vcompress() { ffmpeg -i $1 -vcodec libx264 -crf 24 -vf scale=$2 output.mp4 }
+vcompress() {
+  ffmpeg -i $1 -vcodec libx264 -crf 24 -vf scale=$2 output.mp4
+}
 # vspeedup video.mp4 1.10
-vspeedup () { ffmpeg -i $1 -vf "setpts=(PTS-STARTPTS)/$2" -af atempo=$2 "output-${2}x.mp4" }
+vspeedup () {
+  ffmpeg -i $1 -vf "setpts=(PTS-STARTPTS)/$2" -af atempo=$2 "output-${2}x.mp4"
+}
 # vconcat
 vconcat() {
   [ -e _concat-list.txt ] && rm _concat-list.txt

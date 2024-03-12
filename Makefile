@@ -49,6 +49,7 @@ install_gui_apps:
 	mas install Xcode
 	mas install Moom # paid
 	mas install LocalSend
+	mas install WireGuard
 
 configure_dotfiles:
 	sudo rm -rf /etc/zprofile
