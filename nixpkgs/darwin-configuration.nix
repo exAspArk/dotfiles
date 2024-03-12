@@ -37,6 +37,7 @@
     kubernetes-helm
     kubeseal
     eksctl
+    wireguard-tools # VPN
     # stern # kube logs
     # sops
 
