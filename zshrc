@@ -40,20 +40,23 @@ sync_zsh_history() {
   fi
 }
 
-# ON LOAD: ####################################################################
+# ON LOAD: #####################################################################
 
 chpwd # emulate cd action
 # (sync_zsh_history &)
 
-# #############################################################################
+# Plugins ######################################################################
 
 # load zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
 
+# load zsh-syntax-highlighting for cli
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # kubectl
-# source <(kubectl completion zsh)
+source <(kubectl completion zsh)
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

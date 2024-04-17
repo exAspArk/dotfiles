@@ -38,6 +38,7 @@
     kubeseal
     eksctl
     wireguard-tools # VPN
+    kubectl-cnpg # CloudNativePG
     # stern # kube logs
     # sops
 

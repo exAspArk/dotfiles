@@ -88,33 +88,40 @@ alias mi='iex -S mix'
 
 alias k='kubectl'
 alias kg='kubectl get'
-kgp() { # kgp namespace-name
-  if [ -z "$1" ]; then
-    kubectl get pods | grep -v Completed
-  else
-    kubectl get pods -n $1 | grep -v Completed
-  fi
+alias kgp='kubectl get pods'
+kgpw() {
+  watch -n 1 "kubectl get pod $@"
 }
-alias kgpw="watch -n 1 'kubectl get pod'"
 alias kgpa='kubectl get pods -A'
-alias kgn='kubectl get nodes -o custom-columns=NODE:.metadata.name,ARCH:.status.nodeInfo.architecture && kubectl get pod -o custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces | sort'
+alias kgn='kubectl get nodes -o custom-columns=NODE:.metadata.name,"NODE GROUP:.metadata.labels.eks\.amazonaws\.com/nodegroup",ARCH:.status.nodeInfo.architecture | sort -s -k 2 && kubectl get pod -o custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces | sort'
 alias kd='kubectl describe'
 alias kdp='kubectl describe pod'
 alias kdel='kubectl delete'
 alias ke='kubectl edit'
-kex() { # kex pod-name container-name
-  if [ -z "$2" ]; then
-    kubectl exec -it $1 -- bash
-  else
-    kubectl exec -it $1 -c $2 -- bash
-  fi
+kex() {
+  kubectl exec -it $1 "${@:2}" -- bash
 }
 kexsh() {
-  kubectl exec -it $1 -- sh
+  kubectl exec -it $1 "${@:2}" -- sh
+}
+klf() {
+  kubectl logs -f $1 "${@:2}"
 }
 alias kl='kubectl logs'
-alias klf='kubectl logs -f'
 alias kt='kubectl top'
+ktn() { # prints nodes with their node groups
+  kubectl top nodes | while IFS= read -r node; do
+    # skip header
+    if [[ ! $first_line ]]; then
+      first_line=1
+      echo $node
+      continue
+    fi
+    name=$(echo $node | awk '{print $1}')
+    node_group=$(kg node $name -o custom-columns="NODE GROUP:.metadata.labels.eks\.amazonaws\.com/nodegroup" | tail +2)
+    echo "$node $node_group"
+  done
+}
 alias kp='kubectl port-forward'
 alias kr='kubectl rollout restart deployment'
 alias kk='kubectl kustomize'

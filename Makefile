@@ -96,7 +96,9 @@ configure_dotfiles:
 	ln -sf $(PWD)/espanso/kitty.yml ~/Library/Application\ Support/espanso/config/kitty.yml
 	ln -sf $(BACKUP_PATH)/espanso-matches.yml ~/Library/Application\ Support/espanso/match/base.yml
 	ln -sf $(BACKUP_PATH)/karabiner.json ~/.config/karabiner/karabiner.json
+	ln -sf $(BACKUP_PATH)/ssh/config ~/.ssh/config
 	git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 
 configure_backups:
 	(crontab -l ; echo "0 * * * * cp ~/.zsh_history $(BACKUP_PATH)/zsh_history") | sort - | uniq - | crontab -
