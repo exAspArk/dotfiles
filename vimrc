@@ -236,12 +236,18 @@ else
   set colorcolumn=121          " make it obvious where 120 characters is
   set listchars=tab:»·,trail:█ " show tabs and trailing whitespaces
   set number relativenumber    " hybrid relative number + absolute
+
   " highlight trailing whitespaces and tabs
   autocmd BufEnter,InsertLeave * setlocal list
   autocmd InsertEnter * setlocal nolist
+  "
   " don't use relative numbers in insert more
   autocmd BufEnter,FocusGained,InsertLeave * setlocal relativenumber
   autocmd BufLeave,FocusLost,InsertEnter * setlocal norelativenumber
+
+  " highlight trailing whitespaces and tabs
+  match ExtraWhitespace /\(\s\+$\|\t\)/
+  hi ExtraWhitespace ctermbg=172 guifg=#d78700
 endif
 
 " required to detect filetype
@@ -311,10 +317,6 @@ nnoremap fo za        " folding shortcut
 " coc.nvim settings:
 set cmdheight=2    " give more space for displaying messages.
 set updatetime=300 " having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
-
-" highlight trailing whitespaces and tabs
-match ExtraWhitespace /\(\s\+$\|\t\)/
-hi ExtraWhitespace ctermbg=172 guifg=#d78700
 
 " make line number brighter
 hi LineNr ctermfg=240 guifg=#585858

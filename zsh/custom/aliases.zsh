@@ -8,14 +8,25 @@ alias m='make'
 alias tl='tail'
 alias tf='tail -f'
 alias ports='lsof -i -n -P'
+port() {
+  lsof -i :$1
+}
+rport() {
+  nc -zv $1 $2
+}
+rport6() {
+  nc -zv6 $1 $2
+}
+alias ip="dscacheutil -q host -a name"
+alias ns='scutil --dns | grep nameserver | sort -u'
 alias ':q'='exit'
 alias pbc='pbcopy'
 alias pbp='pbpaste'
 alias hist="history | awk '{a[\$2]++}END{for(i in a){print a[i] \" \" i}}' | sort -rn | head"
 alias tree="find . -print | sed -e 's;[^/]*/;|__;g;s;__|; |;g'"
-alias ip="dscacheutil -q host -a name"
-alias ns='scutil --dns | grep nameserver | sort -u'
-
+b64() {
+  echo $1 | base64 --decode
+}
 
 # Nix ##################################################################################################################
 
@@ -93,10 +104,20 @@ kgpw() {
   watch -n 1 "kubectl get pod $@"
 }
 alias kgpa='kubectl get pods -A'
-alias kgn='kubectl get nodes -o custom-columns=NODE:.metadata.name,"NODE GROUP:.metadata.labels.eks\.amazonaws\.com/nodegroup",ARCH:.status.nodeInfo.architecture | sort -s -k 2 && kubectl get pod -o custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces | sort'
+alias kgn='kubectl get nodes -o custom-columns=NODE:.metadata.name,"NODE GROUP:.metadata.labels.eks\.amazonaws\.com/nodegroup",ARCH:.status.nodeInfo.architecture | sort -s -k 2'
+kgnp() { # kgnp [node-pattern]
+  if [ -z "$1" ]; then
+    kubectl get pod -o custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces
+  else
+    kubectl get pod -o custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces | grep $1
+  fi
+}
 alias kd='kubectl describe'
 alias kdp='kubectl describe pod'
 alias kdel='kubectl delete'
+kdela () { # kdela [resource] [pattern]
+  kubectl get $1 | grep $2 | awk '{print $1}' | xargs -I % echo "echo % && kubectl delete $1 %" | sh
+}
 alias ke='kubectl edit'
 kex() {
   kubectl exec -it $1 "${@:2}" -- bash
@@ -109,6 +130,7 @@ klf() {
 }
 alias kl='kubectl logs'
 alias kt='kubectl top'
+alias ktp='kubectl top pods'
 ktn() { # prints nodes with their node groups
   kubectl top nodes | while IFS= read -r node; do
     # skip header
@@ -124,6 +146,9 @@ ktn() { # prints nodes with their node groups
 }
 alias kp='kubectl port-forward'
 alias kr='kubectl rollout restart deployment'
+kra() { # kra [resource] [pattern]
+  kubectl get $1 | grep $2 | awk '{print $1}' | xargs -I % echo "sleep 2 && echo % && kubectl rollout restart $1 %" | sh
+}
 alias kk='kubectl kustomize'
 alias kga="kubectl get \$(kubectl api-resources --namespaced=true --no-headers -o name | egrep -v 'events|nodes' | paste -s -d, - ) --no-headers"
 kn() { # kn namespace-name
@@ -133,6 +158,13 @@ kn() { # kn namespace-name
     kubectl config view --minify -o jsonpath='{..namespace}'
   else
     kubectl config set-context --current --namespace=$1
+  fi
+}
+kc() { # kc context-name
+  if [ -z "$1" ]; then
+    kubectl config get-contexts
+  else
+    kubectl config use-context $1
   fi
 }
 ksealed() {
@@ -297,4 +329,8 @@ vconcat() {
     echo "file $f" >> _concat-list.txt
   done
   ffmpeg -f concat -i _concat-list.txt -c copy out.mov && rm _concat-list.txt
+}
+# vmp4 input.webm
+vmp4() {
+  ffmpeg -fflags +genpts -i $2 -r 24 output.mp4
 }
