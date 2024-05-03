@@ -29,6 +29,7 @@
     darwin.trash
     bore-cli # ngrok alternative for tunnels
     unixtools.watch
+    socat
 
     # Cloud
     localstack
@@ -45,6 +46,7 @@
     # Languages
     python311Full
     python311Packages.pip
+    python311Packages.virtualenv
     ruby_3_2
     nodejs_20
     nodePackages_latest.pnpm
