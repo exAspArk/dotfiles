@@ -45,6 +45,9 @@ Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript'] }
 " elixir
 Plug 'elixir-lang/vim-elixir', { 'for': ['elixir', 'eelixir'] }
 
+" terraform
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+
 " syntaxes and languages
 Plug 'valloric/MatchTagAlways', { 'for': ['xml', 'html', 'eruby', 'eelixir', 'javascriptreact', 'typescriptreact'] } " highlight matching tags
 Plug 'shime/vim-livedown', { 'for': 'markdown' }        " real time markdown editing
@@ -173,6 +176,7 @@ highlight MatchTag ctermbg=240 guifg=#585858
 let g:mta_filetypes = {'html' : 1, 'eruby': 1, 'javascriptreact': 1, 'typescriptreact': 1}
 
 " don't run linters on opening a file
+" https://github.com/dense-analysis/ale/blob/master/supported-tools.md
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_insert_leave = 1
@@ -180,6 +184,8 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_virtualtext_cursor = 'disable'
 let g:ale_linters = {
 \ 'ruby': ['rubocop', 'sorbet'],
+\ 'typescript': ['eslint'],
+\ 'typescriptreact': ['eslint'],
 \ 'javascript': ['eslint'],
 \ }
 let g:ale_fixers = {

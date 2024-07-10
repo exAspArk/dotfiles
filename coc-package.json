@@ -2,6 +2,7 @@
   "dependencies": {
     "coc-elixir": ">=0.7",
     "coc-solargraph": ">=1.2",
-    "coc-tsserver": ">=1.8"
+    "coc-tsserver": ">=1.8",
+    "@yaegassy/coc-pylsp": ">=0.10.9"
   }
 }

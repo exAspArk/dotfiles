@@ -30,7 +30,7 @@ b64() {
 
 # Nix ##################################################################################################################
 
-alias ninstall='darwin-rebuild switch'
+alias ninstall='NIXPKGS_ALLOW_UNFREE=1 darwin-rebuild switch'
 alias nupgrade='nix-channel --update && nix-env --upgrade'
 alias nsearch='nix-env -qaP'
 nuninstall() {
@@ -119,14 +119,21 @@ kdela () { # kdela [resource] [pattern]
   kubectl get $1 | grep $2 | awk '{print $1}' | xargs -I % echo "echo % && kubectl delete $1 %" | sh
 }
 alias ke='kubectl edit'
+alias ked='kubectl edit deployment'
 kex() {
   kubectl exec -it $1 "${@:2}" -- bash
+}
+kexd() {
+  kubectl exec -it deployment/$1 "${@:2}" -- bash
 }
 kexsh() {
   kubectl exec -it $1 "${@:2}" -- sh
 }
 klf() {
   kubectl logs -f $1 "${@:2}"
+}
+klfa() {
+  stern $1 -l app.kubernetes.io/name=$1 --init-containers false -t=short --template '{{printf "%s %s\n" .PodName .Message}}' ${@:2}
 }
 alias kl='kubectl logs'
 alias kt='kubectl top'
@@ -332,5 +339,5 @@ vconcat() {
 }
 # vmp4 input.webm
 vmp4() {
-  ffmpeg -fflags +genpts -i $2 -r 24 output.mp4
+  ffmpeg -fflags +genpts -i $1 -r 24 $1.mp4
 }

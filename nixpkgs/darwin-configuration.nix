@@ -18,6 +18,7 @@
     mas # mac app store cli
     jid
     ffmpeg_6
+    yt-dlp
     rsync
     pstree
     jq
@@ -38,15 +39,16 @@
     kubernetes-helm
     kubeseal
     eksctl
+    terraform
     wireguard-tools # VPN
     kubectl-cnpg # CloudNativePG
-    # stern # kube logs
-    # sops
+    stern # kube logs
 
     # Languages
     python311Full
     python311Packages.pip
     python311Packages.virtualenv
+    python311Packages.python-lsp-server
     ruby_3_2
     nodejs_20
     nodePackages_latest.pnpm
