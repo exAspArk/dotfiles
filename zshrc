@@ -1,7 +1,8 @@
 clear # Remove "Last login: ..." message
 
 export PATH=./bin
-export PATH="$PATH:$PNPM_HOME"
+export PATH="$PATH:$PNPM_HOME" # pnpm
+export PATH=$PATH:/nix/var/nix/profiles/default/bin # nix
 export PATH=$PATH:/run/current-system/sw/bin # nix-darwin
 export PATH=$PATH:/opt/homebrew/bin
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin

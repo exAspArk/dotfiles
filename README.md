@@ -24,8 +24,12 @@ git clone git@github.com:exAspArk/dotfiles.git
 xcode-select --install
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-sh <(curl -L https://nixos.org/nix/install)
-nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer && ./result/bin/darwin-installer && rm -rf ./result
+
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install # https://github.com/DeterminateSystems/nix-installer
+nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer && NIXPKGS_ALLOW_UNFREE=1 ./result/bin/darwin-installer && rm -rf ./result
+# If you see this error: Problem with the SSL CA cert (path? access rights?) (77)
+# sudo rm /etc/ssl/certs/ca-certificates.crt
+# sudo ln -s /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
 
 export PATH=$PATH:/opt/homebrew/bin
 make install_cli_apps
