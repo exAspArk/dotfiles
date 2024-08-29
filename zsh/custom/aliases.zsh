@@ -28,6 +28,8 @@ b64() {
   echo $1 | base64 --decode
 }
 
+alias t='trash'
+
 # Nix ##################################################################################################################
 
 alias ninstall='NIXPKGS_ALLOW_UNFREE=1 darwin-rebuild switch'
@@ -49,7 +51,6 @@ if command -v nvim &> /dev/null; then
 else
   alias v='vim'
 fi
-alias t="VIM_TERM=1 v -c ':e term://zsh'"
 
 # Ctags ################################################################################################################
 

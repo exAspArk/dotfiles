@@ -38,6 +38,7 @@ install_gui_apps:
 	brew install --cask discord
 	brew install --cask figma
 	brew install --cask cyberduck
+	brew install --cask webtorrent
 	# brew install --cask paragon-ntfs
 	mas install 'Elmedia Video Player'
 	mas install Flycut
@@ -56,24 +57,33 @@ configure_dotfiles:
 	mkdir -p ~/.bundle
 	mkdir -p ~/.zsh/custom
 	mkdir -p ~/.gnupg
-	mkdir -p ~/.sshrc.d/lua
 	mkdir -p ~/.config
 	mkdir -p ~/.config/coc/extensions
-	mkdir -p ~/.config/nvim/lua
+	mkdir -p ~/.config/nvim/lua/config
 	mkdir -p ~/.config/kitty
 	mkdir -p ~/.config/karabiner
 	mkdir -p ~/.vim/undo
 	mkdir -p ~/.vim/autoload
 	ln -sf $(PWD)/bundle/config ~/.bundle/config
 	ln -sf $(PWD)/gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
-	ln -sf $(PWD)/lua/config.lua ~/.config/nvim/lua/config.lua
-	ln -sf $(PWD)/lua/config.lua ~/.sshrc.d/lua/config.lua
+	ln -sf $(PWD)/nvim/lua/config/ale.lua ~/.config/nvim/lua/config/ale.lua
+	ln -sf $(PWD)/nvim/lua/config/bufferline.lua ~/.config/nvim/lua/config/bufferline.lua
+	ln -sf $(PWD)/nvim/lua/config/coc.lua ~/.config/nvim/lua/config/coc.lua
+	ln -sf $(PWD)/nvim/lua/config/ctrlsf.lua ~/.config/nvim/lua/config/ctrlsf.lua
+	ln -sf $(PWD)/nvim/lua/config/lazy.lua ~/.config/nvim/lua/config/lazy.lua
+	ln -sf $(PWD)/nvim/lua/config/lualine.lua ~/.config/nvim/lua/config/lualine.lua
+	ln -sf $(PWD)/nvim/lua/config/indent-blankline.lua ~/.config/nvim/lua/config/indent-blankline.lua
+	ln -sf $(PWD)/nvim/lua/config/nvim-spectre.lua ~/.config/nvim/lua/config/nvim-spectre.lua
+	ln -sf $(PWD)/nvim/lua/config/nvim-tree.lua ~/.config/nvim/lua/config/nvim-tree.lua
+	ln -sf $(PWD)/nvim/lua/config/nvim-treesitter.lua ~/.config/nvim/lua/config/nvim-treesitter.lua
+	ln -sf $(PWD)/nvim/lua/plugins.lua ~/.config/nvim/lua/plugins.lua
+	ln -sf $(PWD)/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
+	ln -sf $(PWD)/nvim/lazy-lock.json ~/.config/nvim/lazy-lock.json
 	ln -sf $(PWD)/zsh/custom/aliases.zsh ~/.sshrc.d/aliases.zsh
 	ln -sf $(PWD)/zsh/custom/aliases.zsh ~/.zsh/custom/aliases.zsh
 	ln -sf $(PWD)/zsh/themes/exaspark.zsh-theme ~/.oh-my-zsh/themes/exaspark.zsh-theme
 	ln -sf $(PWD)/asdfrc ~/.asdfrc
 	ln -sf $(PWD)/coc-package.json ~/.config/coc/extensions/package.json
-	ln -sf $(PWD)/coc-settings.json ~/.config/nvim/coc-settings.json
 	ln -sf $(PWD)/ctags ~/.ctags
 	ln -sf $(PWD)/npmrc ~/.npmrc
 	ln -sf $(PWD)/gemrc ~/.gemrc
@@ -90,7 +100,6 @@ configure_dotfiles:
 	ln -sf $(PWD)/vimrc ~/.config/nvim/init.vim
 	ln -sf $(PWD)/vimrc ~/.sshrc.d/vimrc
 	ln -sf $(PWD)/vimrc ~/.vimrc
-	ln -sf $(PWD)/vimrc.plugins ~/.vimrc.plugins
 	ln -sf $(PWD)/zshenv ~/.zshenv
 	ln -sf $(PWD)/zshrc ~/.zshrc
 	ln -sf $(PWD)/espanso/kitty.yml ~/Library/Application\ Support/espanso/config/kitty.yml

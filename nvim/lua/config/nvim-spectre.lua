@@ -1,3 +1,5 @@
+vim.opt.splitbelow = true
+
 require('spectre').setup({
   open_cmd = 'new',
   mapping={

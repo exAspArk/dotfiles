@@ -218,37 +218,37 @@ let g:terminal_color_foreground = s:fg.gui
 " =============================================================================
 
 " load plugins
-if $VIM_TERM == '1' && filereadable(expand("~/.vimrc.plugins"))
-  call plug#begin('~/.vim/plugged')
-    Plug 'terryma/vim-expand-region'
-  call plug#end()
+if has('nvim') && filereadable(expand("~/.config/nvim/lua/config/lazy.lua"))
+  lua require("config.lazy")
 
-  set laststatus=0
-  set colorcolumn=0
-  set listchars=
-  set nonumber norelativenumber
-else
-  if has('nvim') && filereadable(expand("~/.vimrc.plugins"))
-    source ~/.vimrc.plugins
-  endif
-
-  set laststatus=2             " always display the status line
-  set colorcolumn=121          " make it obvious where 120 characters is
-  set listchars=tab:»·,trail:█ " show tabs and trailing whitespaces
-  set number relativenumber    " hybrid relative number + absolute
-
-  " highlight trailing whitespaces and tabs
-  autocmd BufEnter,InsertLeave * setlocal list
-  autocmd InsertEnter * setlocal nolist
-  "
-  " don't use relative numbers in insert more
-  autocmd BufEnter,FocusGained,InsertLeave * setlocal relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter * setlocal norelativenumber
-
-  " highlight trailing whitespaces and tabs
-  match ExtraWhitespace /\(\s\+$\|\t\)/
-  hi ExtraWhitespace ctermbg=172 guifg=#d78700
+  " alternate files
+  function! AltCommand(path, vim_command)
+    let l:alternate = system("alt " . a:path)
+    if empty(l:alternate)
+      echo "No alternate file for " . a:path . " exists!"
+    else
+      exec a:vim_command . " " . l:alternate
+    endif
+  endfunction
+  nnoremap <Leader>o :call AltCommand(expand('%'), ':e')<CR>
 endif
+
+set laststatus=2             " always display the status line
+set colorcolumn=121          " make it obvious where 120 characters is
+set listchars=tab:»·,trail:█ " show tabs and trailing whitespaces
+set number relativenumber    " hybrid relative number + absolute
+
+" highlight trailing whitespaces and tabs
+autocmd BufEnter,InsertLeave * setlocal list
+autocmd InsertEnter * setlocal nolist
+"
+" don't use relative numbers in insert more
+autocmd BufEnter,FocusGained,InsertLeave * setlocal relativenumber
+autocmd BufLeave,FocusLost,InsertEnter * setlocal norelativenumber
+
+" highlight trailing whitespaces and tabs
+match ExtraWhitespace /\(\s\+$\|\t\)/
+hi ExtraWhitespace ctermbg=172 guifg=#d78700
 
 " required to detect filetype
 filetype plugin indent on
@@ -310,7 +310,7 @@ set autoread
 
 " fold method definitions
 set foldenable        " enable folding
-set foldlevelstart=20 " open most folds by default
+set foldlevel=20      " open all folds by default
 set foldmethod=indent " fold based on indent level
 nnoremap fo za        " folding shortcut
 
@@ -369,7 +369,7 @@ autocmd BufRead *.ex,*.exs,*.eex nnoremap tt :!(fd --type file --extension ex --
 
 " Insert debugger
 autocmd BufRead *.rb nnoremap <A-p> Orequire 'pry'; binding.pry<Esc>
-  \| nnoremap <Leader>d :call JumpToRubyDefinition()<CR>
+  \| nnoremap <C-]> :call JumpToRubyDefinition()<CR>
 autocmd BufRead *.js,*.jsx,*.ts,*.tsx nnoremap <A-p> Odebugger;<Esc>
 autocmd BufRead *.ex,*.exs,*.eex nnoremap <A-p> Orequire IEx; IEx.pry<Esc>
 
@@ -393,9 +393,6 @@ function! JumpToRubyDefinition()
   " Jump to ctag definition
   execute ":ltag " . word
 endfunction
-
-" jump to method or function definition with ctags
-nnoremap <Leader>d <C-]>
 
 " wrap long lines
 nnoremap wl gggqG
