@@ -1,4 +1,3 @@
 {
-  "solargraph.commandPath": "~/.asdf/shims/solargraph",
   "elixir.pathToElixirLS": "~/.config/coc/elixir-ls/release/language_server.sh"
 }

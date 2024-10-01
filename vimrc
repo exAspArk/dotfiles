@@ -332,6 +332,8 @@ autocmd BufReadPost *
 " create directory if doesn't exist before saving
 autocmd BufWritePre * if !isdirectory(expand('%:h')) | call mkdir(expand('%:h'), 'p') | endif
 
+autocmd BufWritePre *.rb,*.haml,*.coffee,*.md,*.rake,*.clj,*.js,*.jsx,*.ts,*.tsx,*.go,*.ex :%s/\s\+$//e " remove trailing whitespaces
+
 autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
 autocmd FileType ruby,eruby,yaml,elixir setlocal iskeyword=@,48-57,192-255,_      " make @,numbers,latin chars,_,? part of words
 autocmd FileType markdown setlocal wrap colorcolumn=240 shiftwidth=2              " automatically wrap for Markdown
@@ -341,31 +343,12 @@ autocmd FileType gitcommit setlocal spell                                       
 autocmd FileType css,scss,sass setlocal iskeyword+=-                              " allow stylesheets to autocomplete hyphenated words
 autocmd FileType clojure setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,=,<,>,:,$ " customize keywords
 autocmd FileType crontab setlocal nobackup nowritebackup                          " allow to edit crontab -e
-autocmd BufWritePre *.rb,*.haml,*.coffee,*.md,*.rake,*.clj,*.js,*.jsx,*.ts,*.tsx,*.sol,*.ex :%s/\s\+$//e " remove trailing whitespaces
+autocmd FileType go setlocal noexpandtab listchars=tab:\ \ ,trail:█ tabstop=4 shiftwidth=4 " go settings
 
 " Elixir syntax highlight
 autocmd BufRead,BufNewFile *.ex,*.exs set filetype=elixir
 autocmd BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
 autocmd BufRead,BufNewFile mix.lock set filetype=elixir
-
-" Rebuild ctags async on entering the insert mode for the first time
-autocmd InsertEnter *.rb if !exists('b:has_been_entered_rb')
-  \| let b:has_been_entered_rb = 1
-  \| execute ":!(cp tags tags_tmp 2>/dev/null || :) && (gem ctags >/dev/null && fd --type file --extension rb --print0 | xargs -0 ripper-tags --extra=q -R -a -f tags_tmp || :) && mv tags_tmp tags &"
-  \| endif
-autocmd InsertEnter *.js,*.jsx,*.ts,*.tsx if !exists('b:has_been_entered_js')
-  \| let b:has_been_entered_js = 1
-  \| execute ":!(cp tags tags_tmp 2>/dev/null || :) && (fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 | xargs -0 ctags -R -a -f tags_tmp || :) && mv tags_tmp tags &"
-  \| endif
-autocmd InsertEnter *.ex,*.exs,*.eex if !exists('b:has_been_entered_ex')
-  \| let b:has_been_entered_ex = 1
-  \| execute ":!(cp tags tags_tmp 2>/dev/null || :) && (fd --type file --extension ex --extension exs --print0 | xargs -0 ctags -R -a -f tags_tmp || :) && mv tags_tmp tags &"
-  \| endif
-
-" Rebuild ctags command
-autocmd BufRead *.rb nnoremap tt :!(gem ctags >/dev/null && fd --type file --extension rb --print0 \| xargs -0 ripper-tags --extra=q -R -a -f tags_tmp \|\| :) && mv tags_tmp tags &<CR>
-autocmd BufRead *.js,*.jsx,*.ts,*.tsx nnoremap tt :!(fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 \| xargs -0 ctags -R -a -f tags_tmp \|\| :) && mv tags_tmp tags &<CR>
-autocmd BufRead *.ex,*.exs,*.eex nnoremap tt :!(fd --type file --extension ex --extension exs --print0 \| xargs -0 ctags -R -a -f tags_tmp \|\| :) && mv tags_tmp tags &<CR>
 
 " Insert debugger
 autocmd BufRead *.rb nnoremap <A-p> Orequire 'pry'; binding.pry<Esc>
@@ -401,8 +384,8 @@ nnoremap wl gggqG
 nnoremap rr :so $MYVIMRC \| checktime<CR>
 
 " replace text in a project with sed
-nnoremap <Leader>re :!fd --type file --extension jsx --print0 \| xargs -0 sed -i '' 's,search,replace,g'
-nnoremap re :%s,search,replace,gc
+nnoremap <Leader>RE :!fd --type file --extension jsx --print0 \| xargs -0 sed -i '' 's,search,replace,g'
+nnoremap <Leader>re :%s,search,replace,gc
 
 " Clear current search highlight by double tapping //
 nnoremap <Esc> :noh<CR>

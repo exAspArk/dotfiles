@@ -52,12 +52,6 @@ else
   alias v='vim'
 fi
 
-# Ctags ################################################################################################################
-
-alias ttr='gem ctags >/dev/null && fd --type file --extension rb --print0 | xargs -0 ripper-tags --extra=q -R -a -f tags_tmp && mv tags_tmp tags'
-alias ttj='fd --type file --extension js --extension jsx --extension ts --extension tsx --print0 | xargs -0 ctags -R -a -f tags_tmp && mv tags_tmp tags'
-alias tte='fd --type file --extension ex --extension exs --print0 | xargs -0 ctags -R -a -f tags_tmp && mv tags_tmp tags'
-
 # Ruby #################################################################################################################
 
 alias be='bundle exec'

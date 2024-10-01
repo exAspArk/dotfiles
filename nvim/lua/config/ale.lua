@@ -14,5 +14,6 @@ vim.g.ale_linters = {
 vim.g.ale_fixers = {
   typescript = {'prettier'},
   javascript = {'prettier'},
+  go = {'gofmt'},
 }
 vim.g.ale_fix_on_save = 1

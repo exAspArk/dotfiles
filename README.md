@@ -37,12 +37,6 @@ make install_gui_apps
 make configure_dotfiles
 make configure_backups
 
-pip3 install --upgrade neovim pynvim
-gem install neovim solargraph gem-ctags ripper-tags
-pnpm add -g livedown neovim
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vimcurl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-nvim +PlugInstall! +qall
-cd ~/.vim/plugged/coc.nvim && pnpm install
 cd ~/.config/coc/extensions && pnpm install
 git clone https://github.com/elixir-lsp/elixir-ls.git ~/.config/coc/elixir-ls
 cd ~/.config/coc/elixir-ls && mix deps.get && mix compile && mix elixir_ls.release -o release

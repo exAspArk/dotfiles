@@ -8,7 +8,6 @@
     git
     openssl
     cmake
-    ctags
     ripgrep
     fd # faster than find
     wget
@@ -31,6 +30,7 @@
     bore-cli # ngrok alternative for tunnels
     unixtools.watch
     socat
+    duckdb
 
     # Cloud
     localstack
@@ -50,6 +50,7 @@
     python311Packages.virtualenv
     python311Packages.python-lsp-server
     ruby_3_2
+    rubyPackages_3_2.solargraph
     nodejs_20
     nodePackages_latest.pnpm
     elixir_1_15
@@ -72,4 +73,5 @@
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
+  ids.uids.nixbld = 300; # For macOS Sonoma 14
 }

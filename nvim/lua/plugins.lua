@@ -11,7 +11,7 @@ return {
     'neoclide/coc.nvim',
     branch = 'release',
     event = 'InsertEnter',
-    keys = { '<TAB>', '<S-TAB>', '<CR>', 'gd', 'gy', 'gi', 'gr', 'K', '<leader>rn' },
+    keys = { '<TAB>', '<S-TAB>', '<CR>', 'gd', 'gy', 'gi', 'gr', 'K', 're' },
     config = function()
       -- Make <CR> to accept selected completion item or notify coc.nvim to format. <C-g>u breaks current undo, please make your own choice
       vim.keymap.set("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], {silent = true, noremap = true, expr = true, replace_keycodes = false})
@@ -24,7 +24,7 @@ return {
       -- Use K to show documentation in preview window
       vim.keymap.set("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
       -- Symbol renaming
-      vim.keymap.set("n", "<leader>rn", "<Plug>(coc-rename)", {silent = true})
+      vim.keymap.set("n", "re", "<Plug>(coc-rename)", {silent = true})
       require("config.coc")
     end,
   },
@@ -84,17 +84,17 @@ return {
           winopts = { preview = { hidden = 'hidden', layout = 'vertical' } },
           fd_opts = [[
             --type file --follow --hidden --ignore-case --no-ignore --strip-cwd-prefix \
-            --exclude .git \
-            --exclude .devbox \
-            --exclude .next \
             --exclude .deliver \
+            --exclude .devbox \
+            --exclude .git \
+            --exclude .next \
+            --exclude .venv \
             --exclude _build \
             --exclude build \
             --exclude deps \
             --exclude dist \
-            --exclude node_modules \
             --exclude log \
-            --exclude cue.mod \
+            --exclude node_modules \
             --exclude temp \
             --exclude tmp
           ]],
@@ -201,9 +201,5 @@ return {
   { -- auto 'end'
     'RRethy/nvim-treesitter-endwise',
     ft = { 'ruby', 'elixir', 'lua', 'vim', 'bash' },
-  },
-  { -- bundle commands and smart ctags
-    'tpope/vim-bundler',
-    ft = { 'ruby' },
   },
 }

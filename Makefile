@@ -39,6 +39,7 @@ install_gui_apps:
 	brew install --cask figma
 	brew install --cask cyberduck
 	brew install --cask webtorrent
+	brew install --cask tad
 	# brew install --cask paragon-ntfs
 	mas install 'Elmedia Video Player'
 	mas install Flycut
@@ -84,7 +85,6 @@ configure_dotfiles:
 	ln -sf $(PWD)/zsh/themes/exaspark.zsh-theme ~/.oh-my-zsh/themes/exaspark.zsh-theme
 	ln -sf $(PWD)/asdfrc ~/.asdfrc
 	ln -sf $(PWD)/coc-package.json ~/.config/coc/extensions/package.json
-	ln -sf $(PWD)/ctags ~/.ctags
 	ln -sf $(PWD)/npmrc ~/.npmrc
 	ln -sf $(PWD)/gemrc ~/.gemrc
 	ln -sf $(PWD)/gitconfig ~/.gitconfig
@@ -106,6 +106,7 @@ configure_dotfiles:
 	ln -sf $(BACKUP_PATH)/espanso-matches.yml ~/Library/Application\ Support/espanso/match/base.yml
 	ln -sf $(BACKUP_PATH)/karabiner.json ~/.config/karabiner/karabiner.json
 	ln -sf $(BACKUP_PATH)/ssh/config ~/.ssh/config
+	ln -sf $(BACKUP_PATH)/aws/config ~/.aws/config
 	git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 
