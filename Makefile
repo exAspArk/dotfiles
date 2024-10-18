@@ -10,6 +10,7 @@ install_cli_apps:
 	defaults write com.apple.Finder AppleShowAllFiles true && killall Finder
 	defaults write -g KeyRepeat -int 1 # faster repeat time requires a restart
 	defaults write com.apple.screencapture show-thumbnail -bool false
+	curl https://repo1.maven.org/maven2/org/apache/avro/avro-tools/1.12.0/avro-tools-1.12.0.jar -o ~/.config/avro-tools.jar # https://mvnrepository.com/artifact/org.apache.avro/avro-tools
 
 install_gui_apps:
 	brew install --cask eloston-chromium
