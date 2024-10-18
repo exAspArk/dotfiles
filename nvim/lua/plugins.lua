@@ -1,17 +1,22 @@
 return {
   -- Text editing --------------------------------------------------------------
 
-  { -- syntax highlight and visual selection expansion
+  { -- syntax highlight
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     event = 'BufRead',
     config = function() require("config.nvim-treesitter") end,
   },
+  { -- selection expansion
+    'terryma/vim-expand-region',
+    event = 'BufRead',
+    keys = { '+', '-' },
+  },
   { -- autocomplete and LSP: coc-solargraph, coc-tsserver
     'neoclide/coc.nvim',
     branch = 'release',
     event = 'InsertEnter',
-    keys = { '<TAB>', '<S-TAB>', '<CR>', 'gd', 'gy', 'gi', 'gr', 'K', 're' },
+    keys = { '<TAB>', '<S-TAB>', '<CR>', 'gd', 'gy', 'gi', 'gr', 'K', 're', '<leader>n' },
     config = function()
       -- Make <CR> to accept selected completion item or notify coc.nvim to format. <C-g>u breaks current undo, please make your own choice
       vim.keymap.set("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], {silent = true, noremap = true, expr = true, replace_keycodes = false})
@@ -25,6 +30,8 @@ return {
       vim.keymap.set("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
       -- Symbol renaming
       vim.keymap.set("n", "re", "<Plug>(coc-rename)", {silent = true})
+      -- Next diagnostic
+      vim.keymap.set("n", "<leader>n", "<Plug>(coc-diagnostic-next)", {silent = true})
       require("config.coc")
     end,
   },
@@ -51,7 +58,7 @@ return {
   },
   { -- multi-cursor selection
     'mg979/vim-visual-multi',
-    keys = { '<A-n>' },
+    keys = { '<A-n>' }, -- [ and ] for previous and next, q for skipping
     init = function()
       vim.g.VM_maps = {
         ["Find Under"] = "<A-n>",
@@ -88,6 +95,7 @@ return {
             --exclude .devbox \
             --exclude .git \
             --exclude .next \
+            --exclude .terraform \
             --exclude .venv \
             --exclude _build \
             --exclude build \
@@ -192,8 +200,21 @@ return {
   {
     'instant-markdown/vim-instant-markdown',
     ft = { "markdown" },
+    keys = { '<leader>i' },
     build = 'pnpm -g install instant-markdown-d',
     init = function() vim.g.instant_markdown_autostart = 0 end,
+    config = function()
+      vim.keymap.set('n', '<leader>i', function()
+        vim.cmd([[
+          try
+            InstantMarkdownStop
+          catch
+          finally
+            InstantMarkdownPreview
+          endtry
+        ]])
+      end, { noremap = true })
+    end,
   },
 
   -- Ruby ----------------------------------------------------------------------

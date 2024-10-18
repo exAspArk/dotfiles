@@ -31,6 +31,7 @@
     unixtools.watch
     socat
     duckdb
+    tshark # wireshark cli
 
     # Cloud
     localstack
@@ -56,6 +57,8 @@
     elixir_1_15
     jdk
     go
+    delve # go debugger
+    terraform-ls # Terraform LSP
   ];
 
   # Use a custom configuration.nix location.

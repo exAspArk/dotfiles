@@ -1,3 +1,12 @@
 {
-  "elixir.pathToElixirLS": "~/.config/coc/elixir-ls/release/language_server.sh"
+  "elixir.pathToElixirLS": "~/.config/coc/elixir-ls/release/language_server.sh",
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {},
+      "settings": {}
+    }
+  }
 }

@@ -1,6 +1,9 @@
 # Standard #############################################################################################################
 
 alias c="cat"
+ccopy() {
+  cat $1 | tee >(pbcopy)
+}
 alias l="ls -al"
 alias mkdir="mkdir -p"
 alias perm='stat -f "%OLp"'
@@ -29,6 +32,12 @@ b64() {
 }
 
 alias t='trash'
+av() {
+  java -jar ~/.config/avro-tools.jar tojson $1 | jq . | tee >(pbcopy)
+}
+avs() {
+  java -jar ~/.config/avro-tools.jar getschema $1 | tee >(pbcopy)
+}
 
 # Nix ##################################################################################################################
 
@@ -97,6 +106,9 @@ alias kg='kubectl get'
 alias kgp='kubectl get pods'
 kgpw() {
   watch -n 1 "kubectl get pod $@"
+}
+ktpw() {
+  watch -n 1 "kubectl top pod $@"
 }
 alias kgpa='kubectl get pods -A'
 alias kgn='kubectl get nodes -o custom-columns=NODE:.metadata.name,"NODE GROUP:.metadata.labels.eks\.amazonaws\.com/nodegroup",ARCH:.status.nodeInfo.architecture | sort -s -k 2'
@@ -286,6 +298,13 @@ alias gstats='git shortlog -sn --no-merges'
 alias glstats='git ls-files -z | xargs -0n1 git blame -w --line-porcelain | grep -a "^author " | sort -f | uniq -c | sort -n -r'
 # gdiff <file1> <file2>
 alias gdiff='git diff --color-words --no-index'
+
+# Terraform ############################################################################################################
+
+alias ti='terraform init'
+alias tp='terraform plan'
+alias ta='terraform apply -auto-approve'
+alias to='terraform output -json'
 
 # GitHub ###############################################################################################################
 
