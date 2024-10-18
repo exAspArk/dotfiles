@@ -313,6 +313,8 @@ set foldenable        " enable folding
 set foldlevel=20      " open all folds by default
 set foldmethod=indent " fold based on indent level
 nnoremap fo za        " folding shortcut
+nnoremap fO zM        " folding shortcut
+nnoremap fu zR        " folding shortcut
 
 " coc.nvim settings:
 set cmdheight=2    " give more space for displaying messages.
@@ -332,7 +334,7 @@ autocmd BufReadPost *
 " create directory if doesn't exist before saving
 autocmd BufWritePre * if !isdirectory(expand('%:h')) | call mkdir(expand('%:h'), 'p') | endif
 
-autocmd BufWritePre *.rb,*.haml,*.coffee,*.md,*.rake,*.clj,*.js,*.jsx,*.ts,*.tsx,*.go,*.ex :%s/\s\+$//e " remove trailing whitespaces
+autocmd BufWritePre *.rb,*.haml,*.coffee,*.md,*.rake,*.clj,*.js,*.jsx,*.ts,*.tsx,*.go,*.ex,*.py :%s/\s\+$//e " remove trailing whitespaces
 
 autocmd FileType ruby,eruby,yaml,clojure setlocal ai sw=2 sts=2                   " autoindent with two spaces, always expand tabs
 autocmd FileType ruby,eruby,yaml,elixir setlocal iskeyword=@,48-57,192-255,_      " make @,numbers,latin chars,_,? part of words
@@ -350,11 +352,12 @@ autocmd BufRead,BufNewFile *.ex,*.exs set filetype=elixir
 autocmd BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
 autocmd BufRead,BufNewFile mix.lock set filetype=elixir
 
-" Insert debugger
+" Insert debugger with Alt + p
 autocmd BufRead *.rb nnoremap <A-p> Orequire 'pry'; binding.pry<Esc>
   \| nnoremap <C-]> :call JumpToRubyDefinition()<CR>
 autocmd BufRead *.js,*.jsx,*.ts,*.tsx nnoremap <A-p> Odebugger;<Esc>
 autocmd BufRead *.ex,*.exs,*.eex nnoremap <A-p> Orequire IEx; IEx.pry<Esc>
+autocmd BufEnter *.yaml,*.yml nnoremap <A-p> O- args: ["-c", "sleep 1000000000"]<CR>  command: ["/bin/bash"]<Esc>
 
 " Format
 autocmd FileType xml nnoremap <buffer> ff :%!xmllint --format --encode UTF-8 -<CR>
