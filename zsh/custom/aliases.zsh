@@ -1,6 +1,9 @@
 # Standard #############################################################################################################
 
 alias c="cat"
+ccopy() {
+  cat $1 | tee >(pbcopy)
+}
 alias l="ls -al"
 alias mkdir="mkdir -p"
 alias perm='stat -f "%OLp"'
@@ -29,6 +32,12 @@ b64() {
 }
 
 alias t='trash'
+av() {
+  java -jar ~/.config/avro-tools.jar tojson $1 | jq . | tee >(pbcopy)
+}
+avs() {
+  java -jar ~/.config/avro-tools.jar getschema $1 | tee >(pbcopy)
+}
 
 # Nix ##################################################################################################################
 

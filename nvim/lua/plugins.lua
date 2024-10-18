@@ -1,11 +1,16 @@
 return {
   -- Text editing --------------------------------------------------------------
 
-  { -- syntax highlight and visual selection expansion
+  { -- syntax highlight
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     event = 'BufRead',
     config = function() require("config.nvim-treesitter") end,
+  },
+  { -- selection expansion
+    'terryma/vim-expand-region',
+    event = 'BufRead',
+    keys = { '+', '-' },
   },
   { -- autocomplete and LSP: coc-solargraph, coc-tsserver
     'neoclide/coc.nvim',
