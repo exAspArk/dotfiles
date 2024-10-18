@@ -2,6 +2,7 @@ require("nvim-treesitter.configs").setup({
   ensure_installed = {
     'bash',
     'css',
+    'go',
     'html',
     'javascript',
     'json',
@@ -9,6 +10,7 @@ require("nvim-treesitter.configs").setup({
     'make',
     'markdown',
     'nix',
+    'python',
     'ruby',
     'terraform',
     'typescript',
@@ -20,10 +22,6 @@ require("nvim-treesitter.configs").setup({
   },
   incremental_selection = {
     enable = true,
-    keymaps = {
-      node_incremental = "+",
-      node_decremental = "-",
-    },
   },
   indent = {
     enable = true,

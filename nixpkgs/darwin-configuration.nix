@@ -56,6 +56,7 @@
     elixir_1_15
     jdk
     go
+    delve # go debugger
   ];
 
   # Use a custom configuration.nix location.
