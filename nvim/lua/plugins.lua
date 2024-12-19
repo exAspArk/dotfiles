@@ -58,9 +58,9 @@ return {
   },
   { -- multi-cursor selection
     'mg979/vim-visual-multi',
-    keys = { '<A-n>' }, -- [ and ] for previous and next, q for skipping
+    event = 'BufRead',
     init = function()
-      vim.g.VM_maps = {
+      vim.g.VM_maps = { -- [ and ] for previous and next, q for skipping
         ["Find Under"] = "<A-n>",
         ["Find Subword Under"] = "<A-n>",
       }

@@ -1,3 +1,5 @@
+-- https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions
+
 -- Autocomplete
 function _G.check_back_space()
   local col = vim.fn.col('.') - 1

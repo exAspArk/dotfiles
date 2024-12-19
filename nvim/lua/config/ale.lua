@@ -10,6 +10,7 @@ vim.g.ale_linters = {
   typescript = {'eslint'},
   typescriptreact = {'eslint'},
   javascript = {'eslint'},
+  go = {'staticcheck'},
 }
 vim.g.ale_fixers = {
   typescript = {'prettier'},

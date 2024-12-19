@@ -16,6 +16,7 @@ require("nvim-treesitter.configs").setup({
     'typescript',
     'yaml',
     'terraform',
+    'elixir',
   },
   sync_install = false,
   highlight = {
