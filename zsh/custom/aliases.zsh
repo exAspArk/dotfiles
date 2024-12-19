@@ -20,7 +20,6 @@ rport() {
 rport6() {
   nc -zv6 $1 $2
 }
-alias ip="dscacheutil -q host -a name"
 alias ns='scutil --dns | grep nameserver | sort -u'
 alias ':q'='exit'
 alias pbc='pbcopy'
@@ -51,7 +50,6 @@ nuninstall() {
 # SSH ##################################################################################################################
 
 alias s="sshrc"
-alias sk="kitty +kitten ssh" # will create ~/.terminfo on the remote server to fix "top" and other terminal issues
 
 # Vim ##################################################################################################################
 

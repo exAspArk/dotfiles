@@ -108,6 +108,8 @@ configure_dotfiles:
 	ln -sf $(BACKUP_PATH)/karabiner.json ~/.config/karabiner/karabiner.json
 	ln -sf $(BACKUP_PATH)/ssh/config ~/.ssh/config
 	ln -sf $(BACKUP_PATH)/aws/config ~/.aws/config
+	mkdir -p ~/.local/share/terminfo/x
+	ln -sf /Applications/kitty.app/Contents/Resources/kitty/terminfo/78/xterm-kitty ~/.sshrc.d/xterm-kitty
 	git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 
