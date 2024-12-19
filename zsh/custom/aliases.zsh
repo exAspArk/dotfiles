@@ -51,7 +51,6 @@ nuninstall() {
 # SSH ##################################################################################################################
 
 alias s="sshrc"
-alias sk="kitty +kitten ssh" # will create ~/.terminfo on the remote server to fix "top" and other terminal issues
 
 # Vim ##################################################################################################################
 
