@@ -312,9 +312,10 @@ set autoread
 set foldenable        " enable folding
 set foldlevel=20      " open all folds by default
 set foldmethod=indent " fold based on indent level
-nnoremap fo za        " folding shortcut
-nnoremap fO zM        " folding shortcut
-nnoremap fu zR        " folding shortcut
+nnoremap FO za        " fold current
+nnoremap FA zM        " fold all
+nnoremap FU zR        " unfold all
+nnoremap FC :let &l:foldlevel = indent('.') / &shiftwidth<cr> " fold current level globally
 
 " coc.nvim settings:
 set cmdheight=2    " give more space for displaying messages.

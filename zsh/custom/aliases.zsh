@@ -4,7 +4,7 @@ alias c="cat"
 ccopy() {
   cat $1 | tee >(pbcopy)
 }
-alias l="ls -al"
+alias l="ls -alh"
 alias mkdir="mkdir -p"
 alias perm='stat -f "%OLp"'
 alias m='make'
@@ -20,7 +20,6 @@ rport() {
 rport6() {
   nc -zv6 $1 $2
 }
-alias ip="dscacheutil -q host -a name"
 alias ns='scutil --dns | grep nameserver | sort -u'
 alias ':q'='exit'
 alias pbc='pbcopy'
@@ -39,6 +38,20 @@ avs() {
   java -jar ~/.config/avro-tools.jar getschema $1 | tee >(pbcopy)
 }
 
+alias sl='screen -ls'
+alias sa='screen -r' # attach by name
+sc() {               # create screen session
+  if [ -z "$1" ]; then
+    session_name=$(date +%s)
+  else
+    session_name=$1
+  fi
+
+  # Set vi mode (Ctrl+A and Esc to enter command mode to scroll) and load sshrc
+  screen -dmS "$session_name" bash -c "set -o vi; clear; echo 'Screen session created: $session_name'; exec bash --init-file $SSHHOME/.sshrc"
+  sa $session_name
+}
+
 # Nix ##################################################################################################################
 
 alias ninstall='NIXPKGS_ALLOW_UNFREE=1 darwin-rebuild switch'
@@ -51,7 +64,6 @@ nuninstall() {
 # SSH ##################################################################################################################
 
 alias s="sshrc"
-alias sk="kitty +kitten ssh" # will create ~/.terminfo on the remote server to fix "top" and other terminal issues
 
 # Vim ##################################################################################################################
 

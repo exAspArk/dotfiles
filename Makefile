@@ -13,7 +13,6 @@ install_cli_apps:
 	curl https://repo1.maven.org/maven2/org/apache/avro/avro-tools/1.12.0/avro-tools-1.12.0.jar -o ~/.config/avro-tools.jar # https://mvnrepository.com/artifact/org.apache.avro/avro-tools
 
 install_gui_apps:
-	brew install --cask eloston-chromium
 	brew install --cask keeweb
 	brew install --cask kitty
 	brew install --cask obsidian
@@ -46,13 +45,14 @@ install_gui_apps:
 	mas install Flycut
 	mas install Keynote
 	mas install Polarr
-	mas install Spark
+	mas install 'Canary Mail'
 	mas install 'VPN Unlimited'
 	mas install WhatsApp
 	mas install Xcode
 	mas install Moom # paid
 	mas install LocalSend
 	mas install WireGuard
+	mas install Brave
 
 configure_dotfiles:
 	sudo rm -rf /etc/zprofile
@@ -104,10 +104,12 @@ configure_dotfiles:
 	ln -sf $(PWD)/zshenv ~/.zshenv
 	ln -sf $(PWD)/zshrc ~/.zshrc
 	ln -sf $(PWD)/espanso/kitty.yml ~/Library/Application\ Support/espanso/config/kitty.yml
-	ln -sf $(BACKUP_PATH)/espanso-matches.yml ~/Library/Application\ Support/espanso/match/base.yml
-	ln -sf $(BACKUP_PATH)/karabiner.json ~/.config/karabiner/karabiner.json
-	ln -sf $(BACKUP_PATH)/ssh/config ~/.ssh/config
-	ln -sf $(BACKUP_PATH)/aws/config ~/.aws/config
+	ln -sf $BACKUP_PATH/espanso-matches.yml ~/Library/Application\ Support/espanso/match/base.yml
+	ln -sf $BACKUP_PATH/karabiner.json ~/.config/karabiner/karabiner.json
+	ln -sf $BACKUP_PATH/ssh/config ~/.ssh/config
+	ln -sf $BACKUP_PATH/aws/config ~/.aws/config
+	mkdir -p ~/.local/share/terminfo/x
+	ln -sf /Applications/kitty.app/Contents/Resources/kitty/terminfo/78/xterm-kitty ~/.sshrc.d/xterm-kitty
 	git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 
