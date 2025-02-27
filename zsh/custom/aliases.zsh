@@ -126,7 +126,7 @@ alias kgpa='kubectl get pods -A'
 alias kgn='kubectl get nodes -o custom-columns=NODE:.metadata.name,"NODE GROUP:.metadata.labels.eks\.amazonaws\.com/nodegroup",ARCH:.status.nodeInfo.architecture | sort -s -k 2'
 kgnp() { # kgnp [node-pattern]
   if [ -z "$1" ]; then
-    kubectl get pod -o custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces
+    kubectl get pod -o custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces | sort
   else
     kubectl get pod -o custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces | grep $1
   fi
@@ -154,6 +154,8 @@ klf() {
 klfa() {
   stern $1 -l app.kubernetes.io/name=$1 --init-containers false -t=short --template '{{printf "%s %s\n" .PodName .Message}}' ${@:2}
 }
+alias kaf='kubectl apply -f' # file
+alias kak='kubectl apply -k' # kustomization path
 alias kl='kubectl logs'
 alias kt='kubectl top'
 alias ktp='kubectl top pods'
