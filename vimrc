@@ -358,6 +358,7 @@ autocmd BufRead *.rb nnoremap <A-p> Orequire 'pry'; binding.pry<Esc>
   \| nnoremap <C-]> :call JumpToRubyDefinition()<CR>
 autocmd BufRead *.js,*.jsx,*.ts,*.tsx nnoremap <A-p> Odebugger;<Esc>
 autocmd BufRead *.ex,*.exs,*.eex nnoremap <A-p> Orequire IEx; IEx.pry<Esc>
+autocmd BufRead *.go nnoremap <A-p> OLogError(config, "---------------------------------")<Esc>
 autocmd BufEnter *.yaml,*.yml nnoremap <A-p> O- args: ["-c", "sleep 1000000000"]<CR>  command: ["/bin/bash"]<Esc>
 
 " Format

@@ -36,7 +36,15 @@ return {
     end,
   },
   { -- smart autocompletion
+    event = 'InsertEnter',
     'github/copilot.vim',
+  },
+  { -- AI assitant
+    "yetone/avante.nvim",
+    keys = { '<leader>aa' },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "stevearc/dressing.nvim", "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+    build = "make",
+    config = function() require("config.avante") end,
   },
   { -- lint
     'dense-analysis/ale',
@@ -204,7 +212,7 @@ return {
     build = 'pnpm -g install instant-markdown-d',
     init = function() vim.g.instant_markdown_autostart = 0 end,
     config = function()
-      vim.keymap.set('n', '<leader>i', function()
+      vim.keymap.set('n', '<leader>m', function()
         vim.cmd([[
           try
             InstantMarkdownStop

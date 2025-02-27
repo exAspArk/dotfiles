@@ -69,6 +69,7 @@ configure_dotfiles:
 	ln -sf $(PWD)/bundle/config ~/.bundle/config
 	ln -sf $(PWD)/gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 	ln -sf $(PWD)/nvim/lua/config/ale.lua ~/.config/nvim/lua/config/ale.lua
+	ln -sf $(PWD)/nvim/lua/config/avante.lua ~/.config/nvim/lua/config/avante.lua
 	ln -sf $(PWD)/nvim/lua/config/bufferline.lua ~/.config/nvim/lua/config/bufferline.lua
 	ln -sf $(PWD)/nvim/lua/config/coc.lua ~/.config/nvim/lua/config/coc.lua
 	ln -sf $(PWD)/nvim/lua/config/ctrlsf.lua ~/.config/nvim/lua/config/ctrlsf.lua
