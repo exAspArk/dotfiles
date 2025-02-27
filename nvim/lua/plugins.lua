@@ -36,7 +36,15 @@ return {
     end,
   },
   { -- smart autocompletion
+    event = 'InsertEnter',
     'github/copilot.vim',
+  },
+  { -- AI assitant
+    "yetone/avante.nvim",
+    keys = { '<leader>aa' },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "stevearc/dressing.nvim", "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+    build = "make",
+    config = function() require("config.avante") end,
   },
   { -- lint
     'dense-analysis/ale',
