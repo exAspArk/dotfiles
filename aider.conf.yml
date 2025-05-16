@@ -1,0 +1,10 @@
+model: openai/o4-mini
+editor-model: gpt-4.1-mini
+weak-model: gpt-4.1-mini
+reasoning-effort: high
+architect: true
+yes-always: true
+auto-commits: false
+analytics-disable: true
+read:
+  - ~/.aider/conventions.md
