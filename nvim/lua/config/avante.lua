@@ -8,7 +8,15 @@ vim.api.nvim_set_hl(0, "MyAvanteConflictIncoming", {
 
 -- https://github.com/yetone/avante.nvim/blob/main/lua/avante/config.lua
 require("avante").setup({
-  provider = "gemini",
+  provider = "openai",
+  openai = {
+    endpoint = "https://api.openai.com/v1",
+    model = "gpt-4.1",
+    timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+    temperature = 0,
+    max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+    reasoning_effort = "high", -- low|medium|high, only used for reasoning models
+  },
   claude = {
     endpoint = "https://api.anthropic.com",
     model = "claude-3-7-sonnet-20250219", -- ANTHROPIC_API_KEY is set as an env var
@@ -58,4 +66,12 @@ require("avante").setup({
       add_current = "<leader>ac", -- Add current buffer to selected files
     },
   },
+  selector = {
+    provider = "fzf_lua",
+    exclude_auto_select = { "NvimTree" },
+  },
+  system_prompt = [[
+    Important rules:
+      - Never add or remove code comments unless I ask for it.
+  ]]
 })

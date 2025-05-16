@@ -4,9 +4,10 @@ export PATH=./bin
 export PATH="$PATH:$PNPM_HOME" # pnpm
 export PATH=$PATH:/nix/var/nix/profiles/default/bin # nix
 export PATH=$PATH:/run/current-system/sw/bin # nix-darwin
-export PATH=$PATH:/opt/homebrew/bin
+export PATH=$PATH:/opt/homebrew/bin # homebrew
 export PATH=$PATH:/opt/homebrew/opt/libpq/bin # pg
-export PATH=$PATH:~/go/bin
+export PATH=$PATH:~/go/bin # go
+export PATH=$PATH:~/.local/bin # pip global
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
 export ZSH=$HOME/.oh-my-zsh # Path to your oh-my-zsh installation.
@@ -29,3 +30,6 @@ export BACKUP_PATH=~/Dropbox/_Backups
 export PROJECT_PATH=~/Documents/Code
 
 export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
+
+# uv
+export PATH="/Users/exaspark/.local/bin:$PATH"
