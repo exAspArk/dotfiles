@@ -30,7 +30,6 @@
     bore-cli # ngrok alternative for tunnels
     unixtools.watch
     socat
-    duckdb
     tshark # wireshark cli
 
     # Cloud

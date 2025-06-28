@@ -11,8 +11,8 @@ install_cli_apps:
 	defaults write -g KeyRepeat -int 1 # faster repeat time requires a restart
 	defaults write com.apple.screencapture show-thumbnail -bool false
 	curl https://repo1.maven.org/maven2/org/apache/avro/avro-tools/1.12.0/avro-tools-1.12.0.jar -o ~/.config/avro-tools.jar # https://mvnrepository.com/artifact/org.apache.avro/avro-tools
-	npm install -g @anthropic-ai/claude-code
-	pip install aider-install --break-system-packages --user
+	pnpm install -g @anthropic-ai/claude-code
+	pnpm install -g @google/gemini-cli
 
 install_gui_apps:
 	brew install --cask keeweb
@@ -59,7 +59,6 @@ install_gui_apps:
 
 configure_dotfiles:
 	sudo rm -rf /etc/zprofile
-	mkdir -p ~/.aider
 	mkdir -p ~/.bundle
 	mkdir -p ~/.zsh/custom
 	mkdir -p ~/.gnupg
@@ -70,11 +69,10 @@ configure_dotfiles:
 	mkdir -p ~/.config/karabiner
 	mkdir -p ~/.vim/undo
 	mkdir -p ~/.vim/autoload
-	ln -sf $(PWD)/aider/conventions.md ~/.aider/conventions.md
 	ln -sf $(PWD)/bundle/config ~/.bundle/config
+	ln -sf $(PWD)/gemini/settings.json ~/.gemini/settings.json
 	ln -sf $(PWD)/gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 	ln -sf $(PWD)/nvim/lua/config/ale.lua ~/.config/nvim/lua/config/ale.lua
-	ln -sf $(PWD)/nvim/lua/config/avante.lua ~/.config/nvim/lua/config/avante.lua
 	ln -sf $(PWD)/nvim/lua/config/bufferline.lua ~/.config/nvim/lua/config/bufferline.lua
 	ln -sf $(PWD)/nvim/lua/config/coc.lua ~/.config/nvim/lua/config/coc.lua
 	ln -sf $(PWD)/nvim/lua/config/ctrlsf.lua ~/.config/nvim/lua/config/ctrlsf.lua
@@ -90,7 +88,6 @@ configure_dotfiles:
 	ln -sf $(PWD)/zsh/custom/aliases.zsh ~/.sshrc.d/aliases.zsh
 	ln -sf $(PWD)/zsh/custom/aliases.zsh ~/.zsh/custom/aliases.zsh
 	ln -sf $(PWD)/zsh/themes/exaspark.zsh-theme ~/.oh-my-zsh/themes/exaspark.zsh-theme
-	ln -sf $(PWD)/aider.conf.yml ~/.aider.conf.yml
 	ln -sf $(PWD)/asdfrc ~/.asdfrc
 	ln -sf $(PWD)/coc-package.json ~/.config/coc/extensions/package.json
 	ln -sf $(PWD)/npmrc ~/.npmrc

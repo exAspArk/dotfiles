@@ -11,6 +11,7 @@ vim.g.ale_linters = {
   typescriptreact = {'eslint'},
   javascript = {'eslint'},
   go = {'staticcheck'},
+  java = {},
 }
 vim.g.ale_fixers = {
   typescript = {'prettier'},

@@ -2,6 +2,7 @@ clear # Remove "Last login: ..." message
 
 export PATH=./bin
 export PATH="$PATH:$PNPM_HOME" # pnpm
+export PATH=$PATH:~/.duckdb/cli/latest # duckdb
 export PATH=$PATH:/nix/var/nix/profiles/default/bin # nix
 export PATH=$PATH:/run/current-system/sw/bin # nix-darwin
 export PATH=$PATH:/opt/homebrew/bin # homebrew

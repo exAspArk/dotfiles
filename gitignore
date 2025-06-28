@@ -22,5 +22,4 @@ docker-compose.override.yml
 tmp.*rb
 tmp.*txt
 tmp.*js
-
-.aider*
+tmp.*sql
