@@ -86,6 +86,7 @@ return {
   { -- fuzzy search
     'ibhagwan/fzf-lua',
     keys = { '<leader>p' },
+    commit = '9b84b53f3297d4912d7eb95b979e9b27e2e61281', -- to avoid treesitter issues when opening a file
     config = function()
       vim.keymap.set('n', '<leader>p', function()
         require('fzf-lua').files({
@@ -110,6 +111,13 @@ return {
         })
       end, { noremap = true })
     end,
+    vim.keymap.set('n', '<leader>h', function()
+      require('fzf-lua').oldfiles({
+        winopts = { preview = { hidden = 'hidden', layout = 'vertical' } },
+        cwd_only = true,
+        include_current_session = true,
+      })
+    end, { noremap = true })
   },
   { -- text search
     'dyng/ctrlsf.vim',
@@ -158,6 +166,7 @@ return {
   },
   { -- highlight matching tags
     'andymass/vim-matchup',
+    commit = '5456eaccf757606884ec1ac1ef3f564019973873', -- to avoid breaking coc.nvim autocomplete in TSX
   },
 
   -- Files ---------------------------------------------------------------------

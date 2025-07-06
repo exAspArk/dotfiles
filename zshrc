@@ -9,6 +9,7 @@ export PATH=$PATH:/opt/homebrew/bin # homebrew
 export PATH=$PATH:/opt/homebrew/opt/libpq/bin # pg
 export PATH=$PATH:~/go/bin # go
 export PATH=$PATH:~/.local/bin # pip global
+export PATH=$PATH:~/.lmstudio/bin # LM Studio
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
 ################################################################################
