@@ -1,5 +1,6 @@
 {
   "elixir.pathToElixirLS": "~/.config/coc/elixir-ls/release/language_server.sh",
+  "solargraph.checkGemVersion": false,
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
