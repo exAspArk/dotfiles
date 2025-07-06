@@ -160,17 +160,21 @@ alias kl='kubectl logs'
 alias kt='kubectl top'
 alias ktp='kubectl top pods'
 ktn() { # prints nodes with their node groups
-  kubectl top nodes | while IFS= read -r node; do
-    # skip header
-    if [[ ! $first_line ]]; then
-      first_line=1
-      echo $node
+  header=""
+  kubectl top nodes | while IFS= read -r line; do
+    if [[ ! $header ]]; then
+      header="$line NODE-GROUP"
+      echo "$header"
       continue
     fi
-    name=$(echo $node | awk '{print $1}')
+    name=$(echo $line | awk '{print $1}')
     node_group=$(kg node $name -o custom-columns="NODE GROUP:.metadata.labels.eks\.amazonaws\.com/nodegroup" | tail +2)
-    echo "$node $node_group"
-  done
+    echo "$line $node_group"
+  done | {
+    read -r header # read the header line
+    echo "$header"
+    sort -k$(echo "$header" | wc -w) # sort by last column (node group)
+  }
 }
 alias kp='kubectl port-forward'
 alias kr='kubectl rollout restart deployment'
