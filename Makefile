@@ -3,6 +3,7 @@ install_cli_apps:
 	brew install stats # internet speed and usage https://github.com/exelban/stats
 	brew install libyaml # for 'psych' gem
 	brew install libpq # for 'pg' gem
+	brew install go-parquet-tools # parquet file tools
 	curl https://raw.githubusercontent.com/exAspArk/sshrc/master/sshrc -o ~/Downloads/sshrc && chmod +x ~/Downloads/sshrc && sudo mkdir -p /usr/local/bin && sudo mv ~/Downloads/sshrc /usr/local/bin/sshrc
 	ln -sf $(PWD)/nixpkgs/darwin-configuration.nix ~/.nixpkgs/darwin-configuration.nix
 	darwin-rebuild switch
