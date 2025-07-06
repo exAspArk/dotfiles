@@ -6,16 +6,19 @@ vim.g.ale_lint_on_insert_leave = 1
 vim.g.ale_lint_on_text_changed = 'never'
 vim.g.ale_virtualtext_cursor = 'disable'
 vim.g.ale_linters = {
-  ruby = {}, -- 'rubocop'
+  ruby = {'sorbet'},
   typescript = {'eslint'},
   typescriptreact = {'eslint'},
   javascript = {'eslint'},
   go = {'staticcheck'},
   java = {},
+  terraform = {'terraform'},
 }
 vim.g.ale_fixers = {
   typescript = {'prettier'},
+  typescriptreact = {'prettier'},
   javascript = {'prettier'},
   go = {'gofmt'},
+  terraform = {'terraform'},
 }
 vim.g.ale_fix_on_save = 1
