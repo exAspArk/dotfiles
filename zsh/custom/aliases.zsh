@@ -116,11 +116,19 @@ alias mi='iex -S mix'
 alias k='kubectl'
 alias kg='kubectl get'
 alias kgp='kubectl get pods'
-kgpw() {
-  watch -n 1 "kubectl get pod $@"
+kgpw() { # kgpw [pod pattern]
+  if [ -z "$1" ]; then
+    watch -n 1 "kubectl get pod"
+  else
+    watch -n 1 "kubectl get pod | grep $1"
+  fi
 }
-ktpw() {
-  watch -n 1 "kubectl top pod $@"
+ktpw() { # ktpw [pod pattern]
+  if [ -z "$1" ]; then
+    watch -n 1 "kubectl top pod"
+  else
+    watch -n 1 "kubectl top pod | grep $1"
+  fi
 }
 alias kgpa='kubectl get pods -A'
 alias kgn='kubectl get nodes -o custom-columns=NODE:.metadata.name,"NODE GROUP:.metadata.labels.eks\.amazonaws\.com/nodegroup",ARCH:.status.nodeInfo.architecture | sort -s -k 2'
@@ -130,6 +138,11 @@ kgnp() { # kgnp [node-pattern]
   else
     kubectl get pod -o custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces | grep $1
   fi
+}
+alias kgi='kubectl get ingress'
+alias kgia='kubectl get ingress -A'
+kgiw() {
+  watch -n 1 "kubectl get ingress $@"
 }
 alias kd='kubectl describe'
 alias kdp='kubectl describe pod'
@@ -160,22 +173,26 @@ alias kl='kubectl logs'
 alias kt='kubectl top'
 alias ktp='kubectl top pods'
 ktn() { # prints nodes with their node groups
-  kubectl top nodes | while IFS= read -r node; do
-    # skip header
-    if [[ ! $first_line ]]; then
-      first_line=1
-      echo $node
+  header=""
+  kubectl top nodes | while IFS= read -r line; do
+    if [[ ! $header ]]; then
+      header="$line NODE-GROUP"
+      echo "$header"
       continue
     fi
-    name=$(echo $node | awk '{print $1}')
+    name=$(echo $line | awk '{print $1}')
     node_group=$(kg node $name -o custom-columns="NODE GROUP:.metadata.labels.eks\.amazonaws\.com/nodegroup" | tail +2)
-    echo "$node $node_group"
-  done
+    echo "$line $node_group"
+  done | {
+    read -r header # read the header line
+    echo "$header"
+    sort -k$(echo "$header" | wc -w) # sort by last column (node group)
+  }
 }
 alias kp='kubectl port-forward'
 alias kr='kubectl rollout restart deployment'
-kra() { # kra [resource] [pattern]
-  kubectl get $1 | grep $2 | awk '{print $1}' | xargs -I % echo "sleep 2 && echo % && kubectl rollout restart $1 %" | sh
+kra() { # kra [pattern]
+  kubectl get deployment | grep $2 | awk '{print $1}' | xargs -I % echo "sleep 2 && echo % && kubectl rollout restart deployment %" | sh
 }
 alias kk='kubectl kustomize'
 alias kga="kubectl get \$(kubectl api-resources --namespaced=true --no-headers -o name | egrep -v 'events|nodes' | paste -s -d, - ) --no-headers"
@@ -365,7 +382,24 @@ vconcat() {
   done
   ffmpeg -f concat -i _concat-list.txt -c copy out.mov && rm _concat-list.txt
 }
-# vmp4 input.webm
+# vmp4 input.webm (convert to mp4)
 vmp4() {
   ffmpeg -fflags +genpts -i $1 -r 24 $1.mp4
+}
+# vmp3 input.mkv (convert to mp3)
+vmp3() {
+  filename_without_ext="${1%.*}"
+  # ignore video stream, use libmp3lame codec, set bitrate to 128k
+  ffmpeg -i $1 -vn -acodec libmp3lame -b:a 128k "${filename_without_ext}.mp3"
+}
+# vmp3chunk input.mkv [15](optional) (convert to smallest mp3 chunks of 15 minutes)
+vmp3chunk() {
+  if [ -z "$2" ]; then
+    segment_time=20 # default segment time in minutes
+  else
+    segment_time=$2
+  fi
+  filename_without_ext="${1%.*}"
+  # ignore video stream, use libmp3lame codec, downmix to mono, set bitrate to 32k, split into segments of N minutes
+  ffmpeg -i $1 -vn -acodec libmp3lame -ac 1 -ar 22050 -b:a 32k -f segment -segment_time $(echo "$segment_time * 60" | bc) -reset_timestamps 1 -segment_format mp3 "${filename_without_ext}_%01d.mp3"
 }
