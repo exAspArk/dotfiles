@@ -3,6 +3,8 @@ install_cli_apps:
 	brew install stats # internet speed and usage https://github.com/exelban/stats
 	brew install libyaml # for 'psych' gem
 	brew install libpq # for 'pg' gem
+	brew install go-parquet-tools # parquet file tools
+	brew install ollama
 	curl https://raw.githubusercontent.com/exAspArk/sshrc/master/sshrc -o ~/Downloads/sshrc && chmod +x ~/Downloads/sshrc && sudo mkdir -p /usr/local/bin && sudo mv ~/Downloads/sshrc /usr/local/bin/sshrc
 	ln -sf $(PWD)/nixpkgs/darwin-configuration.nix ~/.nixpkgs/darwin-configuration.nix
 	darwin-rebuild switch
@@ -13,9 +15,11 @@ install_cli_apps:
 	curl https://repo1.maven.org/maven2/org/apache/avro/avro-tools/1.12.0/avro-tools-1.12.0.jar -o ~/.config/avro-tools.jar # https://mvnrepository.com/artifact/org.apache.avro/avro-tools
 	pnpm install -g @anthropic-ai/claude-code
 	pnpm install -g @google/gemini-cli
+	pnpm install -g @openai/codex@latest
+	pnpm install -g @github/copilot
 
 install_gui_apps:
-	brew install --cask keeweb
+	brew install --cask keepassxc
 	brew install --cask kitty
 	brew install --cask obsidian
 	brew install --cask bartender
@@ -42,6 +46,8 @@ install_gui_apps:
 	brew install --cask cyberduck
 	brew install --cask webtorrent
 	brew install --cask tad
+	brew install --cask lm-studio
+	brew install --cask linphone
 	# brew install --cask paragon-ntfs
 	mas install 'Elmedia Video Player'
 	mas install Flycut

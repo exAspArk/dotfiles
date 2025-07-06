@@ -31,6 +31,7 @@
     unixtools.watch
     socat
     tshark # wireshark cli
+    mkcert # local HTTPS
 
     # Cloud
     localstack

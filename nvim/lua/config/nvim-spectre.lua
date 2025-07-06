@@ -1,6 +1,7 @@
 vim.opt.splitbelow = true
 
-require('spectre').setup({
+spectre = require('spectre')
+spectre.setup({
   open_cmd = 'new',
   mapping={
     ['toggle_line'] = {
@@ -25,3 +26,4 @@ require('spectre').setup({
     },
   }
 })
+spectre.change_options('hidden')

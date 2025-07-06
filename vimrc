@@ -358,7 +358,7 @@ autocmd BufRead *.rb nnoremap <A-p> Orequire 'pry'; binding.pry<Esc>
   \| nnoremap <C-]> :call JumpToRubyDefinition()<CR>
 autocmd BufRead *.js,*.jsx,*.ts,*.tsx nnoremap <A-p> Odebugger;<Esc>
 autocmd BufRead *.ex,*.exs,*.eex nnoremap <A-p> Orequire IEx; IEx.pry<Esc>
-autocmd BufRead *.go nnoremap <A-p> OLogError(config, "---------------------------------")<Esc>
+autocmd BufRead *.go nnoremap <A-p> Ocommon.LogError(this.Config, "---------------------------------")<Esc>
 autocmd BufEnter *.yaml,*.yml nnoremap <A-p> O- args: ["-c", "sleep 1000000000"]<CR>  command: ["/bin/bash"]<Esc>
 
 " Format
@@ -416,8 +416,10 @@ nnoremap Ï :tabclose<CR>
 
 " visual blockwise selection
 nnoremap <A-v> <C-v>
+" disable default Ctrl + v
+nnoremap <C-v> <Nop>
 
-" move line up / down with Ctrl + j / k
+" move line up / down with Alt + j / k
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
@@ -425,19 +427,24 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" jump up and down
+" jump up and down with Alt + u / d
 nnoremap <A-d> <C-d>
 nnoremap <A-u> <C-u>
+" Disable default Ctrl + u / d
+nnoremap <C-u> <Nop>
+nnoremap <C-d> <Nop>
 
 " undo
 nnoremap <A-r> <C-r>
+" disable default Ctrl + r
+nnoremap <C-r> <Nop>
 
 " copy relative filepath
-nnoremap cP :let @+=expand("%")<CR>
+nnoremap cp :let @+=expand("%")<CR>
 " copy relative filetype with line
-nnoremap cLP :let @+=expand("%") . ':' . line(".")<CR>
+nnoremap clp :let @+=expand("%") . ':' . line(".")<CR>
 " copy full filepath
-nnoremap cFP :let @+=expand("%:p")<CR>
+nnoremap cfp :let @+=expand("%:p")<CR>
 
 " navigating between buffers
 nnoremap <A-w> :bd<CR>

@@ -2,6 +2,9 @@ require("nvim-treesitter.configs").setup({
   ensure_installed = {
     'bash',
     'css',
+    'dockerfile',
+    'elixir',
+    'embedded_template', -- erb
     'go',
     'html',
     'javascript',
@@ -12,11 +15,12 @@ require("nvim-treesitter.configs").setup({
     'nix',
     'python',
     'ruby',
+    'sql',
     'terraform',
+    'terraform',
+    'tsx',
     'typescript',
     'yaml',
-    'terraform',
-    'elixir',
   },
   sync_install = false,
   highlight = {
