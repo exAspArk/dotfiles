@@ -110,6 +110,13 @@ return {
         })
       end, { noremap = true })
     end,
+    vim.keymap.set('n', '<leader>h', function()
+      require('fzf-lua').oldfiles({
+        winopts = { preview = { hidden = 'hidden', layout = 'vertical' } },
+        cwd_only = true,
+        include_current_session = true,
+      })
+    end, { noremap = true })
   },
   { -- text search
     'dyng/ctrlsf.vim',
