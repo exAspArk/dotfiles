@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -46,14 +48,14 @@
     stern # kube logs
 
     # Languages
-    python311Full
+    python311
     python311Packages.pip
     python311Packages.virtualenv
     python311Packages.python-lsp-server
-    ruby_3_2
-    rubyPackages_3_2.solargraph
+    ruby_3_4
+    rubyPackages_3_4.solargraph
     nodejs_20
-    nodePackages_latest.pnpm
+    pnpm
     elixir_1_15
     jdk
     go
@@ -61,12 +63,10 @@
     terraform-ls # Terraform LSP
   ];
 
-  # Use a custom configuration.nix location.
-  # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
-  # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
+  environment.darwinConfig = "/Users/exaspark/.nixpkgs/darwin-configuration.nix";
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  system.primaryUser = builtins.getEnv "USER";
+
   nix.package = pkgs.nix;
 
   # Create /etc/zshrc that loads the nix-darwin environment.

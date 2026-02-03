@@ -54,8 +54,8 @@ sc() {               # create screen session
 
 # Nix ##################################################################################################################
 
-alias ninstall='NIXPKGS_ALLOW_UNFREE=1 darwin-rebuild switch'
-alias nupgrade='nix-channel --update && nix-env --upgrade'
+alias ninstall='sudo darwin-rebuild switch --show-trace'
+alias nupgrade='sudo nix-channel --update'
 alias nsearch='nix-env -qaP'
 nuninstall() {
   nix-env --uninstall $1 && nix-collect-garbage
