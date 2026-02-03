@@ -6,8 +6,15 @@ install_cli_apps:
 	brew install go-parquet-tools # parquet file tools
 	brew install ollama
 	curl https://raw.githubusercontent.com/exAspArk/sshrc/master/sshrc -o ~/Downloads/sshrc && chmod +x ~/Downloads/sshrc && sudo mkdir -p /usr/local/bin && sudo mv ~/Downloads/sshrc /usr/local/bin/sshrc
+
 	ln -sf $(PWD)/nixpkgs/darwin-configuration.nix ~/.nixpkgs/darwin-configuration.nix
-	darwin-rebuild switch
+	# https://channels.nixos.org/
+	sudo nix-channel --add https://nixos.org/channels/nixpkgs-25.05-darwin nixpkgs
+	# https://github.com/nix-darwin/nix-darwin?tab=readme-ov-file#step-2-adding-nix-darwin-channel
+	sudo nix-channel --add https://github.com/nix-darwin/nix-darwin/archive/nix-darwin-25.05.tar.gz darwin
+	sudo nix-channel --update
+	ninstall
+
 	ln -sf /run/current-system/sw/bin/sed /opt/homebrew/bin/gsed # for Spectre nvim plugin to avoid 'brew install gnu-sed'
 	defaults write com.apple.Finder AppleShowAllFiles true && killall Finder
 	defaults write -g KeyRepeat -int 1 # faster repeat time requires a restart

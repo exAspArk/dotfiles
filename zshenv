@@ -32,5 +32,7 @@ export PROJECT_PATH=~/Documents/Code
 
 export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 
+export NIX_PATH=/nix/var/nix/profiles/per-user/root/channels:darwin-config=/Users/exaspark/.nixpkgs/darwin-configuration.nix
+
 # uv
 export PATH="/Users/exaspark/.local/bin:$PATH"

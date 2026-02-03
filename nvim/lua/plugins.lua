@@ -97,6 +97,7 @@ return {
             --exclude .devbox \
             --exclude .git \
             --exclude .next \
+            --exclude .output \
             --exclude .terraform \
             --exclude .venv \
             --exclude _build \
