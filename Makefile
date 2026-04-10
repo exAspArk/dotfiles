@@ -45,7 +45,6 @@ install_gui_apps:
 	brew install --cask tableplus # sql GUI vs psequel
 	brew install --cask the-unarchiver
 	brew install --cask zoom
-	brew install --cask loom
 	brew install --cask espanso
 	brew install --cask slack
 	brew install --cask discord
@@ -55,6 +54,7 @@ install_gui_apps:
 	brew install --cask tad
 	brew install --cask lm-studio
 	brew install --cask linphone
+	brew install --cask ghostpepper
 	# brew install --cask paragon-ntfs
 	mas install 'Elmedia Video Player'
 	mas install Flycut
@@ -121,6 +121,7 @@ configure_dotfiles:
 	ln -sf $(PWD)/zshenv ~/.zshenv
 	ln -sf $(PWD)/zshrc ~/.zshrc
 	ln -sf $(PWD)/espanso/kitty.yml ~/Library/Application\ Support/espanso/config/kitty.yml
+	ln -sf $(PWD)/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 	ln -sf $BACKUP_PATH/espanso-matches.yml ~/Library/Application\ Support/espanso/match/base.yml
 	ln -sf $BACKUP_PATH/karabiner.json ~/.config/karabiner/karabiner.json
 	ln -sf $BACKUP_PATH/ssh/config ~/.ssh/config

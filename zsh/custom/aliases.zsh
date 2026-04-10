@@ -153,16 +153,21 @@ kdela () { # kdela [resource] [pattern]
 alias ke='kubectl edit'
 alias ked='kubectl edit deployment'
 kex() {
-  kubectl exec -it $1 "${@:2}" -- bash
-}
-kexd() {
-  kubectl exec -it deployment/$1 "${@:2}" -- bash
+  if kubectl get pod "$1" >/dev/null 2>&1; then
+    kubectl exec -it $1 "${@:2}" -- bash
+  else
+    kubectl exec -it deployment/$1 "${@:2}" -- bash
+  fi
 }
 kexsh() {
   kubectl exec -it $1 "${@:2}" -- sh
 }
 klf() {
-  kubectl logs -f $1 "${@:2}"
+  if kubectl get pod "$1" >/dev/null 2>&1; then
+    kubectl logs -f pod/"$1" "${@:2}"
+  else
+    kubectl logs -f deployment/"$1" --all-containers=true "${@:2}"
+  fi
 }
 klft() {
   kubectl logs -f --tail=100 $1 "${@:2}"
@@ -332,6 +337,7 @@ alias gstats='git shortlog -sn --no-merges'
 alias glstats='git ls-files -z | xargs -0n1 git blame -w --line-porcelain | grep -a "^author " | sort -f | uniq -c | sort -n -r'
 # gdiff <file1> <file2>
 alias gdiff='git diff --color-words --no-index'
+alias lg='lazygit'
 
 # Terraform ############################################################################################################
 
