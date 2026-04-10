@@ -1,0 +1,19 @@
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+gui:
+  sidePanelWidth: 0.30
+  showCommandLog: false
+  screenMode: full
+keybinding:
+  universal:
+    quit: Q
+    return: q
+    quitWithoutChangingDirectory: <disabled> # Q is used for quit
+    copyToClipboard: y
+    nextScreenMode: =
+    prevScreenMode: '-'
+    openFile: <disabled>
+  files:
+    collapseAll: <disabled> # - is used for nextScreenMode
+    expandAll: <disabled> # = is used for nextScreenMode
+git:
+  overrideGpg: true

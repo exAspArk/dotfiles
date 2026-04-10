@@ -16,6 +16,7 @@ tags_tmp
 log/
 db/*.sqlite3
 
+.pnpm-store/
 .devbox/
 docker-compose.override.yml
 
@@ -23,5 +24,6 @@ tmp.*rb
 tmp.*txt
 tmp.*js
 tmp.*sql
+tmp.*json
 
 .claude/

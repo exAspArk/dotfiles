@@ -66,20 +66,7 @@ source <(kubectl completion zsh)
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --ignore-case --no-ignore --strip-cwd-prefix \
---exclude .git \
---exclude .devbox \
---exclude .next \
---exclude .deliver \
---exclude _build \
---exclude build \
---exclude deps \
---exclude dist \
---exclude node_modules \
---exclude log \
---exclude cue.mod \
---exclude temp \
---exclude tmp"
+export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --ignore-case --no-ignore --strip-cwd-prefix"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
   --color=fg:#4d4d4c,bg:#eeeeee,hl:#004e9c

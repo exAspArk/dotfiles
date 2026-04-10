@@ -148,21 +148,24 @@ alias kd='kubectl describe'
 alias kdp='kubectl describe pod'
 alias kdel='kubectl delete'
 kdela () { # kdela [resource] [pattern]
-  kubectl get $1 | grep $2 | awk '{print $1}' | xargs -I % echo "echo % && kubectl delete $1 %" | sh
+  kubectl get "$1" | grep -E "$2" | awk '{print $1}' | xargs -r -I % sh -c 'echo "$1" && kubectl delete "$2" "$1"' _ % "$1"
+
 }
 alias ke='kubectl edit'
 alias ked='kubectl edit deployment'
 kex() {
-  kubectl exec -it $1 "${@:2}" -- bash
-}
-kexd() {
-  kubectl exec -it deployment/$1 "${@:2}" -- bash
+  if kubectl get pod "$1" >/dev/null 2>&1; then
+    kubectl exec -it $1 "${@:2}" -- bash
+  else
+    kubectl exec -it deployment/$1 "${@:2}" -- bash
+  fi
 }
 kexsh() {
   kubectl exec -it $1 "${@:2}" -- sh
 }
 klf() {
-  kubectl logs -f $1 "${@:2}"
+  kubectl logs -f "pod/$1" "${@:2}" 2>/dev/null ||
+    kubectl logs -f "deployment/$1" --all-containers=true "${@:2}"
 }
 klft() {
   kubectl logs -f --tail=100 $1 "${@:2}"
@@ -218,26 +221,31 @@ kc() { # kc context-name
 ksealed() {
   kubectl get secret $1 -o json | jq '.data | map_values(@base64d)'
 }
-kseal() { # kseal my-secret KEY1=val1 KEY2=val2 or kseal my-secret.yaml
+kseal() { # kseal my-secret KEY1=val1 KEY2=val2 or kseal my-secret.yaml [KEY1=val1 ...]
   secret_name="$1"
   shift
 
-  # If secret_name ends with .yaml
   if [[ $secret_name == *.yaml ]]; then
-    cat $secret_name | kubeseal --format yaml > sealed-secret.temp.yaml
-    mv sealed-secret.temp.yaml $secret_name
+    if [[ $# -eq 0 ]]; then
+      kubeseal --format yaml < "$secret_name" > "$secret_name.tmp" && mv "$secret_name.tmp" "$secret_name"
+      return
+    fi
+
+    name="$(kubectl get -f "$secret_name" -o jsonpath='{.metadata.name}')"
+    keyvals=()
+    for keyval in "$@"; do keyvals+=(--from-literal="$keyval"); done
+
+    kubectl create secret generic "$name" --dry-run=client "${keyvals[@]}" -o yaml | kubeseal --format yaml --merge-into "$secret_name"
     return
   fi
 
-  keyvals=""
-  for keyval in "$@"; do
-    keyvals="$keyvals --from-literal=$keyval"
-  done
+  keyvals=()
+  for keyval in "$@"; do keyvals+=(--from-literal="$keyval"); done
 
-  if test -f sealed-secret.yaml; then
-    eval "kubectl create secret generic $secret_name --dry-run=client $keyvals -o yaml | kubeseal --format yaml --merge-into sealed-secret.yaml"
+  if [[ -f sealed-secret.yaml ]]; then
+    kubectl create secret generic "$secret_name" --dry-run=client "${keyvals[@]}" -o yaml | kubeseal --format yaml --merge-into sealed-secret.yaml
   else
-    eval "kubectl create secret generic $secret_name --dry-run=client $keyvals -o yaml | kubeseal --format yaml > sealed-secret.yaml"
+    kubectl create secret generic "$secret_name" --dry-run=client "${keyvals[@]}" -o yaml | kubeseal --format yaml > sealed-secret.yaml
   fi
 }
 
@@ -332,6 +340,7 @@ alias gstats='git shortlog -sn --no-merges'
 alias glstats='git ls-files -z | xargs -0n1 git blame -w --line-porcelain | grep -a "^author " | sort -f | uniq -c | sort -n -r'
 # gdiff <file1> <file2>
 alias gdiff='git diff --color-words --no-index'
+alias lg='lazygit'
 
 # Terraform ############################################################################################################
 

@@ -48,4 +48,3 @@ Set up [GPG](https://gist.github.com/exAspArk/d5cffe82f3151c40669be1aa4122e952#m
 
 * pCloud
 * OBS
-* Grammarly Desktop
