@@ -15,7 +15,7 @@ return {
   { -- autocomplete and LSP: coc-solargraph, coc-tsserver
     'neoclide/coc.nvim',
     branch = 'release',
-    event = 'InsertEnter',
+    event = 'BufRead',
     keys = { '<TAB>', '<S-TAB>', '<CR>', 'gd', 'gy', 'gi', 'gr', 'K', 're', '<leader>n' },
     config = function()
       -- Make <CR> to accept selected completion item or notify coc.nvim to format. <C-g>u breaks current undo, please make your own choice
@@ -41,7 +41,7 @@ return {
   },
   { -- lint
     'dense-analysis/ale',
-    event = 'InsertEnter',
+    event = 'BufRead',
     config = function() require("config.ale") end,
   },
   { -- bracket actions

@@ -121,6 +121,7 @@ configure_dotfiles:
 	ln -sf $(PWD)/zshenv ~/.zshenv
 	ln -sf $(PWD)/zshrc ~/.zshrc
 	ln -sf $(PWD)/espanso/kitty.yml ~/Library/Application\ Support/espanso/config/kitty.yml
+	ln -sf $(PWD)/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 	ln -sf $BACKUP_PATH/espanso-matches.yml ~/Library/Application\ Support/espanso/match/base.yml
 	ln -sf $BACKUP_PATH/karabiner.json ~/.config/karabiner/karabiner.json
 	ln -sf $BACKUP_PATH/ssh/config ~/.ssh/config
