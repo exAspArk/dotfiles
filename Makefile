@@ -9,11 +9,11 @@ install_cli_apps:
 
 	ln -sf $(PWD)/nixpkgs/darwin-configuration.nix ~/.nixpkgs/darwin-configuration.nix
 	# https://channels.nixos.org/
-	sudo nix-channel --add https://nixos.org/channels/nixpkgs-25.05-darwin nixpkgs
+	sudo -H nix-channel --add https://nixos.org/channels/nixpkgs-26.05-darwin nixpkgs
 	# https://github.com/nix-darwin/nix-darwin?tab=readme-ov-file#step-2-adding-nix-darwin-channel
-	sudo nix-channel --add https://github.com/nix-darwin/nix-darwin/archive/nix-darwin-25.05.tar.gz darwin
-	sudo nix-channel --update
-	ninstall
+	sudo -H nix-channel --add https://github.com/nix-darwin/nix-darwin/archive/nix-darwin-26.05.tar.gz darwin
+	sudo -H nix-channel --update
+	sudo -H darwin-rebuild switch --show-trace
 
 	ln -sf /run/current-system/sw/bin/sed /opt/homebrew/bin/gsed # for Spectre nvim plugin to avoid 'brew install gnu-sed'
 	defaults write com.apple.Finder AppleShowAllFiles true && killall Finder

@@ -49,15 +49,14 @@
     stern # kube logs
 
     # Languages
-    python311
-    python311Packages.pip
-    python311Packages.virtualenv
-    python311Packages.python-lsp-server
+    python313
+    python313Packages.pip
+    python313Packages.virtualenv
+    python313Packages.python-lsp-server
     ruby_3_4
     rubyPackages_3_4.solargraph
-    nodejs_20
+    nodejs_24
     pnpm
-    elixir_1_15
     jdk
     go
     delve # go debugger
@@ -66,7 +65,7 @@
 
   environment.darwinConfig = "/Users/exaspark/.nixpkgs/darwin-configuration.nix";
 
-  system.primaryUser = builtins.getEnv "USER";
+  system.primaryUser = "exaspark";
 
   nix.package = pkgs.nix;
 
@@ -77,5 +76,5 @@
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
-  ids.uids.nixbld = 300; # For macOS Sonoma 14
+  ids.uids.nixbld = 350;
 }

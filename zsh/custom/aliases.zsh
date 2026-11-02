@@ -54,11 +54,15 @@ sc() {               # create screen session
 
 # Nix ##################################################################################################################
 
-alias ninstall='sudo darwin-rebuild switch --show-trace'
-alias nupgrade='sudo nix-channel --update'
+alias ninstall='sudo -H darwin-rebuild switch --show-trace'
+alias nupgrade='sudo -H nix-channel --update'
 alias nsearch='nix-env -qaP'
 nuninstall() {
-  nix-env --uninstall $1 && nix-collect-garbage
+  if (( $# > 0 )); then
+    nix-env --uninstall "$@" || return
+  fi
+  # Delete all old generations, removing their rollback history.
+  sudo -H nix-collect-garbage -d
 }
 
 # SSH ##################################################################################################################
