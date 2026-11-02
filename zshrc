@@ -29,14 +29,14 @@ source $BACKUP_PATH/zsh_aliases
 # Custom title for a terminal tab
 export DISABLE_AUTO_TITLE="true"
 
-# title function for terminal
-title_pwd() { echo -ne "\033]0;${PWD##*/}\007" }
-
-# after cd hook
-chpwd() {
-  # Show current directory for a terminal tab title asynchronously
-  (title_pwd &)
+# Keep the folder name in the title at the prompt and after changing directories.
+title_pwd() {
+  local dir_name="${PWD##*/}"
+  print -rn -- $'\e]0;'"${dir_name:-/}"$'\a'
 }
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd title_pwd
+add-zsh-hook precmd title_pwd
 
 # use a zsh_history from backup directory if it's newer
 sync_zsh_history() {
@@ -48,7 +48,7 @@ sync_zsh_history() {
 
 # ON LOAD: #####################################################################
 
-chpwd # emulate cd action
+title_pwd
 # (sync_zsh_history &)
 
 # Plugins ######################################################################
@@ -66,6 +66,10 @@ source <(kubectl completion zsh)
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Esc then C (also Option+C) cancels input like Ctrl+C instead of opening fzf.
+bindkey -M emacs '\ec' send-break
+
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --ignore-case --no-ignore --strip-cwd-prefix"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'

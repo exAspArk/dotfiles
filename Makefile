@@ -27,7 +27,7 @@ install_cli_apps:
 
 install_gui_apps:
 	brew install --cask keepassxc
-	brew install --cask kitty
+	brew install --cask ghostty
 	brew install --cask obsidian
 	brew install --cask bartender
 	brew install --cask betterdisplay # fix macOS Ventura display scale bug with HiDPI
@@ -54,6 +54,7 @@ install_gui_apps:
 	brew install --cask tad
 	brew install --cask lm-studio
 	brew install --cask linphone
+	brew install --cask cap # loom alternative
 	# brew install --cask paragon-ntfs
 	mas install 'Elmedia Video Player'
 	mas install Flycut
@@ -77,7 +78,6 @@ configure_dotfiles:
 	mkdir -p ~/.config
 	mkdir -p ~/.config/coc/extensions
 	mkdir -p ~/.config/nvim/lua/config
-	mkdir -p ~/.config/kitty
 	mkdir -p ~/.config/karabiner
 	mkdir -p ~/.vim/undo
 	mkdir -p ~/.vim/autoload
@@ -109,7 +109,7 @@ configure_dotfiles:
 	ln -sf $(PWD)/iex.exs ~/.iex.exs
 	ln -sf $(PWD)/irbrc ~/.irbrc
 	ln -sf $(PWD)/irbrc ~/.sshrc.d/irbrc
-	ln -sf $(PWD)/kitty/kitty.conf ~/.config/kitty/kitty.conf
+	ln -sf $(PWD)/ghostty/config.ghostty ~/Library/Application\ Support/com.mitchellh.ghostty/config.ghostty
 	ln -sf $(PWD)/pryrc ~/.pryrc
 	ln -sf $(PWD)/rubocop.yml ~/.rubocop.yml
 	ln -sf $(PWD)/sshrc ~/.sshrc
@@ -119,14 +119,14 @@ configure_dotfiles:
 	ln -sf $(PWD)/vimrc ~/.vimrc
 	ln -sf $(PWD)/zshenv ~/.zshenv
 	ln -sf $(PWD)/zshrc ~/.zshrc
-	ln -sf $(PWD)/espanso/kitty.yml ~/Library/Application\ Support/espanso/config/kitty.yml
+	ln -sf $(PWD)/espanso/ghostty.yml ~/Library/Application\ Support/espanso/config/ghostty.yml
 	ln -sf $(PWD)/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 	ln -sf $BACKUP_PATH/espanso-matches.yml ~/Library/Application\ Support/espanso/match/base.yml
 	ln -sf $BACKUP_PATH/karabiner.json ~/.config/karabiner/karabiner.json
 	ln -sf $BACKUP_PATH/ssh/config ~/.ssh/config
 	ln -sf $BACKUP_PATH/aws/config ~/.aws/config
-	mkdir -p ~/.local/share/terminfo/x
-	ln -sf /Applications/kitty.app/Contents/Resources/kitty/terminfo/78/xterm-kitty ~/.sshrc.d/xterm-kitty
+	mkdir -p ~/.sshrc.d
+	infocmp -A /Applications/Ghostty.app/Contents/Resources/terminfo -x xterm-ghostty > ~/.sshrc.d/xterm-ghostty.terminfo
 	git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 

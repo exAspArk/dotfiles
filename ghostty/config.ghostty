@@ -1,0 +1,43 @@
+# To reload the config: Command + Shift + comma
+
+# ghostty +list-themes
+theme = Apple System Colors Light
+window-theme = light
+background = #fafafa
+
+macos-titlebar-style = hidden
+macos-titlebar-style = tabs
+
+font-family = Fira Code
+font-style = Regular
+font-thicken = true
+font-thicken-strength = 0
+
+cursor-style-blink = false
+
+unfocused-split-opacity = 0.93
+unfocused-split-fill = #808080
+
+shell-integration-features = no-title
+
+confirm-close-surface = false
+
+# Keybinds #####################################################################
+
+macos-option-as-alt = true
+
+keybind = super+enter=toggle_split_zoom
+
+keybind = super+shift+k=clear_screen
+# https://github.com/ghostty-org/ghostty/discussions/10288
+keybind = chain=clear_screen
+
+# Move the current tab left / right.
+keybind = super+shift+h=move_tab:-1
+keybind = super+shift+l=move_tab:1
+
+# Vim: move between windows with Command + J / K / H / L.
+keybind = super+j=text:\x0a
+keybind = super+k=text:\x0b
+keybind = super+h=text:\x08
+keybind = super+l=text:\x0c
