@@ -3,8 +3,9 @@ return {
 
   { -- syntax highlight
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
+    lazy = false,
     build = ':TSUpdate',
-    event = 'BufRead',
     config = function() require("config.nvim-treesitter") end,
   },
   { -- selection expansion
@@ -168,7 +169,6 @@ return {
   },
   { -- highlight matching tags
     'andymass/vim-matchup',
-    commit = '5456eaccf757606884ec1ac1ef3f564019973873', -- to avoid breaking coc.nvim autocomplete in TSX
   },
 
   -- Files ---------------------------------------------------------------------

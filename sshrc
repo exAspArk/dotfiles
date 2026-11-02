@@ -19,4 +19,7 @@ elif [ -n "$BASH_VERSION" ]; then
   shopt -s autocd
 fi
 
-sudo cp ${SSHHOME}/.sshrc.d/xterm-kitty /usr/share/terminfo/x
+# Install Ghostty's terminal description for this user on the remote host.
+if [ "$TERM" = xterm-ghostty ] && [ -r "$SSHHOME/.sshrc.d/xterm-ghostty.terminfo" ] && command -v tic >/dev/null 2>&1; then
+  tic -x -o "$HOME/.terminfo" "$SSHHOME/.sshrc.d/xterm-ghostty.terminfo"
+fi

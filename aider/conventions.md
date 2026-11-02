@@ -1,1 +1,0 @@
-- Never add or remove code comments unless I ask for it.
